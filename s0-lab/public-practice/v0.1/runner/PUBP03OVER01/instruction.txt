@@ -1,0 +1,1 @@
+Use only input.json and the supplied public question projection. Return one neutral UTF-8 JSON answer that follows the supplied answer schema. For every question, select one supplied option, follow its citation and affected-record policies, state uncertainty, and give a one-line reason.

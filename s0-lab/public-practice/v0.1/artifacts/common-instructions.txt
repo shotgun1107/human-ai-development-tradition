@@ -1,0 +1,1 @@
+Read the assigned public practice input and question projection. Return one UTF-8 JSON answer that follows the neutral answer schema. Use only the supplied records. This instruction has no recommendation, answer example, error code, rank, or target preference.

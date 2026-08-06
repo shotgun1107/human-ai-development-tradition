@@ -1,0 +1,1 @@
+PUBLIC PRACTICE STAND-IN: a report records policy, input, answer, question projection, answer schema hashes, rule-level results, and no condition identity.

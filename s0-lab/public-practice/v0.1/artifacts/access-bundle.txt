@@ -1,0 +1,1 @@
+PUBLIC PRACTICE STAND-IN: a bundle of role-specific access manifests would be frozen before role start. This bundle contains only one schema example and makes no isolation claim.

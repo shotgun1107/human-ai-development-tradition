@@ -1,0 +1,1 @@
+PUBLIC PRACTICE STAND-IN: read only the assigned instruction, package, answer schema, and question projection; write one answer; no shell, network, browser, MCP, subagent, external transfer, or human content intervention.

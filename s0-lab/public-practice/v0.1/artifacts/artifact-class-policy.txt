@@ -1,0 +1,1 @@
+PUBLIC PRACTICE STAND-IN: protocol, schema, manifest, package, question, oracle, scoring, answer, report, and control-record classes remain distinct.

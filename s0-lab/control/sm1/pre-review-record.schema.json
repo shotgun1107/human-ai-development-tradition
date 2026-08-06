@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-development-tradition:s0:pre-review-record:0.2",
+  "title": "S0 pre-run independent review record",
+  "description": "Binds frozen sealed inputs, cross-validation reports, an isolated reviewer, and an approve/reject decision without self-reference.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_version",
+    "protocol_sha256",
+    "reviewer",
+    "review_inputs",
+    "non_inputs",
+    "checks",
+    "decision",
+    "check_evidence_report_sha256",
+    "review_report_sha256",
+    "freeze"
+  ],
+  "properties": {
+    "record_version": { "const": "0.2" },
+    "protocol_sha256": { "$ref": "#/$defs/sha256" },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor_id",
+        "session_slot_id",
+        "fresh_session",
+        "forked_from_other_role",
+        "conversation_inherited",
+        "access_manifest_sha256"
+      ],
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "pattern": "^ACT-[A-Z0-9]{12}$"
+        },
+        "session_slot_id": {
+          "type": "string",
+          "pattern": "^SES-[A-Z0-9]{12}$"
+        },
+        "fresh_session": { "const": true },
+        "forked_from_other_role": { "const": false },
+        "conversation_inherited": { "const": false },
+        "access_manifest_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "review_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_bundle_sha256",
+        "common_manifest_sha256",
+        "overlay_manifest_sha256",
+        "fixture_manifest_sha256",
+        "question_options_sha256",
+        "transformation_manifest_sha256",
+        "validation_policy_sha256",
+        "validation_report_sha256",
+        "access_manifest_bundle_sha256",
+        "role_policy_bundle_sha256",
+        "release_policy_bundle_sha256",
+        "run_manifest_sha256",
+        "run_record_contract_schema_sha256",
+        "decision_function_sha256",
+        "oracle_sha256",
+        "scoring_sha256",
+        "condition_package_sha256"
+      ],
+      "properties": {
+        "schema_bundle_sha256": { "$ref": "#/$defs/sha256" },
+        "common_manifest_sha256": { "$ref": "#/$defs/sha256" },
+        "overlay_manifest_sha256": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        },
+        "fixture_manifest_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        },
+        "question_options_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        },
+        "transformation_manifest_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        },
+        "validation_policy_sha256": { "$ref": "#/$defs/sha256" },
+        "validation_report_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        },
+        "access_manifest_bundle_sha256": { "$ref": "#/$defs/sha256" },
+        "role_policy_bundle_sha256": { "$ref": "#/$defs/sha256" },
+        "release_policy_bundle_sha256": { "$ref": "#/$defs/sha256" },
+        "run_manifest_sha256": { "$ref": "#/$defs/sha256" },
+        "run_record_contract_schema_sha256": { "$ref": "#/$defs/sha256" },
+        "decision_function_sha256": { "$ref": "#/$defs/sha256" },
+        "oracle_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        },
+        "scoring_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        },
+        "condition_package_sha256": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        }
+      }
+    },
+    "non_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executor_answers_seen",
+        "run_records_seen",
+        "condition_mapping_seen",
+        "post_run_cost_seen"
+      ],
+      "properties": {
+        "executor_answers_seen": { "const": false },
+        "run_records_seen": { "const": false },
+        "condition_mapping_seen": { "const": false },
+        "post_run_cost_seen": { "const": false }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_and_reference_consistency",
+        "oracle_scoring_consistency",
+        "question_option_neutrality",
+        "same_question_opportunity",
+        "fact_and_record_equality",
+        "provenance_complete",
+        "no_oracle_derived_relation",
+        "byte_limit_without_padding",
+        "overlay_no_hint",
+        "access_role_isolation",
+        "eight_run_pairing_valid",
+        "c_m_single_counting_valid",
+        "all_critical_and_major_observable",
+        "cross_block_treatment_binding_valid",
+        "validation_question_projection_binding_valid",
+        "retry_eligibility_valid",
+        "all_13_error_codes_covered_exactly",
+        "decision_function_matches_protocol_section_9",
+        "role_and_release_policy_bundle_complete",
+        "run_record_contract_ready"
+      ],
+      "properties": {
+        "schema_and_reference_consistency": { "type": "boolean" },
+        "oracle_scoring_consistency": { "type": "boolean" },
+        "question_option_neutrality": { "type": "boolean" },
+        "same_question_opportunity": { "type": "boolean" },
+        "fact_and_record_equality": { "type": "boolean" },
+        "provenance_complete": { "type": "boolean" },
+        "no_oracle_derived_relation": { "type": "boolean" },
+        "byte_limit_without_padding": { "type": "boolean" },
+        "overlay_no_hint": { "type": "boolean" },
+        "access_role_isolation": { "type": "boolean" },
+        "eight_run_pairing_valid": { "type": "boolean" },
+        "c_m_single_counting_valid": { "type": "boolean" },
+        "all_critical_and_major_observable": { "type": "boolean" },
+        "cross_block_treatment_binding_valid": { "type": "boolean" },
+        "validation_question_projection_binding_valid": { "type": "boolean" },
+        "retry_eligibility_valid": { "type": "boolean" },
+        "all_13_error_codes_covered_exactly": { "type": "boolean" },
+        "decision_function_matches_protocol_section_9": { "type": "boolean" },
+        "role_and_release_policy_bundle_complete": { "type": "boolean" },
+        "run_record_contract_ready": { "type": "boolean" }
+      }
+    },
+    "decision": {
+      "enum": [
+        "approve",
+        "reject"
+      ]
+    },
+    "check_evidence_report_sha256": { "$ref": "#/$defs/sha256" },
+    "review_report_sha256": { "$ref": "#/$defs/sha256" },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_at",
+        "frozen_before_executor_sessions_created"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "frozen_before_executor_sessions_created": { "const": true }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": { "const": "approve" }
+        },
+        "required": ["decision"]
+      },
+      "then": {
+        "properties": {
+          "checks": {
+            "properties": {
+              "schema_and_reference_consistency": { "const": true },
+              "oracle_scoring_consistency": { "const": true },
+              "question_option_neutrality": { "const": true },
+              "same_question_opportunity": { "const": true },
+              "fact_and_record_equality": { "const": true },
+              "provenance_complete": { "const": true },
+              "no_oracle_derived_relation": { "const": true },
+              "byte_limit_without_padding": { "const": true },
+              "overlay_no_hint": { "const": true },
+              "access_role_isolation": { "const": true },
+              "eight_run_pairing_valid": { "const": true },
+              "c_m_single_counting_valid": { "const": true },
+              "all_critical_and_major_observable": { "const": true },
+              "cross_block_treatment_binding_valid": { "const": true },
+              "validation_question_projection_binding_valid": { "const": true },
+              "retry_eligibility_valid": { "const": true },
+              "all_13_error_codes_covered_exactly": { "const": true },
+              "decision_function_matches_protocol_section_9": { "const": true },
+              "role_and_release_policy_bundle_complete": { "const": true },
+              "run_record_contract_ready": { "const": true }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": { "const": "reject" }
+        },
+        "required": ["decision"]
+      },
+      "then": {
+        "not": {
+          "properties": {
+            "checks": {
+              "properties": {
+                "schema_and_reference_consistency": { "const": true },
+                "oracle_scoring_consistency": { "const": true },
+                "question_option_neutrality": { "const": true },
+                "same_question_opportunity": { "const": true },
+                "fact_and_record_equality": { "const": true },
+                "provenance_complete": { "const": true },
+                "no_oracle_derived_relation": { "const": true },
+                "byte_limit_without_padding": { "const": true },
+                "overlay_no_hint": { "const": true },
+                "access_role_isolation": { "const": true },
+                "eight_run_pairing_valid": { "const": true },
+                "c_m_single_counting_valid": { "const": true },
+                "all_critical_and_major_observable": { "const": true },
+                "cross_block_treatment_binding_valid": { "const": true },
+                "validation_question_projection_binding_valid": { "const": true },
+                "retry_eligibility_valid": { "const": true },
+                "all_13_error_codes_covered_exactly": { "const": true },
+                "decision_function_matches_protocol_section_9": { "const": true },
+                "role_and_release_policy_bundle_complete": { "const": true },
+                "run_record_contract_ready": { "const": true }
+              },
+              "required": [
+                "schema_and_reference_consistency",
+                "oracle_scoring_consistency",
+                "question_option_neutrality",
+                "same_question_opportunity",
+                "fact_and_record_equality",
+                "provenance_complete",
+                "no_oracle_derived_relation",
+                "byte_limit_without_padding",
+                "overlay_no_hint",
+                "access_role_isolation",
+                "eight_run_pairing_valid",
+                "c_m_single_counting_valid",
+                "all_critical_and_major_observable",
+                "cross_block_treatment_binding_valid",
+                "validation_question_projection_binding_valid",
+                "retry_eligibility_valid",
+                "all_13_error_codes_covered_exactly",
+                "decision_function_matches_protocol_section_9",
+                "role_and_release_policy_bundle_complete",
+                "run_record_contract_ready"
+              ]
+            }
+          },
+          "required": ["checks"]
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "manifest_version":"0.2",
+  "protocol_sha256":"b1a7216398e51d75fe35a2c54a878d03c7f1163c450e6b8119fbb2ee1e3c0b8c",
+  "actor":{"actor_id":"ACT-PUBAUTHOR001","role":"fixture-author","opaque_to_other_roles":true},
+  "role_policy_sha256":"4e5a28ef0a2ceec73dbe8141ce6b7fb2c8bd6330e5a73eb9b4c0e91459a8dd90",
+  "policy_bundle":{"all_role_policy_source_sha256":"4e5a28ef0a2ceec73dbe8141ce6b7fb2c8bd6330e5a73eb9b4c0e91459a8dd90","release_policy_source_sha256":"b077892892794d5bb86c272ad0a18ca30ceb87325866b3e5768cfc3cb391a67e","artifact_class_policy_sha256":"779029a7fbbe7d9e638ab1b281d7c12bce3a2e9ec2cae5eb321caab3f96a6342","included_in_pre_review_bundle":true},
+  "session_contract":{"session_slot_id":"SES-PUBAUTHOR001","fresh_session_required":true,"fork_allowed":false,"conversation_inheritance_allowed":false,"same_session_as_other_role_allowed":false},
+  "input_allowlist":[
+    {"information_class":"public-protocol","path":"s0-lab/control/s0-protocol-v0.3.md","sha256":"b1a7216398e51d75fe35a2c54a878d03c7f1163c450e6b8119fbb2ee1e3c0b8c","read_only":true,"release_stage":"fixture-authoring"},
+    {"information_class":"public-schema","path":"s0-lab/control/sm0/answer.schema.json","sha256":"e21100f06d2715f42cd1fda812e17d22340a64327bfb48c03112a0f83d33ac6b","read_only":true,"release_stage":"fixture-authoring"}
+  ],
+  "output_allowlist":[{"output_class":"validation-report","path":"s0-lab/public-practice/v0.1","max_files":16,"max_bytes":1048576}],
+  "forbidden_information_classes":["other-condition-input","other-block-input","condition-mapping","complexity-rank","h0-h1","target-preference","prior-results","cost-before-correctness-freeze","real-project-data"],
+  "capabilities":{"repository_search_allowed":false,"read_outside_allowlist_allowed":false,"write_outside_allowlist_allowed":false,"shell_allowed":true,"network_allowed":false,"subagents_allowed":false,"external_transfer_allowed":false,"human_content_intervention_allowed":false},
+  "release_policy":{"release_events_precommitted":true,"release_log_schema_sha256":"ef3b5f5e9a0e6b2e0303dd995908d0b9416392ff8c4f65265db9c4da4fa20e1a","no_early_release":true,"hash_before_release":true},
+  "freeze":{"created_at":"2026-08-06T12:00:00+09:00","frozen_before_role_start":true}
+}

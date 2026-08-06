@@ -1,0 +1,1 @@
+PUBLIC PRACTICE STAND-IN: deterministic=true; network=false; other_block=false; oracle=false; scoring=false.

@@ -1,0 +1,1 @@
+P04 input keys: practice_version, block_id, representation_id, facts, view, relation_dictionary, relations, code, from_record_id, to_record_id, supporting_fact_ids, text.

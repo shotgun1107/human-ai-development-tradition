@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-development-tradition:s0:condition-overlay-manifest:0.2",
+  "title": "S0 condition overlay manifest",
+  "description": "Control-only metadata for one opaque condition instruction and input format. A run manifest later pairs it with a block package; the runner does not receive this manifest.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "visibility",
+    "protocol_sha256",
+    "overlay_id",
+    "runner_instruction",
+    "input_format",
+    "answer_schema_sha256",
+    "attestations",
+    "freeze"
+  ],
+  "properties": {
+    "manifest_version": {
+      "const": "0.2"
+    },
+    "visibility": {
+      "const": "control-only"
+    },
+    "protocol_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "overlay_id": {
+      "type": "string",
+      "pattern": "^OV-[A-Z0-9]{12}$"
+    },
+    "runner_instruction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "byte_count",
+        "character_count"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^runner/[A-Z0-9]{12}/instruction\\.txt$"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65536
+        },
+        "character_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65536
+        }
+      }
+    },
+    "input_format": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runner_input_filename",
+        "format_spec_sha256",
+        "data_dictionary_sha256"
+      ],
+      "properties": {
+        "runner_input_filename": {
+          "const": "input.json"
+        },
+        "format_spec_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "data_dictionary_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "answer_schema_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "attestations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "no_condition_label",
+        "no_complexity_rank",
+        "no_hypothesis_or_target_preference",
+        "no_answer_example",
+        "no_error_code",
+        "no_recommended_decision",
+        "no_semantic_runner_path",
+        "same_question_opportunity"
+      ],
+      "properties": {
+        "no_condition_label": {
+          "const": true
+        },
+        "no_complexity_rank": {
+          "const": true
+        },
+        "no_hypothesis_or_target_preference": {
+          "const": true
+        },
+        "no_answer_example": {
+          "const": true
+        },
+        "no_error_code": {
+          "const": true
+        },
+        "no_recommended_decision": {
+          "const": true
+        },
+        "no_semantic_runner_path": {
+          "const": true
+        },
+        "same_question_opportunity": {
+          "const": true
+        }
+      }
+    },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_at",
+        "frozen_before_any_run"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "frozen_before_any_run": {
+          "const": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

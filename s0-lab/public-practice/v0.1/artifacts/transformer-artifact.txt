@@ -1,0 +1,1 @@
+PUBLIC PRACTICE STAND-IN: a deterministic transformation artifact would read only one canonical input and the public transformation format. No transformer code exists in this bundle.

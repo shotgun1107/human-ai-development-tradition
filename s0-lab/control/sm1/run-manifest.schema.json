@@ -1,0 +1,439 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-development-tradition:s0:run-manifest:0.2",
+  "title": "S0 eight-run suite manifest",
+  "description": "Pre-run opaque pairing plan for four overlays across two sealed blocks. Actual task/thread IDs and results are recorded later, not here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "protocol_sha256",
+    "suite_id",
+    "suite_attempt",
+    "common_manifest_sha256",
+    "validation_policy_sha256",
+    "model_configuration_sha256",
+    "capability_profile_sha256",
+    "order_seed",
+    "runs",
+    "pairing_invariants",
+    "retry_policy",
+    "retry_context",
+    "run_record_contract",
+    "freeze"
+  ],
+  "properties": {
+    "manifest_version": { "const": "0.2" },
+    "protocol_sha256": { "$ref": "#/$defs/sha256" },
+    "suite_id": {
+      "type": "string",
+      "pattern": "^SUI-[A-Z0-9]{12}$"
+    },
+    "suite_attempt": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "common_manifest_sha256": { "$ref": "#/$defs/sha256" },
+    "validation_policy_sha256": { "$ref": "#/$defs/sha256" },
+    "model_configuration_sha256": { "$ref": "#/$defs/sha256" },
+    "capability_profile_sha256": { "$ref": "#/$defs/sha256" },
+    "order_seed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "protocol_sha256",
+        "sorted_sealed_input_sha256",
+        "derived_seed_sha256"
+      ],
+      "properties": {
+        "method": {
+          "const": "sha256(protocol_sha256 || sorted_sealed_input_sha256)"
+        },
+        "protocol_sha256": { "$ref": "#/$defs/sha256" },
+        "sorted_sealed_input_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        },
+        "derived_seed_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "runs": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/run" }
+    },
+    "pairing_invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "block_count",
+        "overlay_count",
+        "runs_per_block",
+        "each_block_uses_each_overlay_once",
+        "each_block_uses_each_package_once",
+        "overlay_package_pairing_one_to_one_per_block",
+        "run_ids_unique",
+        "session_slots_unique",
+        "order_positions_unique",
+        "same_overlay_two_blocks_not_same_wave",
+        "same_overlay_same_treatment_profile_across_blocks",
+        "four_profiles_each_present_once_per_block",
+        "max_concurrency"
+      ],
+      "properties": {
+        "block_count": { "const": 2 },
+        "overlay_count": { "const": 4 },
+        "runs_per_block": { "const": 4 },
+        "each_block_uses_each_overlay_once": { "const": true },
+        "each_block_uses_each_package_once": { "const": true },
+        "overlay_package_pairing_one_to_one_per_block": { "const": true },
+        "run_ids_unique": { "const": true },
+        "session_slots_unique": { "const": true },
+        "order_positions_unique": { "const": true },
+        "same_overlay_two_blocks_not_same_wave": { "const": true },
+        "same_overlay_same_treatment_profile_across_blocks": { "const": true },
+        "four_profiles_each_present_once_per_block": { "const": true },
+        "max_concurrency": { "const": 3 }
+      }
+    },
+    "retry_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "single_run_retry_allowed",
+        "whole_suite_technical_retry_max",
+        "use_earliest_valid_suite",
+        "post_oracle_defect_auto_retry_allowed"
+      ],
+      "properties": {
+        "single_run_retry_allowed": { "const": false },
+        "whole_suite_technical_retry_max": { "const": 1 },
+        "use_earliest_valid_suite": { "const": true },
+        "post_oracle_defect_auto_retry_allowed": { "const": false }
+      }
+    },
+    "retry_context": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": {
+            "kind": { "const": "initial" }
+          }
+        },
+        {
+          "$ref": "#/$defs/technical_retry_context"
+        }
+      ]
+    },
+    "run_record_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_pointer",
+        "actual_task_id_bound_before_sealed_input_release",
+        "binding_record_sha256_required",
+        "post_run_record_required"
+      ],
+      "properties": {
+        "schema_pointer": { "const": "#/$defs/run_record" },
+        "actual_task_id_bound_before_sealed_input_release": { "const": true },
+        "binding_record_sha256_required": { "const": true },
+        "post_run_record_required": { "const": true }
+      }
+    },
+    "freeze": { "$ref": "#/$defs/freeze" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "suite_attempt": { "const": 0 }
+        },
+        "required": ["suite_attempt"]
+      },
+      "then": {
+        "properties": {
+          "retry_context": {
+            "properties": {
+              "kind": { "const": "initial" }
+            },
+            "required": ["kind"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "suite_attempt": { "const": 1 }
+        },
+        "required": ["suite_attempt"]
+      },
+      "then": {
+        "properties": {
+          "retry_context": { "$ref": "#/$defs/technical_retry_context" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "block_id",
+        "overlay_id",
+        "package_id",
+        "treatment_profile_id",
+        "treatment_profile_sha256",
+        "session_slot_id",
+        "order_position",
+        "wave",
+        "runner_instruction_sha256",
+        "input_sha256",
+        "question_projection_sha256",
+        "answer_schema_sha256",
+        "access_manifest_sha256",
+        "output_path",
+        "fresh_non_fork_required"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "pattern": "^RUN-[A-Z0-9]{12}$"
+        },
+        "block_id": {
+          "type": "string",
+          "pattern": "^BLK-[A-Z0-9]{12}$"
+        },
+        "overlay_id": {
+          "type": "string",
+          "pattern": "^OV-[A-Z0-9]{12}$"
+        },
+        "package_id": {
+          "type": "string",
+          "pattern": "^PKG-[A-Z0-9]{12}$"
+        },
+        "treatment_profile_id": {
+          "type": "string",
+          "pattern": "^TPR-[A-Z0-9]{12}$"
+        },
+        "treatment_profile_sha256": { "$ref": "#/$defs/sha256" },
+        "session_slot_id": {
+          "type": "string",
+          "pattern": "^SES-[A-Z0-9]{12}$"
+        },
+        "order_position": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "wave": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "runner_instruction_sha256": { "$ref": "#/$defs/sha256" },
+        "input_sha256": { "$ref": "#/$defs/sha256" },
+        "question_projection_sha256": { "$ref": "#/$defs/sha256" },
+        "answer_schema_sha256": { "$ref": "#/$defs/sha256" },
+        "access_manifest_sha256": { "$ref": "#/$defs/sha256" },
+        "output_path": {
+          "type": "string",
+          "pattern": "^outputs/RUN-[A-Z0-9]{12}/answer\\.json$"
+        },
+        "fresh_non_fork_required": { "const": true }
+      }
+    },
+    "technical_retry_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "prior_suite_id",
+        "prior_run_record_bundle_sha256",
+        "failure_stage",
+        "sealed_input_released",
+        "new_blocks_required",
+        "prior_block_input_sha256",
+        "current_block_input_sha256"
+      ],
+      "properties": {
+        "kind": { "const": "technical-retry" },
+        "prior_suite_id": {
+          "type": "string",
+          "pattern": "^SUI-[A-Z0-9]{12}$"
+        },
+        "prior_run_record_bundle_sha256": { "$ref": "#/$defs/sha256" },
+        "failure_stage": {
+          "enum": [
+            "before-sealed-input-release",
+            "after-sealed-input-release"
+          ]
+        },
+        "sealed_input_released": { "type": "boolean" },
+        "new_blocks_required": { "type": "boolean" },
+        "prior_block_input_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        },
+        "current_block_input_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/sha256" }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "sealed_input_released": { "const": true }
+            },
+            "required": ["sealed_input_released"]
+          },
+          "then": {
+            "properties": {
+              "failure_stage": { "const": "after-sealed-input-release" },
+              "new_blocks_required": { "const": true }
+            }
+          },
+          "else": {
+            "properties": {
+              "failure_stage": { "const": "before-sealed-input-release" },
+              "new_blocks_required": { "const": false }
+            }
+          }
+        }
+      ]
+    },
+    "run_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "session_slot_id",
+        "actual_task_id",
+        "task_binding_record_sha256",
+        "task_bound_before_sealed_input_release",
+        "fresh_non_fork_verified",
+        "model_configuration_sha256",
+        "capability_profile_sha256",
+        "started_at",
+        "ended_at",
+        "instruction_sha256",
+        "input_sha256",
+        "question_projection_sha256",
+        "answer_schema_sha256",
+        "tool_event_log_sha256",
+        "human_content_intervention_count",
+        "technical_failure"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "pattern": "^RUN-[A-Z0-9]{12}$"
+        },
+        "session_slot_id": {
+          "type": "string",
+          "pattern": "^SES-[A-Z0-9]{12}$"
+        },
+        "actual_task_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "task_binding_record_sha256": { "$ref": "#/$defs/sha256" },
+        "task_bound_before_sealed_input_release": { "const": true },
+        "fresh_non_fork_verified": { "const": true },
+        "model_configuration_sha256": { "$ref": "#/$defs/sha256" },
+        "capability_profile_sha256": { "$ref": "#/$defs/sha256" },
+        "started_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "ended_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "instruction_sha256": { "$ref": "#/$defs/sha256" },
+        "input_sha256": { "$ref": "#/$defs/sha256" },
+        "question_projection_sha256": { "$ref": "#/$defs/sha256" },
+        "answer_schema_sha256": { "$ref": "#/$defs/sha256" },
+        "answer_sha256": { "$ref": "#/$defs/sha256" },
+        "answer_byte_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 8192
+        },
+        "tool_event_log_sha256": { "$ref": "#/$defs/sha256" },
+        "human_content_intervention_count": { "const": 0 },
+        "technical_failure": { "type": "boolean" },
+        "technical_failure_reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "failure_log_sha256": { "$ref": "#/$defs/sha256" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "technical_failure": { "const": false }
+            },
+            "required": ["technical_failure"]
+          },
+          "then": {
+            "required": [
+              "answer_sha256",
+              "answer_byte_count"
+            ]
+          },
+          "else": {
+            "required": [
+              "technical_failure_reason",
+              "failure_log_sha256"
+            ]
+          }
+        }
+      ]
+    },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_at",
+        "frozen_before_executor_sessions_created"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "frozen_before_executor_sessions_created": { "const": true }
+      }
+    }
+  }
+}

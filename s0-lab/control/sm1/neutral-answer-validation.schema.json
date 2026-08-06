@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-development-tradition:s0:neutral-answer-validation-policy:0.2",
+  "title": "S0 neutral answer validation policy",
+  "description": "Pre-run policy for syntax, exact question/option checks, sorting, forbidden disclosure, and M5 versus suite-invalid outcomes. No validator code is included.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy_version",
+    "protocol_sha256",
+    "answer_schema_sha256",
+    "question_options_schema_sha256",
+    "validator_contract",
+    "rules",
+    "outcome_mapping",
+    "report_contract",
+    "freeze"
+  ],
+  "properties": {
+    "policy_version": { "const": "0.2" },
+    "protocol_sha256": { "$ref": "#/$defs/sha256" },
+    "answer_schema_sha256": { "$ref": "#/$defs/sha256" },
+    "question_options_schema_sha256": { "$ref": "#/$defs/sha256" },
+    "validator_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "implementation_sha256",
+        "configuration_sha256",
+        "runtime_sha256",
+        "format_assertion_enabled",
+        "deterministic",
+        "no_network",
+        "no_oracle_access",
+        "no_condition_mapping_access"
+      ],
+      "properties": {
+        "implementation_sha256": { "$ref": "#/$defs/sha256" },
+        "configuration_sha256": { "$ref": "#/$defs/sha256" },
+        "runtime_sha256": { "$ref": "#/$defs/sha256" },
+        "format_assertion_enabled": { "const": true },
+        "deterministic": { "const": true },
+        "no_network": { "const": true },
+        "no_oracle_access": { "const": true },
+        "no_condition_mapping_access": { "const": true }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "utf8_required",
+        "json_parse_required",
+        "schema_required",
+        "exact_question_id_set",
+        "one_answer_per_question",
+        "question_id_sort",
+        "record_id_sort",
+        "record_ids_unique",
+        "question_option_membership",
+        "affected_ids_policy_enforced",
+        "short_reason_single_line",
+        "forbidden_disclosure_policy_sha256",
+        "forbidden_disclosure_field_scope",
+        "answer_bytes_max"
+      ],
+      "properties": {
+        "utf8_required": { "const": true },
+        "json_parse_required": { "const": true },
+        "schema_required": { "const": true },
+        "exact_question_id_set": { "const": true },
+        "one_answer_per_question": { "const": true },
+        "question_id_sort": { "const": "ascending-codepoint" },
+        "record_id_sort": { "const": "ascending-codepoint" },
+        "record_ids_unique": { "const": true },
+        "question_option_membership": { "const": true },
+        "affected_ids_policy_enforced": { "const": true },
+        "short_reason_single_line": { "const": true },
+        "forbidden_disclosure_policy_sha256": { "$ref": "#/$defs/sha256" },
+        "forbidden_disclosure_field_scope": {
+          "const": [
+            "short_reason"
+          ]
+        },
+        "answer_bytes_max": { "const": 8192 }
+      }
+    },
+    "outcome_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "missing_output",
+        "non_utf8_output",
+        "json_parse_failure",
+        "input_hash_mismatch",
+        "answer_size_exceeded",
+        "schema_violation",
+        "question_missing_or_duplicate",
+        "question_option_not_allowed",
+        "sort_or_id_uniqueness_failure",
+        "short_reason_forbidden_disclosure"
+      ],
+      "properties": {
+        "missing_output": { "const": "suite-invalid" },
+        "non_utf8_output": { "const": "suite-invalid" },
+        "json_parse_failure": { "const": "suite-invalid" },
+        "input_hash_mismatch": { "const": "suite-invalid" },
+        "answer_size_exceeded": { "const": "suite-invalid" },
+        "schema_violation": { "const": "M5" },
+        "question_missing_or_duplicate": { "const": "M5" },
+        "question_option_not_allowed": { "const": "M5" },
+        "sort_or_id_uniqueness_failure": { "const": "M5" },
+        "short_reason_forbidden_disclosure": { "const": "M6" }
+      }
+    },
+    "report_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report_schema_sha256",
+        "includes_policy_sha256",
+        "includes_input_and_answer_sha256",
+        "includes_question_projection_sha256",
+        "includes_answer_schema_sha256",
+        "includes_rule_level_results",
+        "includes_no_condition_identity"
+      ],
+      "properties": {
+        "report_schema_sha256": { "$ref": "#/$defs/sha256" },
+        "includes_policy_sha256": { "const": true },
+        "includes_input_and_answer_sha256": { "const": true },
+        "includes_question_projection_sha256": { "const": true },
+        "includes_answer_schema_sha256": { "const": true },
+        "includes_rule_level_results": { "const": true },
+        "includes_no_condition_identity": { "const": true }
+      }
+    },
+    "freeze": { "$ref": "#/$defs/freeze" }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_at",
+        "frozen_before_any_run"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "frozen_before_any_run": { "const": true }
+      }
+    }
+  }
+}
