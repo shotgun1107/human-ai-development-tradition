@@ -4,13 +4,22 @@
 
 This report covers only the public, fictional practice bundle in this directory. It records author-side static checks, not an S0 run, executor result, independent CONTROL approval, operational implementation, or validation of the central system. The public pre-review record intentionally has decision `reject` because no separate reviewer/session isolation or run-record readiness exists in this authoring session.
 
+The bundle was reopened under the exact `F0-PUBLIC REOPEN` gate after I0 found
+that the four block-2 package payloads used 13-character `P0xB2EMBER001`
+stems while three frozen schemas require exactly 12 characters. The correction
+renames only those stems to `P0xB2EMBR001` and updates paths, references, and
+dependent hashes. Facts, questions, options, transformations, expected
+decisions, scoring rules, package bytes, and package content hashes are
+unchanged. This corrected bundle is a CONTROL-verified refreeze candidate
+pending a fresh independent limited rereview.
+
 Schema examples, projections, manifests, reports, and affirmative fields in this bundle demonstrate document shape only. Their presence, hashes, schema-valid form, constants, or stated values are not operational evidence that a transformer, validator, runner, isolation boundary, release control, review, or freeze has been implemented or exercised.
 
 ## Frozen input and review integrity
 
 All 15 allowlisted authoring inputs matched the SHA-256 values in the F0-PUBLIC brief before the bundle was first authored: `AGENTS.md`, protocol v0.3, the four SM0 schema/design files, and the eight SM1 schema/design files. Mismatch count: 0. No repository-wide search or non-allowlisted repository input was used.
 
-The later independent review was accepted only after its declared SHA-256 matched the file exactly: `8af7e36ecb46fa24d991e81ce08af4fcb143f1ac1119396af1a4f245731633c5`. The review was used only for this public-bundle revision.
+The earlier independent review was accepted only after its declared SHA-256 matched the file exactly: `8af7e36ecb46fa24d991e81ce08af4fcb143f1ac1119396af1a4f245731633c5`. It remains historical evidence for the pre-reopen bundle and is not treated as an independent review of the corrected refreeze candidate.
 
 ## Independent-review remediation
 
@@ -24,7 +33,8 @@ The later independent review was accepted only after its declared SHA-256 matche
 
 - Authored JSON files parsed as UTF-8 JSON: 56 of 56; parse failures: 0.
 - Frozen schema files parsed as JSON: 11 of 11; parse failures: 0.
-- Eleven designated public instances passed the repeated author-side field-by-field static comparison against their corresponding frozen Draft 2020-12 schemas, including required fields, closed-object fields, types, constants, enums, ID/path/hash/date patterns, array cardinality and uniqueness, and applicable conditionals.
+- The earlier author-side field-by-field static comparison incorrectly reported the eleven designated instances as conforming. I0 later detected four designated run-manifest errors and 16 related fixture/transformation errors caused by the 13-character block-2 package payloads.
+- After the 12-character rename, CONTROL's frozen Python 3.12.10 / `jsonschema[format]==4.26.0` Draft 2020-12 validator reported 0 errors for the designated eleven, 0 errors for the former 4/20 impact audit, and 0 errors across all 19 applicable public instances.
 
 | Frozen schema | Public-practice instance |
 |---|---|
@@ -40,7 +50,7 @@ The later independent review was accepted only after its declared SHA-256 matche
 | `scoring.schema.json` | `blocks/BLK-PRACTICE0001/public-scoring.json` |
 | `pre-review-record.schema.json` | `manifests/pre-review-record.json` |
 
-A Draft 2020-12 validation engine was not installed locally: PowerShell `Test-Json`, Python `jsonschema`, and Node Ajv were unavailable. This report therefore does not claim an independent validator-engine pass. CONTROL must repeat the eleven schema checks with its frozen validator/version/configuration before accepting F0-PUBLIC.
+The original authoring environment had no Draft 2020-12 engine; that limitation explains why the fixed-width mismatch escaped the static review. The reopened candidate has now been validated by CONTROL with the frozen validator configuration, but the same CONTROL session is not an independent rereviewer.
 
 ## Cross-file and semantic checks
 
@@ -78,7 +88,7 @@ Both blocks remain within the protocol's 15% byte ceiling. No whitespace, empty-
 
 `bundle-files.sha256` lists every final bundle file except itself using lowercase SHA-256 and forward-slash relative paths. Final verification found 90 entries, no self-entry, no missing or extra file, and 0 hash mismatches; the directory contains 91 files including the manifest.
 
-## Exact files changed by this revision
+## Exact files changed by the prior author revision
 
 Exactly 32 existing files changed; no file was added or removed:
 
@@ -117,10 +127,36 @@ reports/provenance-P04-B1.json
 reports/provenance-P04-B2.json
 ```
 
+## Exact scope of the reopened identifier correction
+
+Four package directories were renamed without changing their `input.json`
+bytes:
+
+```text
+packages/P01B2EMBER001 -> packages/P01B2EMBR001
+packages/P02B2EMBER001 -> packages/P02B2EMBR001
+packages/P03B2EMBER001 -> packages/P03B2EMBR001
+packages/P04B2EMBER001 -> packages/P04B2EMBR001
+```
+
+The only public-bundle file contents changed for the reopened correction are:
+
+```text
+blocks/BLK-PRACTICE0002/fixture-manifest.json
+blocks/BLK-PRACTICE0002/transformation-manifest.json
+manifests/common-manifest.json
+manifests/pre-review-record.json
+manifests/run-manifest.json
+validation-report.md
+bundle-files.sha256
+```
+
+The package hashes and byte counts remain the same as before the rename.
+
 ## Remaining limitations
 
 - No tokenizer/model was frozen, so token counts were not estimated; fixture manifests explicitly record token measurement as unavailable.
 - Text stand-ins under `artifacts/` are hashable public format dependencies, not model, transformer, validator, runtime, role-isolation, or release implementations.
 - Schema-required visibility/freeze constants in example instances demonstrate format shape; they do not make public files secret or prove an operational freeze.
 - No code or script was authored, no transformer/validator/runner was implemented, no executor or judge ran, and no result was scored.
-- The bundle remains a schema-practice candidate until a separate CONTROL review validates meaning, references, schema conformance with a frozen Draft 2020-12 engine, neutrality, and isolation claims.
+- The corrected bundle remains a refreeze candidate until a fresh independent limited rereview confirms the identifier-only scope, dependent hashes, schema conformance, neutrality, and unchanged meaning.

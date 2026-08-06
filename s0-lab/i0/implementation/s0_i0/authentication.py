@@ -13,7 +13,7 @@ class AuthenticationError(ValueError):
     """A path or digest is outside the frozen public input contract."""
 
 
-FROZEN_BUNDLE_MANIFEST_SHA256 = "993f44896184617035609f117060c3a16d36bd44a7284178de3c5dd0ea6ec47f"
+FROZEN_BUNDLE_MANIFEST_SHA256 = "e41ee6c71169df646e3c8c0b0e8f3d77e7871d939f651b86a52ea5696feeb637"
 ANSWER_SCHEMA_PATH = "s0-lab/control/sm0/answer.schema.json"
 ANSWER_SCHEMA_SHA256 = "e21100f06d2715f42cd1fda812e17d22340a64327bfb48c03112a0f83d33ac6b"
 
@@ -29,13 +29,13 @@ PUBLIC_QUESTIONS = {
 
 PUBLIC_PACKAGES = {
     "s0-lab/public-practice/v0.1/packages/P01B1MOSS001/input.json": "268d9bda5e9938b354f9e9acebb72046226a88d598a0dcd366d347e85eacb4ef",
-    "s0-lab/public-practice/v0.1/packages/P01B2EMBER001/input.json": "15bace158828b8a16a4fd9d76dddfa7b5870bdb580198f0da308c4fa575e03b7",
+    "s0-lab/public-practice/v0.1/packages/P01B2EMBR001/input.json": "15bace158828b8a16a4fd9d76dddfa7b5870bdb580198f0da308c4fa575e03b7",
     "s0-lab/public-practice/v0.1/packages/P02B1MOSS001/input.json": "1e75ea5d44f6aba9048e3291b82df50b2e6e7e4c95e753c3f8aa75a7a7d09e2d",
-    "s0-lab/public-practice/v0.1/packages/P02B2EMBER001/input.json": "5a87fbe35c56c0a754149ba47e5f42a7af046ebd705514cf208639caaccf3aae",
+    "s0-lab/public-practice/v0.1/packages/P02B2EMBR001/input.json": "5a87fbe35c56c0a754149ba47e5f42a7af046ebd705514cf208639caaccf3aae",
     "s0-lab/public-practice/v0.1/packages/P03B1MOSS001/input.json": "fee0bee4e25ad0a7a56974e197bf678b9aca770331d25204c1287dc087cc769c",
-    "s0-lab/public-practice/v0.1/packages/P03B2EMBER001/input.json": "7785e4ece12a23fcb9f70c334bb8218fd8eb3c2bdcad2593a2a9c56b6e1a2807",
+    "s0-lab/public-practice/v0.1/packages/P03B2EMBR001/input.json": "7785e4ece12a23fcb9f70c334bb8218fd8eb3c2bdcad2593a2a9c56b6e1a2807",
     "s0-lab/public-practice/v0.1/packages/P04B1MOSS001/input.json": "faf88e98210b41c16e9dfab915107ea506e01b1748d2522610f3ad6b875cfbcb",
-    "s0-lab/public-practice/v0.1/packages/P04B2EMBER001/input.json": "a27de682b641907685db3052656c200edb866b5e3356288426bd5f0bab226af6",
+    "s0-lab/public-practice/v0.1/packages/P04B2EMBR001/input.json": "a27de682b641907685db3052656c200edb866b5e3356288426bd5f0bab226af6",
 }
 
 PUBLIC_ANSWERS = {

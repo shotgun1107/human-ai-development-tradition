@@ -1,7 +1,7 @@
 # I0 minimum public-development harness
 
-This directory contains only a local Python harness for the frozen, fictional
-F0-PUBLIC practice bundle. It checks bundle integrity, the eleven Draft 2020-12
+This directory contains only a local Python harness for the fictional
+F0-PUBLIC practice refreeze candidate. It checks bundle integrity, the eleven Draft 2020-12
 schema mappings, deterministic P01-P04 package generation, and neutral answer
 format rules. It does not call an AI model, launch an executor, read a hidden
 oracle, score an S0 outcome, or implement the central system.
@@ -12,8 +12,9 @@ oracle, score an S0 outcome, or implement the central system.
 - `jsonschema[format]==4.26.0`
 - standard-library `unittest`
 
-Current limited re-review regression result: 36 tests total, 35 passed and 1
-symlink test skipped on this Windows host. The same result was repeated twice.
+Current CONTROL refreeze regression result: 36 tests total, 35 passed and 1
+symlink test skipped on this Windows host. A fresh independent limited rereview
+of the corrected candidate is still required.
 
 The dependency is expected in CONTROL's external temporary virtual environment.
 The implementation never installs packages or accesses the network.
@@ -38,20 +39,19 @@ untrusted candidate below `s0-lab/i0/`. Transform output must remain below
 `s0-lab/i0/`, is created exclusively, and is never overwritten. Failures return
 nonzero JSON without absolute host paths.
 
-## Known frozen-input defect
+## Reopened public-input correction
 
-The real Draft 2020-12 engine finds four errors in the designated eleven-instance
-check: all four block-2 package IDs in `run-manifest.json` contain 13 characters
-after `PKG-`, while the frozen schema permits exactly 12. These four errors are
-defect detection, not a conformance pass.
+I0 originally found four errors in the designated eleven-instance check because
+all four block-2 package IDs in `run-manifest.json` used 13 characters after
+`PKG-`, while the frozen schema permits exactly 12. A broader audit found 16
+additional fixture/transformation ID and path errors, for 20 related errors.
 
-A broader, separately labelled impact audit finds the same ID/path defect eight
-times in the block-2 `fixture-manifest.json` and eight times in the block-2
-`transformation-manifest.json`. The related upstream impact is therefore 20
-violations: 4 designated plus 16 additional. The harness reports them and never
-rewrites any frozen input. This candidate cannot be treated as an I0 freeze or
-as readiness for sealed fixture work until CONTROL resolves and re-freezes the
-upstream inconsistency.
+Under the exact `F0-PUBLIC REOPEN` gate, the four stems were changed from
+`P0xB2EMBER001` to the fixed 12-character `P0xB2EMBR001` form without changing
+package bytes or research meaning. CONTROL now obtains 0 designated, 0
+additional, and 0 related schema errors; `integrity`, `schema-check`, and
+`verify` all exit 0. This is a refreeze candidate, not final I0 freeze or
+readiness for sealed fixture work, until fresh independent limited rereview.
 
 ## Boundary
 
