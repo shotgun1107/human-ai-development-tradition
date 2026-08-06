@@ -1,8 +1,8 @@
 # S0 작업 환경
 
-> 상태: **I0 구현 후보 독립 재심사 통과, 상위 F0-PUBLIC 식별자 결함으로 I0 동결 보류**  
-> 구현: 공개 fixture 전용 최소 후보 수용 가능, manifest `e670041...c105`  
-> 공개 합성 연습자료: v0.1 해시는 유지됐으나 관련 schema 위반 20건이 발견돼 재동결 필요  
+> 상태: **F0-PUBLIC 재동결·I0 최소 공개 하네스 동결 승인, sealed F0는 닫힘**
+> 구현: 공개 fixture 전용 I0 동결, manifest `f57514f...612ae`
+> 공개 합성 연습자료: bundle manifest `e41ee6c...eb637`, 독립 제한 재심사 findings 0
 > 봉인 시험자료·숨은 정답: 생성하지 않음  
 > 실행 A–D: 생성하지 않음
 
@@ -28,9 +28,9 @@
 ## 현재 환경 선택
 
 - 저장소: 기존 `ai-development-tradition` 프로젝트 사용
-- 작업 위치: `c9f68f3` detached I0 worktree
-- Git worktree: I0 구현 편집 격리에 사용 중
-- 이유: 구현 후보 변경을 `main`과 분리하고 독립 검토 전 병합을 막음
+- 작업 위치: 현재 `codex/i0-public-harness-candidate` checkout의 repository root
+- Git worktree: 현재 절대경로는 세션에서 다시 계산하며 과거 detached 경로는 증거 기록으로만 취급
+- 이유: refreeze 후보 변경을 `main`과 분리하고 독립 검토 전 병합을 막음
 - 지속 규칙: 루트 `AGENTS.md`
 - 역할 설정: `.codex/agents/s0-*.toml`
 - 상태 기록: `s0-lab/session-registry.md`
@@ -46,8 +46,8 @@
 | P1 프로토콜 비평 | 완료 | v0.3 제한 재비평 통과·해시 동결 |
 | SM0 schema·manifest 설계 | 완료 | 답안 형식과 common/overlay/fixture manifest 형식 독립 비평·동결 |
 | SM1 후속 형식 설계 | 완료 | question/options·transformation·validation·access·run·scoring·pre-review-record 형식 독립 비평·동결 |
-| F0-PUBLIC 공개 연습 묶음 | 재개방 필요 | B2 패키지 식별자·경로를 12자 계약에 맞추고 종속 해시를 다시 동결 |
-| I0 최소 구현 | 후보 수용—동결 보류 | 구현 findings 5건 해결; 상위 공개 입력 재동결 후 최종 회귀 필요 |
+| F0-PUBLIC 공개 연습 묶음 | 재동결 승인—공개 연습 전용 | B2 식별자·경로 12자 수정, 종속 해시 갱신, 19/19 schema 및 독립 재심사 통과 |
+| I0 최소 구현 | 동결 승인—공개 하네스 전용 | 회귀 36개, integrity/schema-check/verify, fresh 독립 제한 재심사 통과 |
 | F0 시험자료 출제 | 닫힘 | 공개·봉인 입력과 숨은 정답 작성 |
 | R0 봉인 실행 | 닫힘 | 새 A–D 세션 네 개에서 실행 |
 | J0 판정 | 닫힘 | 익명 결과와 숨은 정답 비교 |
@@ -64,6 +64,8 @@
 
 ## 다음 동작
 
-I0 후보는 CONTROL과 독립 검토자의 제한 재심사에서 구현 자체는 수용 가능 판정을 받았다. 회귀 테스트는 두 번 모두 총 36개 중 35개 통과·symlink 1개 건너뜀이며, 8개 공개 패키지는 두 번 모두 바이트 단위로 재현됐다. 그러나 B2 패키지 식별자와 경로가 세 frozen schema의 12자 계약을 위반해 지정 검사 4건, 확대 감사 합계 20건이 남는다.
+I0의 이전 후보는 CONTROL과 독립 검토자의 제한 재심사에서 구현 자체는 수용 가능 판정을 받았다. 이후 `F0-PUBLIC REOPEN` 게이트에서 네 B2 package stem을 `P0xB2EMBER001`에서 고정 12자 `P0xB2EMBR001`로 수정하고 모든 공개 reference와 종속 해시를 갱신했다. 현재 CONTROL 검증은 회귀 36개 중 35개 통과·symlink 1개 건너뜀, integrity/schema-check/verify exit 0, 지정·확대 오류 0, 적용 가능한 schema 19/19 통과, 공개 패키지 8/8 바이트 단위 재현이다.
 
-따라서 I0는 아직 동결하지 않고 F0 봉인 출제도 열지 않는다. 다음 안전 동작은 사용자가 정확히 `F0-PUBLIC REOPEN`을 승인한 뒤, 의미나 채점 규칙을 바꾸지 않고 B2 패키지 stem을 12자 계약에 맞게 이름 수정하고 공개 bundle·freeze record·I0 종속 해시를 재동결·재검토하는 것이다. schema를 느슨하게 넓히는 안은 후순위다.
+Fresh non-fork 독립 제한 재심사는 Critical/Major/Minor findings 0과 `I0/F0-PUBLIC refreeze candidate acceptable for CONTROL final-freeze decision` verdict를 반환했다. CONTROL은 public bundle `e41ee6c...eb637`과 I0 manifest `f57514f...612ae`를 공개 연습 전용으로 동결 승인했다. 결정 기록은 `s0-lab/control/i0/i0-refreeze-gate-decision-v0.1.md`이며 SHA-256은 `a9863be6...2063`이다.
+
+다음 보호 활동은 sealed F0 출제지만 아직 닫혀 있다. 별도 정확한 사용자 승인 전에는 sealed fixture, hidden oracle, executor A-D, S0 실행이나 채점을 시작하지 않는다.

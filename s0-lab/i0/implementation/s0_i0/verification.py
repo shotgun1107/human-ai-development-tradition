@@ -38,7 +38,7 @@ def build_public_verification_record(workspace_root: Path) -> dict[str, Any]:
         if schemas["error_count"]:
             errors.append({"category": "schema", "message": f'{schemas["error_count"]} designated instance errors'})
 
-        for block, suffix in (("BLK-PRACTICE0001", "B1MOSS001"), ("BLK-PRACTICE0002", "B2EMBER001")):
+        for block, suffix in (("BLK-PRACTICE0001", "B1MOSS001"), ("BLK-PRACTICE0002", "B2EMBR001")):
             canonical_path = bundle / "blocks" / block / "canonical-input.json"
             canonical, canonical_raw = load_json(canonical_path)
             inputs.append({"path": canonical_path.relative_to(workspace_root).as_posix(), "sha256": sha256_bytes(canonical_raw), "bytes": len(canonical_raw)})

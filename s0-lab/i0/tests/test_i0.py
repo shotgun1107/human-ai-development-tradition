@@ -56,8 +56,8 @@ class FrozenInputTests(unittest.TestCase):
             "s0-lab/control/i0/i0-environment-record.md": "7504d74a6b3ce5d594c3d6ab5c22e16c1a5db327eee021ae1ed9f2b79dff9266",
             "s0-lab/control/i0/i0-session-record.md": "c5e489bb732fcc3abafc32280d07509e33d876cd218f1acc1862778b747fa922",
             "s0-lab/control/s0-protocol-v0.3.md": "b1a7216398e51d75fe35a2c54a878d03c7f1163c450e6b8119fbb2ee1e3c0b8c",
-            "s0-lab/control/f0-public/f0-public-v0.1-freeze-record.md": "3f8e3ef230d7cad298ac555e045d8e9b5755ea82e8f33154d1685d8b526f8a6c",
-            "s0-lab/public-practice/v0.1/bundle-files.sha256": "993f44896184617035609f117060c3a16d36bd44a7284178de3c5dd0ea6ec47f",
+            "s0-lab/control/f0-public/f0-public-v0.1-freeze-record.md": "d9cf2823804bbab60ba62a57dd4a35f1f3e4c2da9f74e6a2d8fa0b8307eb5d6c",
+            "s0-lab/public-practice/v0.1/bundle-files.sha256": "e41ee6c71169df646e3c8c0b0e8f3d77e7871d939f651b86a52ea5696feeb637",
         }
         for schema_rel, digest in FROZEN_SCHEMA_HASHES.items():
             expected[f"s0-lab/control/{schema_rel}"] = digest
@@ -67,22 +67,19 @@ class FrozenInputTests(unittest.TestCase):
 
 
 class SchemaTests(unittest.TestCase):
-    def test_designated_eleven_detect_four_defects_not_conformance_pass(self):
+    def test_designated_eleven_pass_after_public_refreeze(self):
         result = validate_public_schema_instances(WORKSPACE)
         self.assertEqual(result["schema_count"], 11)
-        # Frozen input defect discovered by I0: four B2 package IDs are 13 chars
-        # after PKG-, while run-manifest.schema.json allows exactly 12.
-        self.assertEqual(result["error_count"], 4)
+        self.assertEqual(result["error_count"], 0)
         failures = [item for item in result["results"] if item["errors"]]
-        self.assertEqual([item["schema"] for item in failures], ["sm1/run-manifest.schema.json"])
-        self.assertTrue(all("does not match" in error["message"] for error in failures[0]["errors"]))
+        self.assertEqual(failures, [])
 
-    def test_broader_upstream_impact_is_twenty_related_errors(self):
+    def test_broader_upstream_id_audit_passes_after_public_refreeze(self):
         result = audit_broader_upstream_id_impact(WORKSPACE)
-        self.assertEqual(result["designated_error_count"], 4)
-        self.assertEqual(result["additional_error_count"], 16)
-        self.assertEqual(result["related_error_count"], 20)
-        self.assertEqual([item["error_count"] for item in result["results"]], [4, 8, 8])
+        self.assertEqual(result["designated_error_count"], 0)
+        self.assertEqual(result["additional_error_count"], 0)
+        self.assertEqual(result["related_error_count"], 0)
+        self.assertEqual([item["error_count"] for item in result["results"]], [0, 0, 0])
 
     def test_schema_suite_authenticates_bundle_before_reading_instances(self):
         with patch(
@@ -135,7 +132,7 @@ class IntegrityTests(unittest.TestCase):
 class TransformationTests(unittest.TestCase):
     BLOCKS = (
         ("BLK-PRACTICE0001", "B1MOSS001"),
-        ("BLK-PRACTICE0002", "B2EMBER001"),
+        ("BLK-PRACTICE0002", "B2EMBR001"),
     )
 
     def test_exact_eight_package_regeneration_and_two_run_determinism(self):
@@ -188,7 +185,7 @@ class AnswerValidationTests(unittest.TestCase):
         else:
             answer_rel = "s0-lab/public-practice/v0.1/blocks/BLK-PRACTICE0002/expected-answer-P01.json"
             questions_rel = "s0-lab/public-practice/v0.1/runner/BLK-PRACTICE0002/questions.json"
-            input_rel = "s0-lab/public-practice/v0.1/packages/P01B2EMBER001/input.json"
+            input_rel = "s0-lab/public-practice/v0.1/packages/P01B2EMBR001/input.json"
         answer = read_json(WORKSPACE / answer_rel)
         return answer, answer_rel, questions_rel, input_rel
 
@@ -469,12 +466,12 @@ class PathAndCliTests(unittest.TestCase):
             self.assertEqual(output.read_bytes(), b"sentinel")
             self.assertIn("overwrite is forbidden", error)
 
-    def test_cli_schema_failure_is_nonzero_and_machine_readable(self):
+    def test_cli_schema_success_is_machine_readable(self):
         code, output, _ = self._run_cli(["schema-check"])
-        self.assertEqual(code, 1)
+        self.assertEqual(code, 0)
         parsed = json.loads(output)
-        self.assertEqual(parsed["error_count"], 4)
-        self.assertEqual(parsed["broader_upstream_impact"]["related_error_count"], 20)
+        self.assertEqual(parsed["error_count"], 0)
+        self.assertEqual(parsed["broader_upstream_impact"]["related_error_count"], 0)
 
     def test_cli_usage_error_is_json(self):
         code, _, error = self._run_cli(["transform"])
