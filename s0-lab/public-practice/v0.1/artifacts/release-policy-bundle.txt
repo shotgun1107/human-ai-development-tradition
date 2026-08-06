@@ -1,0 +1,1 @@
+PUBLIC PRACTICE STAND-IN: hash every artifact before its precommitted public-practice release stage and prohibit early release.

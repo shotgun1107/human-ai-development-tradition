@@ -1,0 +1,1 @@
+P01 public practice profile: retain every fact and direct record, expose the supplied event order from observed_at, and keep each project boundary visible.

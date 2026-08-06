@@ -1,0 +1,1 @@
+PUBLIC PRACTICE STAND-IN: no validator runtime is frozen for S0. Local validation tool availability and limitations are reported in validation-report.md.

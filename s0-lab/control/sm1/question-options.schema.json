@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-development-tradition:s0:question-options:0.2",
+  "title": "S0 sealed question and option manifest",
+  "description": "Defines neutral runner-visible questions/options and sealed evaluation metadata for one block. This is a format only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "visibility",
+    "protocol_sha256",
+    "block_id",
+    "scoring_contract_id",
+    "runner_projection",
+    "questions",
+    "invariants",
+    "freeze"
+  ],
+  "properties": {
+    "manifest_version": { "const": "0.2" },
+    "visibility": { "const": "sealed-control-with-runner-projection" },
+    "protocol_sha256": { "$ref": "#/$defs/sha256" },
+    "block_id": { "$ref": "#/$defs/block_id" },
+    "scoring_contract_id": {
+      "type": "string",
+      "pattern": "^SCON-[A-Z0-9]{12}$"
+    },
+    "runner_projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "included_fields",
+        "excluded_fields"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^runner/BLK-[A-Z0-9]{12}/questions\\.json$"
+        },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "included_fields": {
+          "const": [
+            "block_id",
+            "question_id",
+            "runner_prompt",
+            "options",
+            "citation_policy",
+            "affected_ids_policy"
+          ]
+        },
+        "excluded_fields": {
+          "const": [
+            "evaluation_role",
+            "scoring_contract_id",
+            "oracle_ref",
+            "condition_mapping",
+            "target_preference"
+          ]
+        }
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/question" }
+    },
+    "invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_ids_unique",
+        "option_ids_unique_within_question",
+        "same_runner_projection_all_conditions",
+        "no_answer_marker_in_runner_projection",
+        "no_condition_or_target_hint"
+      ],
+      "properties": {
+        "question_ids_unique": { "const": true },
+        "option_ids_unique_within_question": { "const": true },
+        "same_runner_projection_all_conditions": { "const": true },
+        "no_answer_marker_in_runner_projection": { "const": true },
+        "no_condition_or_target_hint": { "const": true }
+      }
+    },
+    "freeze": { "$ref": "#/$defs/freeze" }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "block_id": {
+      "type": "string",
+      "pattern": "^BLK-[A-Z0-9]{12}$"
+    },
+    "question_id": {
+      "type": "string",
+      "pattern": "^Q-[A-Z0-9][A-Z0-9._-]{0,63}$"
+    },
+    "option_id": {
+      "type": "string",
+      "pattern": "^OPT-[A-Z0-9][A-Z0-9._-]{0,31}$"
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "option_id",
+        "runner_text"
+      ],
+      "properties": {
+        "option_id": { "$ref": "#/$defs/option_id" },
+        "runner_text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "pattern": "^[^\\r\\n]+$"
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "runner_prompt",
+        "options",
+        "citation_policy",
+        "affected_ids_policy",
+        "evaluation_role"
+      ],
+      "properties": {
+        "question_id": { "$ref": "#/$defs/question_id" },
+        "runner_prompt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/option" }
+        },
+        "citation_policy": {
+          "enum": [
+            "required",
+            "allowed-empty"
+          ]
+        },
+        "affected_ids_policy": {
+          "enum": [
+            "must-be-empty",
+            "required-nonempty",
+            "allowed-empty"
+          ]
+        },
+        "evaluation_role": {
+          "enum": [
+            "primary",
+            "ancillary"
+          ]
+        }
+      }
+    },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_at",
+        "frozen_before_any_run"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "frozen_before_any_run": { "const": true }
+      }
+    }
+  }
+}

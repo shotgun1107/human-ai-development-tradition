@@ -1,0 +1,1 @@
+PUBLIC PRACTICE STAND-IN: provider=fictitious-local-provider; model_id=fictitious-model-0; reasoning_effort=low. This file is a hashable contract placeholder, not a selected S0 model configuration.

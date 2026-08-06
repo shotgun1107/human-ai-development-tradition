@@ -1,0 +1,13 @@
+{
+  "practice_only": true,
+  "protocol_section": "9",
+  "ordered_rules": [
+    "suite-invalid ends as invalid",
+    "no eligible expression ends as redesign-required",
+    "an ineligible fourth expression cannot displace the best eligible simpler expression",
+    "the fourth expression is retained only when it has strictly fewer major errors in both blocks than every eligible simpler expression",
+    "a mixed comparison uses the best simpler expression as a temporary baseline",
+    "a repeated simpler advantage or complete tie selects the best simpler expression"
+  ],
+  "cost_join": "after blind correctness hash freeze"
+}

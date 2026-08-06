@@ -1,0 +1,10 @@
+name = "s0_executor"
+description = "Fresh single-condition executor for one frozen S0 alternative with no access to the hidden oracle or other outputs."
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Run exactly one assigned condition: A, B, C, or D.
+Read only the frozen protocol, the condition package, and the released input paths listed by the parent.
+Never search for or read the hidden oracle, authoring materials, another executor's result, or judge materials.
+Use the fixed model, time, token, tool, and output limits without requesting an advantage for the assigned condition.
+Write only the assigned result and runtime record. Stop on leakage, real data, unequal resources, or an input hash mismatch.
+"""

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-development-tradition:s0:answer:0.3",
+  "title": "S0 neutral answer",
+  "description": "Condition-neutral answer envelope for one opaque block. This is a design artifact, not an executed fixture.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol_version",
+    "block_id",
+    "input_hash",
+    "answers"
+  ],
+  "properties": {
+    "protocol_version": {
+      "const": "0.3"
+    },
+    "block_id": {
+      "type": "string",
+      "pattern": "^BLK-[A-Z0-9]{12}$"
+    },
+    "input_hash": {
+      "$ref": "#/$defs/sha256"
+    },
+    "answers": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/answer"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^R-[A-Z0-9][A-Z0-9._-]{0,63}$"
+    },
+    "id_array": {
+      "type": "array",
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/record_id"
+      }
+    },
+    "answer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "decision_option_id",
+        "cited_record_ids",
+        "affected_record_ids",
+        "uncertainty",
+        "short_reason"
+      ],
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "pattern": "^Q-[A-Z0-9][A-Z0-9._-]{0,63}$"
+        },
+        "decision_option_id": {
+          "type": "string",
+          "pattern": "^OPT-[A-Z0-9][A-Z0-9._-]{0,31}$"
+        },
+        "cited_record_ids": {
+          "$ref": "#/$defs/id_array"
+        },
+        "affected_record_ids": {
+          "$ref": "#/$defs/id_array"
+        },
+        "uncertainty": {
+          "enum": [
+            "none",
+            "bounded",
+            "material"
+          ]
+        },
+        "short_reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "pattern": "^[^\\r\\n]+$"
+        }
+      }
+    }
+  }
+}

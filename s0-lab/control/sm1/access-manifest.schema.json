@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-development-tradition:s0:access-manifest:0.2",
+  "title": "S0 role access manifest",
+  "description": "Pre-run access contract for one actor/session. Exact role policy is bound by hash; this format contains no secret content.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "protocol_sha256",
+    "actor",
+    "role_policy_sha256",
+    "policy_bundle",
+    "session_contract",
+    "input_allowlist",
+    "output_allowlist",
+    "forbidden_information_classes",
+    "capabilities",
+    "release_policy",
+    "freeze"
+  ],
+  "properties": {
+    "manifest_version": { "const": "0.2" },
+    "protocol_sha256": { "$ref": "#/$defs/sha256" },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor_id",
+        "role",
+        "opaque_to_other_roles"
+      ],
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "pattern": "^ACT-[A-Z0-9]{12}$"
+        },
+        "role": {
+          "enum": [
+            "fixture-author",
+            "implementation-builder",
+            "transformer",
+            "pre-run-reviewer",
+            "executor",
+            "post-run-judge",
+            "control"
+          ]
+        },
+        "opaque_to_other_roles": { "const": true }
+      }
+    },
+    "role_policy_sha256": { "$ref": "#/$defs/sha256" },
+    "policy_bundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "all_role_policy_source_sha256",
+        "release_policy_source_sha256",
+        "artifact_class_policy_sha256",
+        "included_in_pre_review_bundle"
+      ],
+      "properties": {
+        "all_role_policy_source_sha256": { "$ref": "#/$defs/sha256" },
+        "release_policy_source_sha256": { "$ref": "#/$defs/sha256" },
+        "artifact_class_policy_sha256": { "$ref": "#/$defs/sha256" },
+        "included_in_pre_review_bundle": { "const": true }
+      }
+    },
+    "session_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_slot_id",
+        "fresh_session_required",
+        "fork_allowed",
+        "conversation_inheritance_allowed",
+        "same_session_as_other_role_allowed"
+      ],
+      "properties": {
+        "session_slot_id": {
+          "type": "string",
+          "pattern": "^SES-[A-Z0-9]{12}$"
+        },
+        "fresh_session_required": { "const": true },
+        "fork_allowed": { "const": false },
+        "conversation_inheritance_allowed": { "const": false },
+        "same_session_as_other_role_allowed": { "const": false }
+      }
+    },
+    "input_allowlist": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/input_ref" }
+    },
+    "output_allowlist": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/output_ref" }
+    },
+    "forbidden_information_classes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "other-condition-input",
+          "other-block-input",
+          "condition-mapping",
+          "complexity-rank",
+          "h0-h1",
+          "target-preference",
+          "oracle",
+          "scoring",
+          "prior-results",
+          "cost-before-correctness-freeze",
+          "real-project-data"
+        ]
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository_search_allowed",
+        "read_outside_allowlist_allowed",
+        "write_outside_allowlist_allowed",
+        "shell_allowed",
+        "network_allowed",
+        "subagents_allowed",
+        "external_transfer_allowed",
+        "human_content_intervention_allowed"
+      ],
+      "properties": {
+        "repository_search_allowed": { "const": false },
+        "read_outside_allowlist_allowed": { "const": false },
+        "write_outside_allowlist_allowed": { "const": false },
+        "shell_allowed": { "type": "boolean" },
+        "network_allowed": { "const": false },
+        "subagents_allowed": { "const": false },
+        "external_transfer_allowed": { "const": false },
+        "human_content_intervention_allowed": { "const": false }
+      }
+    },
+    "release_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "release_events_precommitted",
+        "release_log_schema_sha256",
+        "no_early_release",
+        "hash_before_release"
+      ],
+      "properties": {
+        "release_events_precommitted": { "const": true },
+        "release_log_schema_sha256": { "$ref": "#/$defs/sha256" },
+        "no_early_release": { "const": true },
+        "hash_before_release": { "const": true }
+      }
+    },
+    "freeze": { "$ref": "#/$defs/freeze" }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "safe_path": {
+      "type": "string",
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\.\\.)(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "input_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "information_class",
+        "path",
+        "sha256",
+        "read_only",
+        "release_stage"
+      ],
+      "properties": {
+        "information_class": {
+          "enum": [
+            "public-protocol",
+            "public-schema",
+            "own-instruction",
+            "own-input",
+            "own-question-options",
+            "sealed-canonical",
+            "sealed-oracle",
+            "sealed-scoring",
+            "anonymous-answer",
+          "validation-report"
+            ,"protocol"
+            ,"answer-schema"
+            ,"common-manifest"
+            ,"overlay-manifest"
+            ,"fixture-manifest"
+            ,"question-options"
+            ,"condition-package"
+            ,"transformation-manifest"
+            ,"access-manifest"
+            ,"role-policy"
+            ,"release-policy"
+            ,"run-manifest"
+            ,"run-record"
+            ,"implementation-artifact"
+          ]
+        },
+        "path": { "$ref": "#/$defs/safe_path" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "read_only": { "const": true },
+        "release_stage": {
+          "enum": [
+            "design",
+            "fixture-authoring",
+            "implementation",
+            "transformation",
+            "pre-run-review",
+            "execution",
+            "post-run-blind-scoring",
+            "post-correctness-condition-restore"
+          ]
+        }
+      }
+    },
+    "output_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "output_class",
+        "path",
+        "max_files",
+        "max_bytes"
+      ],
+      "properties": {
+        "output_class": {
+          "enum": [
+            "answer",
+            "review-report",
+            "validation-report",
+            "judgment",
+            "control-record"
+          ]
+        },
+        "path": { "$ref": "#/$defs/safe_path" },
+        "max_files": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
+        },
+        "max_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1048576
+        }
+      }
+    },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_at",
+        "frozen_before_role_start"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "frozen_before_role_start": { "const": true }
+      }
+    }
+  }
+}

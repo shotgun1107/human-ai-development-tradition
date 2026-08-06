@@ -1,0 +1,403 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-development-tradition:s0:common-manifest:0.2",
+  "title": "S0 common manifest",
+  "description": "Frozen common resources and run symmetry for all conditions and blocks.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "protocol",
+    "answer_schema",
+    "model",
+    "common_instructions",
+    "capability_profile",
+    "resources",
+    "suite",
+    "references",
+    "freeze"
+  ],
+  "properties": {
+    "manifest_version": {
+      "const": "0.2"
+    },
+    "protocol": {
+      "$ref": "#/$defs/file_ref"
+    },
+    "answer_schema": {
+      "$ref": "#/$defs/file_ref"
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "model_id",
+        "display_name",
+        "reasoning_effort",
+        "configuration_sha256",
+        "backend_revision_guarantee",
+        "same_configuration_all_runs"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "model_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "reasoning_effort": {
+          "enum": [
+            "none",
+            "minimal",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max",
+            "ultra"
+          ]
+        },
+        "configuration_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "backend_revision_guarantee": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "guaranteed",
+                "revision_id"
+              ],
+              "properties": {
+                "guaranteed": { "const": true },
+                "revision_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "guaranteed",
+                "limitation"
+              ],
+              "properties": {
+                "guaranteed": { "const": false },
+                "limitation": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 500
+                }
+              }
+            }
+          ]
+        },
+        "same_configuration_all_runs": {
+          "const": true
+        }
+      }
+    },
+    "common_instructions": {
+      "$ref": "#/$defs/file_ref_with_size"
+    },
+    "capability_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "read_allowlist_classes",
+        "read_outside_allowlist_allowed",
+        "repository_search_allowed",
+        "write_allowlist_classes",
+        "shell_allowed",
+        "local_tools_allowed",
+        "local_tool_allowlist",
+        "working_directory_policy",
+        "same_capability_profile_all_runs"
+      ],
+      "properties": {
+        "read_allowlist_classes": {
+          "const": [
+            "own_runner_instruction",
+            "own_input_package",
+            "answer_schema",
+            "own_question_options"
+          ]
+        },
+        "read_outside_allowlist_allowed": {
+          "const": false
+        },
+        "repository_search_allowed": {
+          "const": false
+        },
+        "write_allowlist_classes": {
+          "const": [
+            "answer_output"
+          ]
+        },
+        "shell_allowed": {
+          "const": false
+        },
+        "local_tools_allowed": {
+          "const": true
+        },
+        "local_tool_allowlist": {
+          "const": [
+            "read_own_runner_instruction",
+            "read_own_input_package",
+            "read_answer_schema",
+            "read_own_question_options",
+            "write_answer_output"
+          ]
+        },
+        "working_directory_policy": {
+          "const": "fresh-empty-run-directory-with-readonly-mounted-inputs"
+        },
+        "same_capability_profile_all_runs": {
+          "const": true
+        }
+      }
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fresh_non_fork_session_per_run",
+        "turn_limit",
+        "subagents_allowed",
+        "internet_allowed",
+        "mcp_allowed",
+        "browser_allowed",
+        "external_transfer_allowed",
+        "human_content_intervention_max",
+        "wall_clock_seconds_max",
+        "answer_bytes_max",
+        "answer_file_count_max",
+        "technical_retry_suite_max",
+        "max_concurrency"
+      ],
+      "properties": {
+        "fresh_non_fork_session_per_run": {
+          "const": true
+        },
+        "turn_limit": {
+          "const": 1
+        },
+        "subagents_allowed": {
+          "const": false
+        },
+        "internet_allowed": {
+          "const": false
+        },
+        "mcp_allowed": {
+          "const": false
+        },
+        "browser_allowed": {
+          "const": false
+        },
+        "external_transfer_allowed": {
+          "const": false
+        },
+        "human_content_intervention_max": {
+          "const": 0
+        },
+        "wall_clock_seconds_max": {
+          "const": 900
+        },
+        "answer_bytes_max": {
+          "const": 8192
+        },
+        "answer_file_count_max": {
+          "const": 1
+        },
+        "technical_retry_suite_max": {
+          "const": 1
+        },
+        "max_concurrency": {
+          "const": 3
+        }
+      }
+    },
+    "suite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "condition_count",
+        "block_count",
+        "run_count",
+        "distinct_session_per_run",
+        "same_condition_blocks_same_wave",
+        "order_seed_method"
+      ],
+      "properties": {
+        "condition_count": {
+          "const": 4
+        },
+        "block_count": {
+          "const": 2
+        },
+        "run_count": {
+          "const": 8
+        },
+        "distinct_session_per_run": {
+          "const": true
+        },
+        "same_condition_blocks_same_wave": {
+          "const": false
+        },
+        "order_seed_method": {
+          "const": "sha256(protocol_sha256 || sorted_sealed_input_sha256)"
+        }
+      }
+    },
+    "references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "overlay_manifest_sha256",
+        "fixture_manifest_sha256",
+        "question_manifest_sha256",
+        "validation_policy_sha256",
+        "validation_report_schema_sha256",
+        "future_format_schema_sha256"
+      ],
+      "properties": {
+        "overlay_manifest_sha256": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "fixture_manifest_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "question_manifest_sha256": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "validation_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "validation_report_schema_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "future_format_schema_sha256": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "question_options",
+            "transformation",
+            "neutral_answer_validation",
+            "access",
+            "run",
+            "scoring",
+            "pre_review_record"
+          ],
+          "properties": {
+            "question_options": { "$ref": "#/$defs/sha256" },
+            "transformation": { "$ref": "#/$defs/sha256" },
+            "neutral_answer_validation": { "$ref": "#/$defs/sha256" },
+            "access": { "$ref": "#/$defs/sha256" },
+            "run": { "$ref": "#/$defs/sha256" },
+            "scoring": { "$ref": "#/$defs/sha256" },
+            "pre_review_record": { "$ref": "#/$defs/sha256" }
+          }
+        }
+      }
+    },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_at",
+        "frozen_before_any_run"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "frozen_before_any_run": {
+          "const": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "opaque_path": {
+      "type": "string",
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\.\\.)(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "file_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/opaque_path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "file_ref_with_size": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "byte_count"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/opaque_path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65536
+        }
+      }
+    }
+  }
+}

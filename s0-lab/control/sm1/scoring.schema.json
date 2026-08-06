@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-development-tradition:s0:scoring:0.2",
+  "title": "S0 sealed scoring contract",
+  "description": "Pre-run scoring format for primary error codes, C-over-M precedence, defect handling, and protocol-v0.3 selection inputs. It contains no oracle answers.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "visibility",
+    "protocol_sha256",
+    "block_id",
+    "scoring_contract_id",
+    "oracle_sha256",
+    "answer_schema_sha256",
+    "question_options_sha256",
+    "criteria",
+    "judge_projection",
+    "coverage_contract",
+    "counting_policy",
+    "defect_policy",
+    "selection_contract",
+    "freeze"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.2" },
+    "visibility": { "const": "sealed-review-and-post-run-judge" },
+    "protocol_sha256": { "$ref": "#/$defs/sha256" },
+    "block_id": {
+      "type": "string",
+      "pattern": "^BLK-[A-Z0-9]{12}$"
+    },
+    "scoring_contract_id": {
+      "type": "string",
+      "pattern": "^SCON-[A-Z0-9]{12}$"
+    },
+    "oracle_sha256": { "$ref": "#/$defs/sha256" },
+    "answer_schema_sha256": { "$ref": "#/$defs/sha256" },
+    "question_options_sha256": { "$ref": "#/$defs/sha256" },
+    "criteria": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/criterion" }
+    },
+    "judge_projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "includes_criteria_and_counting_policy",
+        "excludes_selection_contract",
+        "excludes_condition_identity_and_cost"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^judge/BLK-[A-Z0-9]{12}/scoring-projection\\.json$"
+        },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "includes_criteria_and_counting_policy": { "const": true },
+        "excludes_selection_contract": { "const": true },
+        "excludes_condition_identity_and_cost": { "const": true }
+      }
+    },
+    "coverage_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "all_13_error_codes_present",
+        "criterion_ids_unique",
+        "question_event_keys_unique",
+        "primary_code_coverage_report_sha256"
+      ],
+      "properties": {
+        "all_13_error_codes_present": { "const": true },
+        "criterion_ids_unique": { "const": true },
+        "question_event_keys_unique": { "const": true },
+        "primary_code_coverage_report_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "counting_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "one_primary_code_per_question_event",
+        "critical_precedes_major_same_cause",
+        "same_question_same_cause_double_count_allowed",
+        "independent_causes_may_count_separately",
+        "per_code_per_block_max",
+        "condition_identity_hidden_during_correctness_scoring"
+      ],
+      "properties": {
+        "one_primary_code_per_question_event": { "const": true },
+        "critical_precedes_major_same_cause": { "const": true },
+        "same_question_same_cause_double_count_allowed": { "const": false },
+        "independent_causes_may_count_separately": { "const": true },
+        "per_code_per_block_max": { "const": 1 },
+        "condition_identity_hidden_during_correctness_scoring": { "const": true }
+      }
+    },
+    "defect_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_oracle_or_scoring_defect",
+        "ancillary_defect",
+        "post_run_primary_defect_auto_retry_allowed",
+        "primary_question_posthoc_deletion_allowed"
+      ],
+      "properties": {
+        "primary_oracle_or_scoring_defect": { "const": "whole-suite-invalid-new-gate-required" },
+        "ancillary_defect": { "const": "report-only-no-score-change" },
+        "post_run_primary_defect_auto_retry_allowed": { "const": false },
+        "primary_question_posthoc_deletion_allowed": { "const": false }
+      }
+    },
+    "selection_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocol_section",
+        "decision_function_path",
+        "decision_function_sha256",
+        "eligible_requires_zero_critical_both_blocks",
+        "d_requires_strictly_lower_major_both_blocks_vs_each_eligible_simple",
+        "ties_choose_simpler",
+        "mixed_result",
+        "cost_added_after_blind_correctness_freeze"
+      ],
+      "properties": {
+        "protocol_section": { "const": "9" },
+        "decision_function_path": {
+          "type": "string",
+          "pattern": "^control/decision-function-[A-Z0-9]{12}\\.json$"
+        },
+        "decision_function_sha256": { "$ref": "#/$defs/sha256" },
+        "eligible_requires_zero_critical_both_blocks": { "const": true },
+        "d_requires_strictly_lower_major_both_blocks_vs_each_eligible_simple": { "const": true },
+        "ties_choose_simpler": { "const": true },
+        "mixed_result": { "const": "insufficient-comparison-best-simple-temporary" },
+        "cost_added_after_blind_correctness_freeze": { "const": true }
+      }
+    },
+    "freeze": { "$ref": "#/$defs/freeze" }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "error_code": {
+      "enum": [
+        "C1", "C2", "C3", "C4", "C5", "C6", "C7",
+        "M1", "M2", "M3", "M4", "M5", "M6"
+      ]
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterion_id",
+        "question_id",
+        "question_event_key",
+        "evaluation_role",
+        "primary_error_code",
+        "severity",
+        "observable_fields",
+        "oracle_rule_ref",
+        "defect_action"
+      ],
+      "properties": {
+        "criterion_id": {
+          "type": "string",
+          "pattern": "^CRIT-[A-Z0-9]{12}$"
+        },
+        "question_id": {
+          "type": "string",
+          "pattern": "^Q-[A-Z0-9][A-Z0-9._-]{0,63}$"
+        },
+        "question_event_key": {
+          "type": "string",
+          "pattern": "^EVT-[A-Z0-9]{12}$"
+        },
+        "evaluation_role": {
+          "enum": [
+            "primary",
+            "ancillary"
+          ]
+        },
+        "primary_error_code": { "$ref": "#/$defs/error_code" },
+        "severity": {
+          "enum": [
+            "critical",
+            "major"
+          ]
+        },
+        "observable_fields": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "decision_option_id",
+              "cited_record_ids",
+              "affected_record_ids",
+              "uncertainty",
+              "short_reason",
+              "schema_validation"
+            ]
+          }
+        },
+        "oracle_rule_ref": {
+          "type": "string",
+          "pattern": "^OR-[A-Z0-9]{12}$"
+        },
+        "defect_action": {
+          "enum": [
+            "whole-suite-invalid",
+            "report-only"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "primary_error_code": { "pattern": "^C" }
+            },
+            "required": ["primary_error_code"]
+          },
+          "then": {
+            "properties": {
+              "severity": { "const": "critical" }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "primary_error_code": { "pattern": "^M" }
+            },
+            "required": ["primary_error_code"]
+          },
+          "then": {
+            "properties": {
+              "severity": { "const": "major" }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evaluation_role": { "const": "primary" }
+            },
+            "required": ["evaluation_role"]
+          },
+          "then": {
+            "properties": {
+              "defect_action": { "const": "whole-suite-invalid" }
+            }
+          },
+          "else": {
+            "properties": {
+              "defect_action": { "const": "report-only" }
+            }
+          }
+        }
+      ]
+    },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_at",
+        "frozen_before_any_run"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "frozen_before_any_run": { "const": true }
+      }
+    }
+  }
+}

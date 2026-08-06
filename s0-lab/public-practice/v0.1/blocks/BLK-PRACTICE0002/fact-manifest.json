@@ -1,0 +1,23 @@
+{
+  "practice_version":"0.1",
+  "block_id":"BLK-PRACTICE0002",
+  "normalization":"UTF-8 without BOM of the exact JSON-decoded fact text; no trimming, Unicode normalization, or line-ending rewrite",
+  "aggregate_hash_algorithm":{"version":"public-practice-aggregate-v1","sort":"ascending Unicode code point over the serialized ASCII strings","encoding":"UTF-8 without BOM","fact_set_serialization":"sort fact_id values, join with one LF byte 0x0a, no trailing LF","record_content_set_serialization":"for each fact serialize record_id, one TAB byte 0x09, and lowercase normalized_text_sha256; sort complete lines; join with one LF byte 0x0a; no trailing LF"},
+  "fact_set_sha256":"113d360c3ed876e9d333903cc7242db041782b6e225345e354370c7fb58068bf",
+  "record_content_set_sha256":"a96a8c2421d2a9da946b8da806f79e8629786594870aca1d8c168236879ee22d",
+  "facts":[
+    {"fact_id":"F-B2-01","record_id":"R-B2-01","normalized_text_sha256":"944fdbba4eb4fbffc442bc55c9c12d5550b8a2ac00d3986767eeba5989128d8f"},
+    {"fact_id":"F-B2-02","record_id":"R-B2-02","normalized_text_sha256":"66f1dbf0e67738d48dd42d6f8b9ee13cf88afd744178d2fcf031ffa1c9c30f17"},
+    {"fact_id":"F-B2-03","record_id":"R-B2-03","normalized_text_sha256":"b342421b2d36fe5c9d147f472ff27fbe14ec9d12abe8a2fb5e4dde0ff82bc5a7"},
+    {"fact_id":"F-B2-04","record_id":"R-B2-04","normalized_text_sha256":"8ad25791dba5e4277ea6c409614e15e8c9e8417dc02db0b63ceb40ee614bce18"},
+    {"fact_id":"F-B2-05","record_id":"R-B2-05","normalized_text_sha256":"f5b843c9ef17ea3fa6303d9b1be1f8959e73858643b82fb715eb0f09d4ab286c"},
+    {"fact_id":"F-B2-06","record_id":"R-B2-06","normalized_text_sha256":"c255ee8a9ddb77dd3d52344a8a0a4e089a33f8f2f738b01f1ab95063dfe22926"},
+    {"fact_id":"F-B2-07","record_id":"R-B2-07","normalized_text_sha256":"5df7cd47468f9887b225b536c6be42b3421c21e443115f0d619e25e67611ee47"},
+    {"fact_id":"F-B2-08","record_id":"R-B2-08","normalized_text_sha256":"b4cefab545d7e7b1a76f79b9b0835b10dd5586e411343549ad9ff7474f8bda93"},
+    {"fact_id":"F-B2-09","record_id":"R-B2-09","normalized_text_sha256":"5b688c82feef90a185afd20f30cbfc222642e3c0f649b0b27b45a6da3e3c3dd9"},
+    {"fact_id":"F-B2-10","record_id":"R-B2-10","normalized_text_sha256":"3d7c69a7ffc541b9aa62cd4678715e46de8b56aacbaee2b606ef422d91891e6d"},
+    {"fact_id":"F-B2-11","record_id":"R-B2-11","normalized_text_sha256":"58678bc75f11c52031186461c0d7ed10869907e46b3c9bddbe89aed9ff7bea86"},
+    {"fact_id":"F-B2-12","record_id":"R-B2-12","normalized_text_sha256":"ab5bc71fd0aa3fb05a2f5dab5cc9d05e563879d11ab379606e62b9e9fa50a706"},
+    {"fact_id":"F-B2-13","record_id":"R-B2-13","normalized_text_sha256":"7cebe561bb858e2cfd771d459f5cc4b37e0978a6dbb67c9c35cba6d7bd81300a"}
+  ]
+}

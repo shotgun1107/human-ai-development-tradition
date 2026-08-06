@@ -1,0 +1,11 @@
+{
+  "policy_version":"0.2",
+  "protocol_sha256":"b1a7216398e51d75fe35a2c54a878d03c7f1163c450e6b8119fbb2ee1e3c0b8c",
+  "answer_schema_sha256":"e21100f06d2715f42cd1fda812e17d22340a64327bfb48c03112a0f83d33ac6b",
+  "question_options_schema_sha256":"5bd4c1970662b1254f73b828e7f9e6e110d9d683621e8bc6c7bd73fe4def42e0",
+  "validator_contract":{"implementation_sha256":"679c30d10922622bab4cce81dbea9126657c3916528a5d122c47978b67ccb901","configuration_sha256":"3025d7a451dccc200f8980dc3005c589d89455f68fd5852f1fb53dea1ec74c76","runtime_sha256":"1b403c9b4b91efda214b2a8bb1e61f4673616c228527fc03d8bf36c6d7c233e5","format_assertion_enabled":true,"deterministic":true,"no_network":true,"no_oracle_access":true,"no_condition_mapping_access":true},
+  "rules":{"utf8_required":true,"json_parse_required":true,"schema_required":true,"exact_question_id_set":true,"one_answer_per_question":true,"question_id_sort":"ascending-codepoint","record_id_sort":"ascending-codepoint","record_ids_unique":true,"question_option_membership":true,"affected_ids_policy_enforced":true,"short_reason_single_line":true,"forbidden_disclosure_policy_sha256":"a324bf61e0a99141bc213511795e7b41ec62de033b38eda4e2f3706dd3477956","forbidden_disclosure_field_scope":["short_reason"],"answer_bytes_max":8192},
+  "outcome_mapping":{"missing_output":"suite-invalid","non_utf8_output":"suite-invalid","json_parse_failure":"suite-invalid","input_hash_mismatch":"suite-invalid","answer_size_exceeded":"suite-invalid","schema_violation":"M5","question_missing_or_duplicate":"M5","question_option_not_allowed":"M5","sort_or_id_uniqueness_failure":"M5","short_reason_forbidden_disclosure":"M6"},
+  "report_contract":{"report_schema_sha256":"91ce0b4f9dc4bca35cc2713b263b6fd458ea352b57ade2b67105b07e3c369064","includes_policy_sha256":true,"includes_input_and_answer_sha256":true,"includes_question_projection_sha256":true,"includes_answer_schema_sha256":true,"includes_rule_level_results":true,"includes_no_condition_identity":true},
+  "freeze":{"created_at":"2026-08-06T12:00:00+09:00","frozen_before_any_run":true}
+}

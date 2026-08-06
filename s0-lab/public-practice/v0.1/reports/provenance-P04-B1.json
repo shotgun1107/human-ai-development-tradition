@@ -1,0 +1,1 @@
+{"practice_only":true,"block_id":"BLK-PRACTICE0001","representation_id":"P04","mapping_rule":"Every neutral relation lists all fact_ids needed to identify both endpoints and explicitly support the relation in the same input; R04 uses F-B1-05 and F-B1-12.","relation_count":7,"supporting_fact_link_count":10,"unsupported_structural_marker_count":0}

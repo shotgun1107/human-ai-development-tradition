@@ -1,0 +1,31 @@
+{
+  "schema_version":"0.2",
+  "visibility":"sealed-review-and-post-run-judge",
+  "protocol_sha256":"b1a7216398e51d75fe35a2c54a878d03c7f1163c450e6b8119fbb2ee1e3c0b8c",
+  "block_id":"BLK-PRACTICE0002",
+  "scoring_contract_id":"SCON-PUBSCORE0002",
+  "oracle_sha256":"1a034000f914f3c826c20b2fd44d601d5818970bfa87f4f14298cee233c1674c",
+  "answer_schema_sha256":"e21100f06d2715f42cd1fda812e17d22340a64327bfb48c03112a0f83d33ac6b",
+  "question_options_sha256":"9ace771354e66dbbec5d321b308ae3f5c6d8716aa3b3cb0704b9b5348f9970c7",
+  "criteria":[
+    {"criterion_id":"CRIT-B2C1CRIT0001","question_id":"Q-B2-01","question_event_key":"EVT-B2C1EVENT001","evaluation_role":"primary","primary_error_code":"C1","severity":"critical","observable_fields":["decision_option_id","cited_record_ids"],"oracle_rule_ref":"OR-B2C1RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2C2CRIT0001","question_id":"Q-B2-02","question_event_key":"EVT-B2C2EVENT001","evaluation_role":"primary","primary_error_code":"C2","severity":"critical","observable_fields":["decision_option_id","cited_record_ids"],"oracle_rule_ref":"OR-B2C2RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2C3CRIT0001","question_id":"Q-B2-03","question_event_key":"EVT-B2C3EVENT001","evaluation_role":"primary","primary_error_code":"C3","severity":"critical","observable_fields":["decision_option_id","cited_record_ids"],"oracle_rule_ref":"OR-B2C3RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2C4CRIT0001","question_id":"Q-B2-04","question_event_key":"EVT-B2C4EVENT001","evaluation_role":"primary","primary_error_code":"C4","severity":"critical","observable_fields":["decision_option_id","affected_record_ids"],"oracle_rule_ref":"OR-B2C4RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2C5CRIT0001","question_id":"Q-B2-05","question_event_key":"EVT-B2C5EVENT001","evaluation_role":"primary","primary_error_code":"C5","severity":"critical","observable_fields":["decision_option_id"],"oracle_rule_ref":"OR-B2C5RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2C6CRIT0001","question_id":"Q-B2-06","question_event_key":"EVT-B2C6EVENT001","evaluation_role":"primary","primary_error_code":"C6","severity":"critical","observable_fields":["decision_option_id"],"oracle_rule_ref":"OR-B2C6RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2C7CRIT0001","question_id":"Q-B2-07","question_event_key":"EVT-B2C7EVENT001","evaluation_role":"primary","primary_error_code":"C7","severity":"critical","observable_fields":["decision_option_id"],"oracle_rule_ref":"OR-B2C7RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2M1CRIT0001","question_id":"Q-B2-02","question_event_key":"EVT-B2M1EVENT001","evaluation_role":"primary","primary_error_code":"M1","severity":"major","observable_fields":["cited_record_ids"],"oracle_rule_ref":"OR-B2M1RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2M2CRIT0001","question_id":"Q-B2-03","question_event_key":"EVT-B2M2EVENT001","evaluation_role":"primary","primary_error_code":"M2","severity":"major","observable_fields":["uncertainty"],"oracle_rule_ref":"OR-B2M2RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2M3CRIT0001","question_id":"Q-B2-01","question_event_key":"EVT-B2M3EVENT001","evaluation_role":"primary","primary_error_code":"M3","severity":"major","observable_fields":["decision_option_id"],"oracle_rule_ref":"OR-B2M3RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2M4CRIT0001","question_id":"Q-B2-04","question_event_key":"EVT-B2M4EVENT001","evaluation_role":"primary","primary_error_code":"M4","severity":"major","observable_fields":["affected_record_ids"],"oracle_rule_ref":"OR-B2M4RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2M5CRIT0001","question_id":"Q-B2-02","question_event_key":"EVT-B2M5EVENT001","evaluation_role":"primary","primary_error_code":"M5","severity":"major","observable_fields":["schema_validation"],"oracle_rule_ref":"OR-B2M5RULE0001","defect_action":"whole-suite-invalid"},
+    {"criterion_id":"CRIT-B2M6CRIT0001","question_id":"Q-B2-05","question_event_key":"EVT-B2M6EVENT001","evaluation_role":"primary","primary_error_code":"M6","severity":"major","observable_fields":["short_reason"],"oracle_rule_ref":"OR-B2M6RULE0001","defect_action":"whole-suite-invalid"}
+  ],
+  "judge_projection":{"path":"judge/BLK-PRACTICE0002/scoring-projection.json","sha256":"7888abc118f8865f89107c59f003a160d5ac985cc82c6909a0630f5a0a42d89d","includes_criteria_and_counting_policy":true,"excludes_selection_contract":true,"excludes_condition_identity_and_cost":true},
+  "coverage_contract":{"all_13_error_codes_present":true,"criterion_ids_unique":true,"question_event_keys_unique":true,"primary_code_coverage_report_sha256":"a7c3b6bde8c01a845e9e4ab2a5445248742105a1c8c2def54051912f85c14e53"},
+  "counting_policy":{"one_primary_code_per_question_event":true,"critical_precedes_major_same_cause":true,"same_question_same_cause_double_count_allowed":false,"independent_causes_may_count_separately":true,"per_code_per_block_max":1,"condition_identity_hidden_during_correctness_scoring":true},
+  "defect_policy":{"primary_oracle_or_scoring_defect":"whole-suite-invalid-new-gate-required","ancillary_defect":"report-only-no-score-change","post_run_primary_defect_auto_retry_allowed":false,"primary_question_posthoc_deletion_allowed":false},
+  "selection_contract":{"protocol_section":"9","decision_function_path":"control/decision-function-PUBDECIDE001.json","decision_function_sha256":"75b9915c2712affe2f51409602b0815835c63f565c284c8f8d6e0de7d72422cd","eligible_requires_zero_critical_both_blocks":true,"d_requires_strictly_lower_major_both_blocks_vs_each_eligible_simple":true,"ties_choose_simpler":true,"mixed_result":"insufficient-comparison-best-simple-temporary","cost_added_after_blind_correctness_freeze":true},
+  "freeze":{"created_at":"2026-08-06T12:00:00+09:00","frozen_before_any_run":true}
+}

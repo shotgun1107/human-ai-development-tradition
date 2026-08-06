@@ -1,0 +1,3 @@
+# Public-practice pre-review evidence stand-in
+
+This file is not an independent review. It enumerates the checks that a future separate reviewer would need to substantiate: schema and reference consistency, public oracle/scoring consistency, option neutrality, equal question opportunity, fact and record equality, provenance completeness, no oracle-derived relation, byte balance without padding, instruction neutrality, role isolation, eight-run pairing, single counting, observability of all thirteen error codes, cross-block treatment binding, validation/question binding, retry eligibility, decision-function agreement, policy completeness, and run-record contract readiness.
