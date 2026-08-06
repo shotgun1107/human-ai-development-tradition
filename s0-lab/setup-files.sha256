@@ -5,5 +5,5 @@ cf61aaf1ce50d3288731dbab6ab46696d16a3c992c001f53b07db640b4318673  .codex/agents/
 0c504abbc5ec08eb9c7f981c57a438c39c765edd1f9ff8519c263d81a5ab9bc8  .codex/agents/s0-fixture-author.toml
 8b49fc7455912873aa71044803b22a54ba3b0e68d52fba03b9eb43eb0d760b96  .codex/agents/s0-executor.toml
 04ff5ac67b592d5b2d58a2db8b8a4b8d62e0eeac6340ee5f10910f210341ca64  .codex/agents/s0-judge.toml
-f5b198d6a22ebf5b8ba687ffaeb27e02937d1e7148cbbd879f2a223dbadfcc6d  s0-lab/README.md
+d9f04a2b85b2153af68d36732fcf23db014210cf7f3ef8727e7fd38f18739802  s0-lab/README.md
 568d0f26e03e44cff526cdb32aab6411b7469e6d0be4d28081be4869d0948af0  s0-lab/session-registry.md
