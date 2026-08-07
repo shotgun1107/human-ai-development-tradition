@@ -21,5 +21,7 @@
 - Preserve the SHA-256 records of frozen inputs. If a frozen input hash differs, stop the dependent task.
 - Keep facts, inferences, proposals, and test results distinguishable.
 - Do not use real customer, personal, secret, or past-project content in S0.
-- Do not commit, push, create a branch, or change another repository unless the user explicitly requests that operation.
+- When preserving, reviewing, transferring, or publishing completed work would materially benefit from a branch, commit, or push, the agent may identify that need independently and proactively request the user's approval. Before approval, state the exact repository, intended scope, branch, and whether the request covers commit, push, or both; do not perform the operation until the user approves it.
+- Never include sealed, hidden-oracle, secret, personal, or otherwise non-public material in a commit or push merely because Git publication was approved. Verify the staged scope separately, and request additional direction whenever publication eligibility is unclear.
+- Do not change another repository unless the user explicitly approves the exact repository and operation.
 - Keep new S0 setup material under `s0-lab/` unless a task's approved output path says otherwise.
