@@ -19,6 +19,9 @@
 ## Change and verification rules
 
 - Preserve the SHA-256 records of frozen inputs. If a frozen input hash differs, stop the dependent task.
+- For a public Markdown artifact with a same-basename SHA-256 sidecar, use `s0-lab/control/tools/verify-text-artifacts.ps1` after writing and before commit or transfer. Run its `-SelfTest` mode before relying on it in a new environment.
+- Do not replace the canonical text-artifact validator with an ad hoc BOM, UTF-8, final-newline, trailing-whitespace, or sidecar check when the canonical tool applies. In particular, BOM detection must compare the leading bytes with `EF BB BF`, never a decoded-string `StartsWith` coercion.
+- Keep text checks independently labeled. A BOM, UTF-8, final-LF, trailing-whitespace, sidecar-format, or sidecar-hash failure must identify its own failed check rather than a combined status label. The canonical tool does not replace task-specific branch, HEAD, exact-change-set, role-boundary, or frozen-input checks.
 - Keep facts, inferences, proposals, and test results distinguishable.
 - Do not use real customer, personal, secret, or past-project content in S0.
 - When preserving, reviewing, transferring, or publishing completed work would materially benefit from a branch, commit, or push, the agent may identify that need independently and proactively request the user's approval. Before approval, state the exact repository, intended scope, branch, and whether the request covers commit, push, or both; do not perform the operation until the user approves it.
