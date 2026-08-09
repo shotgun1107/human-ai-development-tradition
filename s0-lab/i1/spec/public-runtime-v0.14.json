@@ -1,7 +1,7 @@
 {
   "spec_schema": "URC-0.14-I1-PUBLIC-RUNTIME-1",
   "design_id": "URC-0.14-CONTROL-INTEGRATED",
-  "implementation_gate": "S0 V0.14 PUBLIC IMPLEMENTATION PREREQUISITES OPEN",
+  "implementation_gate": "S0 V0.14 PUBLIC IMPLEMENTATION PREREQUISITES REVISION OPEN",
   "claim_kind": "public-runtime-structure-only",
   "source_sha256": {
     "protocol": "b1a7216398e51d75fe35a2c54a878d03c7f1163c450e6b8119fbb2ee1e3c0b8c",

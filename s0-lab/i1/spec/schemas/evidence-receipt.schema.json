@@ -1,13 +1,33 @@
 {
   "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "$id":"urn:urc:0.14:i1:evidence-receipt-structure",
-  "type":"object","additionalProperties":false,
+  "$id":"urn:urc:0.14:i1:evidence-receipt",
+  "type":"object",
+  "additionalProperties":false,
   "required":["edge","producer_role","artifact_kind","artifact_sha256","required_check_result"],
-  "properties": {
-    "edge":{"type":"string","pattern":"^E[0-9]{2}$"},
-    "producer_role":{"type":"string","pattern":"^[a-z0-9-]+$"},
-    "artifact_kind":{"type":"string","pattern":"^[a-z0-9-]+$"},
+  "properties":{
+    "edge":{"enum":["E02","E05","E08","E14","E21","E24","E25","E27","E29","E31","E35","E48","E50","E56"]},
+    "producer_role":{"enum":["analysis","analysis-map-comparison","catalog-comparison","comparator-builder-1","comparator-builder-2","content-intake","final-decision-custodian","label-comparison","leakage-comparison","p1-review-comparison","public-record-publisher","representation-builder","scan-comparison","simulation-builder"]},
+    "artifact_kind":{"enum":["agreed-abstract-table-digest","agreed-instance-table-digest","agreed-map-digest","audit-summary","benchmark-summary","content-digest","decision-record-digest","equality-digest","frozen-analysis-digest","implementation-mutation-table-digest","pass-reject-digest","power-summary","publication-receipt-envelope-digest"]},
     "artifact_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
     "required_check_result":{"const":"accepted"}
-  }
+  },
+  "oneOf":[
+    {"properties":{"edge":{"const":"E02"},"producer_role":{"const":"simulation-builder"},"artifact_kind":{"const":"benchmark-summary"}}},
+    {"properties":{"edge":{"const":"E02"},"producer_role":{"const":"simulation-builder"},"artifact_kind":{"const":"audit-summary"}}},
+    {"properties":{"edge":{"const":"E02"},"producer_role":{"const":"simulation-builder"},"artifact_kind":{"const":"power-summary"}}},
+    {"properties":{"edge":{"const":"E05"},"producer_role":{"const":"content-intake"},"artifact_kind":{"const":"content-digest"}}},
+    {"properties":{"edge":{"const":"E08"},"producer_role":{"const":"label-comparison"},"artifact_kind":{"const":"equality-digest"}}},
+    {"properties":{"edge":{"const":"E14"},"producer_role":{"const":"representation-builder"},"artifact_kind":{"const":"equality-digest"}}},
+    {"properties":{"edge":{"const":"E21"},"producer_role":{"const":"scan-comparison"},"artifact_kind":{"const":"pass-reject-digest"}}},
+    {"properties":{"edge":{"const":"E24"},"producer_role":{"const":"leakage-comparison"},"artifact_kind":{"const":"pass-reject-digest"}}},
+    {"properties":{"edge":{"const":"E25"},"producer_role":{"const":"comparator-builder-1"},"artifact_kind":{"const":"implementation-mutation-table-digest"}}},
+    {"properties":{"edge":{"const":"E25"},"producer_role":{"const":"comparator-builder-2"},"artifact_kind":{"const":"implementation-mutation-table-digest"}}},
+    {"properties":{"edge":{"const":"E27"},"producer_role":{"const":"catalog-comparison"},"artifact_kind":{"const":"agreed-abstract-table-digest"}}},
+    {"properties":{"edge":{"const":"E29"},"producer_role":{"const":"catalog-comparison"},"artifact_kind":{"const":"agreed-instance-table-digest"}}},
+    {"properties":{"edge":{"const":"E31"},"producer_role":{"const":"p1-review-comparison"},"artifact_kind":{"const":"pass-reject-digest"}}},
+    {"properties":{"edge":{"const":"E35"},"producer_role":{"const":"analysis-map-comparison"},"artifact_kind":{"const":"agreed-map-digest"}}},
+    {"properties":{"edge":{"const":"E48"},"producer_role":{"const":"analysis"},"artifact_kind":{"const":"frozen-analysis-digest"}}},
+    {"properties":{"edge":{"const":"E50"},"producer_role":{"const":"final-decision-custodian"},"artifact_kind":{"const":"decision-record-digest"}}},
+    {"properties":{"edge":{"const":"E56"},"producer_role":{"const":"public-record-publisher"},"artifact_kind":{"const":"publication-receipt-envelope-digest"}}}
+  ]
 }

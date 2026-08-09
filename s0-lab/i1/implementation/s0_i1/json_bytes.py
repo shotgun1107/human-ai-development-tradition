@@ -39,15 +39,33 @@ def _walk_strings(value: Any) -> None:
 
 
 def _finite_float(text: str) -> float:
-    value = float(text)
+    if type(text) is not str or len(text) > 128:
+        raise JsonBytesError("JSON number exceeds its representation ceiling")
+    try:
+        value = float(text)
+    except (OverflowError, ValueError) as exc:
+        raise JsonBytesError("invalid JSON number") from exc
     if not math.isfinite(value):
         raise JsonBytesError("non-finite JSON number is forbidden")
     return value
 
 
+def _bounded_int(text: str) -> int:
+    if type(text) is not str or len(text.lstrip("-")) > 20:
+        raise JsonBytesError("JSON integer exceeds the 20-digit ceiling")
+    try:
+        return int(text)
+    except (OverflowError, ValueError) as exc:
+        raise JsonBytesError("invalid JSON integer") from exc
+
+
 def parse_strict_json_bytes(raw: bytes, *, require_object: bool = False) -> Any:
     """Decode BOM-free strict UTF-8 JSON with duplicate/surrogate/NFC checks."""
 
+    if type(raw) is not bytes:
+        raise JsonBytesError("JSON input must be exact bytes")
+    if type(require_object) is not bool:
+        raise JsonBytesError("require_object must be exact boolean")
     if raw.startswith(b"\xef\xbb\xbf"):
         raise JsonBytesError("UTF-8 BOM is forbidden")
     try:
@@ -58,6 +76,7 @@ def parse_strict_json_bytes(raw: bytes, *, require_object: bool = False) -> Any:
         value = json.loads(
             text,
             object_pairs_hook=_object_without_duplicates,
+            parse_int=_bounded_int,
             parse_float=_finite_float,
             parse_constant=lambda _value: (_ for _ in ()).throw(
                 JsonBytesError("non-finite JSON number is forbidden")
@@ -69,6 +88,8 @@ def parse_strict_json_bytes(raw: bytes, *, require_object: bool = False) -> Any:
         raise JsonBytesError(
             f"invalid JSON at line {exc.lineno}, column {exc.colno}"
         ) from exc
+    except (OverflowError, ValueError) as exc:
+        raise JsonBytesError("invalid bounded JSON number") from exc
     _walk_strings(value)
     if require_object and not isinstance(value, dict):
         raise JsonBytesError("top-level JSON value must be an object")

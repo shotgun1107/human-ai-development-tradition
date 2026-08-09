@@ -4,15 +4,17 @@ from __future__ import annotations
 
 import json
 from copy import deepcopy
-from dataclasses import asdict, dataclass
+from collections.abc import Iterator, Mapping, Sequence
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
+from types import MappingProxyType
 from typing import Any, Iterable
 
 from jsonschema import Draft202012Validator
 
 from .auth import (
-    ManifestAnchor,
     authenticate_manifest_file_set,
+    bind_external_manifest_grant,
     load_authenticated_manifest,
     sha256_bytes,
 )
@@ -20,10 +22,20 @@ from .errors import TopologyError
 from .json_bytes import parse_strict_json_bytes
 
 
-FROZEN_PUBLIC_SPEC_MANIFEST_SHA256 = "4469834a5aa480575cd9384a14881b83e596646686ce04f35fcb7bd9502faed2"
+FROZEN_PUBLIC_SPEC_MANIFEST_SHA256 = "9fdffa48994626f63527ee6eceff9825f2df45f91dec12889362ee180d94245e"
 PUBLIC_SPEC_MANIFEST_PATH = "s0-lab/i1/spec/public-runtime-files.sha256"
 PUBLIC_SPEC_PATH = "s0-lab/i1/spec/public-runtime-v0.14.json"
 PUBLIC_SPEC_SCHEMA_PATH = "s0-lab/i1/spec/schemas/public-runtime-topology.schema.json"
+PUBLIC_SPEC_ALLOWED_PATHS = (
+    "s0-lab/i1/spec/public-runtime-v0.14.json",
+    "s0-lab/i1/spec/schemas/evidence-bundle-structure.schema.json",
+    "s0-lab/i1/spec/schemas/evidence-receipt.schema.json",
+    "s0-lab/i1/spec/schemas/one-shot-result.schema.json",
+    "s0-lab/i1/spec/schemas/public-runtime-topology.schema.json",
+    "s0-lab/i1/spec/schemas/signed-envelope-structure.schema.json",
+    "s0-lab/i1/spec/schemas/status-record.schema.json",
+)
+_TOPOLOGY_PROVENANCE = object()
 
 
 EXPECTED_ROLE_ROWS = (
@@ -202,6 +214,128 @@ class TopologyIssue:
         return asdict(self)
 
 
+def _deep_freeze(value: Any) -> Any:
+    if type(value) is dict:
+        return MappingProxyType({key: _deep_freeze(item) for key, item in value.items()})
+    if type(value) is list:
+        return tuple(_deep_freeze(item) for item in value)
+    if type(value) in {str, int, bool} or value is None:
+        return value
+    raise TopologyError("topology contains an unsupported scalar type")
+
+
+def _deep_thaw(value: Any) -> Any:
+    if isinstance(value, Mapping):
+        return {key: _deep_thaw(item) for key, item in value.items()}
+    if isinstance(value, tuple):
+        return [_deep_thaw(item) for item in value]
+    return value
+
+
+def _require_deep_frozen(value: Any, active: set[int] | None = None) -> None:
+    """Reject any container shape that was not produced by ``_deep_freeze``."""
+
+    if active is None:
+        active = set()
+    if type(value) is MappingProxyType:
+        identity = id(value)
+        if identity in active:
+            raise TopologyError("topology snapshot contains a container cycle")
+        active.add(identity)
+        try:
+            for key, item in value.items():
+                if type(key) is not str:
+                    raise TopologyError("topology snapshot key is not exact string text")
+                _require_deep_frozen(item, active)
+        finally:
+            active.remove(identity)
+        return
+    if type(value) is tuple:
+        identity = id(value)
+        if identity in active:
+            raise TopologyError("topology snapshot contains a container cycle")
+        active.add(identity)
+        try:
+            for item in value:
+                _require_deep_frozen(item, active)
+        finally:
+            active.remove(identity)
+        return
+    if type(value) in {str, int, bool} or value is None:
+        return
+    raise TopologyError("topology snapshot is not deeply immutable")
+
+
+def _snapshot_digest(value: Mapping[str, Any]) -> str:
+    raw = json.dumps(
+        _deep_thaw(value),
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return sha256_bytes(raw)
+
+
+@dataclass(frozen=True, init=False)
+class FrozenTopology(Mapping[str, Any]):
+    """API-level, deeply immutable topology handle for policy boundaries."""
+
+    spec_sha256: str
+    manifest_sha256: str
+    snapshot_sha256: str
+    _snapshot: Mapping[str, Any] = field(repr=False, compare=False)
+    _provenance: object = field(repr=False, compare=False)
+
+    def __init__(
+        self,
+        spec_sha256: str,
+        manifest_sha256: str,
+        snapshot_sha256: str,
+        snapshot: Mapping[str, Any],
+        *,
+        _provenance: object,
+    ) -> None:
+        if _provenance is not _TOPOLOGY_PROVENANCE:
+            raise TopologyError("FrozenTopology must come from the pinned public loader")
+        object.__setattr__(self, "spec_sha256", spec_sha256)
+        object.__setattr__(self, "manifest_sha256", manifest_sha256)
+        object.__setattr__(self, "snapshot_sha256", snapshot_sha256)
+        object.__setattr__(self, "_snapshot", snapshot)
+        object.__setattr__(self, "_provenance", _provenance)
+
+    def __getitem__(self, key: str) -> Any:
+        return self._snapshot[key]
+
+    def __iter__(self) -> Iterator[str]:
+        return iter(self._snapshot)
+
+    def __len__(self) -> int:
+        return len(self._snapshot)
+
+    def to_plain_dict(self) -> dict[str, Any]:
+        """Return a detached diagnostic copy; it carries no policy authority."""
+
+        return _deep_thaw(self._snapshot)
+
+
+def require_frozen_topology(value: object) -> FrozenTopology:
+    """Revalidate API provenance, deep immutability, and digest at a boundary."""
+
+    if type(value) is not FrozenTopology or getattr(value, "_provenance", None) is not _TOPOLOGY_PROVENANCE:
+        raise TopologyError("policy input is not an authenticated frozen topology")
+    _require_deep_frozen(value._snapshot)
+    if value.manifest_sha256 != FROZEN_PUBLIC_SPEC_MANIFEST_SHA256:
+        raise TopologyError("topology manifest authority mismatch")
+    if _snapshot_digest(value._snapshot) != value.snapshot_sha256:
+        raise TopologyError("topology snapshot digest changed")
+    plain = value.to_plain_dict()
+    issues = audit_topology(plain)
+    if issues:
+        first = issues[0]
+        raise TopologyError(f"{first.category} at {first.location}: {first.message}")
+    return value
+
+
 def _issue(
     issues: list[TopologyIssue], category: str, location: str, message: str
 ) -> None:
@@ -239,8 +373,17 @@ def _schema_issues(instance: Any, schema: Any) -> list[TopologyIssue]:
     return result
 
 
-def audit_topology(spec: dict[str, Any]) -> list[TopologyIssue]:
-    """Check closed inventories and all role/store/edge cross references."""
+def audit_topology(spec: Mapping[str, Any]) -> list[TopologyIssue]:
+    """Diagnose a detached mapping against the closed public inventory.
+
+    This diagnostic accepts ordinary mappings so mutated counterexamples can
+    be reported.  Enforcement APIs below accept only :class:`FrozenTopology`.
+    """
+
+    if isinstance(spec, FrozenTopology):
+        spec = spec.to_plain_dict()
+    elif not isinstance(spec, Mapping):
+        return [TopologyIssue("topology-type", "$", "topology must be a mapping")]
 
     issues: list[TopologyIssue] = []
     if spec.get("source_sha256") != EXPECTED_SOURCE_SHA256:
@@ -434,22 +577,24 @@ def audit_topology(spec: dict[str, Any]) -> list[TopologyIssue]:
     return sorted(issues)
 
 
-def require_valid_topology(spec: dict[str, Any]) -> None:
+def require_valid_topology(spec: Mapping[str, Any]) -> None:
     issues = audit_topology(spec)
     if issues:
         first = issues[0]
         raise TopologyError(f"{first.category} at {first.location}: {first.message}")
 
 
-def load_public_runtime_spec(workspace_root: Path) -> dict[str, Any]:
-    """Authenticate the complete frozen spec namespace, then validate it."""
+def load_public_runtime_spec(workspace_root: Path) -> FrozenTopology:
+    """Authenticate the pinned namespace and return an immutable capability."""
 
-    anchor = ManifestAnchor(
-        PUBLIC_SPEC_MANIFEST_PATH,
-        FROZEN_PUBLIC_SPEC_MANIFEST_SHA256,
-        "s0-lab/i1/spec/",
+    grant = bind_external_manifest_grant(
+        expected_manifest_path=PUBLIC_SPEC_MANIFEST_PATH,
+        expected_manifest_sha256=FROZEN_PUBLIC_SPEC_MANIFEST_SHA256,
+        expected_entry_prefix="s0-lab/i1/spec/",
+        expected_allowed_paths=PUBLIC_SPEC_ALLOWED_PATHS,
+        purpose="i1-public-topology",
     )
-    manifest = load_authenticated_manifest(workspace_root, anchor)
+    manifest = load_authenticated_manifest(workspace_root, grant)
     files = authenticate_manifest_file_set(workspace_root, manifest)
     spec = parse_strict_json_bytes(files[PUBLIC_SPEC_PATH].raw, require_object=True)
     schema = parse_strict_json_bytes(files[PUBLIC_SPEC_SCHEMA_PATH].raw, require_object=True)
@@ -458,15 +603,25 @@ def load_public_runtime_spec(workspace_root: Path) -> dict[str, Any]:
         first = schema_issues[0]
         raise TopologyError(f"{first.category} at {first.location}: {first.message}")
     require_valid_topology(spec)
-    return deepcopy(spec)
+    snapshot = _deep_freeze(deepcopy(spec))
+    return FrozenTopology(
+        files[PUBLIC_SPEC_PATH].sha256,
+        manifest.manifest.sha256,
+        _snapshot_digest(snapshot),
+        snapshot,
+        _provenance=_TOPOLOGY_PROVENANCE,
+    )
 
 
 def store_read_scope(
-    spec: dict[str, Any], role: str, position: str, store_id: str
+    topology: FrozenTopology, role: str, position: str, store_id: str
 ) -> str | None:
     """Return the explicit read scope or ``None`` (omission is denial)."""
 
-    for store in spec.get("stores", []):
+    topology = require_frozen_topology(topology)
+    if any(type(value) is not str for value in (role, position, store_id)):
+        raise TopologyError("store policy identifiers must be exact strings")
+    for store in topology["stores"]:
         if store.get("id") != store_id:
             continue
         for reader in store.get("readers", []):
@@ -477,8 +632,15 @@ def store_read_scope(
 
 
 def require_store_read(
-    spec: dict[str, Any], role: str, position: str, store_id: str, *, scope: str = "full"
+    topology: FrozenTopology,
+    role: str,
+    position: str,
+    store_id: str,
+    *,
+    scope: str = "full",
 ) -> None:
-    allowed = store_read_scope(spec, role, position, store_id)
+    if type(scope) is not str:
+        raise TopologyError("store scope must be exact string text")
+    allowed = store_read_scope(topology, role, position, store_id)
     if allowed != scope:
         raise TopologyError("cross-role store input is denied")
