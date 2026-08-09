@@ -7,7 +7,7 @@
   "properties": {
     "spec_schema": {"const":"URC-0.14-I1-PUBLIC-RUNTIME-1"},
     "design_id": {"const":"URC-0.14-CONTROL-INTEGRATED"},
-    "implementation_gate": {"const":"S0 V0.14 PUBLIC IMPLEMENTATION PREREQUISITES OPEN"},
+    "implementation_gate": {"const":"S0 V0.14 PUBLIC IMPLEMENTATION PREREQUISITES REVISION OPEN"},
     "claim_kind": {"const":"public-runtime-structure-only"},
     "source_sha256": {
       "type":"object",

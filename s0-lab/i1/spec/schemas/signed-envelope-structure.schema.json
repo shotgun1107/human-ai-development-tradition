@@ -4,7 +4,7 @@
   "type":"object","additionalProperties":false,
   "required":["signer_role","signer_key_sha256","record_length","record_sha256","signature_algorithm","signature_hex"],
   "properties": {
-    "signer_role":{"type":"string","pattern":"^[a-z0-9-]+$"},
+    "signer_role":{"enum":["adjudication-comparison","analysis","analysis-map-comparison","catalog-comparison","comparator-builder-1","comparator-builder-2","comparator-operator-1","comparator-operator-2","content-intake","control-registrar","control-root-authority","final-decision-custodian","judgment-comparison","label-comparison","leakage-comparison","p1-review-comparison","public-record-publisher","representation-builder","scan-comparison","semantic-judge-1","semantic-judge-2","simulation-builder"]},
     "signer_key_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
     "record_length":{"type":"integer","minimum":1},
     "record_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
