@@ -7,6 +7,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
+from typing import get_type_hints
 from unittest.mock import patch
 
 
@@ -120,6 +121,24 @@ class AuthenticationTests(unittest.TestCase):
             with self.assertRaises(UnsafePathError):
                 authenticate_manifest_entry(
                     root, manifest, "inputs/allowed.json:stream"
+                )
+
+    def test_public_entry_path_contract_is_exact_string_only(self):
+        self.assertIs(get_type_hints(authenticate_manifest_entry)["value"], str)
+        with self._workspace() as temporary:
+            root = Path(temporary)
+            _grant, manifest = self._make_manifest(
+                root, {"inputs/value.json": b"{}\n"}
+            )
+            authenticated = authenticate_manifest_entry(
+                root, manifest, "inputs/value.json"
+            )
+            self.assertEqual(authenticated.relative_path, "inputs/value.json")
+            with self.assertRaisesRegex(
+                UnsafePathError, "path must be exact string text"
+            ):
+                authenticate_manifest_entry(
+                    root, manifest, Path("inputs/value.json")
                 )
 
     def test_external_manifest_hash_mismatch_rejects_before_entry_use(self):

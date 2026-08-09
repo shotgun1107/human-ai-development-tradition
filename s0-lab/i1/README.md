@@ -28,6 +28,10 @@ unsupported direct constructor, adjacent manifest, or separately created but
 equivalent grant cannot substitute for the exact caller-held object at the
 runner boundary.
 
+Manifest, namespace, and entry identifiers are exact canonical POSIX-relative
+`str` values. `pathlib.Path` objects are intentionally unsupported at this
+public authority boundary; the filesystem workspace root remains a `Path`.
+
 These Python objects are not a hostile same-process security boundary.
 Module-private markers, frozen dataclasses, and expected hashes can be bypassed
 by code that is already allowed to introspect or mutate this interpreter. The
@@ -135,7 +139,7 @@ filesystem. Candidate Python consumes the authenticated snapshot bytes rather
 than reopening source payload paths. This is not a hostile privileged-
 filesystem or operating-system proof.
 
-The current construction suite runs 60 tests: 59 pass and one direct Windows
+The current construction suite runs 61 tests: 60 pass and one direct Windows
 symlink-creation test is skipped when unprivileged symlink creation is denied.
 The privilege-free reparse sentinel and mocked rejection path still run.
 

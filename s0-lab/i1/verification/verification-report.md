@@ -3,7 +3,7 @@
 ## Result
 
 - Authorized gate: `S0 V0.14 PUBLIC IMPLEMENTATION PREREQUISITES REVISION OPEN`.
-- Unit suite: **PASS** (60 run, 59 passed, one host-limited symlink skip).
+- Unit suite: **PASS** (61 run, 60 passed, one host-limited symlink skip).
 - Authenticated public spec namespace: **PASS** (7/7 files).
 - Public spec manifest SHA-256:
   `9fdffa48994626f63527ee6eceff9825f2df45f91dec12889362ee180d94245e`.
@@ -119,6 +119,14 @@ pre-execution observation, then removes the execution snapshot.
 Output paths are exclusively reserved before invocation. Collision tests show
 zero transport calls, and failure removes the transient empty reservation.
 Final neutral bytes are written only after runner success.
+
+### I1-v02-m01: exact string path contract
+
+Manifest and entry identifiers now use an exact `str` annotation and runtime
+check. Canonical POSIX-relative strings authenticate normally, while a concrete
+`pathlib.Path` is intentionally rejected with the matching exact-string error.
+The filesystem workspace root remains a `Path`. A regression test binds the
+public annotation, accepted string behavior, and fail-closed `Path` rejection.
 
 ## Verification commands executed
 
