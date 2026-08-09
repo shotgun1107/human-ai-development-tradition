@@ -30,11 +30,15 @@ SHA-256 기록만 근거로 판단하라.
 이후 정상적으로 갱신됐으면 실제 원격을 우선하고 차이를 보고하라. 프롬프트에
 맞추기 위해 reset, force checkout 또는 ref 되돌리기를 하지 마라.
 
-### 1.1 Git으로 인수인계 파일 받기
+### 1.1 Git으로 전체 프로젝트 트리 받기
 
 회사 PC의 기존 저장소 root에서 먼저 `origin`과 현재 변경 상태를 확인한 뒤
 원격 refs를 갱신한다. 다음 상태 변경 명령은 순차적으로 실행하고 각 결과를
 확인한 후 다음 명령으로 넘어간다.
+
+인수인계 대상은 handoff Markdown 네 개만이 아니다. 원격 handoff commit이
+가리키는 전체 Git-tracked project tree를 받아야 한다. 네 파일만 복사하거나
+cherry-pick하지 마라.
 
 ```powershell
 git remote get-url origin
@@ -45,6 +49,41 @@ git fetch origin +refs/heads/codex/home-to-company-handoff-20260809:refs/remotes
 git fetch origin +refs/heads/codex/s0-trust-root-role-isolation-design-v02:refs/remotes/origin/codex/s0-trust-root-role-isolation-design-v02
 git fetch origin +refs/heads/codex/s0-trust-root-role-isolation-review-v02:refs/remotes/origin/codex/s0-trust-root-role-isolation-review-v02
 ```
+
+fetch 직후 live `main`을 기록점과 비교한다. filename/status 확인은 sealed
+내용을 읽는 허가가 아니며, 아래 명령으로 확인한 경로의 내용은 현재 공개
+allowlist에 포함된 경우에만 읽는다.
+
+```powershell
+git rev-parse refs/remotes/origin/main
+git log --oneline --decorate 93e353ac975c3cb5c948d61609fe4e43c57a0f37..refs/remotes/origin/main
+git diff --name-status 93e353ac975c3cb5c948d61609fe4e43c57a0f37...refs/remotes/origin/main
+git show refs/remotes/origin/main:AGENTS.md
+git merge-base refs/remotes/origin/main refs/remotes/origin/codex/home-to-company-handoff-20260809
+```
+
+그다음 두 방향의 ancestry를 각각 판정한다. `--is-ancestor`의 exit 0은 참,
+exit 1은 거짓이며 명령 실패로 오해하지 않는다.
+
+```powershell
+git merge-base --is-ancestor refs/remotes/origin/main refs/remotes/origin/codex/home-to-company-handoff-20260809
+git merge-base --is-ancestor refs/remotes/origin/codex/home-to-company-handoff-20260809 refs/remotes/origin/main
+```
+
+판정 규칙은 다음과 같다.
+
+- live `main`과 기록점이 같거나 live `main`이 handoff의 조상이면 handoff
+  HEAD를 continuation base로 사용할 수 있다.
+- handoff가 live `main`의 조상이면 live `main`이 v0.2 design/review와
+  handoff 문서를 실제로 포함하는지 확인하고 live `main`을 continuation
+  base로 사용한다.
+- 어느 방향도 조상이 아니면 두 branch가 갈라진 상태다. 기록점 이후
+  `main`의 commits와 changed paths, 특히 `AGENTS.md`, protocol,
+  F0/I1/isolation/validator 변경을 첫 보고에 포함한다. handoff tree의 fetch,
+  별도 worktree materialization, 전체 tracked-tree 검증과 첫 상태 보고까지는
+  계속하되, 그 뒤의 v0.3 continuation을 멈춘다. merge, rebase, cherry-pick,
+  새 v0.3 branch/worktree 생성을 하지 말고 사용자에게 기준점 통합 결정을
+  요청한다.
 
 현재 worktree가 이미 `codex/home-to-company-handoff-20260809`이고 완전히
 깨끗하며, 두 status 검사에서 pull 대상과 충돌할 수 있는 untracked, ignored,
@@ -66,6 +105,40 @@ handoff 원격 ref의 detached worktree를 만들고 그 worktree를 읽기 전�
 ```powershell
 git worktree add --detach "<HANDOFF_PATH>" refs/remotes/origin/codex/home-to-company-handoff-20260809
 ```
+
+handoff worktree를 만든 직후 전체 tracked tree 수신을 검증한다. 아래 명령은
+`<HANDOFF_PATH>`를 실제 경로로 바꿔 각각 실행한다.
+
+```powershell
+git -C "<HANDOFF_PATH>" sparse-checkout disable
+git -C "<HANDOFF_PATH>" rev-parse HEAD
+git -C "<HANDOFF_PATH>" rev-parse 'HEAD^{tree}'
+git -C "<HANDOFF_PATH>" diff --exit-code HEAD --
+git -C "<HANDOFF_PATH>" diff --cached --exit-code HEAD --
+git -C "<HANDOFF_PATH>" status --porcelain=v2 --untracked-files=all
+git -C "<HANDOFF_PATH>" ls-files -t
+git -C "<HANDOFF_PATH>" ls-files --others --exclude-standard
+git -C "<HANDOFF_PATH>" ls-files --others --ignored --exclude-standard
+git -C "<HANDOFF_PATH>" config --show-origin --get-regexp "^(core\.(autocrlf|eol|symlinks|filemode)|filter\.)"
+```
+
+첫 SHA는 fetch한 handoff ref의 exact commit과 같아야 한다. tree SHA는 같은
+commit에서 읽은 tree와 같아야 한다. 두 diff는 exit 0이어야 하며 tracked
+변경이 없어야 한다. `ls-files -t`에는 `S `로 시작하는 skip-worktree entry가
+없어야 한다. untracked 또는 ignored 출력이 있으면 경로만 보고하고 삭제·
+이동하지 않는다. checkout 설정은 집에서 확인된 `core.autocrlf=true`,
+`core.symlinks=false`, `core.filemode=false` 및 system Git LFS filter와
+비교해 차이를 보고하되 임의로 설정을 변경하지 않는다.
+
+commit/tree/index 동일성은 모든 tracked path, blob, Git mode와 symlink
+entry의 공식 동일성을 보장한다. 그러나 `git diff`는 checkout filter와
+line-ending 정규화를 적용할 수 있으므로 물리 working-tree bytes/type까지
+항상 같은지를 단독으로 증명하지 않는다. 이 둘을 구분해 보고한다.
+
+Git은 empty directory, `.git` 내부, virtual environment, cache,
+untracked/ignored 파일 또는 회사 전용 sealed 자료를 동기화하지 않는다.
+회사 전용 자료가 기존 worktree에 있으면 그대로 보존하고, 새 handoff
+worktree의 commit tree를 공식 프로젝트 동일성 기준으로 사용한다.
 
 그 worktree에서 아래 두 파일과 sidecar를 먼저 읽고 인증한다.
 
@@ -146,16 +219,22 @@ sidecar, branch 또는 ancestry가 다르면 수정하지 말고 불일치를 �
 
 1. 실제 경로, origin, branch, HEAD, upstream, status와 worktree
 2. live remote SHA와 기록된 기준점의 일치 여부
-3. handoff branch가 v0.2 review commit을 포함하는지
-4. 공개 sidecar 검증 결과
-5. `main`에 통합된 E0 v0.4 설계, F0 v0.14, I1 v0.2와 아직 `main` 밖인
+3. 기록점 이후 live `main`의 commits·changed paths와 handoff branch 사이의
+   ancestry 판정
+4. handoff branch가 v0.2 review commit을 포함하는지
+5. handoff worktree의 exact commit/tree/index, sparse/skip-worktree 상태,
+   tracked diff, checkout 설정과 untracked/ignored 경로 유무
+6. 공개 sidecar 검증 결과
+7. `main`에 통합된 E0 v0.4 설계, F0 v0.14, I1 v0.2와 아직 `main` 밖인
    trust-root/role-isolation v0.2의 구분
-6. v0.2 독립 심사의 `REVISE-AND-REVIEW`, `TRI2-M01`, `TRI2-m01`
-7. 구현·실행되지 않은 범위
+8. v0.2 독립 심사의 `REVISE-AND-REVIEW`, `TRI2-M01`, `TRI2-m01`
+9. 구현·실행되지 않은 범위
 
-보고가 끝나고 기준선이 일치하며 안전한 clean 작업공간을 확보할 수 있으면,
-추가 승인 대기 없이 아래 공개 설계 수정으로 이어서 진행한다. 이 프롬프트는
-그 design-only continuation을 사용자로부터 위임받은 지시다.
+보고가 끝나고 hash가 일치하며, live `main`과 handoff가 위 ancestry 규칙으로
+하나의 안전한 continuation base를 제공하고, clean 작업공간을 확보할 수
+있으면 추가 승인 대기 없이 아래 공개 설계 수정으로 이어서 진행한다. 둘이
+갈라졌으면 이 자동 continuation은 적용되지 않는다. 이 프롬프트는 위 조건을
+충족한 design-only continuation만 사용자로부터 위임받은 지시다.
 
 ```text
 S0 V0.14 TRUST ROOT AND ROLE ISOLATION DESIGN REVISION OPEN
@@ -163,11 +242,11 @@ S0 V0.14 TRUST ROOT AND ROLE ISOLATION DESIGN REVISION OPEN
 
 ## 5. 이어서 수행할 v0.3 설계 수정
 
-handoff branch의 실제 원격 HEAD에서
-`codex/s0-trust-root-role-isolation-design-v03`과 별도 clean worktree를 만든다.
-회사 로컬의 기존 작업 트리, `main`, v0.2 design branch 또는 과거 세션을
-재사용해 덮어쓰지 않는다. worktree는 편집 충돌 격리이며 비밀 보안 경계가
-아니다.
+위 ancestry 규칙으로 선택한 exact continuation base에서
+`codex/s0-trust-root-role-isolation-design-v03`과 별도 clean worktree를
+만든다. live `main`과 handoff가 갈라졌으면 만들지 않는다. 회사 로컬의
+기존 작업 트리, v0.2 design branch 또는 과거 세션을 재사용해 덮어쓰지
+않는다. worktree는 편집 충돌 격리이며 비밀 보안 경계가 아니다.
 
 기존 v0.1/v0.2 문서와 sidecar를 수정하지 않는다. 새 출력은
 `s0-lab/control/isolation/trust-root-role-isolation-v0.3/` 아래의 public
