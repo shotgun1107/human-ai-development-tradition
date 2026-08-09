@@ -3,7 +3,7 @@
 - 작성 기준 시각: `2026-08-09` KST
 - 저장소: `https://github.com/shotgun1107/human-ai-development-tradition.git`
 - 활성 기준선: `central-system-v2.1-s0-preparation`
-- 인수인계 성격: 공개 CONTROL 상태와 다음 design-only 작업의 Git 인계
+- 인수인계 성격: 현재 공개 Git-tracked 프로젝트 트리 전체와 다음 design-only 작업의 인계
 - 금지 범위: 구현, VM 구성, 키 생성, protected material, sealed bank, oracle, 모델 호출, 채점, E0/S0 실행
 
 이 문서는 집 PC의 대화 기억을 회사 PC로 전달하는 문서가 아니다. 회사
@@ -11,6 +11,28 @@ CONTROL은 실제 원격 Git 상태, 현재 회사 로컬의 작업 트리, `AGE
 공개 문서와 SHA-256 기록을 다시 확인해야 한다. 아래 SHA는 2026-08-09
 KST에 확인된 인수인계 기준점이며, 프롬프트에 맞추기 위해 원격을 되돌리거나
 로컬 사용자 변경을 제거하는 데 사용하면 안 된다.
+
+인수인계 대상은 보고서 파일 몇 개만이 아니다. handoff branch commit이
+가리키는 **전체 Git tree**와 모든 tracked path, blob bytes, Git mode,
+symlink entry와 그로부터 구성되는 Git directory structure가 회사의
+handoff commit/tree/index와 같아야 한다. 회사 CONTROL은 네 문서만
+복사하거나 cherry-pick하지 말고 원격 handoff branch 전체를 fetch하고
+materialize해야 한다.
+
+Git은 empty directory, `.git` 내부 상태, 다른 worktree, virtual
+environment, cache, untracked/ignored 파일을 전달하지 않는다. 회사 전용
+sealed 자료도 공개 Git에 넣지 않는다. 따라서 이 항목까지 포함한 두 PC의
+물리적 filesystem 전체가 byte-identical하다고 주장하면 안 된다. 회사에
+그런 local-only 자료가 있으면 삭제하지 않고 별도 clean handoff worktree를
+사용한다. 공식 동일성 기준은 handoff commit의 Git tree다.
+
+집 handoff worktree에서 확인된 checkout 관련 Git 설정은
+`core.autocrlf=true`, `core.symlinks=false`, `core.filemode=false`이며 system
+Git LFS filter가 등록돼 있다. 회사 CONTROL은 자기 값을 읽어 차이를
+보고하되, 사용자 승인 없이 global/repository 설정을 바꾸지 않는다. tree와
+index가 같아도 checkout filter, line-ending, Windows symlink/file-mode
+표현 때문에 물리 bytes/type가 다를 수 있으므로 이를 Git tree 동일성과
+혼동하지 않는다.
 
 ## 1. 원격 Git 기준점
 
@@ -40,6 +62,47 @@ KST에 확인된 인수인계 기준점이며, 프롬프트에 맞추기 위해 
 
 집 PC의 절대경로와 worktree 위치는 회사 PC의 현재 상태에 대한 증거가
 아니다. 회사 PC에 저장소가 이미 있으면 새 clone을 만들지 않는다.
+
+### 1.1 이후 변경된 `main` 처리
+
+기록된 `main` SHA `93e353a...`는 인수인계 작성 시점의 비교점이지 회사
+작업의 영구 기준점이 아니다. 회사 CONTROL은 fetch한 live `origin/main`을
+반드시 다시 읽고 다음을 구분한다.
+
+1. live `main`과 기록점이 같으면 handoff branch를 후속 기준으로 사용할 수
+   있다.
+2. live `main`이 handoff branch의 조상이면 handoff가 최신 `main`을 이미
+   포함하므로 handoff HEAD를 사용할 수 있다.
+3. handoff branch가 live `main`의 조상이면 최신 `main`이 handoff 내용을
+   포함하는지 확인하고 live `main`을 후속 기준으로 사용한다.
+4. 둘이 갈라졌으면 어느 쪽도 자동 선택하지 않는다. 기록점 이후 `main`의
+   commit 목록과 changed-path 목록, 현재 `main`의 `AGENTS.md`, protocol,
+   F0/I1/isolation/validator 관련 변경을 보고하고 CONTROL의 통합 기준 결정을
+   기다린다. merge, rebase, cherry-pick을 임의로 하지 않는다.
+
+따라서 v0.3을 언제나 고정된 handoff SHA에서 시작하라는 뜻이 아니다. live
+`main`의 변경을 확인하고 위 ancestry 규칙으로 선택한 기준점에서만 시작한다.
+
+### 1.2 전체 프로젝트 트리 수신 검증
+
+회사 CONTROL은 handoff 원격 ref를 fetch한 뒤 그 ref로 별도 worktree를
+materialize한다. 그 worktree에서 다음을 각각 확인한다.
+
+- `HEAD`가 fetch한 exact handoff commit과 같다.
+- `HEAD`의 Git tree object가 원격 handoff commit의 tree object와 같다.
+- sparse checkout이 꺼져 있고 skip-worktree entry가 없다.
+- index가 `HEAD` tree와 같고 Git의 checkout semantics에서 working tree에
+  tracked 변경이 없다.
+- handoff worktree의 tracked inventory와 Git modes는 commit tree/index와
+  같다.
+- untracked/ignored/local-only 경로가 있으면 전체 filesystem 동일성을
+  주장하지 않고 경로만 보고한다. 이를 지우거나 이동하지 않는다.
+
+이 검증을 통과해야 집에서 작성한 공개 Git 프로젝트 tree 전체를 회사에서
+빠짐없이 받았다고 말할 수 있다. 물리 working-tree bytes/type까지 동일하다고
+주장하려면 checkout 설정과 filter 효과에 대한 별도 검증이 더 필요하다.
+그다음에만 문서를 읽고 live `main` reconciliation과 v0.3 설계 작업으로
+넘어간다.
 
 ## 2. `main`에 통합된 공개 상태
 
@@ -145,9 +208,10 @@ S0 V0.14 TRUST ROOT AND ROLE ISOLATION DESIGN REVISION OPEN
 ```
 
 권장 successor 브랜치는
-`codex/s0-trust-root-role-isolation-design-v03`이며, 인수인계 브랜치의
-원격 HEAD에서 별도 worktree로 만든다. `main`, v0.2 설계 커밋 또는 과거
-대화에서 직접 시작하지 않는다.
+`codex/s0-trust-root-role-isolation-design-v03`이다. live `main`과 handoff
+branch의 ancestry를 비교해 위 규칙으로 선택한 continuation base에서 별도
+worktree를 만든다. 둘이 갈라졌으면 branch/worktree를 만들지 않고 사용자
+결정을 기다린다. v0.2 설계 커밋이나 과거 대화에서 직접 시작하지 않는다.
 
 수정 범위는 `TRI2-M01`과 `TRI2-m01`뿐이다. v0.1/v0.2 파일과 sidecar는
 수정하지 않고 v0.3 경로에 successor 문서를 만든다. 역할·store·edge 수,
@@ -175,7 +239,11 @@ A-D 공정성, closed provider/implementation/protected-material/E0/S0 게이트
    목록을 보고했다.
 2. live remote `main`, v0.2 design, v0.2 review와 handoff branch를 다시 읽었다.
 3. `7d251f04...`가 handoff branch의 조상임을 확인했다.
-4. 허용된 Markdown/sidecar를 canonical validator로 인증했다.
-5. 완료·후보·미구현 상태와 두 finding을 자신의 말로 구분했다.
-6. dirty 또는 hash mismatch가 없으면 v0.3 설계 successor를 별도 worktree에서
-   시작했다.
+4. 기록된 `main`과 live `main`의 commit·changed-path 차이 및 handoff와의
+   ancestry를 보고했다.
+5. handoff worktree의 exact commit/tree, tracked inventory와 clean 상태를
+   확인하고 전체 Git-tracked 프로젝트 트리가 수신됐음을 보고했다.
+6. 허용된 Markdown/sidecar를 canonical validator로 인증했다.
+7. 완료·후보·미구현 상태와 두 finding을 자신의 말로 구분했다.
+8. dirty/hash mismatch/divergence가 없을 때만 선택한 continuation base에서
+   v0.3 설계 successor를 별도 worktree로 시작했다.
