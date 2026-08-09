@@ -42,10 +42,10 @@ def sha256_bytes(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
 
 
-def _safe_relative(value: str | Path) -> str:
-    if type(value) not in {str, Path}:
-        raise UnsafePathError("path must be exact string or Path text")
-    raw = str(value)
+def _safe_relative(value: str) -> str:
+    if type(value) is not str:
+        raise UnsafePathError("path must be exact string text")
+    raw = value
     if not raw or "\\" in raw or "\x00" in raw:
         raise UnsafePathError("path must be non-empty canonical POSIX-relative text")
     pure = PurePosixPath(raw)
@@ -430,7 +430,7 @@ def _same_identity(left: os.stat_result, right: os.stat_result) -> bool:
 
 
 def _read_once(
-    workspace_root: Path, value: str | Path, *, max_bytes: int | None = None
+    workspace_root: Path, value: str, *, max_bytes: int | None = None
 ) -> _ReadBytes:
     if max_bytes is not None and (type(max_bytes) is not int or max_bytes < 0):
         raise AuthenticationError("authenticated byte ceiling must be an exact nonnegative integer")
@@ -548,7 +548,7 @@ def load_authenticated_manifest(
 def authenticate_manifest_entry(
     workspace_root: Path,
     manifest: AuthenticatedManifest,
-    value: str | Path,
+    value: str,
     *,
     max_bytes: int | None = None,
 ) -> AuthenticatedBytes:
