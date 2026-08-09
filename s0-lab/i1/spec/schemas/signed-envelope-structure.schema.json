@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:urc:0.14:i1:signed-envelope-structure",
+  "type":"object","additionalProperties":false,
+  "required":["signer_role","signer_key_sha256","record_length","record_sha256","signature_algorithm","signature_hex"],
+  "properties": {
+    "signer_role":{"type":"string","pattern":"^[a-z0-9-]+$"},
+    "signer_key_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "record_length":{"type":"integer","minimum":1},
+    "record_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "signature_algorithm":{"const":"Ed25519"},
+    "signature_hex":{"type":"string","pattern":"^[0-9a-f]{128}$"}
+  }
+}

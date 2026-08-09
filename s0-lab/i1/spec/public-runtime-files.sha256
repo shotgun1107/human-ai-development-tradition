@@ -1,0 +1,7 @@
+db4a821f32d65a3a4aaedf20c6b7ea62340c58768fc0611896532cf09b49966c  s0-lab/i1/spec/public-runtime-v0.14.json
+6af8921312065ae92f4263ee5f7a3374e14e1bc744876b0e9d380c2964de91c6  s0-lab/i1/spec/schemas/evidence-bundle-structure.schema.json
+cdaa80c020e2eef97c667baabb8a96160dfaad403acf053663cadec57836c150  s0-lab/i1/spec/schemas/evidence-receipt.schema.json
+fc44be18cc462d41a422d1d2147a4ce54f94c5e2519af6f9c7615c457bdf9b7d  s0-lab/i1/spec/schemas/one-shot-result.schema.json
+9b8c01cc17e7884883b019834c9f7e7fc908afb98c2cd368e20a66483db5154f  s0-lab/i1/spec/schemas/public-runtime-topology.schema.json
+b39d0e0e5b2ec0fde9a7fbbe6036342b00fd7d71d9934beb6c7d700775298590  s0-lab/i1/spec/schemas/signed-envelope-structure.schema.json
+0560b0c2aa85566f0ca10ce703f6b15745176cea4524913f085290dfaef951d4  s0-lab/i1/spec/schemas/status-record.schema.json
