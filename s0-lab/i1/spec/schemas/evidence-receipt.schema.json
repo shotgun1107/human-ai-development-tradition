@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:urc:0.14:i1:evidence-receipt-structure",
+  "type":"object","additionalProperties":false,
+  "required":["edge","producer_role","artifact_kind","artifact_sha256","required_check_result"],
+  "properties": {
+    "edge":{"type":"string","pattern":"^E[0-9]{2}$"},
+    "producer_role":{"type":"string","pattern":"^[a-z0-9-]+$"},
+    "artifact_kind":{"type":"string","pattern":"^[a-z0-9-]+$"},
+    "artifact_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "required_check_result":{"const":"accepted"}
+  }
+}

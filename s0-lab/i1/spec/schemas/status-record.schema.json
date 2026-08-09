@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:urc:0.14:i1:status-record-structure",
+  "type":"object","additionalProperties":false,
+  "required":["sequence","previous_record_sha256","event_edge","event_commitment_sha256","evidence_mask","status_code","monotonic_timestamp_ns"],
+  "properties": {
+    "sequence":{"type":"integer","minimum":0,"maximum":14},
+    "previous_record_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "event_edge":{"type":"string","pattern":"^(ROOT|E[0-9]{2})$"},
+    "event_commitment_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "evidence_mask":{"type":"string","pattern":"^[0-9a-f]{4}$"},
+    "status_code":{"type":"string","pattern":"^A-[0-9a-f]{4}$"},
+    "monotonic_timestamp_ns":{"type":"integer","minimum":0}
+  }
+}
