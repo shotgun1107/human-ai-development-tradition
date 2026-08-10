@@ -43,6 +43,14 @@
 - Do not use real customer, personal, secret, or past-project content in S0.
 - When preserving, reviewing, transferring, or publishing completed work would materially benefit from a branch, commit, or push, the agent may identify that need independently and proactively request the user's approval. Before approval, state the exact repository, intended scope, branch, and whether the request covers commit, push, or both; do not perform the operation until the user approves it.
 - For an ordinary commit or push approval request, make the request visually prominent with a clear heading, bold text, or an emoji, and state the repository, branch, scope, and requested Git action. Do not require or invent an all-caps approval token, security code, or gate-like passphrase. After such a clear request, an unambiguous response such as `ㄱㄱ`, `승인`, or `푸시해` is sufficient approval. Reserve exact gate phrases for work that genuinely changes an experimental gate, role-independence boundary, sealed boundary, or similarly sensitive authority.
+- When the user explicitly requests a cross-PC or cross-session handoff package,
+  that handoff request itself authorizes commit and push of the completed
+  public handoff-only artifacts to a dedicated handoff branch after exact
+  staged-scope and publication-eligibility verification. Do not wait for a
+  second ordinary commit/push approval. This standing handoff authorization
+  does not authorize publishing sealed, hidden-oracle, secret, personal, or
+  otherwise non-public material, and it does not authorize a PR, release,
+  `main` merge, history rewrite, or deletion.
 - Never include sealed, hidden-oracle, secret, personal, or otherwise non-public material in a commit or push merely because Git publication was approved. Verify the staged scope separately, and request additional direction whenever publication eligibility is unclear.
 - Do not change another repository unless the user explicitly approves the exact repository and operation.
 - Keep new S0 setup material under `s0-lab/` unless a task's approved output path says otherwise.
