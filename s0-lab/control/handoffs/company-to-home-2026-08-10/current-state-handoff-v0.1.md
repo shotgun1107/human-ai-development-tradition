@@ -5,6 +5,8 @@
 - 활성 기준선: `central-system-v2.1-s0-preparation`
 - 인수인계 브랜치: `codex/s0-order-eight-public-vector-independent-verification-v02`
 - 인수인계 기준 부모: `daba763e219f597197768769115c01e5ea929c8a`
+- 동기화 payload commit: `85ad19ba6703f43b1209a13164d1e28a4b62f6a4`
+- 동기화 payload tree: `11f31ab0cac263cc876467c6adf7e902a40621d0`
 - 공개 `main` 기준: `5add6e5e1675793ad179e98e51ffa1515feb3db8`
 - 성격: 공개 Git 추적 자료와 현재 CONTROL 상태의 회사→집 인계
 - 비의미: 구현 완료, 벡터 통과·동결, 키 생성, S0 또는 E0 실행 승인 아님
@@ -140,7 +142,13 @@ S0 V0.14 ORDER-EIGHT PUBLIC VECTOR INDEPENDENT VERIFICATION OPEN
 |---|---|---|
 | `origin/main` | `5add6e5e1675793ad179e98e51ffa1515feb3db8` | 원격 `main`에 반영됨 |
 | `origin/codex/s0-order-eight-public-vector-review-input-boundary-r1` | `daba763e219f597197768769115c01e5ea929c8a` | 원격에 반영됨 |
-| `origin/codex/s0-order-eight-public-vector-independent-verification-v02` | 인수인계 게시 전에는 없음 | 이 패키지를 게시할 대상 |
+| `origin/codex/s0-order-eight-public-vector-independent-verification-v02` | payload 게시 시 `85ad19ba6703f43b1209a13164d1e28a4b62f6a4` | 검증 보고서, F0-SEALED 53개, `AGENTS.md`, 인수인계 초안 포함 |
+
+이 문서와 sidecar를 최종화하는 후속 commit은 self-reference를 피하기 위해
+자기 SHA를 문서 안에 기록하지 않는다. 집 CONTROL은 live 원격 tip을 직접
+읽고, 그 tip이 payload commit `85ad19b...`을 조상으로 포함하며 위 payload
+tree의 파일을 모두 보존하는지 확인한다. 최종 게시 보고의 원격 tip과 live
+원격이 다르면 임의로 맞추지 말고 차이를 보고한다.
 
 `5add6e5...`는 `daba763...`의 조상이고, boundary branch는 `main`보다 정확히
 3 commits 앞선다. 집 PC는 `main`만 pull해서는 최신 벡터 작업과 두
@@ -223,8 +231,15 @@ git stash list
 git fetch origin
 git rev-parse origin/main
 git rev-parse origin/codex/s0-order-eight-public-vector-independent-verification-v02
+git cat-file -t 85ad19ba6703f43b1209a13164d1e28a4b62f6a4
+git rev-parse '85ad19ba6703f43b1209a13164d1e28a4b62f6a4^{tree}'
+git merge-base --is-ancestor 85ad19ba6703f43b1209a13164d1e28a4b62f6a4 origin/codex/s0-order-eight-public-vector-independent-verification-v02
 git log --oneline --branches --not --remotes
 ```
+
+`cat-file`은 `commit`, payload tree는
+`11f31ab0cac263cc876467c6adf7e902a40621d0`, ancestry 명령은 exit 0이어야
+한다.
 
 인수 branch가 로컬에 없으면:
 
