@@ -36,6 +36,10 @@ public clone에 존재한다는 이유로 입력 권한이 생기지 않는다. 
   `5add6e5e1675793ad179e98e51ffa1515feb3db8`
 - handoff predecessor:
   `daba763e219f597197768769115c01e5ea929c8a`
+- required handoff payload commit:
+  `85ad19ba6703f43b1209a13164d1e28a4b62f6a4`
+- required handoff payload tree:
+  `11f31ab0cac263cc876467c6adf7e902a40621d0`
 - active baseline: `central-system-v2.1-s0-preparation`
 
 기록된 SHA에 맞추기 위해 원격이나 로컬을 되돌리지 마라. 먼저 fetch한 실제
@@ -72,13 +76,19 @@ detached HEAD, modified/staged/untracked 파일, stash 또는 local-only commit�
 git fetch origin
 git rev-parse origin/main
 git rev-parse origin/codex/s0-order-eight-public-vector-independent-verification-v02
+git cat-file -t 85ad19ba6703f43b1209a13164d1e28a4b62f6a4
+git rev-parse '85ad19ba6703f43b1209a13164d1e28a4b62f6a4^{tree}'
+git merge-base --is-ancestor 85ad19ba6703f43b1209a13164d1e28a4b62f6a4 origin/codex/s0-order-eight-public-vector-independent-verification-v02
 git merge-base --is-ancestor origin/main origin/codex/s0-order-eight-public-vector-independent-verification-v02
 git rev-list --left-right --count origin/main...origin/codex/s0-order-eight-public-vector-independent-verification-v02
 git log --oneline --left-right --decorate origin/main...origin/codex/s0-order-eight-public-vector-independent-verification-v02
 ```
 
-원격 handoff branch가 없거나 `origin/main`이 그 조상이 아니면 임의로 branch를
-선택하거나 병합하지 말고 실제 refs와 commit 목록을 보고한 뒤 멈춰라.
+payload object type은 `commit`, payload tree는
+`11f31ab0cac263cc876467c6adf7e902a40621d0`, 두 ancestry 명령은 exit 0이어야
+한다. 원격 handoff branch가 없거나 payload commit 또는 `origin/main`이 그
+조상이 아니면 임의로 branch를 선택하거나 병합하지 말고 실제 refs와 commit
+목록을 보고한 뒤 멈춰라.
 
 기존 worktree가 완전히 clean하고 local branch가 없으면:
 
