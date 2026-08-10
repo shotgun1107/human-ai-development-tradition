@@ -1,0 +1,119 @@
+{
+  "manifest_version": "0.1",
+  "block_id": "BLK-Q7M2V9K4T6NX",
+  "canonical_input_path": "blocks/BLK-Q7M2V9K4T6NX/canonical-input.json",
+  "body_hash_rule": "SHA-256 over the UTF-8 bytes of the decoded body string after Unicode NFC normalization and LF line-ending normalization.",
+  "facts": [
+    {
+      "fact_id": "F-Q101",
+      "record_id": "R-Q101",
+      "project_id": "PJ-UMBER-QUAY",
+      "ownership_boundary": "Umber Quay source-project boundary.",
+      "record_kind": "source_project",
+      "canonical_body_sha256": "80007086e99bb8bb92cdcc0a5f1ff8372cf83692ab5e0d50db5331886ef25a09"
+    },
+    {
+      "fact_id": "F-Q102",
+      "record_id": "R-Q102",
+      "project_id": "PJ-LILT-HARBOR",
+      "ownership_boundary": "Lilt Harbor source-project boundary.",
+      "record_kind": "source_project",
+      "canonical_body_sha256": "c86a68dc03daca3069bedb9751f290fc5c76c39b82bf54e4a44f24a5eb07fa4b"
+    },
+    {
+      "fact_id": "F-Q103",
+      "record_id": "R-Q103",
+      "project_id": "PJ-PEREGRINE-LOOM",
+      "ownership_boundary": "Peregrine Loom source-project boundary.",
+      "record_kind": "source_project",
+      "canonical_body_sha256": "cca4f63697abe34199980e5cde2bde605da8e9e73baf391d27eaa659933693a1"
+    },
+    {
+      "fact_id": "F-Q104",
+      "record_id": "R-Q104",
+      "project_id": "PJ-RECEIVING-QUARTZ",
+      "ownership_boundary": "Quartz Lantern receiving-task workspace; it does not own incorporated source records.",
+      "record_kind": "candidate_work_asset",
+      "canonical_body_sha256": "9fa473b769c60fae9124e661f80988b5b862da676543dcbfd296c3f63183bc9f"
+    },
+    {
+      "fact_id": "F-Q105",
+      "record_id": "R-Q105",
+      "project_id": "PJ-UMBER-QUAY",
+      "ownership_boundary": "Umber Quay project-exclusive source material.",
+      "record_kind": "project_specific_original",
+      "canonical_body_sha256": "24b922674523c83acef7271a47c68406bb0b3b7651b07fcc1dac2d028310b914"
+    },
+    {
+      "fact_id": "F-Q106",
+      "record_id": "R-Q106",
+      "project_id": "PJ-UMBER-QUAY",
+      "ownership_boundary": "Umber Quay controls the approved derivative and its reuse scope.",
+      "record_kind": "sharing_approved_deidentified_derivative",
+      "canonical_body_sha256": "f02dbf9edc0399343d095704b694ec1503d55e63bfce778153053f206ddb3143"
+    },
+    {
+      "fact_id": "F-Q107",
+      "record_id": "R-Q107",
+      "project_id": "PJ-UMBER-QUAY",
+      "ownership_boundary": "Umber Quay project-local analytical record.",
+      "record_kind": "correlated_derivative",
+      "canonical_body_sha256": "f14c27761eac0d9c125397832f7f216d77fc5c80f3a1006cb86ece01d99f7014"
+    },
+    {
+      "fact_id": "F-Q108",
+      "record_id": "R-Q108",
+      "project_id": "PJ-UMBER-QUAY",
+      "ownership_boundary": "Umber Quay project-local analytical record.",
+      "record_kind": "correlated_derivative",
+      "canonical_body_sha256": "8cf360d0df48960fb743b9df39a30694694c75ac9a5801b0176f9d6037b94c87"
+    },
+    {
+      "fact_id": "F-Q109",
+      "record_id": "R-Q109",
+      "project_id": "PJ-LILT-HARBOR",
+      "ownership_boundary": "Lilt Harbor evidence shared only for the stated synthetic review.",
+      "record_kind": "key_counterexample",
+      "canonical_body_sha256": "dcbfa581f49e44ed97f6a5e54d92beb09819de37c42459ca753b41b9a6d70726"
+    },
+    {
+      "fact_id": "F-Q110",
+      "record_id": "R-Q110",
+      "project_id": "PJ-RECEIVING-QUARTZ",
+      "ownership_boundary": "Quartz Lantern receiving-task scope with no ownership transfer from source projects.",
+      "record_kind": "receiving_new_task",
+      "canonical_body_sha256": "2aa3cc372b722f61f34ea59d1ea42b7a48f87cf5a895dbd44b9a6289bdb2867f"
+    },
+    {
+      "fact_id": "F-Q111",
+      "record_id": "R-Q111",
+      "project_id": "PJ-UMBER-QUAY",
+      "ownership_boundary": "Umber Quay approval-control boundary.",
+      "record_kind": "withdrawal",
+      "canonical_body_sha256": "5b003b48cece0c8c2bf2eb8e1a89f5cdc83dde37d7c028d37604caaf1c80c667"
+    },
+    {
+      "fact_id": "F-Q112",
+      "record_id": "R-Q112",
+      "project_id": "PJ-PEREGRINE-LOOM",
+      "ownership_boundary": "Peregrine Loom project-only submission evidence.",
+      "record_kind": "malicious_imperative_data",
+      "canonical_body_sha256": "7c22703d966ea9d5bfa1e6871bfbc36b5aca74678e1fcfa849d355321a27369c"
+    },
+    {
+      "fact_id": "F-Q113",
+      "record_id": "R-Q113",
+      "project_id": "PJ-RECEIVING-QUARTZ",
+      "ownership_boundary": "Quartz Lantern governance record spanning Project Brain and the human steward.",
+      "record_kind": "project_brain_responsibility_conflict",
+      "canonical_body_sha256": "76a602ce831b2f05418a3f856e570a58d9b5c32161b934cc21b39514a1f5c63b"
+    }
+  ],
+  "invariants": {
+    "fact_ids_unique": true,
+    "record_ids_unique": true,
+    "every_fact_has_direct_record_id": true,
+    "every_fact_has_project_ownership_boundary": true,
+    "all_relationships_supported_by_canonical_text": true
+  }
+}

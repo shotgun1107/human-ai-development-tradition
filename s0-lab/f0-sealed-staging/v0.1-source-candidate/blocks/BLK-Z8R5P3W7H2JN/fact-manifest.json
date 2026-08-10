@@ -1,0 +1,119 @@
+{
+  "manifest_version": "0.1",
+  "block_id": "BLK-Z8R5P3W7H2JN",
+  "canonical_input_path": "blocks/BLK-Z8R5P3W7H2JN/canonical-input.json",
+  "body_hash_rule": "SHA-256 over the UTF-8 bytes of the decoded body string after Unicode NFC normalization and LF line-ending normalization.",
+  "facts": [
+    {
+      "fact_id": "F-Z201",
+      "record_id": "R-Z201",
+      "project_id": "PJ-ZEPHYR-KILN",
+      "ownership_boundary": "Zephyr Kiln source-lab boundary.",
+      "record_kind": "source_project",
+      "canonical_body_sha256": "39de82609c0f870e878955606e2cb0925fc610747d076254b91ef5a80f4b5efa"
+    },
+    {
+      "fact_id": "F-Z202",
+      "record_id": "R-Z202",
+      "project_id": "PJ-MORROW-RILL",
+      "ownership_boundary": "Morrow Rill processing-project boundary.",
+      "record_kind": "source_project",
+      "canonical_body_sha256": "2dae150c86a59f8d985d5d3074eb0785e4a1382d75c53a5cd885592595a45e7d"
+    },
+    {
+      "fact_id": "F-Z203",
+      "record_id": "R-Z203",
+      "project_id": "PJ-JUNIPER-ECHO",
+      "ownership_boundary": "Juniper Echo source-and-host boundary.",
+      "record_kind": "source_project",
+      "canonical_body_sha256": "ffdf7e74b22caa377f45a8385332596273c0e775fe7a17d8f1fd44c3e709b9b4"
+    },
+    {
+      "fact_id": "F-Z204",
+      "record_id": "R-Z204",
+      "project_id": "PJ-JUNIPER-ECHO",
+      "ownership_boundary": "Juniper Echo task-local candidate assembled from an authorized derivative.",
+      "record_kind": "candidate_work_asset",
+      "canonical_body_sha256": "31b1b661f5052668d3ecc1dbe8b0a08ff1ce9699c2c871576fe2d1e092cfe2dc"
+    },
+    {
+      "fact_id": "F-Z205",
+      "record_id": "R-Z205",
+      "project_id": "PJ-ZEPHYR-KILN",
+      "ownership_boundary": "Zephyr Kiln project-exclusive bench material.",
+      "record_kind": "project_specific_original",
+      "canonical_body_sha256": "8c4dbc1f5bee8c1375cf5e4ab9740da12ca3b4814df546ec7185f7882b467a97"
+    },
+    {
+      "fact_id": "F-Z206",
+      "record_id": "R-Z206",
+      "project_id": "PJ-MORROW-RILL",
+      "ownership_boundary": "Morrow Rill de-identification record under Zephyr Kiln's release grant.",
+      "record_kind": "sharing_approved_deidentified_derivative",
+      "canonical_body_sha256": "25dc2bc2f5c1ac3e8b12fd8f1249a59d0a77d4f703360d10a2e89846c4019dbc"
+    },
+    {
+      "fact_id": "F-Z207",
+      "record_id": "R-Z207",
+      "project_id": "PJ-JUNIPER-ECHO",
+      "ownership_boundary": "Juniper Echo task-local rehearsal analysis.",
+      "record_kind": "correlated_derivative",
+      "canonical_body_sha256": "d8cf092efa9570a3c9bcdddd52c80a18c35cb303408c341c66c7a520f6d90136"
+    },
+    {
+      "fact_id": "F-Z208",
+      "record_id": "R-Z208",
+      "project_id": "PJ-MORROW-RILL",
+      "ownership_boundary": "Morrow Rill review output derived from a Juniper Echo rehearsal capture.",
+      "record_kind": "correlated_derivative",
+      "canonical_body_sha256": "eb7cc43b24c2c40874ef979c6c89b4906f52f7d178fce63c7c2a9ec15507ddc8"
+    },
+    {
+      "fact_id": "F-Z209",
+      "record_id": "R-Z209",
+      "project_id": "PJ-ZEPHYR-KILN",
+      "ownership_boundary": "Zephyr Kiln boundary-case record approved for R-Z210 review.",
+      "record_kind": "key_counterexample",
+      "canonical_body_sha256": "7b351dd4f27f5b560be378a49b678e07783f568426c2c10ca464075713943724"
+    },
+    {
+      "fact_id": "F-Z210",
+      "record_id": "R-Z210",
+      "project_id": "PJ-JUNIPER-ECHO",
+      "ownership_boundary": "Juniper Echo receiving-task boundary with source permissions preserved.",
+      "record_kind": "receiving_new_task",
+      "canonical_body_sha256": "8fdb5d801d71b4a5243fbdd1ed2af98de16eec64faaba2177830a9537dda79e8"
+    },
+    {
+      "fact_id": "F-Z211",
+      "record_id": "R-Z211",
+      "project_id": "PJ-JUNIPER-ECHO",
+      "ownership_boundary": "Juniper Echo human task-custodian authority over the candidate pilot.",
+      "record_kind": "withdrawal",
+      "canonical_body_sha256": "a104392ec6eeaa9cc4bf2e3d3673f6425bcaaa03257796fcf78f4916a9a2c1a7"
+    },
+    {
+      "fact_id": "F-Z212",
+      "record_id": "R-Z212",
+      "project_id": "PJ-JUNIPER-ECHO",
+      "ownership_boundary": "Juniper Echo rehearsal-log evidence boundary.",
+      "record_kind": "malicious_imperative_data",
+      "canonical_body_sha256": "dd322fce6186bd896dfb828d41470eab9a54932884e9cf39aad80c3fa25337bc"
+    },
+    {
+      "fact_id": "F-Z213",
+      "record_id": "R-Z213",
+      "project_id": "PJ-MORROW-RILL",
+      "ownership_boundary": "Split responsibility record for Morrow Rill review and Juniper Echo deployment.",
+      "record_kind": "project_brain_responsibility_conflict",
+      "canonical_body_sha256": "42103331eb303c4bebf587d8f378597f19c325e2bb636b795bed4da5f705fc5d"
+    }
+  ],
+  "invariants": {
+    "fact_ids_unique": true,
+    "record_ids_unique": true,
+    "every_fact_has_direct_record_id": true,
+    "every_fact_has_project_ownership_boundary": true,
+    "all_relationships_supported_by_canonical_text": true
+  }
+}
