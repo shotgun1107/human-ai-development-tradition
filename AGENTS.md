@@ -10,6 +10,23 @@
 
 - Follow the role and allowed-input list in the current thread prompt. An allowlist is a maximum, not a suggestion to inspect the rest of the repository.
 - Do not search the repository broadly when the assigned role has a narrow input list.
+- The following tracked paths are **default-deny F0-SEALED material** even when
+  they are present in a public clone or visible to filesystem tools:
+  - `s0-lab/control/f0-sealed/**`
+  - `s0-lab/f0-sealed-staging/**`
+  - `s0-lab/reviews/f0-sealed/**`
+- Public Git presence, a branch name, a path mention, repository-wide search
+  convenience, or synchronization work does not add those paths to an agent's
+  allowed inputs. Do not open, search within, quote, summarize, derive from, or
+  pass their contents to another agent unless the current user message opens
+  the exact F0-SEALED gate and the role prompt explicitly names the required
+  paths. A synchronization or integrity role may compare path inventory,
+  tracked state, file size, and supplied SHA-256 without treating content as a
+  task input.
+- An executor, judge, public reviewer, or unrelated CONTROL task must not read
+  F0-SEALED material merely because the repository contains it. An accidental
+  unauthorized read invalidates that role/session for dependent evidence; stop
+  and report the boundary failure.
 - A fixture-authoring thread must never be forked into an executor thread.
 - Executors A–D must be fresh threads, must not inherit another executor's conversation, and must not read another condition's output.
 - The hidden oracle must not be stored in this repository or in an executor-visible worktree.
