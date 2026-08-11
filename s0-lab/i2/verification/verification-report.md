@@ -1,9 +1,9 @@
-# I2 공개 trust-root/role-isolation construction v0.2 검증 보고서
+# I2 공개 trust-root/role-isolation construction v0.3 검증 보고서
 
 - `date`: `2026-08-11 KST`
-- `branch`: `codex/s0-trust-root-role-isolation-public-implementation-v02`
-- `base_commit`: `aa68f797ff4be1175048d8329f98d3c469dfb904`
-- `gate`: `S0 V0.14 TRUST ROOT AND ROLE ISOLATION PUBLIC IMPLEMENTATION CANDIDATE OPEN`
+- `branch`: `codex/s0-trust-root-role-isolation-public-implementation-v03`
+- `base_commit`: `01a1430d29d3c87e9448d9370a404e60371f721d`
+- `gate`: `S0 V0.14 TRUST ROOT AND ROLE ISOLATION PUBLIC IMPLEMENTATION V0.3 REVISION OPEN`
 - `claim_kind`: bounded public construction verification only
 
 ## 1. 입력 경계
@@ -25,8 +25,10 @@ manifest, implementation manifest, 테스트 및 verifier 입력에 포함되지
   completion 구조
 - route-local predecessor와 호출자가 공급한 global predecessor/sequence 구조
 - 단일 contiguous trace의 emitted event-ID 중복 거부
-- 공급된 multi-route set에서 서로 다른 route의 preallocated `R/A/P/C` ID
-  교차 재사용 거부
+- 공급된 multi-route set에서 immutable route identity의 두 번째 출현 거부
+- route별 `result_media_id`와 네 preallocated `R/A/P/C` ID, 총 다섯 식별자의
+  단일 소유권 및 route 간 result/result, result/event, event/event 충돌 거부
+- 공급된 multi-route set 전체의 emitted event-ID 중복 거부
 - I1 public runtime manifest/JSON SHA-256, 22-role 순서, root 제외 21-role 식별자
   inventory 결박
 - 동결 `TRI2-VEC-02` 네 행과 공개 evidence hash의 exact binding
@@ -46,27 +48,29 @@ same-process 코드에 대한 보안 경계가 아니다.
 
 최종 source와 test delta 이후 공개 `unittest` suite를 한 번 실행했다.
 
-- tests run: `34`
+- tests run: `37`
 - failures: `0`
 - errors: `0`
 - skips: `0`
 
 회귀 표면에는 세 route class와 모든 lifecycle variant, exact byte grammar 변이,
 global/route chain 오류, forged/corrupt handle, preallocated-ID 교차 재사용,
-early-terminal unused-ID 재사용, I1 source 의미 결박 및 frozen vector mutation이
-포함된다.
+early-terminal unused-ID 재사용, 동일 route의 모순된 종료 이력, route 간
+result-media/result-media 및 result-media/event-ID 충돌, 역순 입력과
+early-terminal 변형, I1 source 의미 결박 및 frozen vector mutation이 포함된다.
 
-작성자 측 read-only 적대적 QA에서 발견된 다음 항목은 최종 source/test에
-반영됐다.
+v0.2 독립 심사에서 다음 두 major finding이 확인됐다.
 
-1. 서로 다른 route의 unused preallocated ID overlap 누락
-2. forged exact-type event에서 안정된 I2 오류 대신 `KeyError`가 누출되던 경로
-3. 세 route class 중 하나만 시험하던 coverage gap
-4. verifier bootstrap 경계와 machine-readable 결과 label 불일치
+1. 같은 immutable route identity의 성공·실패 또는 복수 종료 이력이 한 supplied
+   set에서 함께 허용됐다.
+2. aggregate validator가 result-media ID를 소유권 map에 등록하지 않아 route 간
+   result/result 및 result/event 충돌이 허용됐다.
 
-수정 후 targeted closure QA에서 위 네 항목은 모두 닫혔고, 공개 test suite는
-`30/30` 통과했다. 이후 남은 hostile tuple sentinel을 추가한 최종 suite가 위의
-`34/34` 결과다. 이 QA는 작성자 측 보조 검증이며 독립 심사 증거가 아니다.
+v0.3은 route identity를 set당 정확히 한 번으로 제한하고, 각 route의 result-media
+ID와 네 event ID를 하나의 다섯-ID ownership map에 등록한다. 공급된 모든 route의
+emitted event ID도 별도 set으로 재검사한다. 동일 이력, 모순 종료, 두 completion,
+역순 충돌, early-terminal 변형을 hostile regression으로 추가했다. 이 검증은
+작성자 측 보조 검증이며 독립 심사 증거가 아니다.
 
 ## 5. 최종 verifier 계약
 
@@ -104,7 +108,7 @@ powershell -NoProfile -ExecutionPolicy Bypass `
 
 ## 6. 최대 허용 주장
 
-최대 주장은 인증된 공개 입력에 한해 I2 v0.2의 byte codec, 구조적 lifecycle,
+최대 주장은 인증된 공개 입력에 한해 I2 v0.3의 byte codec, 구조적 lifecycle,
 공급 범위 ID 충돌, I1 공개 inventory 결박 및 frozen vector binding이 model-free
 construction tests를 통과했다는 것이다.
 

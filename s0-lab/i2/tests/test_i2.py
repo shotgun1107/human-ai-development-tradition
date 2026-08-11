@@ -917,12 +917,23 @@ class LifecycleTests(unittest.TestCase):
 
 
 class SuppliedRouteSetTests(unittest.TestCase):
-    def test_disjoint_routes_and_same_route_repeated_bindings(self) -> None:
+    def assert_route_set_rejected(
+        self,
+        *groups: tuple[
+            s0_i2.ImportRouteContext,
+            tuple[s0_i2.ImportLedgerEvent, ...],
+        ],
+    ) -> None:
+        with self.assertRaises(LifecycleError):
+            s0_i2.validate_supplied_route_set(groups)
+
+    def test_disjoint_routes_are_accepted(self) -> None:
         first_context, first_events = parsed_route("accepted")
         second_context = route_context(
             route_class="registry-binding-v1",
             campaign_character="0",
             event_characters=("c", "d", "e", "f"),
+            result_media_character="a",
         )
         _, second_events = parsed_route("missing", context=second_context)
         validated = s0_i2.validate_supplied_route_set(
@@ -930,16 +941,30 @@ class SuppliedRouteSetTests(unittest.TestCase):
         )
         self.assertEqual(len(validated), 2)
 
-        early_same_route = parsed_early_route(
-            first_context, after_admission=False
+    def test_repeated_route_identity_and_contradictory_histories_are_rejected(
+        self,
+    ) -> None:
+        context, accepted = parsed_route("accepted")
+        _, missing = parsed_route("missing", context=context)
+        early_reserved = parsed_early_route(context, after_admission=False)
+        early_admission = parsed_early_route(context, after_admission=True)
+        cases = (
+            (accepted, accepted),
+            (accepted, missing),
+            (missing, accepted),
+            (accepted, early_reserved),
+            (early_reserved, accepted),
+            (accepted, early_admission),
+            (early_admission, accepted),
+            (early_reserved, early_reserved),
+            (early_admission, early_admission),
         )
-        repeated = s0_i2.validate_supplied_route_set(
-            (
-                (first_context, first_events),
-                (first_context, early_same_route),
-            )
-        )
-        self.assertEqual(len(repeated), 2)
+        for first, second in cases:
+            with self.subTest(first=len(first), second=len(second)):
+                self.assert_route_set_rejected(
+                    (context, first),
+                    (context, second),
+                )
 
     def test_distinct_route_preallocated_overlap_is_rejected(self) -> None:
         first_context, first_events = parsed_route("accepted")
@@ -951,13 +976,54 @@ class SuppliedRouteSetTests(unittest.TestCase):
         _, overlapping_events = parsed_route(
             "crash", context=overlapping_context
         )
-        with self.assertRaises(LifecycleError):
-            s0_i2.validate_supplied_route_set(
-                (
-                    (first_context, first_events),
-                    (overlapping_context, overlapping_events),
-                )
-            )
+        self.assert_route_set_rejected(
+            (first_context, first_events),
+            (overlapping_context, overlapping_events),
+        )
+
+    def test_cross_route_result_media_to_event_id_collision_is_rejected(self) -> None:
+        first_context = route_context(result_media_character="c")
+        _, first_full = parsed_route("accepted", context=first_context)
+        first_early = parsed_early_route(first_context, after_admission=False)
+        second_context = route_context(
+            route_class="registry-binding-v1",
+            campaign_character="0",
+            event_characters=("c", "d", "e", "f"),
+            result_media_character="a",
+        )
+        _, second_full = parsed_route("missing", context=second_context)
+        second_early = parsed_early_route(second_context, after_admission=True)
+        cases = (
+            ((first_context, first_full), (second_context, second_full)),
+            ((second_context, second_full), (first_context, first_full)),
+            ((first_context, first_early), (second_context, second_full)),
+            ((second_context, second_early), (first_context, first_full)),
+        )
+        for first, second in cases:
+            with self.subTest(first=first[0].route_class, second=second[0].route_class):
+                self.assert_route_set_rejected(first, second)
+
+    def test_cross_route_result_media_id_reuse_is_rejected(self) -> None:
+        first_context = route_context(result_media_character="b")
+        _, first_full = parsed_route("accepted", context=first_context)
+        first_early = parsed_early_route(first_context, after_admission=True)
+        second_context = route_context(
+            route_class="registry-binding-v1",
+            campaign_character="0",
+            event_characters=("c", "d", "e", "f"),
+            result_media_character="b",
+        )
+        _, second_full = parsed_route("crash", context=second_context)
+        second_early = parsed_early_route(second_context, after_admission=False)
+        cases = (
+            ((first_context, first_full), (second_context, second_full)),
+            ((second_context, second_full), (first_context, first_full)),
+            ((first_context, first_early), (second_context, second_full)),
+            ((second_context, second_early), (first_context, first_full)),
+        )
+        for first, second in cases:
+            with self.subTest(first=first[0].route_class, second=second[0].route_class):
+                self.assert_route_set_rejected(first, second)
 
     def test_early_terminal_unused_preallocated_id_overlap_is_rejected(self) -> None:
         first_context = route_context()
@@ -974,13 +1040,10 @@ class SuppliedRouteSetTests(unittest.TestCase):
         _, overlapping_events = parsed_route(
             "validation-rejected", context=overlapping_context
         )
-        with self.assertRaises(LifecycleError):
-            s0_i2.validate_supplied_route_set(
-                (
-                    (first_context, first_events),
-                    (overlapping_context, overlapping_events),
-                )
-            )
+        self.assert_route_set_rejected(
+            (first_context, first_events),
+            (overlapping_context, overlapping_events),
+        )
 
 
 class UnsupportedBoundaryTests(unittest.TestCase):
@@ -1004,17 +1067,21 @@ class UnsupportedBoundaryTests(unittest.TestCase):
 
 class ContractAndVectorTests(unittest.TestCase):
     def test_exact_contract_and_signer_context(self) -> None:
-        path = I2_ROOT / "spec" / "trust-root-role-isolation-contract-v0.2.json"
+        path = I2_ROOT / "spec" / "trust-root-role-isolation-contract-v0.3.json"
         raw = path.read_bytes()
         self.assertEqual(hashlib.sha256(raw).hexdigest(), CONTRACT_SHA256)
         document = s0_i2.verify_contract_bytes(raw)
         self.assertEqual(set(document["records"]), {"import_ledger_event"})
         self.assertEqual(document["complete_validation_status"], "BLOCKED")
+        ownership = document["supplied_route_set_identifier_ownership"]
+        self.assertEqual(ownership["route_identity_occurrences"], "exactly one")
+        self.assertEqual(ownership["identifiers_per_route"], 5)
+        self.assertEqual(ownership["project_lifetime_uniqueness"], "BLOCKED")
         context = s0_i2.signer_context_from_contract_file(path)
         self.assertEqual(context.registry_role_order, FROZEN_REGISTRY_ROLE_ORDER)
 
     def test_contract_byte_change_fails_before_semantic_use(self) -> None:
-        path = I2_ROOT / "spec" / "trust-root-role-isolation-contract-v0.2.json"
+        path = I2_ROOT / "spec" / "trust-root-role-isolation-contract-v0.3.json"
         raw = path.read_bytes()
         with self.assertRaises(BindingError):
             s0_i2.verify_contract_bytes(raw + b"\n")

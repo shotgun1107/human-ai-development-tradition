@@ -1,4 +1,4 @@
-# I2 공개 trust-root/role-isolation construction candidate v0.2
+# I2 공개 trust-root/role-isolation construction candidate v0.3
 
 이 디렉터리는 CONTROL에 채택된 S0 v0.14 trust-root/role-isolation v0.4
 공개 설계에서, 현재 인증된 공개 입력만으로 기계적으로 구현할 수 있는 최소
@@ -18,16 +18,20 @@ manifest의 정확한 SHA-256을 별도 입력으로 인증하고, 그 안의 22
 - 세 import route class의 `R/A/P/C` lifecycle tuple 및 route-local predecessor,
   binding, ID 중복 검증
 - 호출자가 제공한 global sequence와 predecessor hash의 구조적 검증
-- 공급된 단일 trace의 emitted event ID 중복과, 공급된 multi-route set에서
-  서로 다른 route 사이의 네 preallocated `R/A/P/C` ID 교차 재사용 검출
+- 공급된 단일 trace와 multi-route set의 emitted event ID 중복 검출
+- 공급된 multi-route set에서 immutable route identity의 두 번째 출현 거부
+- 각 route가 소유한 `result_media_id`와 네 preallocated `R/A/P/C` ID, 총 다섯
+  식별자의 route 간 단일 소유권 및 교차 충돌 검증
 - 동결된 `TRI2-VEC-02`의 네 행, 순서, 공개 증거 hash에 대한 exact binding
 - public contract, I1 public runtime 및 source hash에 대한 fail-closed 인증
 
-이 검증은 공급된 bytes와 trace의 구조만 판정한다. 같은 route에서 모든 event가
-동일한 네 preallocated ID binding을 반복하는 것은 정상이며, 서로 다른 route의
-ID 집합이 겹치는 경우만 공급 범위에서 거부한다. 실제 project-lifetime 원장,
-원자 append, rollback-resistant witness 또는 appliance 상태를 관찰하지 않으며
-그런 결과를 주장하지 않는다.
+이 검증은 공급된 bytes와 trace의 구조만 판정한다. 공급된 set 안에서 같은
+immutable route identity는 정확히 한 번만 존재할 수 있고, 각 route의 결과 매체
+ID와 네 event ID는 다른 route의 다섯 ID 어느 것과도 겹칠 수 없다. 따라서 같은
+route의 성공·실패 이력 중복이나 result-media/result-media,
+result-media/event-ID 충돌은 거부한다. 실제 project-lifetime 원장, 원자 append,
+rollback-resistant witness 또는 appliance 상태를 관찰하지 않으며 그런 결과를
+주장하지 않는다.
 
 Python의 frozen dataclass와 module-private provenance marker는 신뢰된 same-process
 호출자에게 제공하는 API discipline이다. 악성 same-process 코드의 introspection,
