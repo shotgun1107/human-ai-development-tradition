@@ -1,0 +1,212 @@
+{
+  "schema_id": "S0-TRUST-ROOT-ROLE-ISOLATION-PUBLIC-CONTRACT-2",
+  "version": "0.2.0",
+  "claim_kind": "bounded public construction candidate only",
+  "source_bindings": {
+    "trust_root_role_isolation_v0_4_sha256": "5794a2c1d80889af96d2838e951d685a8d0a7d0fad3a209895adb01319dafed3",
+    "trust_root_control_integration_sha256": "f172ba01bc37a6a96077f6441aca24cd525f19f034623c752d638a00ec0378c0",
+    "identity_authority_matrix_v0_4_sha256": "19f085b320cc718f33c623566eea984f2271ee1906184d246053f01070dea1c8",
+    "isolation_acceptance_plan_v0_4_sha256": "f48cd91f71f79d223ce7359d6af543198218ecbd743ca99fdb0c770d1c788d73",
+    "tri2_vec_02_control_freeze_sha256": "271ff05d7af484b072264a5c1f9d6a6bb157b0a6766613da5c6ddae8b994475c",
+    "tri2_vec_02_artifact_sha256": "a5195c25bf206a31ab59b2ce8e34a092d0e3921b1f252675b3ab7a859cb49668",
+    "tri2_vec_02_derivation_sha256": "cf10458557273de394a0b119afd2dc61d9301a9e9e6f8bb677926d367e0daf2d",
+    "tri2_vec_02_independent_verification_sha256": "fb5df64e3428904d097b0f6130fdc20dbb945f96957934e210377d7dbd842438",
+    "i1_public_runtime_manifest_sha256": "9fdffa48994626f63527ee6eceff9825f2df45f91dec12889362ee180d94245e",
+    "i1_public_runtime_json_sha256": "fd9e4a474bb5438065dff0a51c24cd2eb4e8e1caa2cbb5d6eb169b540c691d08"
+  },
+  "preserved_inventory": {
+    "aggregated_role_rows": 32,
+    "role_positions": 40,
+    "paired_rows": 8,
+    "experimental_signers": 21,
+    "non_row_roots": 1,
+    "registry_ids": 22,
+    "experimental_stores": 27,
+    "explicit_readers": 46,
+    "edges": 64,
+    "acceptance_rows": 107,
+    "signature_scopes": 3,
+    "ledger_namespaces": 3,
+    "future_units": 8,
+    "maximum_concurrency": 3
+  },
+  "signer_registry": {
+    "authority_kind": "authenticated public identifier inventory only",
+    "registry_role_order": [
+      "adjudication-comparison",
+      "analysis",
+      "analysis-map-comparison",
+      "catalog-comparison",
+      "comparator-builder-1",
+      "comparator-builder-2",
+      "comparator-operator-1",
+      "comparator-operator-2",
+      "content-intake",
+      "control-registrar",
+      "control-root-authority",
+      "final-decision-custodian",
+      "judgment-comparison",
+      "label-comparison",
+      "leakage-comparison",
+      "p1-review-comparison",
+      "public-record-publisher",
+      "representation-builder",
+      "scan-comparison",
+      "semantic-judge-1",
+      "semantic-judge-2",
+      "simulation-builder"
+    ],
+    "non_root_signer_roles": [
+      "adjudication-comparison",
+      "analysis",
+      "analysis-map-comparison",
+      "catalog-comparison",
+      "comparator-builder-1",
+      "comparator-builder-2",
+      "comparator-operator-1",
+      "comparator-operator-2",
+      "content-intake",
+      "control-registrar",
+      "final-decision-custodian",
+      "judgment-comparison",
+      "label-comparison",
+      "leakage-comparison",
+      "p1-review-comparison",
+      "public-record-publisher",
+      "representation-builder",
+      "scan-comparison",
+      "semantic-judge-1",
+      "semantic-judge-2",
+      "simulation-builder"
+    ]
+  },
+  "route_states": {
+    "preactivation-context-v1": {
+      "source": "key-generated",
+      "destination": "pop-context-bound"
+    },
+    "registry-binding-v1": {
+      "source": "pop-issued",
+      "destination": "registry-bound"
+    },
+    "activation-binding-v1": {
+      "source": "registry-bound",
+      "destination": "active"
+    }
+  },
+  "records": {
+    "import_ledger_event": {
+      "schema": "S0-SIGNER-MEDIA-LEDGER-IMPORT-EVENT-1",
+      "line_count": 31,
+      "encoding": "strict ASCII name=value lines with LF after every line",
+      "field_order": [
+        "signer_media_event_schema",
+        "namespace",
+        "sequence",
+        "previous_event_sha256",
+        "event_id",
+        "prior_route_event_id",
+        "campaign_id",
+        "ceremony_id",
+        "signer_id",
+        "route_kind",
+        "route_class",
+        "request_id",
+        "attachment_capability_id",
+        "admission_event_id",
+        "admission_record_sha256",
+        "media_object_sha256",
+        "media_object_id",
+        "result_media_id",
+        "result_media_kind",
+        "reserved_media_event_id",
+        "admission_frozen_media_event_id",
+        "pending_media_event_id",
+        "completion_media_event_id",
+        "outcome_schema",
+        "outcome_frame_sha256",
+        "outcome_class",
+        "before_appliance_state",
+        "after_appliance_state",
+        "state",
+        "terminal_from",
+        "decision"
+      ]
+    }
+  },
+  "lifecycle_variants": [
+    "reserved",
+    "admission-frozen",
+    "pending",
+    "accepted",
+    "direct-terminal-reserved",
+    "direct-terminal-admission-frozen",
+    "parse-rejected",
+    "validation-rejected",
+    "state-commit-failed",
+    "crash",
+    "missing",
+    "duplicate",
+    "disagreement"
+  ],
+  "supported_validation": [
+    "exact import-event byte parsing and serialization",
+    "import-event SHA-256",
+    "single-event lifecycle tuple structure",
+    "route-local R-A-P-C ordering and immutable route binding",
+    "caller-supplied global predecessor structural link",
+    "emitted event ID duplicate rejection within a supplied contiguous trace",
+    "preallocated R-A-P-C ID non-overlap across a supplied multi-route set",
+    "exact I1 signer-identifier inventory binding",
+    "exact frozen TRI2-VEC-02 evidence binding"
+  ],
+  "unsupported_boundaries": [
+    "import-admission-exact-grammar",
+    "import-outcome-exact-grammar",
+    "complete-outcome-classification",
+    "durable-ledger",
+    "project-lifetime-uniqueness",
+    "atomic-append",
+    "witness-validation",
+    "actual-registry-authority",
+    "provider-or-platform-enforcement"
+  ],
+  "complete_validation_status": "BLOCKED",
+  "tri2_vec_02": {
+    "artifact_id": "TRI2-VEC-02",
+    "withdrawn_predecessor": "TRI2-VEC-01",
+    "rows": [
+      [
+        "TRI2-VEC-02-01",
+        "c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac037a"
+      ],
+      [
+        "TRI2-VEC-02-02",
+        "c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac03fa"
+      ],
+      [
+        "TRI2-VEC-02-03",
+        "26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc05"
+      ],
+      [
+        "TRI2-VEC-02-04",
+        "26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc85"
+      ]
+    ]
+  },
+  "forbidden_capabilities": [
+    "key-generation",
+    "signature-generation-or-verification",
+    "curve-or-point-operations",
+    "private-key-custody",
+    "anchor-or-registry-activation",
+    "ledger-or-witness-provider",
+    "vm-sandbox-account-or-network-enforcement",
+    "provider-or-model-session",
+    "protected-material",
+    "fixture-or-hidden-oracle",
+    "executor-judge-scoring-or-statistics",
+    "e0-or-s0-execution",
+    "central-system-or-project-brain"
+  ]
+}
