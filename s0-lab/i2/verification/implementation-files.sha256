@@ -1,0 +1,12 @@
+03a026906e02d9eea1778164d3d498329a4ff9e0c73ed5f307d407e524501717  s0-lab/i2/implementation/s0_i2/__init__.py
+8003baffc8f0e9e031c4253ed06780961befbe1cb6fa7f1fbbde56ad402434b6  s0-lab/i2/implementation/s0_i2/canonical.py
+04c03d3cbe046ccd5f63006aac5ea695297942b3ba261a2f063efb3ff6db60b9  s0-lab/i2/implementation/s0_i2/cli.py
+f373d27ff75489d1a277171bde1a8f63658df1f26a84e3afe759a04926299e4e  s0-lab/i2/implementation/s0_i2/contract.py
+48f92aad26f12d83597399e312fd522b6134ffe7d46540e95e2d197b1e0dacca  s0-lab/i2/implementation/s0_i2/errors.py
+b08511defc65c28203092344552e0106eec0e3642ab489d86d7039f75f7c77c3  s0-lab/i2/implementation/s0_i2/lifecycle.py
+560c1693a1385fe5962874cd4ce3d23d51a2847d9107f0754200ec498c546019  s0-lab/i2/implementation/s0_i2/records.py
+65b601a3e73fcca85e8da752e4e8daf0b0e3b2141813c0066a39d7984ddca75e  s0-lab/i2/implementation/s0_i2/vectors.py
+498d96b5115d2c9aea79d9fb25a76a4c2ea04849abb72ac107362860cc7a2510  s0-lab/i2/README.md
+2573c74296385ad6520c6ee4fca7486789c4b5b8df61abfd7c369d820022599a  s0-lab/i2/README.sha256
+1b77c5d8ee0c3c3e91c348ce1e8dc5a1d4794e98e65f0c1dc9f26cc0ecb8244f  s0-lab/i2/spec/trust-root-role-isolation-contract-v0.1.json
+0395b2f3072886f4a69032cb03c074002f11dddd4a43ccac478c30b2788ee8f8  s0-lab/i2/tools/verify-i2.ps1

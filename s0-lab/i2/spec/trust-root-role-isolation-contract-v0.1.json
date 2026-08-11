@@ -1,0 +1,198 @@
+{
+  "schema_id": "S0-TRUST-ROOT-ROLE-ISOLATION-PUBLIC-CONTRACT-1",
+  "claim_kind": "public implementation contract only",
+  "source_bindings": {
+    "trust_root_role_isolation_v0_4_sha256": "5794a2c1d80889af96d2838e951d685a8d0a7d0fad3a209895adb01319dafed3",
+    "trust_root_control_integration_sha256": "f172ba01bc37a6a96077f6441aca24cd525f19f034623c752d638a00ec0378c0",
+    "tri2_vec_02_artifact_sha256": "a5195c25bf206a31ab59b2ce8e34a092d0e3921b1f252675b3ab7a859cb49668",
+    "tri2_vec_02_derivation_sha256": "cf10458557273de394a0b119afd2dc61d9301a9e9e6f8bb677926d367e0daf2d",
+    "tri2_vec_02_final_decision_sha256": "271ff05d7af484b072264a5c1f9d6a6bb157b0a6766613da5c6ddae8b994475c"
+  },
+  "preserved_inventory": {
+    "aggregated_role_rows": 32,
+    "role_positions": 40,
+    "paired_rows": 8,
+    "experimental_signers": 21,
+    "non_row_roots": 1,
+    "registry_ids": 22,
+    "experimental_stores": 27,
+    "explicit_readers": 46,
+    "edges": 64,
+    "acceptance_rows": 107,
+    "signature_scopes": 3,
+    "ledger_namespaces": 3
+  },
+  "route_states": {
+    "preactivation-context-v1": {
+      "source": "key-generated",
+      "destination": "pop-context-bound"
+    },
+    "registry-binding-v1": {
+      "source": "pop-issued",
+      "destination": "registry-bound"
+    },
+    "activation-binding-v1": {
+      "source": "registry-bound",
+      "destination": "active"
+    }
+  },
+  "records": {
+    "import_admission": {
+      "schema": "S0-SIGNER-IMPORT-ADMISSION-2",
+      "line_count": 21,
+      "field_order": [
+        "import_admission_schema",
+        "authority_id",
+        "campaign_id",
+        "ceremony_id",
+        "signer_id",
+        "import_class",
+        "from_state",
+        "to_state",
+        "package_sha256",
+        "package_object_id",
+        "attachment_capability_id",
+        "result_media_kind",
+        "result_media_id",
+        "reserved_media_event_id",
+        "admission_frozen_media_event_id",
+        "pending_media_event_id",
+        "completion_media_event_id",
+        "outcome_schema",
+        "outcome_max_bytes",
+        "admission_event_id",
+        "decision"
+      ]
+    },
+    "import_outcome": {
+      "schema": "S0-SIGNER-IMPORT-OUTCOME-1",
+      "line_count": 26,
+      "maximum_bytes": 2048,
+      "field_order": [
+        "import_outcome_schema",
+        "tcb_service_id",
+        "campaign_id",
+        "ceremony_id",
+        "signer_id",
+        "import_class",
+        "from_state",
+        "to_state",
+        "package_sha256",
+        "package_object_id",
+        "attachment_capability_id",
+        "admission_event_id",
+        "admission_record_sha256",
+        "result_media_kind",
+        "result_media_id",
+        "reserved_media_event_id",
+        "admission_frozen_media_event_id",
+        "pending_media_event_id",
+        "completion_media_event_id",
+        "before_state",
+        "after_state",
+        "before_configuration_state_sha256",
+        "after_configuration_state_sha256",
+        "decision",
+        "reason",
+        "outcome_body_sha256"
+      ]
+    },
+    "import_ledger_event": {
+      "schema": "S0-SIGNER-MEDIA-LEDGER-IMPORT-EVENT-1",
+      "line_count": 31,
+      "field_order": [
+        "signer_media_event_schema",
+        "namespace",
+        "sequence",
+        "previous_event_sha256",
+        "event_id",
+        "prior_route_event_id",
+        "campaign_id",
+        "ceremony_id",
+        "signer_id",
+        "route_kind",
+        "route_class",
+        "request_id",
+        "attachment_capability_id",
+        "admission_event_id",
+        "admission_record_sha256",
+        "media_object_sha256",
+        "media_object_id",
+        "result_media_id",
+        "result_media_kind",
+        "reserved_media_event_id",
+        "admission_frozen_media_event_id",
+        "pending_media_event_id",
+        "completion_media_event_id",
+        "outcome_schema",
+        "outcome_frame_sha256",
+        "outcome_class",
+        "before_appliance_state",
+        "after_appliance_state",
+        "state",
+        "terminal_from",
+        "decision"
+      ]
+    }
+  },
+  "lifecycle_variants": [
+    "reserved",
+    "admission-frozen",
+    "pending",
+    "accepted",
+    "direct-terminal-reserved",
+    "direct-terminal-admission-frozen",
+    "parse-rejected",
+    "validation-rejected",
+    "state-commit-failed",
+    "crash",
+    "missing",
+    "duplicate",
+    "disagreement"
+  ],
+  "classification_precedence": [
+    "crash",
+    "missing",
+    "duplicate",
+    "disagreement",
+    "parse-rejected",
+    "validation-rejected",
+    "state-commit-failed",
+    "accepted"
+  ],
+  "tri2_vec_02": {
+    "artifact_id": "TRI2-VEC-02",
+    "withdrawn_predecessor": "TRI2-VEC-01",
+    "rows": [
+      [
+        "TRI2-VEC-02-01",
+        "c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac037a"
+      ],
+      [
+        "TRI2-VEC-02-02",
+        "c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac03fa"
+      ],
+      [
+        "TRI2-VEC-02-03",
+        "26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc05"
+      ],
+      [
+        "TRI2-VEC-02-04",
+        "26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc85"
+      ]
+    ]
+  },
+  "closed_boundaries": [
+    "provider",
+    "model-session",
+    "key-generation",
+    "private-key-custody",
+    "ledger-provider",
+    "witness-provider",
+    "protected-material",
+    "fixture",
+    "hidden-oracle",
+    "e0",
+    "s0"
+  ]
+}
