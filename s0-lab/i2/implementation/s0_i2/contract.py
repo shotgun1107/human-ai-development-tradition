@@ -1,4 +1,4 @@
-"""Exact authentication and semantic checks for the public I2 v0.2 contract."""
+"""Exact authentication and semantic checks for the public I2 v0.3 contract."""
 
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ from .vectors import (
 )
 
 
-CONTRACT_SHA256 = "447b56c39f16c37272edd527d44e06328b5245a51dc8e83bc17a931cad26b2a8"
+CONTRACT_SHA256 = "d7d1e877d618508ffcd0f4148d5a8fd0137c2ae4fdca5267fd40e9164c15cd15"
 I1_PUBLIC_RUNTIME_JSON_SHA256 = (
     "fd9e4a474bb5438065dff0a51c24cd2eb4e8e1caa2cbb5d6eb169b540c691d08"
 )
@@ -72,6 +72,23 @@ EXPECTED_LIFECYCLE_VARIANTS = (
     "duplicate",
     "disagreement",
 )
+EXPECTED_SUPPLIED_ROUTE_SET_IDENTIFIER_OWNERSHIP = {
+    "scope": "caller-supplied route set only",
+    "route_identity_occurrences": "exactly one",
+    "identifiers_per_route": 5,
+    "identifier_fields": [
+        "result_media_id",
+        "reserved_media_event_id",
+        "admission_frozen_media_event_id",
+        "pending_media_event_id",
+        "completion_media_event_id",
+    ],
+    "identifier_values": (
+        "nonzero lowercase 64-hex and single-owner across the supplied set"
+    ),
+    "duplicate_route_identity": "reject",
+    "project_lifetime_uniqueness": "BLOCKED",
+}
 EXPECTED_SUPPORTED_VALIDATION = (
     "exact import-event byte parsing and serialization",
     "import-event SHA-256",
@@ -79,7 +96,9 @@ EXPECTED_SUPPORTED_VALIDATION = (
     "route-local R-A-P-C ordering and immutable route binding",
     "caller-supplied global predecessor structural link",
     "emitted event ID duplicate rejection within a supplied contiguous trace",
-    "preallocated R-A-P-C ID non-overlap across a supplied multi-route set",
+    "duplicate immutable route identity rejection within a supplied multi-route set",
+    "result-media and preallocated R-A-P-C identifier single-owner enforcement within a supplied multi-route set",
+    "emitted event ID duplicate rejection across a supplied multi-route set",
     "exact I1 signer-identifier inventory binding",
     "exact frozen TRI2-VEC-02 evidence binding",
 )
@@ -156,6 +175,7 @@ def verify_contract_bytes(raw: bytes) -> dict[str, Any]:
         "route_states",
         "records",
         "lifecycle_variants",
+        "supplied_route_set_identifier_ownership",
         "supported_validation",
         "unsupported_boundaries",
         "complete_validation_status",
@@ -165,10 +185,10 @@ def verify_contract_bytes(raw: bytes) -> dict[str, Any]:
     _require_equal(set(document), expected_top_level, "top-level keys")
     _require_equal(
         document["schema_id"],
-        "S0-TRUST-ROOT-ROLE-ISOLATION-PUBLIC-CONTRACT-2",
+        "S0-TRUST-ROOT-ROLE-ISOLATION-PUBLIC-CONTRACT-3",
         "schema_id",
     )
-    _require_equal(document["version"], "0.2.0", "version")
+    _require_equal(document["version"], "0.3.0", "version")
     _require_equal(
         document["claim_kind"],
         "bounded public construction candidate only",
@@ -234,6 +254,11 @@ def verify_contract_bytes(raw: bytes) -> dict[str, Any]:
         tuple(document["lifecycle_variants"]),
         EXPECTED_LIFECYCLE_VARIANTS,
         "lifecycle variants",
+    )
+    _require_equal(
+        document["supplied_route_set_identifier_ownership"],
+        EXPECTED_SUPPLIED_ROUTE_SET_IDENTIFIER_OWNERSHIP,
+        "supplied route-set identifier ownership",
     )
     _require_equal(
         tuple(document["supported_validation"]),

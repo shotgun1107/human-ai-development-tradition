@@ -153,19 +153,19 @@ def classify_outcome_medium(*_args: object, **_kwargs: object) -> NoReturn:
     """Fail closed: the exact outcome grammar/classifier is not authenticated."""
 
     raise UnsupportedBoundaryError(
-        "BLOCKED: complete-outcome-classification is not authenticated by the public v0.2 inputs"
+        "BLOCKED: complete-outcome-classification is not authenticated by the public v0.3 inputs"
     )
 
 
 def validate_durable_ledger(*_args: object, **_kwargs: object) -> NoReturn:
     raise UnsupportedBoundaryError(
-        "BLOCKED: durable-ledger is outside the public v0.2 implementation boundary"
+        "BLOCKED: durable-ledger is outside the public v0.3 implementation boundary"
     )
 
 
 def validate_witness(*_args: object, **_kwargs: object) -> NoReturn:
     raise UnsupportedBoundaryError(
-        "BLOCKED: witness-validation is outside the public v0.2 implementation boundary"
+        "BLOCKED: witness-validation is outside the public v0.3 implementation boundary"
     )
 
 
@@ -555,12 +555,14 @@ def validate_supplied_route_set(
         tuple[ImportRouteContext, Sequence[ImportLedgerEvent]]
     ],
 ) -> tuple[tuple[ImportRouteContext, tuple[ImportLedgerEvent, ...]], ...]:
-    """Validate routes and preallocated-ID non-overlap in this supplied set.
+    """Validate single-owner route and identifier bindings in this supplied set.
 
-    Repetition of an identical route binding is permitted.  Any of its four
-    preallocated IDs overlapping a distinct immutable route identity is
-    rejected, including IDs not emitted by an early-terminal route.  This is
-    not project-lifetime uniqueness or durable registry authority.
+    Every immutable route identity may occur exactly once.  Each route owns
+    exactly five supplied-scope identifiers: its result-media ID and its four
+    preallocated event IDs.  All five must be disjoint from every other route,
+    including IDs not emitted by an early-terminal route.  Emitted event IDs
+    are also checked independently across the supplied set.  This is not
+    project-lifetime uniqueness or durable registry authority.
     """
 
     if isinstance(route_groups, (str, bytes)):
@@ -570,7 +572,9 @@ def validate_supplied_route_set(
         raise LifecycleError("supplied route set must be non-empty")
 
     validated: list[tuple[ImportRouteContext, tuple[ImportLedgerEvent, ...]]] = []
-    claimed_ids: dict[str, tuple[object, ...]] = {}
+    seen_route_identities: set[tuple[object, ...]] = set()
+    identifier_owners: dict[str, tuple[object, ...]] = {}
+    emitted_event_ids: set[str] = set()
     for group in groups:
         if (
             isinstance(group, (str, bytes))
@@ -585,18 +589,33 @@ def validate_supplied_route_set(
             raise LifecycleError(str(exc)) from exc
         normalized_events = validate_import_route(events, route)
         identity = _route_identity(route)
-        route_ids = (
+        if identity in seen_route_identities:
+            raise LifecycleError(
+                "immutable route identity occurs more than once in supplied set"
+            )
+        seen_route_identities.add(identity)
+
+        route_identifiers = (
+            route.result_media_id,
             route.reserved_media_event_id,
             route.admission_frozen_media_event_id,
             route.pending_media_event_id,
             route.completion_media_event_id,
         )
-        for event_id in route_ids:
-            prior_identity = claimed_ids.get(event_id)
-            if prior_identity is not None and prior_identity != identity:
+        for identifier in route_identifiers:
+            prior_identity = identifier_owners.get(identifier)
+            if prior_identity is not None:
                 raise LifecycleError(
-                    "preallocated route event ID overlaps a distinct supplied route"
+                    "result-media or preallocated event identifier overlaps a distinct supplied route"
                 )
-            claimed_ids[event_id] = identity
+            identifier_owners[identifier] = identity
+
+        for event in normalized_events:
+            event_id = event["event_id"]
+            if event_id in emitted_event_ids:
+                raise LifecycleError(
+                    "emitted event ID reuse across supplied routes is forbidden"
+                )
+            emitted_event_ids.add(event_id)
         validated.append((route, normalized_events))
     return tuple(validated)

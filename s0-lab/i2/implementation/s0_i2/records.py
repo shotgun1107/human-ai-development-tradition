@@ -1,6 +1,6 @@
 """Authenticated public context and canonical 31-line import events.
 
-The public v0.2 input set authenticates the import-event grammar.  It does not
+The public v0.3 input set authenticates the import-event grammar.  It does not
 authenticate complete admission or outcome grammars, so those entry points are
 kept as explicit fail-closed boundaries rather than inferred implementations.
 """
@@ -209,7 +209,7 @@ def _require_non_root_signer(
 
 def _blocked(boundary: str) -> NoReturn:
     raise UnsupportedBoundaryError(
-        f"BLOCKED: {boundary} is not authenticated by the public v0.2 inputs"
+        f"BLOCKED: {boundary} is not authenticated by the public v0.3 inputs"
     )
 
 

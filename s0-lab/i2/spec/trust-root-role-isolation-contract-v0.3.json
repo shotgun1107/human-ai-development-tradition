@@ -1,6 +1,6 @@
 {
-  "schema_id": "S0-TRUST-ROOT-ROLE-ISOLATION-PUBLIC-CONTRACT-2",
-  "version": "0.2.0",
+  "schema_id": "S0-TRUST-ROOT-ROLE-ISOLATION-PUBLIC-CONTRACT-3",
+  "version": "0.3.0",
   "claim_kind": "bounded public construction candidate only",
   "source_bindings": {
     "trust_root_role_isolation_v0_4_sha256": "5794a2c1d80889af96d2838e951d685a8d0a7d0fad3a209895adb01319dafed3",
@@ -149,6 +149,21 @@
     "duplicate",
     "disagreement"
   ],
+  "supplied_route_set_identifier_ownership": {
+    "scope": "caller-supplied route set only",
+    "route_identity_occurrences": "exactly one",
+    "identifiers_per_route": 5,
+    "identifier_fields": [
+      "result_media_id",
+      "reserved_media_event_id",
+      "admission_frozen_media_event_id",
+      "pending_media_event_id",
+      "completion_media_event_id"
+    ],
+    "identifier_values": "nonzero lowercase 64-hex and single-owner across the supplied set",
+    "duplicate_route_identity": "reject",
+    "project_lifetime_uniqueness": "BLOCKED"
+  },
   "supported_validation": [
     "exact import-event byte parsing and serialization",
     "import-event SHA-256",
@@ -156,7 +171,9 @@
     "route-local R-A-P-C ordering and immutable route binding",
     "caller-supplied global predecessor structural link",
     "emitted event ID duplicate rejection within a supplied contiguous trace",
-    "preallocated R-A-P-C ID non-overlap across a supplied multi-route set",
+    "duplicate immutable route identity rejection within a supplied multi-route set",
+    "result-media and preallocated R-A-P-C identifier single-owner enforcement within a supplied multi-route set",
+    "emitted event ID duplicate rejection across a supplied multi-route set",
     "exact I1 signer-identifier inventory binding",
     "exact frozen TRI2-VEC-02 evidence binding"
   ],
