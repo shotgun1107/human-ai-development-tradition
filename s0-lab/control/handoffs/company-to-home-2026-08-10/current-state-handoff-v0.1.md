@@ -99,9 +99,10 @@ OS 설정과 이 인수 branch 밖의 untracked/ignored 파일은 동기화 대�
 6. 모든 공개 Markdown/sidecar는 canonical validator SelfTest와 개별 검사를
    통과시킨 뒤 보존했다.
 
-이 방식은 편집 충돌을 피한 것이지 봉인 자료를 보호하는 보안 경계를 만든
-것은 아니다. 봉인 자료는 애초에 공개 worktree와 Git 게시 범위에서 제외해야
-한다.
+이 방식은 편집 충돌을 피한 것이지 F0 내용을 보호하는 보안 경계를 만든 것은
+아니다. 세 F0 경로의 기존 53개 파일은 PUBLIC-GIT tree에 그대로 보존한다.
+AI는 내용을 읽지 않으며, hidden oracle·credential·개인·비밀 자료 등
+`NONPUBLIC-OUT-OF-REPO`만 공개 worktree와 Git 게시 범위에서 제외한다.
 
 ### 2.3 게이트 처리에서 발생한 절차 문제
 
@@ -222,37 +223,13 @@ rebase 또는 merge하지 않는다.
 
 ### 5.2 기존 저장소가 깨끗한 경우
 
-```powershell
-git remote get-url origin
-git branch --show-current
-git rev-parse HEAD
-git status --short
-git stash list
-git fetch origin
-git rev-parse origin/main
-git rev-parse origin/codex/s0-order-eight-public-vector-independent-verification-v02
-git cat-file -t 85ad19ba6703f43b1209a13164d1e28a4b62f6a4
-git rev-parse '85ad19ba6703f43b1209a13164d1e28a4b62f6a4^{tree}'
-git merge-base --is-ancestor 85ad19ba6703f43b1209a13164d1e28a4b62f6a4 origin/codex/s0-order-eight-public-vector-independent-verification-v02
-git log --oneline --branches --not --remotes
-```
-
-`cat-file`은 `commit`, payload tree는
-`11f31ab0cac263cc876467c6adf7e902a40621d0`, ancestry 명령은 exit 0이어야
-한다.
-
-인수 branch가 로컬에 없으면:
-
-```powershell
-git switch --track origin/codex/s0-order-eight-public-vector-independent-verification-v02
-```
-
-이미 있고 clean하며 divergence가 없으면:
-
-```powershell
-git switch codex/s0-order-eight-public-vector-independent-verification-v02
-git pull --ff-only origin codex/s0-order-eight-public-vector-independent-verification-v02
-```
+실행 가능한 정본 절차는 같은 디렉터리의
+`home-local-resume-prompt-v0.1.md`다. 그 문서의 `Assert-SyncPreflight`를 먼저
+통과시키고, fetch는 한 번만 수행한다. fetch 뒤 remote tip을 exact commit으로
+pin하고 그 tree의 F0 수량 32/11/10을 확인한 뒤에만 전환한다. local branch가
+없으면 검증한 remote tip을 tracking하고, 이미 있으면 local tip도 먼저 같은
+수량으로 검증한 다음 exact pinned commit으로만 fast-forward한다. 검증 뒤
+`git pull`로 다시 fetch하지 않는다.
 
 ### 5.3 기존 저장소가 dirty이거나 다른 작업 중인 경우
 
@@ -260,38 +237,35 @@ git pull --ff-only origin codex/s0-order-eight-public-vector-independent-verific
 인수 branch의 worktree를 만든다. 경로는 실제 환경에서 충돌하지 않는지 먼저
 확인한다.
 
-```powershell
-git fetch origin
-git worktree add --detach "<NEW_HANDOFF_WORKTREE>" origin/codex/s0-order-eight-public-vector-independent-verification-v02
-```
+fetch 뒤 검증·pin한 exact target commit에 대해서만 새 detached worktree를
+만든다. 움직일 수 있는 remote branch 이름을 worktree 생성 명령에 직접 쓰지
+않는다.
 
-worktree는 편집 격리일 뿐 비밀 보안 경계가 아니다. sealed, oracle, 개인·비밀
-자료를 새 공개 worktree에 복사하지 않는다.
+worktree는 편집 격리일 뿐 비밀 보안 경계가 아니다. normal checkout으로
+물질화되는 PUBLIC-GIT 53개는 그대로 보존하되 AI가 내용을 읽지 않는다.
+hidden oracle, credential, 개인·비밀 자료 등 `NONPUBLIC-OUT-OF-REPO`를 새
+공개 worktree에 수동 복사하지 않는다.
 
 ### 5.4 clone이 전혀 없는 경우
 
-```powershell
-git clone --branch codex/s0-order-eight-public-vector-independent-verification-v02 https://github.com/shotgun1107/human-ai-development-tradition.git
-```
+존재하지 않는 새 경로에 `--no-checkout`으로 대상 branch를 clone한다. exact
+clone HEAD를 pin하고 그 tree의 F0 수량 32/11/10, required payload type/tree,
+payload ancestry와 main ancestry를 모두 확인한 뒤에만 detached 상태로
+materialize한다. 실행 가능한 정본 명령은 companion home resume prompt의
+clone 절차를 따른다.
 
 ### 5.5 수신 동일성 확인
 
-인수 경로에서 다음을 확인한다.
-
-```powershell
-git rev-parse HEAD
-git rev-parse 'HEAD^{tree}'
-git rev-parse origin/codex/s0-order-eight-public-vector-independent-verification-v02
-git status --porcelain=v1
-git diff --exit-code origin/codex/s0-order-eight-public-vector-independent-verification-v02 -- .
-git diff --cached --exit-code HEAD -- .
-git ls-files -t
-```
-
-조건은 local/remote HEAD 일치, local/remote tree 일치, clean status, 두 diff
-성공, skip-worktree entry 없음이다. 이 검증은 Git-tracked tree 동일성을
+인수 경로에서 HEAD가 pinned target commit과 같은지 확인하고 companion
+prompt의 `Assert-SyncPreflight`와 `Assert-F0TreeInventory -Commit HEAD`를 다시
+실행한다. 모든 exit와 aggregate count가 통과해야 한다. 하나라도 실패하면
+F0 내용이나 filename을 출력하지 않고 Git 변경 작업을 중단한다. 이 검증은
+Git-tracked tree 동일성을
 보일 뿐 두 PC의 대화, temp, `.git`, cache, untracked/ignored 파일과 물리적
 줄바꿈 설정까지 같다는 뜻은 아니다.
+
+나중에 push가 별도로 승인되더라도 exact pushed tip의 F0 수량을 다시 확인하고
+승인된 parent와 F0 quiet diff가 0일 때만 진행한다.
 
 ## 6. 집 CONTROL이 먼저 읽을 파일
 
@@ -314,9 +288,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File s0-lab/control/tools/verify-
 F0-SEALED 세 경로는 읽을 파일 목록이 아니다. 다음 path/count 검사만 허용된다.
 
 ```powershell
-git ls-tree -r --name-only HEAD -- s0-lab/control/f0-sealed
-git ls-tree -r --name-only HEAD -- s0-lab/f0-sealed-staging
-git ls-tree -r --name-only HEAD -- s0-lab/reviews/f0-sealed
+@(git ls-tree -r --format='%(objectmode)' HEAD -- s0-lab/control/f0-sealed).Count
+@(git ls-tree -r --format='%(objectmode)' HEAD -- s0-lab/f0-sealed-staging).Count
+@(git ls-tree -r --format='%(objectmode)' HEAD -- s0-lab/reviews/f0-sealed).Count
 ```
 
 예상 파일 수는 각각 32, 11, 10이며 합계 53이다.

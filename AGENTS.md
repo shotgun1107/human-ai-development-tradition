@@ -10,8 +10,9 @@
 
 - Follow the role and allowed-input list in the current thread prompt. An allowlist is a maximum, not a suggestion to inspect the rest of the repository.
 - Do not search the repository broadly when the assigned role has a narrow input list.
-- The following tracked paths are **default-deny F0-SEALED material** even when
-  they are present in a public clone or visible to filesystem tools:
+- The following tracked paths are **PUBLIC-GIT / AI-CONTENT-DEFAULT-DENY F0
+  artifacts** even when they are present in a public clone or visible to
+  filesystem tools:
   - `s0-lab/control/f0-sealed/**`
   - `s0-lab/f0-sealed-staging/**`
   - `s0-lab/reviews/f0-sealed/**`
@@ -33,6 +34,73 @@
 - Worktrees isolate edits, not secrets. Never describe worktree separation alone as independent information security.
 - If role boundaries or allowed inputs are unclear, stop without reading more files and request direction.
 
+### Git publication and AI content access are independent
+
+- The `SEALED` token in the three path names above is an experimental
+  role-access label, not a Git privacy or publication label.
+- The existing tracked inventory must remain in every authoritative tree used
+  to synchronize this repository: 32 files under `s0-lab/control/f0-sealed/`,
+  11 under `s0-lab/f0-sealed-staging/`, and 10 under
+  `s0-lab/reviews/f0-sealed/` (53 total).
+- Clone, fetch, checkout, pull, push, branch ancestry, worktree
+  materialization, and unchanged tree preservation do not grant AI authority
+  to read those files.
+- An exact F0 role/read gate grants only the content access and role actions
+  explicitly named by the current user message and allowlist. It does not by
+  itself authorize commit or push.
+- Git publication or handoff approval grants only the stated Git action. It
+  does not by itself authorize content access.
+- Before any cross-PC switch, pull, reset, clean, merge, or worktree
+  replacement, check the three F0 path families without printing filenames:
+  immediately capture every quiet-diff exit code; separately reduce untracked,
+  ignored, skip-worktree, and assume-unchanged entries to aggregate counts;
+  print only named aggregate values; and fail closed before another Git command
+  can overwrite an exit code. Any nonzero or query failure blocks the
+  Git-changing action and is reported only as a path-family/count condition.
+- Native Git stdout that may contain filenames must remain captured and reduced
+  to approved aggregates; native Git stderr must be suppressed at the command
+  boundary and replaced by a generic condition label plus exit code. A failed
+  command must never print a protected or unclassified filename before the
+  fail-closed report.
+- Excluding the three F0 families does not classify every remaining path as
+  public. Enumerate filenames only within the current task's exact approved
+  public allowlist. Reduce the repository's otherwise unclassified status to
+  an aggregate count; any nonzero count blocks Git-changing or publication
+  actions without printing filenames or content.
+- For cross-PC preflight only, the repository's current explicitly disposable
+  local-environment ignored classes are `.venv-docs/**`, `.mkdocs-site/**`,
+  `**/__pycache__/**`, and `**/*.py[cod]`. Count them only as an approved local
+  environment aggregate. Every other ignored path is unclassified and blocks
+  Git-changing or publication actions without printing its filename.
+- After fetch and before switch, checkout, rebase, merge, worktree
+  materialization/replacement, or push, verify that the exact pinned target
+  commit tree has aggregate F0 counts 32/11/10. Do not use `git pull` to fetch
+  again after verification; advance only to the pinned commit. Before push,
+  recheck the exact pushed tip counts and require a quiet F0 diff against its
+  approved parent.
+- `NONPUBLIC-OUT-OF-REPO` means hidden oracle, credentials, private keys,
+  personal, real-customer, or secret material, and any future canonical
+  execution input that the frozen protocol explicitly requires outside the
+  repository. Never commit or push that class. Do not use the bare word
+  `sealed` to decide publication eligibility.
+
+### Current-policy precedence
+
+- Platform instructions and the current user task remain authoritative.
+- For repository-local interpretation, this root `AGENTS.md` controls current
+  Git publication and synchronization classification.
+- A current role prompt may narrow allowed inputs and actions, but it may not
+  silently reclassify the three PUBLIC-GIT F0 path families as Git-private.
+- Frozen protocol text controls experimental protocol semantics, including
+  storage of future canonical execution input. It does not reclassify the
+  existing three PUBLIC-GIT preservation path families.
+- Dated README, HOME, handoff, resume, work-report, and review documents are
+  historical evidence unless the current user message explicitly designates
+  one. Historical text never overrides current tracked state or this
+  publication/access mapping.
+- If two current documents still conflict, stop before reading denied content
+  or changing Git state and report the exact public clauses.
+
 ## Change and verification rules
 
 - Preserve the SHA-256 records of frozen inputs. If a frozen input hash differs, stop the dependent task.
@@ -43,14 +111,21 @@
 - Do not use real customer, personal, secret, or past-project content in S0.
 - When preserving, reviewing, transferring, or publishing completed work would materially benefit from a branch, commit, or push, the agent may identify that need independently and proactively request the user's approval. Before approval, state the exact repository, intended scope, branch, and whether the request covers commit, push, or both; do not perform the operation until the user approves it.
 - For an ordinary commit or push approval request, make the request visually prominent with a clear heading, bold text, or an emoji, and state the repository, branch, scope, and requested Git action. Do not require or invent an all-caps approval token, security code, or gate-like passphrase. After such a clear request, an unambiguous response such as `ㄱㄱ`, `승인`, or `푸시해` is sufficient approval. Reserve exact gate phrases for work that genuinely changes an experimental gate, role-independence boundary, sealed boundary, or similarly sensitive authority.
-- When the user explicitly requests a cross-PC or cross-session handoff package,
-  that handoff request itself authorizes commit and push of the completed
-  public handoff-only artifacts to a dedicated handoff branch after exact
-  staged-scope and publication-eligibility verification. Do not wait for a
-  second ordinary commit/push approval. This standing handoff authorization
-  does not authorize publishing sealed, hidden-oracle, secret, personal, or
-  otherwise non-public material, and it does not authorize a PR, release,
-  `main` merge, history rewrite, or deletion.
-- Never include sealed, hidden-oracle, secret, personal, or otherwise non-public material in a commit or push merely because Git publication was approved. Verify the staged scope separately, and request additional direction whenever publication eligibility is unclear.
+- When the user explicitly requests a cross-PC or cross-session handoff
+  package, that request authorizes commit and push of the completed public
+  handoff-only **changes** to a dedicated handoff branch after exact staged-
+  scope and publication-eligibility verification. The branch must preserve
+  the inherited PUBLIC-GIT tree, including the unchanged 32/11/10 F0
+  inventory. That inherited presence is required synchronization, not a
+  forbidden content read or an extra handoff change. Do not wait for a second
+  ordinary commit/push approval.
+- Never commit or push `NONPUBLIC-OUT-OF-REPO` material. Existing or future
+  user-approved bytes under the three PUBLIC-GIT F0 path families are not
+  excluded merely because their path label contains `sealed`; modifying their
+  contents still requires the exact role gate and separate applicable Git
+  approval.
+- No ordinary or handoff Git approval authorizes a PR, release, `main` merge,
+  history rewrite, deletion, or AI content read unless those actions are
+  separately explicit.
 - Do not change another repository unless the user explicitly approves the exact repository and operation.
 - Keep new S0 setup material under `s0-lab/` unless a task's approved output path says otherwise.

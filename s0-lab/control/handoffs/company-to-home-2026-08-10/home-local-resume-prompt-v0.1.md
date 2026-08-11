@@ -50,57 +50,291 @@ public clone에 존재한다는 이유로 입력 권한이 생기지 않는다. 
 집에 저장소가 있으면 먼저 다음을 읽기 전용으로 확인한다.
 
 ```powershell
-Get-Location
-git remote get-url origin
-git branch --show-current
-git rev-parse HEAD
-git status --short
-git status -sb
-git stash list
-git log --oneline --branches --not --remotes
+$gitExe = (Get-Command git.exe -ErrorAction Stop).Source
+function git { & $gitExe @args 2>$null }
+$repoRoot = (git rev-parse --show-toplevel).Trim()
+$repoRootExit = $LASTEXITCODE
+if ($repoRootExit -ne 0) { throw 'Repository root resolution failed' }
+Set-Location -LiteralPath $repoRoot -ErrorAction Stop
+$originUrl = (git remote get-url origin).Trim()
+$originExit = $LASTEXITCODE
+$allowedOrigins = @(
+  'https://github.com/shotgun1107/human-ai-development-tradition.git'
+  'git@github.com:shotgun1107/human-ai-development-tradition.git'
+)
+if ($originExit -ne 0 -or $originUrl -notin $allowedOrigins) { throw 'Origin mismatch' }
+$currentBranch = (git symbolic-ref --quiet --short HEAD).Trim()
+$branchExit = $LASTEXITCODE
+if ($branchExit -ne 0 -or [string]::IsNullOrWhiteSpace($currentBranch)) { throw 'Detached HEAD' }
+$currentHead = (git rev-parse HEAD).Trim()
+$headExit = $LASTEXITCODE
+if ($headExit -ne 0) { throw 'HEAD resolution failed' }
+"REPOSITORY_ROOT_VERIFIED=1"
+"ORIGIN_VERIFIED=1"
+"BRANCH=$currentBranch"
+"HEAD=$currentHead"
+$f0Paths = @('s0-lab/control/f0-sealed','s0-lab/f0-sealed-staging','s0-lab/reviews/f0-sealed')
+function Assert-SyncPreflight {
+  $repoStatusRecords = @(git status --porcelain=v1 --untracked-files=all)
+  $repoStatusExit = $LASTEXITCODE
+  $repoStatusCount = $repoStatusRecords.Count
+  $repoStatusRecords = $null
+  $repoIgnoredRecords = @(git ls-files --others --ignored --exclude-standard)
+  $repoIgnoredExit = $LASTEXITCODE
+  $repoIgnoredTotalCount = $repoIgnoredRecords.Count
+  $repoUnclassifiedIgnoredCount = @($repoIgnoredRecords | Where-Object {
+    $_ -notmatch '(^|/)\.venv-docs(/|$)' -and
+    $_ -notmatch '(^|/)\.mkdocs-site(/|$)' -and
+    $_ -notmatch '(^|/)__pycache__(/|$)' -and
+    $_ -notmatch '\.py[cod]$'
+  }).Count
+  $repoIgnoredRecords = $null
+  $repoApprovedLocalEnvIgnoredCount = $repoIgnoredTotalCount - $repoUnclassifiedIgnoredCount
+  git diff --quiet HEAD -- @f0Paths
+  $f0UnstagedExit = $LASTEXITCODE
+  git diff --cached --quiet HEAD -- @f0Paths
+  $f0StagedExit = $LASTEXITCODE
+  $f0UntrackedRecords = @(git ls-files --others --exclude-standard -- @f0Paths)
+  $f0UntrackedQueryExit = $LASTEXITCODE
+  $f0UntrackedCount = $f0UntrackedRecords.Count
+  $f0UntrackedRecords = $null
+  $f0IgnoredRecords = @(git ls-files --others --ignored --exclude-standard -- @f0Paths)
+  $f0IgnoredQueryExit = $LASTEXITCODE
+  $f0IgnoredCount = $f0IgnoredRecords.Count
+  $f0IgnoredRecords = $null
+  $f0TaggedRecords = @(git ls-files -v -- @f0Paths)
+  $f0TaggedQueryExit = $LASTEXITCODE
+  $f0SpecialIndexCount = @($f0TaggedRecords | Where-Object { $_ -cmatch '^(S|[a-z]) ' }).Count
+  $f0TaggedRecords = $null
+  $stashRecords = @(git stash list --format='%gd')
+  $stashQueryExit = $LASTEXITCODE
+  $stashCount = $stashRecords.Count
+  $stashRecords = $null
+  "REPO_STATUS_COUNT=$repoStatusCount"
+  "REPO_APPROVED_LOCAL_ENV_IGNORED_COUNT=$repoApprovedLocalEnvIgnoredCount"
+  "REPO_UNCLASSIFIED_IGNORED_COUNT=$repoUnclassifiedIgnoredCount"
+  "F0_UNSTAGED_EXIT=$f0UnstagedExit"
+  "F0_STAGED_EXIT=$f0StagedExit"
+  "F0_UNTRACKED_COUNT=$f0UntrackedCount"
+  "F0_IGNORED_COUNT=$f0IgnoredCount"
+  "F0_SPECIAL_INDEX_COUNT=$f0SpecialIndexCount"
+  "STASH_COUNT=$stashCount"
+  if ($repoStatusExit -ne 0 -or $repoStatusCount -ne 0 -or
+      $repoIgnoredExit -ne 0 -or $repoUnclassifiedIgnoredCount -ne 0 -or
+      $f0UnstagedExit -ne 0 -or $f0StagedExit -ne 0 -or
+      $f0UntrackedQueryExit -ne 0 -or $f0UntrackedCount -ne 0 -or
+      $f0IgnoredQueryExit -ne 0 -or $f0IgnoredCount -ne 0 -or
+      $f0TaggedQueryExit -ne 0 -or $f0SpecialIndexCount -ne 0 -or
+      $stashQueryExit -ne 0 -or $stashCount -ne 0) {
+    throw 'Sync preflight blocked; aggregate conditions only'
+  }
+}
+function Assert-NoLocalOnlyCommits {
+  $localOnlyRecords = @(git rev-list --branches --not --remotes)
+  $localOnlyQueryExit = $LASTEXITCODE
+  $localOnlyCount = $localOnlyRecords.Count
+  $localOnlyRecords = $null
+  "LOCAL_ONLY_COMMIT_COUNT=$localOnlyCount"
+  if ($localOnlyQueryExit -ne 0 -or $localOnlyCount -ne 0) {
+    throw 'Local-only commit preflight blocked after fetch'
+  }
+}
+function Assert-F0TreeInventory([string]$Commit) {
+  $records0 = @(git ls-tree -r --format='%(objectmode)' $Commit -- $f0Paths[0])
+  $exit0 = $LASTEXITCODE
+  $records1 = @(git ls-tree -r --format='%(objectmode)' $Commit -- $f0Paths[1])
+  $exit1 = $LASTEXITCODE
+  $records2 = @(git ls-tree -r --format='%(objectmode)' $Commit -- $f0Paths[2])
+  $exit2 = $LASTEXITCODE
+  $counts = @($records0.Count,$records1.Count,$records2.Count)
+  $records0 = $records1 = $records2 = $null
+  "F0_TREE_COUNTS=$($counts -join '/')"
+  if ($exit0 -ne 0 -or $exit1 -ne 0 -or $exit2 -ne 0 -or
+      $counts[0] -ne 32 -or $counts[1] -ne 11 -or $counts[2] -ne 10) {
+    throw 'Pinned tree F0 inventory mismatch'
+  }
+}
+function Assert-RemotePin([string]$Ref,[string]$Pinned) {
+  $current = (git rev-parse $Ref).Trim()
+  $queryExit = $LASTEXITCODE
+  if ($queryExit -ne 0 -or $current -ne $Pinned) {
+    throw 'Remote ref moved after pin verification'
+  }
+}
+Assert-SyncPreflight
+Assert-F0TreeInventory -Commit HEAD
 ```
 
 origin이 위 URL 또는 그 SSH 등가가 아니면 변경하지 말고 보고 후 멈춰라.
-detached HEAD, modified/staged/untracked 파일, stash 또는 local-only commit이
-있으면 reset, clean, checkout, switch, stash, rebase, merge 또는 pull하지
-마라. 기존 상태를 보존하고 fetch 뒤 별도 clean worktree 방식만 검토한다.
+detached HEAD 또는 최초 aggregate preflight 실패가 있으면 reset, clean,
+checkout, switch, stash, rebase, merge 또는 pull하지 마라. local-only commit은
+clean 상태에서 fetch로 remote refs를 갱신한 직후 aggregate로 판단한다.
 
-저장소가 전혀 없을 때만 위 handoff branch를 지정해 새 clone을 만들 수 있다.
-기초 설치나 `.venv` 구성은 하지 마라.
+저장소가 전혀 없을 때만, 존재하지 않는 새 경로에 no-checkout clone을 만든다.
+moving ref를 materialize하기 전에 exact commit과 32/11/10을 확인한다.
+
+```powershell
+$gitExe = (Get-Command git.exe -ErrorAction Stop).Source
+function git { & $gitExe @args 2>$null }
+$clonePath = "<NEW_CLONE>"
+if (Test-Path -LiteralPath $clonePath) { throw 'Clone target already exists' }
+$expectedRoot = [IO.Path]::GetFullPath($clonePath).TrimEnd('\')
+git clone --no-checkout --branch codex/s0-order-eight-public-vector-independent-verification-v02 https://github.com/shotgun1107/human-ai-development-tradition.git $clonePath
+$cloneExit = $LASTEXITCODE
+if ($cloneExit -ne 0) { throw 'Clone failed; preserve partial path for inspection' }
+Set-Location -LiteralPath $clonePath -ErrorAction Stop
+$actualRoot = (git rev-parse --show-toplevel).Trim()
+$rootQueryExit = $LASTEXITCODE
+if ($rootQueryExit -ne 0) { throw 'Clone root query failed' }
+$actualRoot = [IO.Path]::GetFullPath($actualRoot).TrimEnd('\')
+if ($actualRoot -ine $expectedRoot) { throw 'Clone root identity mismatch' }
+$targetCommit = (git rev-parse HEAD).Trim()
+if ($LASTEXITCODE -ne 0) { throw 'Clone target resolution failed' }
+$cloneRecords0 = @(git ls-tree -r --format='%(objectmode)' $targetCommit -- s0-lab/control/f0-sealed)
+$cloneExit0 = $LASTEXITCODE
+$cloneRecords1 = @(git ls-tree -r --format='%(objectmode)' $targetCommit -- s0-lab/f0-sealed-staging)
+$cloneExit1 = $LASTEXITCODE
+$cloneRecords2 = @(git ls-tree -r --format='%(objectmode)' $targetCommit -- s0-lab/reviews/f0-sealed)
+$cloneExit2 = $LASTEXITCODE
+$cloneCounts = @($cloneRecords0.Count,$cloneRecords1.Count,$cloneRecords2.Count)
+$cloneRecords0 = $cloneRecords1 = $cloneRecords2 = $null
+"F0_CLONE_TREE_COUNTS=$($cloneCounts -join '/')"
+if ($cloneExit0 -ne 0 -or $cloneExit1 -ne 0 -or $cloneExit2 -ne 0 -or
+    $cloneCounts[0] -ne 32 -or $cloneCounts[1] -ne 11 -or $cloneCounts[2] -ne 10) {
+  throw 'Clone target F0 inventory mismatch'
+}
+$cloneMainCommit = (git rev-parse origin/main).Trim()
+$cloneMainExit = $LASTEXITCODE
+if ($cloneMainExit -ne 0) { throw 'Clone main ref resolution failed' }
+$clonePayloadType = (git cat-file -t 85ad19ba6703f43b1209a13164d1e28a4b62f6a4).Trim()
+$clonePayloadTypeExit = $LASTEXITCODE
+if ($clonePayloadTypeExit -ne 0 -or $clonePayloadType -ne 'commit') { throw 'Clone payload type mismatch' }
+$clonePayloadTree = (git rev-parse '85ad19ba6703f43b1209a13164d1e28a4b62f6a4^{tree}').Trim()
+$clonePayloadTreeExit = $LASTEXITCODE
+if ($clonePayloadTreeExit -ne 0 -or $clonePayloadTree -ne '11f31ab0cac263cc876467c6adf7e902a40621d0') { throw 'Clone payload tree mismatch' }
+git merge-base --is-ancestor 85ad19ba6703f43b1209a13164d1e28a4b62f6a4 $targetCommit
+$clonePayloadAncestryExit = $LASTEXITCODE
+if ($clonePayloadAncestryExit -ne 0) { throw 'Clone payload ancestry mismatch' }
+git diff --quiet 85ad19ba6703f43b1209a13164d1e28a4b62f6a4 $targetCommit -- s0-lab/control/f0-sealed s0-lab/f0-sealed-staging s0-lab/reviews/f0-sealed
+$clonePayloadF0DiffExit = $LASTEXITCODE
+if ($clonePayloadF0DiffExit -ne 0) { throw 'Clone target changed F0 after approved payload' }
+git merge-base --is-ancestor $cloneMainCommit $targetCommit
+$cloneMainAncestryExit = $LASTEXITCODE
+if ($cloneMainAncestryExit -ne 0) { throw 'Clone main ancestry mismatch' }
+git switch --detach $targetCommit
+$switchExit = $LASTEXITCODE
+if ($switchExit -ne 0) { throw 'Clone materialization switch failed' }
+$materializedHead = (git rev-parse HEAD).Trim()
+$headQueryExit = $LASTEXITCODE
+if ($headQueryExit -ne 0 -or $materializedHead -ne $targetCommit) { throw 'Clone materialization mismatch' }
+$postStatusRecords = @(git status --porcelain=v1 --untracked-files=all)
+$postStatusExit = $LASTEXITCODE
+$postStatusCount = $postStatusRecords.Count
+$postStatusRecords = $null
+$postIgnoredRecords = @(git ls-files --others --ignored --exclude-standard)
+$postIgnoredExit = $LASTEXITCODE
+$postUnclassifiedIgnoredCount = @($postIgnoredRecords | Where-Object {
+  $_ -notmatch '(^|/)\.venv-docs(/|$)' -and
+  $_ -notmatch '(^|/)\.mkdocs-site(/|$)' -and
+  $_ -notmatch '(^|/)__pycache__(/|$)' -and
+  $_ -notmatch '\.py[cod]$'
+}).Count
+$postIgnoredRecords = $null
+$postF0IgnoredRecords = @(git ls-files --others --ignored --exclude-standard -- s0-lab/control/f0-sealed s0-lab/f0-sealed-staging s0-lab/reviews/f0-sealed)
+$postF0IgnoredExit = $LASTEXITCODE
+$postF0IgnoredCount = $postF0IgnoredRecords.Count
+$postF0IgnoredRecords = $null
+$postTaggedRecords = @(git ls-files -v)
+$postTaggedExit = $LASTEXITCODE
+$postSpecialCount = @($postTaggedRecords | Where-Object { $_ -cmatch '^(S|[a-z]) ' }).Count
+$postTaggedRecords = $null
+"CLONE_POST_STATUS_COUNT=$postStatusCount"
+"CLONE_POST_UNCLASSIFIED_IGNORED_COUNT=$postUnclassifiedIgnoredCount"
+"CLONE_POST_F0_IGNORED_COUNT=$postF0IgnoredCount"
+"CLONE_POST_SPECIAL_INDEX_COUNT=$postSpecialCount"
+if ($postStatusExit -ne 0 -or $postStatusCount -ne 0 -or
+    $postIgnoredExit -ne 0 -or $postUnclassifiedIgnoredCount -ne 0 -or
+    $postF0IgnoredExit -ne 0 -or $postF0IgnoredCount -ne 0 -or
+    $postTaggedExit -ne 0 -or $postSpecialCount -ne 0) {
+  throw 'Clone post-materialization preflight failed'
+}
+```
+
+기초 설치나 `.venv` 구성은 하지 마라. 이후 작업 branch가 필요하면 별도 사용자
+지시에서 exact pinned commit으로 생성한다.
 
 ## 3. 원격 인수
 
 안전 조건을 확인한 뒤 다음 원격 refs를 fetch한다.
 
 ```powershell
+if ((Get-Command git -ErrorAction Stop).CommandType -ne 'Function') { throw 'Safe Git wrapper missing' }
 git fetch origin
-git rev-parse origin/main
-git rev-parse origin/codex/s0-order-eight-public-vector-independent-verification-v02
-git cat-file -t 85ad19ba6703f43b1209a13164d1e28a4b62f6a4
-git rev-parse '85ad19ba6703f43b1209a13164d1e28a4b62f6a4^{tree}'
-git merge-base --is-ancestor 85ad19ba6703f43b1209a13164d1e28a4b62f6a4 origin/codex/s0-order-eight-public-vector-independent-verification-v02
-git merge-base --is-ancestor origin/main origin/codex/s0-order-eight-public-vector-independent-verification-v02
-git rev-list --left-right --count origin/main...origin/codex/s0-order-eight-public-vector-independent-verification-v02
-git log --oneline --left-right --decorate origin/main...origin/codex/s0-order-eight-public-vector-independent-verification-v02
+if ($LASTEXITCODE -ne 0) { throw 'Fetch failed' }
+Assert-NoLocalOnlyCommits
+$mainCommit = (git rev-parse origin/main).Trim()
+if ($LASTEXITCODE -ne 0) { throw 'Main ref resolution failed' }
+$targetCommit = (git rev-parse origin/codex/s0-order-eight-public-vector-independent-verification-v02).Trim()
+if ($LASTEXITCODE -ne 0) { throw 'Target ref resolution failed' }
+Assert-F0TreeInventory -Commit $targetCommit
+$payloadType = (git cat-file -t 85ad19ba6703f43b1209a13164d1e28a4b62f6a4).Trim()
+if ($LASTEXITCODE -ne 0 -or $payloadType -ne 'commit') { throw 'Payload type mismatch' }
+$payloadTree = (git rev-parse '85ad19ba6703f43b1209a13164d1e28a4b62f6a4^{tree}').Trim()
+if ($LASTEXITCODE -ne 0 -or $payloadTree -ne '11f31ab0cac263cc876467c6adf7e902a40621d0') { throw 'Payload tree mismatch' }
+git merge-base --is-ancestor 85ad19ba6703f43b1209a13164d1e28a4b62f6a4 $targetCommit
+if ($LASTEXITCODE -ne 0) { throw 'Payload ancestry mismatch' }
+git diff --quiet 85ad19ba6703f43b1209a13164d1e28a4b62f6a4 $targetCommit -- @f0Paths
+$payloadF0DiffExit = $LASTEXITCODE
+if ($payloadF0DiffExit -ne 0) { throw 'Target changed F0 after approved payload' }
+git merge-base --is-ancestor $mainCommit $targetCommit
+if ($LASTEXITCODE -ne 0) { throw 'Main ancestry mismatch' }
+$divergence = (git rev-list --left-right --count "${mainCommit}...${targetCommit}").Trim()
+if ($LASTEXITCODE -ne 0) { throw 'Divergence query failed' }
+"MAIN_TARGET_DIVERGENCE=$divergence"
 ```
 
-payload object type은 `commit`, payload tree는
-`11f31ab0cac263cc876467c6adf7e902a40621d0`, 두 ancestry 명령은 exit 0이어야
-한다. 원격 handoff branch가 없거나 payload commit 또는 `origin/main`이 그
-조상이 아니면 임의로 branch를 선택하거나 병합하지 말고 실제 refs와 commit
-목록을 보고한 뒤 멈춰라.
+위 block은 fetch, local-only, object type, tree, ancestry와 divergence query를
+각 단계에서 fail closed한다. 실패하면 임의로 branch를 선택하거나 병합하지
+말고 filename이나 commit subject 없이 실패한 조건과 aggregate만 보고한다.
 
 기존 worktree가 완전히 clean하고 local branch가 없으면:
 
 ```powershell
-git switch --track origin/codex/s0-order-eight-public-vector-independent-verification-v02
+if ((Get-Command git -ErrorAction Stop).CommandType -ne 'Function') { throw 'Safe Git wrapper missing' }
+Assert-RemotePin -Ref origin/codex/s0-order-eight-public-vector-independent-verification-v02 -Pinned $targetCommit
+git switch -c codex/s0-order-eight-public-vector-independent-verification-v02 $targetCommit
+$switchExit = $LASTEXITCODE
+if ($switchExit -ne 0) { throw 'Pinned branch creation failed' }
+git branch --set-upstream-to=origin/codex/s0-order-eight-public-vector-independent-verification-v02 codex/s0-order-eight-public-vector-independent-verification-v02
+$upstreamExit = $LASTEXITCODE
+if ($upstreamExit -ne 0) { throw 'Upstream binding failed' }
+$materializedHead = (git rev-parse HEAD).Trim()
+$headQueryExit = $LASTEXITCODE
+$materializedUpstream = (git rev-parse --symbolic-full-name '@{upstream}').Trim()
+$upstreamQueryExit = $LASTEXITCODE
+if ($headQueryExit -ne 0 -or $materializedHead -ne $targetCommit -or
+    $upstreamQueryExit -ne 0 -or $materializedUpstream -ne 'refs/remotes/origin/codex/s0-order-eight-public-vector-independent-verification-v02') {
+  throw 'Pinned branch identity mismatch'
+}
 ```
 
 같은 local branch가 있고 clean하며 divergence가 없으면:
 
 ```powershell
+if ((Get-Command git -ErrorAction Stop).CommandType -ne 'Function') { throw 'Safe Git wrapper missing' }
+$localTarget = (git rev-parse refs/heads/codex/s0-order-eight-public-vector-independent-verification-v02).Trim()
+if ($LASTEXITCODE -ne 0) { throw 'Local target resolution failed' }
+Assert-F0TreeInventory -Commit $localTarget
+Assert-RemotePin -Ref origin/codex/s0-order-eight-public-vector-independent-verification-v02 -Pinned $targetCommit
 git switch codex/s0-order-eight-public-vector-independent-verification-v02
-git pull --ff-only origin codex/s0-order-eight-public-vector-independent-verification-v02
+$switchExit = $LASTEXITCODE
+if ($switchExit -ne 0) { throw 'Existing branch switch failed' }
+git merge --ff-only $targetCommit
+$mergeExit = $LASTEXITCODE
+if ($mergeExit -ne 0) { throw 'Pinned fast-forward failed' }
+$materializedHead = (git rev-parse HEAD).Trim()
+$headQueryExit = $LASTEXITCODE
+if ($headQueryExit -ne 0 -or $materializedHead -ne $targetCommit) { throw 'Pinned target mismatch' }
 ```
 
 기존 저장소가 dirty이거나 다른 작업을 보존해야 하면 그 worktree를 건드리지
@@ -108,37 +342,66 @@ git pull --ff-only origin codex/s0-order-eight-public-vector-independent-verific
 다음을 사용한다.
 
 ```powershell
-git worktree add --detach "<NEW_HANDOFF_WORKTREE>" origin/codex/s0-order-eight-public-vector-independent-verification-v02
+if ((Get-Command git -ErrorAction Stop).CommandType -ne 'Function') { throw 'Safe Git wrapper missing' }
+$newWorktree = "<NEW_HANDOFF_WORKTREE>"
+if (Test-Path -LiteralPath $newWorktree) { throw 'Worktree target already exists' }
+Assert-RemotePin -Ref origin/codex/s0-order-eight-public-vector-independent-verification-v02 -Pinned $targetCommit
+git worktree add --detach $newWorktree $targetCommit
+$worktreeAddExit = $LASTEXITCODE
+if ($worktreeAddExit -ne 0) { throw 'Pinned worktree creation failed' }
+$worktreeHead = (git -C $newWorktree rev-parse HEAD).Trim()
+$worktreeHeadExit = $LASTEXITCODE
+if ($worktreeHeadExit -ne 0 -or $worktreeHead -ne $targetCommit) { throw 'Worktree HEAD mismatch' }
+Push-Location -LiteralPath $newWorktree -ErrorAction Stop
+try {
+  Assert-SyncPreflight
+  Assert-NoLocalOnlyCommits
+  Assert-F0TreeInventory -Commit HEAD
+}
+finally {
+  Pop-Location
+}
 ```
 
-worktree는 편집 격리일 뿐 비밀 보안 경계가 아니다. sealed, oracle, 개인·비밀
-자료를 공개 handoff worktree에 복사하지 마라.
+worktree는 편집 격리일 뿐 비밀 보안 경계가 아니다. normal checkout의
+PUBLIC-GIT 53개는 보존하되 내용을 읽지 마라. hidden oracle, credential,
+개인·비밀 자료 등 `NONPUBLIC-OUT-OF-REPO`를 공개 handoff worktree에 수동
+복사하지 마라.
 
 ## 4. 동일성 확인
 
 선택한 인수 경로에서 다음을 확인한다.
 
 ```powershell
+if ((Get-Command git -ErrorAction Stop).CommandType -ne 'Function') { throw 'Safe Git wrapper missing' }
 git rev-parse HEAD
 git rev-parse 'HEAD^{tree}'
-git rev-parse origin/codex/s0-order-eight-public-vector-independent-verification-v02
-git status --porcelain=v1
-git diff --exit-code origin/codex/s0-order-eight-public-vector-independent-verification-v02 -- .
-git diff --cached --exit-code HEAD -- .
-git ls-files -t
+$finalRemote = (git rev-parse origin/codex/s0-order-eight-public-vector-independent-verification-v02).Trim()
+$finalRemoteExit = $LASTEXITCODE
+$finalHead = (git rev-parse HEAD).Trim()
+$finalHeadExit = $LASTEXITCODE
+if ($finalRemoteExit -ne 0 -or $finalRemote -ne $targetCommit -or
+    $finalHeadExit -ne 0 -or $finalHead -ne $targetCommit) {
+  throw 'Final pinned identity mismatch'
+}
+Assert-SyncPreflight
+Assert-NoLocalOnlyCommits
+Assert-F0TreeInventory -Commit HEAD
 ```
 
-local/remote HEAD와 tree가 같고 status가 비어 있으며 두 diff가 성공하고
-skip-worktree entry가 없어야 한다. 하나라도 다르면 수정하지 말고 보고한다.
+local/remote HEAD와 tree가 같고 모든 preflight aggregate가 통과해야 한다.
+하나라도 다르면 내용이나 filename을 출력하거나 수정하지 말고 aggregate
+상태만 보고한다.
 Git tree 동일성은 대화, `.git`, temp, cache, `.venv`, untracked/ignored 파일,
 checkout 줄바꿈까지 두 PC가 동일하다는 뜻이 아니다.
 
 F0-SEALED 보존 수량은 내용 없이 별도로 확인한다.
 
 ```powershell
-@(git ls-tree -r --name-only HEAD -- s0-lab/control/f0-sealed).Count
-@(git ls-tree -r --name-only HEAD -- s0-lab/f0-sealed-staging).Count
-@(git ls-tree -r --name-only HEAD -- s0-lab/reviews/f0-sealed).Count
+if ((Get-Command git -ErrorAction Stop).CommandType -ne 'Function') { throw 'Safe Git wrapper missing' }
+@(git ls-tree -r --format='%(objectmode)' HEAD -- s0-lab/control/f0-sealed).Count
+@(git ls-tree -r --format='%(objectmode)' HEAD -- s0-lab/f0-sealed-staging).Count
+@(git ls-tree -r --format='%(objectmode)' HEAD -- s0-lab/reviews/f0-sealed).Count
 ```
 
 기대값은 순서대로 32, 11, 10이며 합계 53이다. 다르면 내용을 열지 말고

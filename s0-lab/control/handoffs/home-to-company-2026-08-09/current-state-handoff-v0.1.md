@@ -1,5 +1,10 @@
 # 집 로컬에서 회사 CONTROL로 보내는 현재 상태 인수인계 v0.1
 
+> **HISTORICAL / SUPERSEDED.** 이 문서는 2026-08-09 당시 local-only 상태를
+> 기록한다. 현재 Git publication과 AI content-access 분류에는 루트
+> `AGENTS.md`가 우선하며, 이 문서의 F0 미게시 문구를 현재 정책으로 사용하지
+> 않는다.
+
 - 작성 기준 시각: `2026-08-09` KST
 - 저장소: `https://github.com/shotgun1107/human-ai-development-tradition.git`
 - 활성 기준선: `central-system-v2.1-s0-preparation`

@@ -1,8 +1,17 @@
 # 회사 로컬 CONTROL 재개 프롬프트 v0.1
 
-아래 내용을 회사 PC의 새 Codex CONTROL 작업에 그대로 전달한다.
+> **HISTORICAL / SUPERSEDED — DO NOT COPY OR EXECUTE.** Preserve this file
+> only as historical evidence. Use a current handoff prompt governed by the
+> repository-root `AGENTS.md`.
+
+The embedded prompt below is historical evidence and must not be transferred
+into a new task.
 
 ---
+
+> **STOP — HISTORICAL / SUPERSEDED.** Do not execute any command in this
+> embedded prompt. Read the current repository-root `AGENTS.md` and obtain a
+> current handoff prompt.
 
 당신은 `human-ai-development-tradition` 프로젝트를 원래 주관하던 회사
 로컬의 새 CONTROL 세션이다. 집 로컬에서 완료된 공개 S0 준비 작업을 Git으로
