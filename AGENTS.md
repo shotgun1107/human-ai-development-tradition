@@ -33,6 +33,38 @@
 - Worktrees isolate edits, not secrets. Never describe worktree separation alone as independent information security.
 - If role boundaries or allowed inputs are unclear, stop without reading more files and request direction.
 
+## Model assignment and verification
+
+- Choose a model for the assigned evidence role, not because a different model
+  name is itself evidence of independence, correctness, or security.
+- Use a strong general coding/reasoning model as the primary reviewer for
+  functional correctness, architecture, ordinary code review, test design,
+  formal reasoning, and mathematical or cryptographic derivation.
+- Use a defensive-cybersecurity-specialized model, such as Daybreak Blue when
+  available, for a separate hostile security lane: threat modeling,
+  authorization and isolation failures, secret exposure, injection, path
+  traversal, unsafe parsing or deserialization, dependency and supply-chain
+  risk, and security regressions in a code diff.
+- Do not use a cybersecurity-specialized model as the sole judge of formal
+  mathematics, cryptographic-vector correctness, general functional
+  correctness, or experiment validity. It may separately review attack
+  surface, misuse resistance, implementation hazards, and bypass paths.
+- For security-sensitive implementations, keep the functional/correctness
+  review and hostile security review as distinct evidence lanes. If either is
+  claimed as independent, use a fresh session with its own bounded input set
+  and do not inherit the author's or the other reviewer's conclusions.
+- Model specialization never relaxes a frozen-input check, role allowlist,
+  sealed boundary, fresh-session rule, deterministic test, reproducible tool
+  check, or required human approval. Agreement between models is correlated
+  AI evidence, not multiple independent facts.
+- Apply the specialist security lane based on risk: security gates,
+  authentication or authority changes, protected-data paths, dependency
+  changes, release candidates, and security-sensitive diffs. Do not add it to
+  every low-risk unit test merely to increase reviewer count or cost.
+- Record the model role, allowed inputs, checks performed, findings, and
+  evidence limits. Do not infer unavailable model pricing, capability, or
+  account access from an alias alone.
+
 ## Change and verification rules
 
 - Preserve the SHA-256 records of frozen inputs. If a frozen input hash differs, stop the dependent task.
