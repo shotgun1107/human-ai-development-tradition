@@ -1,5 +1,10 @@
 # 집 Codex 시작점
 
+> **SUPERSEDED FOR CURRENT GIT SYNC POLICY.** 이 문서는 2026-08-07 당시의
+> 역사적 인수인계 기록이다. 현재 Git publication과 AI content-access 분류는
+> 루트 `AGENTS.md`가 우선하며, 세 F0 경로의 기존 53개 파일은 PUBLIC-GIT으로
+> 동기화되고 AI 내용 접근만 default-deny다.
+
 - 문서 상태: `CONTROL 인수인계 v0.2`
 - 기준 시각: `2026-08-07` (KST)
 - 저장소: `https://github.com/shotgun1107/human-ai-development-tradition`
@@ -32,7 +37,11 @@
 
 이 문서를 포함한 최종 커밋은 위 `main` 값보다 뒤에 생긴다. 새 세션은 이 표를 현재 HEAD로 오해하지 말고 `git fetch` 후 실제 원격 상태를 다시 확인한다.
 
-작성 PC의 `main` 작업 트리에는 `f0-sealed` 관련 미추적 경로가 있었다. 이번 문서 작업은 그 경로를 열거나 수정하거나 커밋하지 않았다. 미추적 봉인 경로는 Git으로 전달되지 않으며, 집 PC에서 보이지 않는 것이 정상이다. 어디에서든 보이면 공개 입력으로 취급하지 않는다.
+작성 당시 회사 PC의 `main` 작업 트리에는 `f0-sealed` 관련 미추적 경로가
+있었다. 이번 문서 작업은 당시 그 경로를 열거나 수정하거나 커밋하지 않았다.
+이 문장은 2026-08-07의 역사적 상태다. 현재는 사용자 결정에 따라 세 F0 경로의
+기존 53개 파일이 PUBLIC-GIT으로 추적·동기화된다. 어느 PC에서 보이더라도 AI
+입력 허가는 아니며 루트 `AGENTS.md`의 default-deny를 따른다.
 
 ### 저장소로 전달되는 것과 전달되지 않는 것
 
@@ -43,7 +52,7 @@
 - Codex와 공홈의 대화 기록 및 모델 내부 기억
 - 하위 에이전트가 대화에서만 제안하고 파일로 남기지 않은 분석
 - 아직 작성되지 않은 S0 v0.5 후보
-- 커밋하지 않은 봉인·staging·hidden-oracle 자료
+- 커밋하지 않은 `NONPUBLIC-OUT-OF-REPO` 자료와 hidden oracle
 
 따라서 새 Codex는 “저장소에 있는 사실”과 “이전 세션에만 있었던 생각”을 구분하고, 후자를 이미 승인된 기준처럼 복원하려 하지 않는다.
 
@@ -73,7 +82,10 @@
 저장소가 없다면 clone하고, 이미 있다면 기존 변경을 지우지 않는다. 저장소 루트에서 다음을 확인한다.
 
 ```powershell
-git status --short --branch
+git status --porcelain=v1 -- . `
+  ':(exclude)s0-lab/control/f0-sealed/**' `
+  ':(exclude)s0-lab/f0-sealed-staging/**' `
+  ':(exclude)s0-lab/reviews/f0-sealed/**'
 git remote -v
 git fetch origin --prune
 git branch -a

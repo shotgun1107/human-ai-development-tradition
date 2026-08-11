@@ -75,13 +75,14 @@ stash, rebase와 merge를 명시적으로 금지했으므로 처음에는 새 si
 - 이 handoff에서 `AGENTS.md`에는 향후 사용자가 cross-PC 또는 cross-session
   handoff package를 명시적으로 요청하면, 공개 handoff-only 산출물의 exact
   staged scope와 게시 적격성을 확인한 뒤 별도 재승인 없이 전용 handoff
-  branch에 commit·push한다는 운영 규칙을 추가했다. 이 자동 승인은 sealed,
-  secret, personal 자료, PR, `main` 병합, history rewrite 또는 삭제를 포함하지
-  않는다.
+  branch에 commit·push한다는 운영 규칙을 추가했다. 이 자동 승인은 inherited
+  PUBLIC-GIT 53개를 unchanged tree로 보존하지만 그 내용 접근을 허가하지
+  않는다. `NONPUBLIC-OUT-OF-REPO`, PR, `main` 병합, history rewrite 또는 삭제는
+  포함하지 않는다.
 
 이 인수인계 branch는 위 정본 commit에서 갈라져 이 공개 handoff package와
 위 handoff 자동 게시 운영 규칙만 추가한다. order-eight 후보·검토 기록과
-sealed 자료 자체는 수정하지 않는다.
+PUBLIC-GIT F0 자료 자체는 수정하지 않는다.
 
 ## 2. F0-SEALED 경계
 
@@ -141,12 +142,18 @@ executor A-D, provider/model, judge, scoring, 통계, E0와 S0 실행 및 `main`
 회사 기존 저장소를 우선 사용한다. 먼저 path, origin, branch, HEAD, upstream,
 status, stash, worktree와 local-only commit을 읽기 전용으로 확인한다.
 
-- 완전히 clean하고 원격에 없는 commit이 없으면 전체 heads를 fetch한 뒤
-  정본 또는 handoff branch로 switch하고 `pull --ff-only`를 사용한다.
-- modified, staged, untracked, ignored, stash 또는 local-only commit이 있으면
+- companion company resume prompt의 fail-closed aggregate preflight를 먼저
+  통과시킨 뒤 전체 heads를 한 번만 fetch한다. exact remote tip을 commit으로
+  pin하고 그 tree의 F0 수량 32/11/10을 검증한 뒤에만 switch한다. 이후
+  `git pull`로 다시 fetch하지 않고 exact pinned commit으로만 fast-forward한다.
+- unclassified repository status, F0 tracked/staged diff, F0 untracked/ignored,
+  special-index, stash, local-only commit의 aggregate 중 하나라도 실패하면
   pull, switch, reset, clean, stash, rebase, merge 또는 파일 덮어쓰기를 하지
-  않는다. 상태와 영향 경로만 보고하고 사용자의 결정을 기다린다.
-- sealed 세 경로는 path/count/tracked state 외에는 확인하지 않는다.
+  않는다. filename은 출력하지 않고 aggregate 상태만 보고한 뒤 사용자의
+  결정을 기다린다.
+- 세 F0 경로는 path/count/tracked state 외에는 확인하지 않는다.
+- push가 별도로 승인되면 exact pushed tip의 F0 수량을 다시 확인하고 승인된
+  parent와 F0 quiet diff가 0일 때만 진행한다.
 
 회사 CONTROL은 live 원격에서 이 handoff branch를 직접 읽고 다음을 확인한다.
 
