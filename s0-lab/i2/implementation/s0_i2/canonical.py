@@ -14,6 +14,8 @@ HEX64_PATTERN = re.compile(r"^[0-9a-f]{64}$")
 TOKEN_PATTERN = re.compile(r"^[a-z0-9-]+$")
 DECIMAL_PATTERN = re.compile(r"^(0|[1-9][0-9]*)$")
 ZERO64 = "0" * 64
+_DECIMAL_CHUNK_BASE = 1_000_000_000
+_DECIMAL_CHUNK_WIDTH = 9
 
 
 def sha256_bytes(raw: bytes) -> str:
@@ -64,7 +66,24 @@ def normalize_decimal(value: object, label: str) -> str:
     if type(value) is int:
         if value < 0:
             raise CanonicalRecordError(f"{label} cannot be negative")
-        return str(value)
+        if value == 0:
+            return "0"
+
+        # Python applies a process-global safety limit to a direct ``str()``
+        # conversion of very large integers.  Convert through bounded base-1e9
+        # chunks so the declared integer input form has the same unbounded
+        # decimal surface as the canonical string form without mutating that
+        # process-global limit.
+        chunks: list[int] = []
+        remaining = value
+        while remaining:
+            remaining, chunk = divmod(remaining, _DECIMAL_CHUNK_BASE)
+            chunks.append(chunk)
+        head = str(chunks.pop())
+        tail = "".join(
+            f"{chunk:0{_DECIMAL_CHUNK_WIDTH}d}" for chunk in reversed(chunks)
+        )
+        return head + tail
     return require_decimal(value, label)
 
 

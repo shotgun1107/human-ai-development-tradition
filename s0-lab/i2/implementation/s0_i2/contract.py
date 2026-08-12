@@ -1,4 +1,4 @@
-"""Exact authentication and semantic checks for the public I2 v0.3 contract."""
+"""Exact authentication and semantic checks for the public I2 v0.4 contract."""
 
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ from .vectors import (
 )
 
 
-CONTRACT_SHA256 = "d7d1e877d618508ffcd0f4148d5a8fd0137c2ae4fdca5267fd40e9164c15cd15"
+CONTRACT_SHA256 = "713fc6b44c84126387dc492b93e22d928ba894e18bdc8705049a2ea5cb8cc7da"
 I1_PUBLIC_RUNTIME_JSON_SHA256 = (
     "fd9e4a474bb5438065dff0a51c24cd2eb4e8e1caa2cbb5d6eb169b540c691d08"
 )
@@ -94,7 +94,7 @@ EXPECTED_SUPPORTED_VALIDATION = (
     "import-event SHA-256",
     "single-event lifecycle tuple structure",
     "route-local R-A-P-C ordering and immutable route binding",
-    "caller-supplied global predecessor structural link",
+    "caller-supplied global predecessor structural link with ceiling-free canonical text or nonnegative integer sequence normalization",
     "emitted event ID duplicate rejection within a supplied contiguous trace",
     "duplicate immutable route identity rejection within a supplied multi-route set",
     "result-media and preallocated R-A-P-C identifier single-owner enforcement within a supplied multi-route set",
@@ -185,10 +185,10 @@ def verify_contract_bytes(raw: bytes) -> dict[str, Any]:
     _require_equal(set(document), expected_top_level, "top-level keys")
     _require_equal(
         document["schema_id"],
-        "S0-TRUST-ROOT-ROLE-ISOLATION-PUBLIC-CONTRACT-3",
+        "S0-TRUST-ROOT-ROLE-ISOLATION-PUBLIC-CONTRACT-4",
         "schema_id",
     )
-    _require_equal(document["version"], "0.3.0", "version")
+    _require_equal(document["version"], "0.4.0", "version")
     _require_equal(
         document["claim_kind"],
         "bounded public construction candidate only",

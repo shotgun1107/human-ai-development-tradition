@@ -153,19 +153,19 @@ def classify_outcome_medium(*_args: object, **_kwargs: object) -> NoReturn:
     """Fail closed: the exact outcome grammar/classifier is not authenticated."""
 
     raise UnsupportedBoundaryError(
-        "BLOCKED: complete-outcome-classification is not authenticated by the public v0.3 inputs"
+        "BLOCKED: complete-outcome-classification is not authenticated by the public v0.4 inputs"
     )
 
 
 def validate_durable_ledger(*_args: object, **_kwargs: object) -> NoReturn:
     raise UnsupportedBoundaryError(
-        "BLOCKED: durable-ledger is outside the public v0.3 implementation boundary"
+        "BLOCKED: durable-ledger is outside the public v0.4 implementation boundary"
     )
 
 
 def validate_witness(*_args: object, **_kwargs: object) -> NoReturn:
     raise UnsupportedBoundaryError(
-        "BLOCKED: witness-validation is outside the public v0.3 implementation boundary"
+        "BLOCKED: witness-validation is outside the public v0.4 implementation boundary"
     )
 
 

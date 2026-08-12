@@ -803,6 +803,45 @@ class LifecycleTests(unittest.TestCase):
                 expected_previous_event_sha256=hex64("e"),
             )
 
+    def test_global_link_and_chain_accept_huge_integer_sequence(self) -> None:
+        context = route_context()
+        huge_text = "1" + ("0" * 5000)
+        huge_integer = 10**5000
+        event = parsed_event(
+            context,
+            "reserved",
+            sequence=huge_text,
+            previous_event_sha256=hex64("d"),
+        )
+
+        s0_i2.validate_event_global_link(
+            event,
+            expected_sequence=huge_integer,
+            expected_previous_event_sha256=hex64("d"),
+        )
+        self.assertEqual(
+            s0_i2.validate_event_global_chain(
+                (event,),
+                expected_start_sequence=huge_integer,
+                expected_previous_event_sha256=hex64("d"),
+            ),
+            (event,),
+        )
+        for invalid in (-1, True):
+            with self.subTest(invalid=invalid):
+                with self.assertRaises(LifecycleError):
+                    s0_i2.validate_event_global_link(
+                        event,
+                        expected_sequence=invalid,
+                        expected_previous_event_sha256=hex64("d"),
+                    )
+                with self.assertRaises(LifecycleError):
+                    s0_i2.validate_event_global_chain(
+                        (event,),
+                        expected_start_sequence=invalid,
+                        expected_previous_event_sha256=hex64("d"),
+                    )
+
     def test_wrong_lifecycle_tuple_components_fail(self) -> None:
         context, events = parsed_route("accepted")
         base = event_values(
@@ -1067,7 +1106,7 @@ class UnsupportedBoundaryTests(unittest.TestCase):
 
 class ContractAndVectorTests(unittest.TestCase):
     def test_exact_contract_and_signer_context(self) -> None:
-        path = I2_ROOT / "spec" / "trust-root-role-isolation-contract-v0.3.json"
+        path = I2_ROOT / "spec" / "trust-root-role-isolation-contract-v0.4.json"
         raw = path.read_bytes()
         self.assertEqual(hashlib.sha256(raw).hexdigest(), CONTRACT_SHA256)
         document = s0_i2.verify_contract_bytes(raw)
@@ -1081,7 +1120,7 @@ class ContractAndVectorTests(unittest.TestCase):
         self.assertEqual(context.registry_role_order, FROZEN_REGISTRY_ROLE_ORDER)
 
     def test_contract_byte_change_fails_before_semantic_use(self) -> None:
-        path = I2_ROOT / "spec" / "trust-root-role-isolation-contract-v0.3.json"
+        path = I2_ROOT / "spec" / "trust-root-role-isolation-contract-v0.4.json"
         raw = path.read_bytes()
         with self.assertRaises(BindingError):
             s0_i2.verify_contract_bytes(raw + b"\n")

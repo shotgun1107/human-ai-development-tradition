@@ -1,9 +1,9 @@
-# I2 공개 trust-root/role-isolation construction v0.3 검증 보고서
+# I2 공개 trust-root/role-isolation construction v0.4 검증 보고서
 
-- `date`: `2026-08-11 KST`
-- `branch`: `codex/s0-trust-root-role-isolation-public-implementation-v03`
-- `base_commit`: `01a1430d29d3c87e9448d9370a404e60371f721d`
-- `gate`: `S0 V0.14 TRUST ROOT AND ROLE ISOLATION PUBLIC IMPLEMENTATION V0.3 REVISION OPEN`
+- `date`: `2026-08-12 KST`
+- `branch`: `codex/s0-trust-root-role-isolation-public-implementation-v04`
+- `base_commit`: `5e374933a80fd89afb85649c83353317d40581ec`
+- `gate`: `S0 V0.14 TRUST ROOT AND ROLE ISOLATION PUBLIC IMPLEMENTATION V0.4 REVISION OPEN`
 - `claim_kind`: bounded public construction verification only
 
 ## 1. 입력 경계
@@ -29,6 +29,8 @@ manifest, implementation manifest, 테스트 및 verifier 입력에 포함되지
 - route별 `result_media_id`와 네 preallocated `R/A/P/C` ID, 총 다섯 식별자의
   단일 소유권 및 route 간 result/result, result/event, event/event 충돌 거부
 - 공급된 multi-route set 전체의 emitted event-ID 중복 거부
+- global link/chain의 canonical text 또는 nonnegative integer sequence를 Python
+  전역 자릿수 제한 변경 없이 임의 길이 canonical decimal로 normalization
 - I1 public runtime manifest/JSON SHA-256, 22-role 순서, root 제외 21-role 식별자
   inventory 결박
 - 동결 `TRI2-VEC-02` 네 행과 공개 evidence hash의 exact binding
@@ -48,7 +50,7 @@ same-process 코드에 대한 보안 경계가 아니다.
 
 최종 source와 test delta 이후 공개 `unittest` suite를 한 번 실행했다.
 
-- tests run: `37`
+- tests run: `38`
 - failures: `0`
 - errors: `0`
 - skips: `0`
@@ -67,10 +69,16 @@ v0.2 독립 심사에서 다음 두 major finding이 확인됐다.
    result/result 및 result/event 충돌이 허용됐다.
 
 v0.3은 route identity를 set당 정확히 한 번으로 제한하고, 각 route의 result-media
-ID와 네 event ID를 하나의 다섯-ID ownership map에 등록한다. 공급된 모든 route의
-emitted event ID도 별도 set으로 재검사한다. 동일 이력, 모순 종료, 두 completion,
-역순 충돌, early-terminal 변형을 hostile regression으로 추가했다. 이 검증은
-작성자 측 보조 검증이며 독립 심사 증거가 아니다.
+ID와 네 event ID를 하나의 다섯-ID ownership map에 등록했다. v0.3 독립 심사는
+두 major를 폐쇄했지만 새 minor `I2-V03-m01`을 확인했다. 5,001자리 canonical
+sequence text는 통과한 반면 같은 값을 `int`로 전달하면 `str(value)`가 Python의
+4,300자리 process-global 제한에서 raw `ValueError`를 냈다.
+
+v0.4는 정수를 base-1e9 chunk로 분해하고 각 bounded chunk만 10진수로 변환한다.
+이 방식은 공개 `str | int` 입력 표면을 유지하며 전역 안전 제한을 변경하지 않는다.
+link와 chain entry point 모두에 5,001자리 정수 회귀시험을 추가했고, canonical
+string·음수·비정수 처리와 기존 M01/M02 회귀 표면도 유지했다. 이 검증은 작성자
+측 보조 검증이며 독립 심사 증거가 아니다.
 
 ## 5. 최종 verifier 계약
 
@@ -108,9 +116,10 @@ powershell -NoProfile -ExecutionPolicy Bypass `
 
 ## 6. 최대 허용 주장
 
-최대 주장은 인증된 공개 입력에 한해 I2 v0.3의 byte codec, 구조적 lifecycle,
+최대 주장은 인증된 공개 입력에 한해 I2 v0.4의 byte codec, 구조적 lifecycle,
 공급 범위 ID 충돌, I1 공개 inventory 결박 및 frozen vector binding이 model-free
-construction tests를 통과했다는 것이다.
+construction tests를 통과했고 공개 global-sequence 정수 입력이 Python 전역
+자릿수 제한을 변경하지 않고 canonical decimal로 normalization된다는 것이다.
 
 실제 trust root, role isolation, key custody, durable ledger/witness, S0 효과,
 E0 효과, 중앙 시스템, Project Brain, 운영 안전성 또는 경제성은 구현·실행·
