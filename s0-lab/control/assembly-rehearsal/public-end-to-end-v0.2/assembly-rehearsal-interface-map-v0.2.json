@@ -1,0 +1,151 @@
+{
+  "schema_id": "S0-PUBLIC-ASSEMBLY-REHEARSAL-INTERFACE-MAP-2",
+  "version": "0.2.0",
+  "claim_kind": "public-model-free-design-revision-only",
+  "predecessor_review_sha256": "9bb097acba46bfcfd6eee88ffbf0e41709f371f08fbd2226f6bdb86b615f95dd",
+  "component_manifest_sha256": {
+    "i0": "f57514f96a2c30366cdf1f1414524711da20c9410186b3017e3dbf902bb612ae",
+    "i1": "668d3549ef6f7146ac7200e7be1f362967eca4c2cf66119a1f727bebd245332c",
+    "i2": "18ccfbcbe73b1170e07bd000376b079528dcf135b806e3f6c77b10efae736bd6",
+    "i3": "e07c9754d61b143bca9747bbcccb58b0861b14f60031422e1e4fd88a0fb93648"
+  },
+  "public_bundle": {
+    "manifest_path": "s0-lab/public-practice/v0.1/bundle-files.sha256",
+    "manifest_sha256": "e41ee6c71169df646e3c8c0b0e8f3d77e7871d939f651b86a52ea5696feeb637",
+    "entry_count": 90,
+    "execution_allowlist": "manifest path plus exactly all 90 authenticated manifest entries"
+  },
+  "public_case": {
+    "rehearsal_id": "S0-PUBLIC-AR-B2-P01-001",
+    "block_id": "BLK-PRACTICE0002",
+    "representation_id": "P01",
+    "canonical_path": "s0-lab/public-practice/v0.1/blocks/BLK-PRACTICE0002/canonical-input.json",
+    "canonical_sha256": "bf8e48e1bed4c061df7de896aa14848cdeab6692288a2eda5b445c1a87557863",
+    "package_path": "s0-lab/public-practice/v0.1/packages/P01B2EMBR001/input.json",
+    "package_sha256": "15bace158828b8a16a4fd9d76dddfa7b5870bdb580198f0da308c4fa575e03b7",
+    "questions_path": "s0-lab/public-practice/v0.1/runner/BLK-PRACTICE0002/questions.json",
+    "questions_sha256": "661c09dfb20ea933f521370f9e3f94e2512f49e67020101d3767a6a92a07fe90",
+    "public_response_path": "s0-lab/public-practice/v0.1/blocks/BLK-PRACTICE0002/expected-answer-P01.json",
+    "public_response_sha256": "c2f824c6483b625e2fa50d0016443632809471f32ebb235e09f454cf04981bdf"
+  },
+  "other_public_inputs": {
+    "answer_schema_path": "s0-lab/control/sm0/answer.schema.json",
+    "answer_schema_sha256": "e21100f06d2715f42cd1fda812e17d22340a64327bfb48c03112a0f83d33ac6b",
+    "i2_contract_path": "s0-lab/i2/spec/trust-root-role-isolation-contract-v0.4.json",
+    "i2_contract_sha256": "713fc6b44c84126387dc492b93e22d928ba894e18bdc8705049a2ea5cb8cc7da",
+    "i3_contract_path": "s0-lab/i3/spec/import-decision-contract-v0.1.json",
+    "i3_contract_sha256": "ae834becfc393e4f525265aff473ae32d12f349713fb48b2e0bb60ea39fc7ac8"
+  },
+  "request_authority": {
+    "manifest_path": "s0-lab/assembly-rehearsal/public-end-to-end-v0.1/request-files.sha256",
+    "manifest_sha256": "872f2bca8d2d56c9b664e37ad6092a4dd4d8750d40eb8ba99dfbad7f7c94c9f7",
+    "manifest_bytes": 135,
+    "entry_prefix": "s0-lab/assembly-rehearsal/public-end-to-end-v0.1/inputs/",
+    "allowed_paths": [
+      "s0-lab/assembly-rehearsal/public-end-to-end-v0.1/inputs/request.json"
+    ],
+    "purpose": "s0-public-assembly-rehearsal-v01",
+    "request_sha256": "990f12bd98b0f2c7ce64e683a8165c6e67384d6dbc6b4f1f4ec62b19f28b75e2",
+    "request_bytes": 7917
+  },
+  "request_envelope": {
+    "schema_id": "S0-PUBLIC-ASSEMBLY-REQUEST-1",
+    "fields": [
+      "schema_id",
+      "rehearsal_id",
+      "block_id",
+      "representation_id",
+      "input_package_sha256",
+      "questions_sha256",
+      "input_package",
+      "questions"
+    ]
+  },
+  "stub": {
+    "transport_id": "S0-PUBLIC-EXACT-ANSWER-STUB-1",
+    "response_id": "S0-PUBLIC-AR-B2-P01-RESPONSE-1",
+    "script_frame_count": 1,
+    "positive_counters": {
+      "transport_calls": 1,
+      "yielded_frame_count": 1,
+      "close_count": 1,
+      "unconsumed_frame_count_on_close": 0
+    },
+    "generic_i1_trailing_frame_claim": false,
+    "stub_close_exhaustion_claim": true
+  },
+  "i2_i3_disposition": {
+    "i2": "contract-authenticated-no-import-route",
+    "i3": "contract-authenticated-no-import-attempt"
+  },
+  "state_order": [
+    "NEW",
+    "PREFLIGHT_AUTHENTICATED",
+    "REQUEST_RECONSTRUCTED",
+    "OUTPUT_RESERVED",
+    "RUNNER_ENTERED",
+    "INVOKED_ONCE",
+    "RESPONSE_CAPTURED",
+    "ANSWER_VALIDATED",
+    "TEMP_RECORD_VERIFIED",
+    "COMPLETE"
+  ],
+  "publication": {
+    "pending_name": "run-record.pending",
+    "final_name": "run-record.json",
+    "primitive": "same-volume-atomic-no-replace-move",
+    "commit_point": "successful atomic publication",
+    "fallible_success_checks_after_commit": 0
+  },
+  "expected_success_record": {
+    "actual_response_sha256": "c2f824c6483b625e2fa50d0016443632809471f32ebb235e09f454cf04981bdf",
+    "answer_validation_error_count": 0,
+    "block_id": "BLK-PRACTICE0002",
+    "bundle_manifest_sha256": "e41ee6c71169df646e3c8c0b0e8f3d77e7871d939f651b86a52ea5696feeb637",
+    "canonical_sha256": "bf8e48e1bed4c061df7de896aa14848cdeab6692288a2eda5b445c1a87557863",
+    "claim_kind": "public-model-free-assembly-rehearsal-only-not-s0",
+    "denied_input_access_count": 0,
+    "design_base_commit": "f7048e919ab0e698d78ca4ff4cc4eb31ca6f612c",
+    "design_revision": "0.2",
+    "expected_response_sha256": "c2f824c6483b625e2fa50d0016443632809471f32ebb235e09f454cf04981bdf",
+    "final_frames": 1,
+    "i0_manifest_sha256": "f57514f96a2c30366cdf1f1414524711da20c9410186b3017e3dbf902bb612ae",
+    "i1_manifest_sha256": "668d3549ef6f7146ac7200e7be1f362967eca4c2cf66119a1f727bebd245332c",
+    "i2_disposition": "contract-authenticated-no-import-route",
+    "i2_manifest_sha256": "18ccfbcbe73b1170e07bd000376b079528dcf135b806e3f6c77b10efae736bd6",
+    "i3_disposition": "contract-authenticated-no-import-attempt",
+    "i3_manifest_sha256": "e07c9754d61b143bca9747bbcccb58b0861b14f60031422e1e4fd88a0fb93648",
+    "package_sha256": "15bace158828b8a16a4fd9d76dddfa7b5870bdb580198f0da308c4fa575e03b7",
+    "public_bundle_entry_count": 90,
+    "questions_sha256": "661c09dfb20ea933f521370f9e3f94e2512f49e67020101d3767a6a92a07fe90",
+    "rehearsal_id": "S0-PUBLIC-AR-B2-P01-001",
+    "representation_id": "P01",
+    "request_manifest_path": "s0-lab/assembly-rehearsal/public-end-to-end-v0.1/request-files.sha256",
+    "request_manifest_sha256": "872f2bca8d2d56c9b664e37ad6092a4dd4d8750d40eb8ba99dfbad7f7c94c9f7",
+    "request_path": "s0-lab/assembly-rehearsal/public-end-to-end-v0.1/inputs/request.json",
+    "request_sha256": "990f12bd98b0f2c7ce64e683a8165c6e67384d6dbc6b4f1f4ec62b19f28b75e2",
+    "response_frames": 1,
+    "result": "public-assembly-rehearsal-pass-not-s0",
+    "retry_count": 0,
+    "schema_id": "S0-PUBLIC-ASSEMBLY-RUN-RECORD-2",
+    "state": "COMPLETE",
+    "stub_script_frame_count": 1,
+    "stub_transport_id": "S0-PUBLIC-EXACT-ANSWER-STUB-1",
+    "stub_unconsumed_frame_count_on_close": 0,
+    "stub_yielded_frame_count": 1,
+    "transport_calls": 1
+  },
+  "expected_success_record_bytes": 2046,
+  "expected_success_record_sha256": "bc13615933766fd84435fe4faf2d05b37a495b160f8529c699c73aec7784650e",
+  "failure_classes": [
+    "AR-BOUNDARY",
+    "AR-AUTH",
+    "AR-TRANSFORM",
+    "AR-RESERVE",
+    "AR-INVOKE",
+    "AR-RESPONSE",
+    "AR-ANSWER",
+    "AR-RECORD",
+    "AR-DETERMINISM"
+  ]
+}
