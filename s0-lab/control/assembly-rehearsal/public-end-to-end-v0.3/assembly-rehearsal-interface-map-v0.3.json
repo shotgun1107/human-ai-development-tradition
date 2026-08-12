@@ -1,0 +1,187 @@
+{
+  "schema_id": "S0-PUBLIC-ASSEMBLY-REHEARSAL-INTERFACE-MAP-3",
+  "version": "0.3.0",
+  "claim_kind": "public-model-free-design-successor-only",
+  "predecessor_review_sha256": "c7b31be05274bb87442550c8a5790e4737d5da7d937d3d7e2f22f6d743bde6fd",
+  "inherits_v0_2": {
+    "fixed_case": "BLK-PRACTICE0002/P01",
+    "rehearsal_id": "S0-PUBLIC-AR-B2-P01-001",
+    "request_bytes": 7917,
+    "request_sha256": "990f12bd98b0f2c7ce64e683a8165c6e67384d6dbc6b4f1f4ec62b19f28b75e2",
+    "request_manifest_bytes": 135,
+    "request_manifest_sha256": "872f2bca8d2d56c9b664e37ad6092a4dd4d8750d40eb8ba99dfbad7f7c94c9f7",
+    "run_record_field_count": 36,
+    "run_record_bytes": 2046,
+    "run_record_sha256": "bc13615933766fd84435fe4faf2d05b37a495b160f8529c699c73aec7784650e"
+  },
+  "platform_profile": {
+    "profile_id": "S0-WIN-NTFS-MOVEFILEEX-NOREPLACE-PROCESS-1",
+    "operating_system": [
+      "Windows 10",
+      "Windows 11"
+    ],
+    "filesystem": "local-NTFS",
+    "same_volume_required": true,
+    "primitive": "MoveFileExW",
+    "flags_numeric": 0,
+    "replace_existing": false,
+    "copy_allowed": false,
+    "fallback_allowed": false,
+    "retry_count": 0,
+    "failure_model": "process-interruption-and-api-failure-only",
+    "power_loss_durability_claim": false,
+    "directory_metadata_durability_claim": false
+  },
+  "output_names": [
+    "run-record.pending",
+    "run-record.json",
+    "publication-receipt.pending",
+    "publication-receipt.json"
+  ],
+  "initial_reservation": {
+    "required_absent_names": 4,
+    "exclusive_created_name": "run-record.pending",
+    "failure_class": "AR-RESERVE",
+    "transport_calls": 0
+  },
+  "stub_integrity": {
+    "operation_id": "STUB_INTEGRITY",
+    "required_counters": {
+      "transport_calls": 1,
+      "script_frame_count": 1,
+      "yielded_frame_count": 1,
+      "close_count": 1,
+      "unconsumed_frame_count_on_close": 0
+    },
+    "failure_class": "AR-INVOKE"
+  },
+  "record_validation_order": [
+    "DETERMINISM_AUDIT",
+    "CANONICAL_SERIALIZE",
+    "RECORD_EXPECTATION",
+    "PENDING_WRITE_VERIFY"
+  ],
+  "publication_order": [
+    "MOVE_VERIFIED_RECORD_PENDING_TO_FINAL",
+    "BUILD_RECEIPT_FROM_EXTERNAL_PINS",
+    "WRITE_AND_VERIFY_RECEIPT_PENDING",
+    "MOVE_VERIFIED_RECEIPT_PENDING_TO_FINAL",
+    "COMPLETE"
+  ],
+  "receipt_schema": {
+    "schema_id": "S0-PUBLIC-ASSEMBLY-PUBLICATION-RECEIPT-1",
+    "canonicalization": "UTF-8-no-BOM-sorted-keys-ensure-ascii-compact-final-LF",
+    "field_order_for_review": [
+      "assembly_implementation_manifest_sha256",
+      "design_package_manifest_sha256",
+      "design_independent_review_sha256",
+      "evidence_consumer_id",
+      "platform_profile_id",
+      "publication_outcome",
+      "publication_primitive",
+      "publication_primitive_flags",
+      "receipt_path",
+      "record_path",
+      "record_sha256",
+      "rehearsal_id",
+      "schema_id",
+      "stub_close_count",
+      "stub_script_frame_count",
+      "stub_transport_calls",
+      "stub_unconsumed_frame_count_on_close",
+      "stub_yielded_frame_count"
+    ],
+    "fixed_values": {
+      "evidence_consumer_id": "S0-PUBLIC-ASSEMBLY-EVIDENCE-CONSUMER-1",
+      "platform_profile_id": "S0-WIN-NTFS-MOVEFILEEX-NOREPLACE-PROCESS-1",
+      "publication_outcome": "record-and-receipt-committed",
+      "publication_primitive": "MoveFileExW",
+      "publication_primitive_flags": 0,
+      "receipt_path": "publication-receipt.json",
+      "record_path": "run-record.json",
+      "record_sha256": "bc13615933766fd84435fe4faf2d05b37a495b160f8529c699c73aec7784650e",
+      "rehearsal_id": "S0-PUBLIC-AR-B2-P01-001",
+      "schema_id": "S0-PUBLIC-ASSEMBLY-PUBLICATION-RECEIPT-1",
+      "stub_close_count": 1,
+      "stub_script_frame_count": 1,
+      "stub_transport_calls": 1,
+      "stub_unconsumed_frame_count_on_close": 0,
+      "stub_yielded_frame_count": 1
+    },
+    "external_lowercase_sha256_fields": [
+      "assembly_implementation_manifest_sha256",
+      "design_package_manifest_sha256",
+      "design_independent_review_sha256"
+    ],
+    "freeze_before_execution": [
+      "all three external hashes",
+      "canonical receipt bytes",
+      "receipt byte length",
+      "receipt SHA-256"
+    ]
+  },
+  "success_evidence": {
+    "consumer_id": "S0-PUBLIC-ASSEMBLY-EVIDENCE-CONSUMER-1",
+    "required_final_pair": [
+      "run-record.json",
+      "publication-receipt.json"
+    ],
+    "required_pending_absent": [
+      "run-record.pending",
+      "publication-receipt.pending"
+    ],
+    "single_file_success_allowed": false,
+    "arbitrary_bytes_success_allowed": false,
+    "quarantined_root_success_allowed": false,
+    "commit_point": "successful publication-receipt.pending to publication-receipt.json MoveFileExW(flags=0)"
+  },
+  "failure_routing": [
+    {
+      "operation": "denied boundary",
+      "class": "AR-BOUNDARY"
+    },
+    {
+      "operation": "authentication and platform preflight",
+      "class": "AR-AUTH"
+    },
+    {
+      "operation": "I0 transform comparison",
+      "class": "AR-TRANSFORM"
+    },
+    {
+      "operation": "initial output reservation",
+      "class": "AR-RESERVE"
+    },
+    {
+      "operation": "I1 and stub integrity",
+      "class": "AR-INVOKE"
+    },
+    {
+      "operation": "response comparison",
+      "class": "AR-RESPONSE"
+    },
+    {
+      "operation": "answer validation",
+      "class": "AR-ANSWER"
+    },
+    {
+      "operation": "semantic determinism audit",
+      "class": "AR-DETERMINISM"
+    },
+    {
+      "operation": "serialization, I/O, race, publication, receipt, pre-commit consumer validation",
+      "class": "AR-RECORD"
+    }
+  ],
+  "closed_boundaries": [
+    "F0-content",
+    "hidden-oracle",
+    "provider-model-network",
+    "executor-judge-scoring",
+    "I2-I3-import",
+    "keys-signatures-trust-activation",
+    "S0-E0-execution",
+    "central-system",
+    "Project-Brain"
+  ]
+}
