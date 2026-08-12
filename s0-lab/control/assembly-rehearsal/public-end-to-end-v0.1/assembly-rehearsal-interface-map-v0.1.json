@@ -1,0 +1,112 @@
+{
+  "schema_id": "S0-PUBLIC-ASSEMBLY-REHEARSAL-INTERFACE-MAP-1",
+  "version": "0.1.0",
+  "claim_kind": "public model-free design candidate only",
+  "design_base_commit": "f7048e919ab0e698d78ca4ff4cc4eb31ca6f612c",
+  "component_manifest_sha256": {
+    "i0": "f57514f96a2c30366cdf1f1414524711da20c9410186b3017e3dbf902bb612ae",
+    "i1": "668d3549ef6f7146ac7200e7be1f362967eca4c2cf66119a1f727bebd245332c",
+    "i2": "18ccfbcbe73b1170e07bd000376b079528dcf135b806e3f6c77b10efae736bd6",
+    "i3": "e07c9754d61b143bca9747bbcccb58b0861b14f60031422e1e4fd88a0fb93648"
+  },
+  "public_case": {
+    "rehearsal_id": "S0-PUBLIC-AR-B2-P01-001",
+    "block_id": "BLK-PRACTICE0002",
+    "representation_id": "P01",
+    "canonical_path": "s0-lab/public-practice/v0.1/blocks/BLK-PRACTICE0002/canonical-input.json",
+    "canonical_sha256": "bf8e48e1bed4c061df7de896aa14848cdeab6692288a2eda5b445c1a87557863",
+    "package_path": "s0-lab/public-practice/v0.1/packages/P01B2EMBR001/input.json",
+    "package_sha256": "15bace158828b8a16a4fd9d76dddfa7b5870bdb580198f0da308c4fa575e03b7",
+    "questions_path": "s0-lab/public-practice/v0.1/runner/BLK-PRACTICE0002/questions.json",
+    "questions_sha256": "661c09dfb20ea933f521370f9e3f94e2512f49e67020101d3767a6a92a07fe90",
+    "public_response_path": "s0-lab/public-practice/v0.1/blocks/BLK-PRACTICE0002/expected-answer-P01.json",
+    "public_response_sha256": "c2f824c6483b625e2fa50d0016443632809471f32ebb235e09f454cf04981bdf"
+  },
+  "component_calls": [
+    "s0_i2.verify_contract_file",
+    "s0_i3.verify_contract_file",
+    "s0_i0.verify_public_bundle",
+    "s0_i0.transform_canonical",
+    "s0_i1.auth.bind_external_manifest_grant",
+    "s0_i1.auth.load_authenticated_manifest",
+    "s0_i1.auth.authenticate_manifest_entry",
+    "s0_i1.run_one_shot",
+    "s0_i0.validate_answer_candidate_bytes"
+  ],
+  "i2_i3_disposition": {
+    "i2": "contract-authenticated-no-import-route",
+    "i3": "contract-authenticated-no-import-attempt",
+    "reason": "the fixed repository public-practice input does not traverse signer media"
+  },
+  "request_envelope_fields": [
+    "schema_id",
+    "rehearsal_id",
+    "block_id",
+    "representation_id",
+    "input_package_sha256",
+    "questions_sha256",
+    "input_package",
+    "questions"
+  ],
+  "state_order": [
+    "NEW",
+    "PREFLIGHT_AUTHENTICATED",
+    "REQUEST_RECONSTRUCTED",
+    "OUTPUT_RESERVED",
+    "INVOKED_ONCE",
+    "RESPONSE_CAPTURED",
+    "ANSWER_VALIDATED",
+    "RECORD_COMMITTED",
+    "COMPLETE"
+  ],
+  "run_record_fields": [
+    "schema_id",
+    "claim_kind",
+    "rehearsal_id",
+    "block_id",
+    "representation_id",
+    "design_base_commit",
+    "i0_manifest_sha256",
+    "i1_manifest_sha256",
+    "i2_manifest_sha256",
+    "i3_manifest_sha256",
+    "bundle_manifest_sha256",
+    "canonical_sha256",
+    "package_sha256",
+    "questions_sha256",
+    "request_manifest_sha256",
+    "request_sha256",
+    "expected_response_sha256",
+    "actual_response_sha256",
+    "transport_calls",
+    "retry_count",
+    "response_frames",
+    "final_frames",
+    "answer_validation_error_count",
+    "i2_disposition",
+    "i3_disposition",
+    "denied_input_access_count",
+    "result"
+  ],
+  "failure_classes": [
+    "AR-AUTH",
+    "AR-TRANSFORM",
+    "AR-RESERVE",
+    "AR-INVOKE",
+    "AR-RESPONSE",
+    "AR-ANSWER",
+    "AR-RECORD",
+    "AR-BOUNDARY"
+  ],
+  "closed_boundaries": [
+    "f0-content",
+    "hidden-oracle",
+    "provider-or-model",
+    "network-browser-mcp-tools",
+    "executor-judge-scoring-condition-map",
+    "keys-signatures-trust-root-activation",
+    "signer-media-ledger-witness-vm-acl",
+    "e0-or-s0-execution",
+    "central-system-or-project-brain"
+  ]
+}
