@@ -1,0 +1,140 @@
+{
+  "schema_id": "S0-I3-PUBLIC-IMPORT-DECISION-CONTRACT-1",
+  "version": "0.1.0",
+  "claim_kind": "bounded public model-free implementation candidate only",
+  "source_bindings": {
+    "i3_boundary_sha256": "9a638245f57fe49b4e3557748f0b37d097d794acc9d9650bac7fc7ea2af50aae",
+    "i3_design_v0_2_sha256": "f04dae684b7373a4c613c3f0e357ef8266f0bf307e78e78d105cb04168f61594",
+    "i3_classification_v0_2_sha256": "82f787c737f0a255970679b4c501b93061de7b7778e10843d71c047aa69ea706",
+    "i3_field_binding_v0_2_sha256": "b034fadf16e7b5d11594c6987ba714e791ef2b2d02409589c6e7b90126e2fa02",
+    "i3_implementation_test_brief_v0_2_sha256": "182df459eee2877d5c4710794ad7a7c86a56a44abe7ce14d09e629fc1c29ac62",
+    "i3_independent_rereview_sha256": "e915ed191a685afe9d6cfbc905f38ab589090535f4435a88a80ddf5d093b9fac",
+    "i3_control_integration_sha256": "76f61014ee733f37fb05f3cd22acfc01a23a02b69e926421e76b8279e676b08a",
+    "i3_main_integration_sha256": "b0e5acb778aad5f92abb987d95fd38aa90451d0edae8c9416f1343097dfacda4",
+    "i2_contract_sha256": "713fc6b44c84126387dc492b93e22d928ba894e18bdc8705049a2ea5cb8cc7da",
+    "i2_implementation_files_sha256": "18ccfbcbe73b1170e07bd000376b079528dcf135b806e3f6c77b10efae736bd6"
+  },
+  "records": {
+    "import_admission": {
+      "schema": "S0-SIGNER-IMPORT-ADMISSION-2",
+      "line_count": 21,
+      "field_order": [
+        "import_admission_schema",
+        "authority_id",
+        "campaign_id",
+        "ceremony_id",
+        "signer_id",
+        "import_class",
+        "from_state",
+        "to_state",
+        "package_sha256",
+        "package_object_id",
+        "attachment_capability_id",
+        "result_media_kind",
+        "result_media_id",
+        "reserved_media_event_id",
+        "admission_frozen_media_event_id",
+        "pending_media_event_id",
+        "completion_media_event_id",
+        "outcome_schema",
+        "outcome_max_bytes",
+        "admission_event_id",
+        "decision"
+      ]
+    },
+    "import_outcome": {
+      "schema": "S0-SIGNER-IMPORT-OUTCOME-1",
+      "line_count": 26,
+      "raw_medium_bytes": 2048,
+      "field_order": [
+        "import_outcome_schema",
+        "tcb_service_id",
+        "campaign_id",
+        "ceremony_id",
+        "signer_id",
+        "import_class",
+        "from_state",
+        "to_state",
+        "package_sha256",
+        "package_object_id",
+        "attachment_capability_id",
+        "admission_event_id",
+        "admission_record_sha256",
+        "result_media_kind",
+        "result_media_id",
+        "reserved_media_event_id",
+        "admission_frozen_media_event_id",
+        "pending_media_event_id",
+        "completion_media_event_id",
+        "before_state",
+        "after_state",
+        "before_configuration_state_sha256",
+        "after_configuration_state_sha256",
+        "decision",
+        "reason",
+        "outcome_body_sha256"
+      ]
+    },
+    "import_event": {
+      "schema": "S0-SIGNER-MEDIA-LEDGER-IMPORT-EVENT-1",
+      "line_count": 31,
+      "reuse": "s0_i2 v0.4 exact parser/serializer/lifecycle"
+    }
+  },
+  "interfaces": {
+    "parse_import_admission": ["bytes", "signer_context"],
+    "serialize_import_admission": ["ImportAdmission-or-exact-mapping", "signer_context"],
+    "hash_import_admission": ["ImportAdmission-or-canonical-bytes", "signer_context"],
+    "parse_import_outcome_frame": ["bytes", "signer_context"],
+    "serialize_import_outcome": ["ImportOutcome-or-exact-mapping", "signer_context"],
+    "hash_import_outcome_frame": ["ImportOutcome-or-canonical-bytes", "signer_context"],
+    "classify_import_attempt": ["optional-admission-bytes", "ClassificationFactSet", "authenticated-I2-route-context"],
+    "finalize_import_attempt": ["ImportClassification", "optional-I2-event-bytes", "append_status", "signer_context"]
+  },
+  "classification_order": [
+    "PRE-R",
+    "PRE-A",
+    "P-CRASH",
+    "P-MISSING",
+    "P-DUPLICATE",
+    "P-DISAGREE-H",
+    "P-DISAGREE-Z",
+    "P-PARSE-REJECTED",
+    "P-VALIDATION-REJECTED",
+    "P-STATE-COMMIT-FAILED",
+    "P-ACCEPTED"
+  ],
+  "status_fields": [
+    "launch_admission_status",
+    "iso_attachment_status",
+    "outcome_medium_status",
+    "detachment_and_raw_read_status",
+    "route_event_binding_status",
+    "anti_replay_status",
+    "host_state_status",
+    "ledger_witness_snapshot_status"
+  ],
+  "stable_errors": [
+    "I3_BYTE_ERROR",
+    "I3_FIELD_ERROR",
+    "I3_VALUE_ERROR",
+    "I3_ROUTE_ERROR",
+    "I3_TUPLE_ERROR",
+    "I3_HASH_ERROR",
+    "I3_BINDING_ERROR",
+    "I3_INPUT_ERROR",
+    "I3_EVENT_ERROR"
+  ],
+  "unsupported_boundaries": [
+    "durable-ledger",
+    "project-lifetime-uniqueness",
+    "atomic-append",
+    "witness-validation",
+    "actual-registry-authority",
+    "provider-or-platform-enforcement",
+    "protected-material",
+    "f0-fixture-or-hidden-oracle",
+    "e0-or-s0-execution",
+    "central-system-or-project-brain"
+  ]
+}
