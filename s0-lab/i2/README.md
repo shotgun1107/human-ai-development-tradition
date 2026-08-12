@@ -1,4 +1,4 @@
-# I2 공개 trust-root/role-isolation construction candidate v0.3
+# I2 공개 trust-root/role-isolation construction candidate v0.4
 
 이 디렉터리는 CONTROL에 채택된 S0 v0.14 trust-root/role-isolation v0.4
 공개 설계에서, 현재 인증된 공개 입력만으로 기계적으로 구현할 수 있는 최소
@@ -15,6 +15,8 @@ manifest의 정확한 SHA-256을 별도 입력으로 인증하고, 그 안의 22
 - `S0-SIGNER-MEDIA-LEDGER-IMPORT-EVENT-1`의 정확한 31필드 ASCII/LF
   `name=value` codec과 SHA-256
 - 문서에 없는 자릿수 상한을 추가하지 않은 canonical unsigned decimal
+- global link/chain의 공개 `str | int` sequence 입력에 대해 Python 전역 자릿수
+  제한을 변경하지 않는 ceiling-free nonnegative integer normalization
 - 세 import route class의 `R/A/P/C` lifecycle tuple 및 route-local predecessor,
   binding, ID 중복 검증
 - 호출자가 제공한 global sequence와 predecessor hash의 구조적 검증
@@ -32,6 +34,12 @@ route의 성공·실패 이력 중복이나 result-media/result-media,
 result-media/event-ID 충돌은 거부한다. 실제 project-lifetime 원장, 원자 append,
 rollback-resistant witness 또는 appliance 상태를 관찰하지 않으며 그런 결과를
 주장하지 않는다.
+
+정수 sequence normalization은 값을 9자리 이하의 base-1e9 chunk로 나눠 각
+chunk만 10진수로 변환한다. 따라서 canonical string 경로와 같은 임의 길이
+표현을 유지하면서 Python의 process-global integer-string digit limit를 높이거나
+비활성화하지 않는다. 음수, `bool`과 그 밖의 형식은 기존의 안정된 I2 오류로
+거부한다.
 
 Python의 frozen dataclass와 module-private provenance marker는 신뢰된 same-process
 호출자에게 제공하는 API discipline이다. 악성 same-process 코드의 introspection,
