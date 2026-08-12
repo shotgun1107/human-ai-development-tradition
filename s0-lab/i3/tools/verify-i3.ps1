@@ -60,6 +60,8 @@ $expectedSourcePaths = @(
     's0-lab/i2/spec/trust-root-role-isolation-contract-v0.4.json'
     's0-lab/i2/verification/implementation-files.sha256'
     's0-lab/i2/verification/implementation-manifest.sha256'
+    's0-lab/reviews/i3/import-decision-implementation-v0.1/independent-review-v0.1.md'
+    's0-lab/reviews/i3/import-decision-implementation-v0.1/independent-review-v0.1.sha256'
 )
 
 function Get-Sha256Lower {
@@ -218,7 +220,7 @@ try {
     )
     $contractPath = Join-Path $snapshotRoot 's0-lab\i3\spec\import-decision-contract-v0.1.json'
     $cliOutput = @(& $python -B -S -P -m s0_i3.cli --contract $contractPath 2>&1)
-    if ($LASTEXITCODE -ne 0 -or ($cliOutput -join "`n") -notmatch 'I3_CONTRACT=PASS VERSION=0.1.0') {
+    if ($LASTEXITCODE -ne 0 -or ($cliOutput -join "`n") -notmatch 'I3_CONTRACT=PASS VERSION=0.2.0') {
         throw 'I3 contract CLI failed'
     }
     Write-Output 'CONTRACT_CLI=PASS'

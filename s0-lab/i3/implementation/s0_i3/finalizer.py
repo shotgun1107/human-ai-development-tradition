@@ -2,7 +2,12 @@
 
 from __future__ import annotations
 
-from s0_i2 import bind_import_route_context, classify_event_variant, parse_import_event
+from s0_i2 import (
+    bind_import_route_context,
+    classify_event_variant,
+    parse_import_event,
+    validate_event_global_link,
+)
 from s0_i2.errors import I2Error
 from s0_i2.records import SignerRegistryContext
 
@@ -31,6 +36,8 @@ def validate_completion_event(
     event_bytes: bytes,
     *,
     signer_context: SignerRegistryContext,
+    expected_sequence: str | int | None,
+    expected_previous_event_sha256: str | None,
 ) -> None:
     result = require_classification(classification)
     if type(event_bytes) is not bytes:
@@ -58,6 +65,11 @@ def validate_completion_event(
             completion_media_event_id=route["completion_media_event_id"],
         )
         event = parse_import_event(event_bytes, signer_context=signer_context)
+        validate_event_global_link(
+            event,
+            expected_sequence=expected_sequence,
+            expected_previous_event_sha256=expected_previous_event_sha256,
+        )
         variant = classify_event_variant(event, context)
     except (I2Error, KeyError) as exc:
         raise I3EventError("completion event is noncanonical or route-incompatible") from exc
@@ -80,6 +92,8 @@ def finalize_import_attempt(
     append_status: str,
     *,
     signer_context: SignerRegistryContext,
+    expected_sequence: str | int | None = None,
+    expected_previous_event_sha256: str | None = None,
 ) -> ImportDecision:
     result = require_classification(classification)
     if type(append_status) is not str or append_status not in APPEND_STATUSES:
@@ -90,7 +104,11 @@ def finalize_import_attempt(
         return make_decision("no-completion-claim")
     try:
         validate_completion_event(
-            result, event_bytes, signer_context=signer_context
+            result,
+            event_bytes,
+            signer_context=signer_context,
+            expected_sequence=expected_sequence,
+            expected_previous_event_sha256=expected_previous_event_sha256,
         )
     except I3EventError:
         return make_decision("no-completion-claim")

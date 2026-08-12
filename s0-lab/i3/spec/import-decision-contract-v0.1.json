@@ -1,7 +1,7 @@
 {
   "schema_id": "S0-I3-PUBLIC-IMPORT-DECISION-CONTRACT-1",
-  "version": "0.1.0",
-  "claim_kind": "bounded public model-free implementation candidate only",
+  "version": "0.2.0",
+  "claim_kind": "bounded public model-free implementation revision candidate only",
   "source_bindings": {
     "i3_boundary_sha256": "9a638245f57fe49b4e3557748f0b37d097d794acc9d9650bac7fc7ea2af50aae",
     "i3_design_v0_2_sha256": "f04dae684b7373a4c613c3f0e357ef8266f0bf307e78e78d105cb04168f61594",
@@ -11,6 +11,7 @@
     "i3_independent_rereview_sha256": "e915ed191a685afe9d6cfbc905f38ab589090535f4435a88a80ddf5d093b9fac",
     "i3_control_integration_sha256": "76f61014ee733f37fb05f3cd22acfc01a23a02b69e926421e76b8279e676b08a",
     "i3_main_integration_sha256": "b0e5acb778aad5f92abb987d95fd38aa90451d0edae8c9416f1343097dfacda4",
+    "i3_implementation_v0_1_independent_review_sha256": "ec1ecc1f9aaf9b32ca7d285d898ec5620e05a8327716a0e16eed2d01530b28ca",
     "i2_contract_sha256": "713fc6b44c84126387dc492b93e22d928ba894e18bdc8705049a2ea5cb8cc7da",
     "i2_implementation_files_sha256": "18ccfbcbe73b1170e07bd000376b079528dcf135b806e3f6c77b10efae736bd6"
   },
@@ -78,7 +79,7 @@
     "import_event": {
       "schema": "S0-SIGNER-MEDIA-LEDGER-IMPORT-EVENT-1",
       "line_count": 31,
-      "reuse": "s0_i2 v0.4 exact parser/serializer/lifecycle"
+      "reuse": "s0_i2 v0.4 exact parser/serializer/lifecycle/global-link"
     }
   },
   "interfaces": {
@@ -89,7 +90,7 @@
     "serialize_import_outcome": ["ImportOutcome-or-exact-mapping", "signer_context"],
     "hash_import_outcome_frame": ["ImportOutcome-or-canonical-bytes", "signer_context"],
     "classify_import_attempt": ["optional-admission-bytes", "ClassificationFactSet", "authenticated-I2-route-context"],
-    "finalize_import_attempt": ["ImportClassification", "optional-I2-event-bytes", "append_status", "signer_context"]
+    "finalize_import_attempt": ["ImportClassification", "optional-I2-event-bytes", "append_status", "signer_context", "expected_sequence", "expected_previous_event_sha256"]
   },
   "classification_order": [
     "PRE-R",

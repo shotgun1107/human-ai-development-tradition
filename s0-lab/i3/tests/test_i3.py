@@ -322,6 +322,17 @@ def event_bytes(
     )
 
 
+def global_link_evidence(
+    classification: s0_i3.ImportClassification,
+    context: s0_i2.ImportRouteContext,
+) -> dict[str, str]:
+    values = event_values(classification, context)
+    return {
+        "expected_sequence": values["sequence"],
+        "expected_previous_event_sha256": values["previous_event_sha256"],
+    }
+
+
 class ContractTests(unittest.TestCase):
     def test_synthetic_generator_self_test(self) -> None:
         self.assertEqual(synthetic_generator_self_test()[:2], (21, 26))
@@ -338,8 +349,8 @@ class ContractTests(unittest.TestCase):
     def test_contract_mutation_and_duplicate_key_fail(self) -> None:
         raw = (I3_ROOT / "spec" / "import-decision-contract-v0.1.json").read_bytes()
         with self.assertRaises(I3BindingError):
-            s0_i3.verify_contract_bytes(raw.replace(b'"version": "0.1.0"', b'"version": "0.1.1"'))
-        duplicate = raw.replace(b"{\n", b'{\n  "version": "0.1.0",\n', 1)
+            s0_i3.verify_contract_bytes(raw.replace(b'"version": "0.2.0"', b'"version": "0.2.1"'))
+        duplicate = raw.replace(b"{\n", b'{\n  "version": "0.2.0",\n', 1)
         with self.assertRaises(I3BindingError):
             s0_i3.verify_contract_bytes(duplicate)
 
@@ -845,6 +856,7 @@ class FinalizationTests(unittest.TestCase):
                 event_bytes(classification, route),
                 "persisted",
                 signer_context=route.signer_context,
+                **global_link_evidence(classification, route),
             )
             seen.add(classification.outcome_class)
             with self.subTest(outcome=classification.outcome_class, row=classification.selected_row):
@@ -876,12 +888,20 @@ class FinalizationTests(unittest.TestCase):
         exact_event = event_bytes(accepted, context)
         for append in ("conflict", "unavailable", "failed"):
             decision = s0_i3.finalize_import_attempt(
-                accepted, exact_event, append, signer_context=context.signer_context
+                accepted,
+                exact_event,
+                append,
+                signer_context=context.signer_context,
+                **global_link_evidence(accepted, context),
             )
             self.assertEqual(decision.disposition, "no-completion-claim")
         self.assertEqual(
             s0_i3.finalize_import_attempt(
-                accepted, None, "persisted", signer_context=context.signer_context
+                accepted,
+                None,
+                "persisted",
+                signer_context=context.signer_context,
+                **global_link_evidence(accepted, context),
             ).disposition,
             "no-completion-claim",
         )
@@ -896,12 +916,86 @@ class FinalizationTests(unittest.TestCase):
                 wrong_event,
                 "persisted",
                 signer_context=context.signer_context,
+                **global_link_evidence(accepted, context),
             ).disposition,
             "no-completion-claim",
         )
         with self.assertRaises(I3InputError):
             s0_i3.finalize_import_attempt(
-                accepted, exact_event, "unknown", signer_context=context.signer_context
+                accepted,
+                exact_event,
+                "unknown",
+                signer_context=context.signer_context,
+                **global_link_evidence(accepted, context),
+            )
+
+    def test_global_link_evidence_is_required_before_authority(self) -> None:
+        _s, admission_raw, _a, context, _frame, medium = outcome_case()
+        accepted = classify(admission_raw, (medium,), context)
+        exact_values = event_values(accepted, context)
+        exact_event = s0_i2.serialize_import_event(
+            exact_values, signer_context=context.signer_context
+        )
+
+        exact = s0_i3.finalize_import_attempt(
+            accepted,
+            exact_event,
+            "persisted",
+            signer_context=context.signer_context,
+            expected_sequence=exact_values["sequence"],
+            expected_previous_event_sha256=exact_values["previous_event_sha256"],
+        )
+        self.assertEqual(exact.disposition, "consumed-accepted")
+        self.assertEqual(exact.destination_authority, "available")
+
+        missing_and_wrong = (
+            (None, None),
+            (None, exact_values["previous_event_sha256"]),
+            (exact_values["sequence"], None),
+            ("4", exact_values["previous_event_sha256"]),
+            (exact_values["sequence"], hex64("e")),
+        )
+        for expected_sequence, expected_previous in missing_and_wrong:
+            with self.subTest(
+                expected_sequence=expected_sequence,
+                expected_previous=expected_previous,
+            ):
+                decision = s0_i3.finalize_import_attempt(
+                    accepted,
+                    exact_event,
+                    "persisted",
+                    signer_context=context.signer_context,
+                    expected_sequence=expected_sequence,
+                    expected_previous_event_sha256=expected_previous,
+                )
+                self.assertEqual(decision.disposition, "no-completion-claim")
+                self.assertEqual(decision.destination_authority, "unavailable")
+
+        hostile_values = dict(exact_values)
+        hostile_values["sequence"] = "999999999999999999999999999999999999999999999"
+        hostile_values["previous_event_sha256"] = hex64("e")
+        hostile_event = s0_i2.serialize_import_event(
+            hostile_values, signer_context=context.signer_context
+        )
+        hostile = s0_i3.finalize_import_attempt(
+            accepted,
+            hostile_event,
+            "persisted",
+            signer_context=context.signer_context,
+            expected_sequence=exact_values["sequence"],
+            expected_previous_event_sha256=exact_values["previous_event_sha256"],
+        )
+        self.assertEqual(hostile.disposition, "no-completion-claim")
+        self.assertEqual(hostile.destination_authority, "unavailable")
+        with self.assertRaises(s0_i3.I3EventError):
+            s0_i3.validate_completion_event(
+                accepted,
+                hostile_event,
+                signer_context=context.signer_context,
+                expected_sequence=exact_values["sequence"],
+                expected_previous_event_sha256=exact_values[
+                    "previous_event_sha256"
+                ],
             )
 
 

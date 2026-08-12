@@ -11,10 +11,13 @@ from .errors import I3BindingError
 from .records import ADMISSION_FIELD_ORDER, OUTCOME_FIELD_ORDER
 
 
-CONTRACT_SHA256 = "46eb58a1433ed1fde16107f74dd86760dc5bb642131a2a7031ad90e39b434551"
+CONTRACT_SHA256 = "ae834becfc393e4f525265aff473ae32d12f349713fb48b2e0bb60ea39fc7ac8"
 I2_CONTRACT_SHA256 = "713fc6b44c84126387dc492b93e22d928ba894e18bdc8705049a2ea5cb8cc7da"
 I2_IMPLEMENTATION_FILES_SHA256 = (
     "18ccfbcbe73b1170e07bd000376b079528dcf135b806e3f6c77b10efae736bd6"
+)
+I3_IMPLEMENTATION_V0_1_INDEPENDENT_REVIEW_SHA256 = (
+    "ec1ecc1f9aaf9b32ca7d285d898ec5620e05a8327716a0e16eed2d01530b28ca"
 )
 EXPECTED_CLASSIFICATION_ORDER = (
     "PRE-R",
@@ -76,10 +79,10 @@ def verify_contract_bytes(raw: bytes) -> dict[str, Any]:
     }
     _require_equal(set(document), expected_keys, "top-level keys")
     _require_equal(document["schema_id"], "S0-I3-PUBLIC-IMPORT-DECISION-CONTRACT-1", "schema")
-    _require_equal(document["version"], "0.1.0", "version")
+    _require_equal(document["version"], "0.2.0", "version")
     _require_equal(
         document["claim_kind"],
-        "bounded public model-free implementation candidate only",
+        "bounded public model-free implementation revision candidate only",
         "claim kind",
     )
     sources = document["source_bindings"]
@@ -88,6 +91,11 @@ def verify_contract_bytes(raw: bytes) -> dict[str, Any]:
         sources["i2_implementation_files_sha256"],
         I2_IMPLEMENTATION_FILES_SHA256,
         "I2 implementation files",
+    )
+    _require_equal(
+        sources["i3_implementation_v0_1_independent_review_sha256"],
+        I3_IMPLEMENTATION_V0_1_INDEPENDENT_REVIEW_SHA256,
+        "I3 implementation v0.1 independent review",
     )
     records = document["records"]
     _require_equal(records["import_admission"]["line_count"], 21, "admission count")
@@ -104,6 +112,23 @@ def verify_contract_bytes(raw: bytes) -> dict[str, Any]:
         "outcome order",
     )
     _require_equal(records["import_event"]["line_count"], 31, "I2 event count")
+    _require_equal(
+        records["import_event"]["reuse"],
+        "s0_i2 v0.4 exact parser/serializer/lifecycle/global-link",
+        "I2 global-link reuse",
+    )
+    _require_equal(
+        tuple(document["interfaces"]["finalize_import_attempt"]),
+        (
+            "ImportClassification",
+            "optional-I2-event-bytes",
+            "append_status",
+            "signer_context",
+            "expected_sequence",
+            "expected_previous_event_sha256",
+        ),
+        "finalizer interface",
+    )
     _require_equal(
         tuple(document["classification_order"]),
         EXPECTED_CLASSIFICATION_ORDER,
