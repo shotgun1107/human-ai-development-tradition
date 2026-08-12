@@ -1,95 +1,75 @@
-# I3 공개 import-decision implementation candidate v0.1 검증 보고서
+# I3 공개 import-decision 구현 v0.2 제한 수정 검증 보고서
 
 - `date`: `2026-08-12 KST`
-- `branch`: `codex/s0-i3-public-import-decision-contract-implementation-candidate`
-- `base_commit`: `1472cd191b5c8a84dcab41a6107386997c75fd3c`
-- `gate`: `S0 V0.14 I3 PUBLIC IMPORT DECISION CONTRACT IMPLEMENTATION CANDIDATE OPEN`
+- `branch`: `codex/s0-i3-public-import-decision-contract-implementation-v02-bounded-revision`
+- `base_commit`: `d1b79cb8a032c285202aef7d72b80121065e217d`
+- `gate`: `S0 V0.14 I3 PUBLIC IMPORT DECISION CONTRACT IMPLEMENTATION V0.2 BOUNDED REVISION OPEN`
+- `responds_to`: `I3-IIR-B01`
+- `independent_review_sha256`: `ec1ecc1f9aaf9b32ca7d285d898ec5620e05a8327716a0e16eed2d01530b28ca`
 - `claim_kind`: author-side bounded public model-free verification only
 
-## 1. 입력과 경계
+## 1. 수정 경계
 
-후보는 I3 v0.2의 boundary, 네 설계 문서, zero-finding 독립 재심, CONTROL 결정,
-main 통합 결정과 I2 v0.4 contract/implementation manifest를 공개 source로
-고정한다. 기존 I2 파일은 수정하지 않고 exact parser, signer context,
-route context와 lifecycle 분류기를 import해 재사용한다.
+이번 판본은 독립 심사에서 확인된 차단 결함 하나만 수정한다. v0.1 finalizer는
+I2 completion event의 문법, route, class, 상태와 `H/Z`는 확인했지만, 호출자가
+제공한 전역 sequence와 predecessor hash를 I2 lifecycle 검사에 전달하지 않았다.
+그 결과 route-local 형식만 맞는 event가 전역 chain과 불일치해도 목적지 권한이
+`available`이 될 수 있었다.
 
-F0 53개 파일의 이름이나 내용을 읽지 않았다. hidden oracle, 실제 key,
-protected material, 고객·개인 데이터, provider/model session과 S0 실행도 입력으로
-사용하지 않았다.
+v0.2는 다음 두 공개 입력을 finalizer에 추가한다.
 
-## 2. 구현 결과
+- `expected_sequence`
+- `expected_previous_event_sha256`
 
-구현된 범위는 다음과 같다.
+event가 존재하고 append가 `persisted`일 때 기존 I2
+`validate_event_global_link`를 호출한다. 두 입력이 없거나, 형식이 틀리거나,
+event의 sequence/predecessor와 다르면 `no-completion-claim`으로 닫힌다. 정확한
+accepted event와 정확한 전역 연결 증거와 persisted append가 모두 일치할 때만
+기존 `consumed-accepted`와 목적지 권한 `available`을 반환한다.
 
-1. 21줄 admission의 canonical parse/serialize/hash
-2. 26줄 outcome의 canonical parse/serialize/body hash/full-frame hash
-3. 세 route mapping, 네 outcome tuple과 admission/outcome binding
-4. 한 2,048-byte medium의 structural scan, candidate와 zero-tail 판정
-5. pre-pending 2개와 pending 9개 row의 고정 우선순위
-6. 단일 eager media sequence와 8개 closed status의 immutable fact set
-7. canonical frame과 외부 불일치의 disagreement/`H`, 비canonical의
-   disagreement/`Z`
-8. 기존 I2 event와 exact route/class/hash/state를 비교하는 finalizer
-9. persisted accepted completion에서만 목적지 availability 부여
+## 2. 직접 수정한 공개 구현
 
-분류 함수는 기존 I2의 authenticated `ImportRouteContext`를 명시적으로 받는다.
-이 입력은 admission 부재 또는 손상 시에도 route와 `SRC/DST`를 추측하지 않기
-위한 공개 구조 입력이다. 새 authority, store 또는 실환경 관측은 아니다.
+- I3 finalizer의 I2 global-link 검증 재사용
+- public contract 내부 판본 `0.2.0`과 finalizer 입력 목록 갱신
+- package 판본 `0.2.0` 갱신
+- 독립 심사 보고서 pair를 public source manifest에 추가
+- sequence, predecessor, missing evidence 회귀시험 추가
+- README, verifier와 인증 manifest 갱신
 
-## 3. 작성자 측 테스트
+I2 파일, I3 분류 순서, 21/26/31 필드 문법, route mapping, `H/Z`, 매체 규칙,
+닫힌 기능 경계는 변경하지 않았다.
 
-최종 manifest를 만들기 전 공개 unittest를 실행했다.
+## 3. 작성자 측 시험
 
-- test methods: `25`
-- failures: `0`
-- errors: `0`
-- skips: `0`
-- closed-enum Cartesian classifications: `78,732`
+공개 unit test는 다음을 포함한다.
 
-각 test method 안의 subtest와 deterministic loop가 admission 21필드,
-outcome 26필드, 세 route, 네 tuple, identifier collision, byte/hash/binding 변이,
-모든 분류 행, `H/Z`, status 변이와 finalization을 검사한다.
+- 기존 grammar, hash, binding, classification, finalization 전체 비회귀
+- 정확한 sequence/predecessor evidence에서만 accepted authority 허용
+- sequence 단독 변경 거부
+- predecessor hash 단독 변경 거부
+- 두 증거의 전체 또는 부분 누락 거부
+- 독립 심사가 사용한 큰 sequence와 다른 predecessor event 거부
+- wrong class, route, `H/Z`, state와 non-persisted append의 기존 거부 유지
+- 닫힌 API의 `BLOCKED_NOT_EXECUTED` 유지
 
-최초 실행에서는 두 full frame이 2,048바이트 안에 들어간다는 테스트 작성자의
-잘못된 가정 때문에 test data 생성이 실패했다. 구현 결함은 아니었으며, 두 번째
-schema prefix를 zero-tail 영역에 넣는 정확한 duplicate 사례로 수정했다. 이후
-전체 suite가 통과했다.
+최종 공개 test method 수는 `26`개이며 실패·오류·skip은 모두 0이다. 동결
+manifest 기반 I3 verifier에서 generator self-test, grammar/hash/binding,
+classification, finalization, contract CLI, import audit, public-source integrity와
+final stability가 모두 `PASS`였다. `CLOSED_BOUNDARIES`는
+`BLOCKED_NOT_EXECUTED`를 유지했다.
 
-## 4. 검증기 계약
+별도 gap probe는 정확한 전역 link에서만 목적지 권한이 `available`이 되고,
+심사에서 사용한 큰 sequence/다른 predecessor event와 증거의 전체·부분 누락이
+모두 `no-completion-claim`이 되는 것을 확인했다. 기존 I2 verifier도 `38/38`
+통과했고 I2 닫힌 경계는 실행되지 않았다.
 
-`tools/verify-i3.ps1`은 다음 순서로 검증한다.
+## 4. 주장 제한
 
-1. 외부 expected implementation-manifest SHA-256과 anchor 확인
-2. 17개 I3 payload exact path/hash 확인
-3. 19개 공개 source exact path/hash 확인
-4. 고정된 I2 v0.4 implementation manifest와 payload 확인
-5. 인증 payload만 임시 snapshot에 복사하고 재해시
-6. synthetic generator self-test
-7. Python `-B -S -P` unit tests
-8. machine-readable contract CLI와 forbidden-import audit
-9. 실행 후 I3/I2/source 원본 재해시와 snapshot 제거
+이 보고서는 작성자 측 공개 model-free 수정 검증이다. 실제 durable ledger,
+witness, atomic append, registry authority, key/signature, VM 또는 sandbox,
+provider/model, F0 내용, fixture/oracle, executor/judge, E0, S0, 중앙 시스템과
+Project Brain은 구현하거나 실행하지 않았다.
 
-최종 manifest/anchor를 만든 뒤 외부 pin으로 검증기를 다시 실행해야 한다.
-검증기 자체의 bootstrap trust는 script 내부 자기검사로 만들 수 없으므로 실행
-전 trusted copy 또는 외부 hash가 필요하다.
-
-## 5. 닫힌 경계
-
-다음은 구현하거나 실행하지 않았고 verifier도
-`CLOSED_BOUNDARIES=BLOCKED_NOT_EXECUTED`로 보고해야 한다.
-
-- durable ledger, witness, atomic append와 project-lifetime uniqueness
-- 실제 registry/key/signature/anchor 권한
-- hostile same-process, VM, sandbox, OS, network 또는 provider enforcement
-- F0, protected fixture, hidden oracle, executor, judge, scoring과 statistics
-- E0, S0, 중앙 시스템과 Project Brain
-
-## 6. 최대 주장과 다음 단계
-
-현재 결과는 작성자 측 공개 construction verification이다. I3 codec,
-classification과 I2 completion 연결이 합성 공개 테스트를 통과했다는 것만
-주장한다. 운영 보안, 실제 격리, 실험 효과 또는 S0 성공 증거가 아니다.
-
-최대 다음 단계는 별도로 열린 fresh independent public implementation review다.
-이 보고서나 작성자 테스트가 그 심사, CONTROL 결정 또는 main 통합을 자동으로
-열지 않는다.
+최대 주장은 `I3-IIR-B01`의 공개 구현 수정 후보가 작성자 시험을 통과했다는
+것뿐이다. finding closure와 CONTROL 통합 가능 여부는 fresh independent
+implementation rereview가 별도로 판단해야 한다.

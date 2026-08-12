@@ -17,3 +17,5 @@ b0e5acb778aad5f92abb987d95fd38aa90451d0edae8c9416f1343097dfacda4  s0-lab/control
 713fc6b44c84126387dc492b93e22d928ba894e18bdc8705049a2ea5cb8cc7da  s0-lab/i2/spec/trust-root-role-isolation-contract-v0.4.json
 18ccfbcbe73b1170e07bd000376b079528dcf135b806e3f6c77b10efae736bd6  s0-lab/i2/verification/implementation-files.sha256
 82d0167eaa8bde75b58f5c3bf116de1a91e555f16e7de85444f3eaf6736df00c  s0-lab/i2/verification/implementation-manifest.sha256
+ec1ecc1f9aaf9b32ca7d285d898ec5620e05a8327716a0e16eed2d01530b28ca  s0-lab/reviews/i3/import-decision-implementation-v0.1/independent-review-v0.1.md
+85eb01700d9f7b3a3c148a29f19aab0c824fd657843c8053a12a67ed0c6d1897  s0-lab/reviews/i3/import-decision-implementation-v0.1/independent-review-v0.1.sha256

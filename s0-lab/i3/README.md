@@ -1,4 +1,4 @@
-# I3 공개 import-decision contract implementation candidate v0.1
+# I3 공개 import-decision contract implementation revision candidate v0.2
 
 이 디렉터리는 main에 통합된 S0 v0.14 I3 v0.2 설계를 공개·결정론적
 Python 코드로 옮긴 최소 구현 후보다. 21줄 admission, 26줄 outcome, 입력 사실의
@@ -19,7 +19,7 @@ Python 코드로 옮긴 최소 구현 후보다. 21줄 admission, 26줄 outcome,
 - caller-supplied media sequence에서만 count를 유도하는 immutable fact model
 - canonical frame이 하나 있으면 외부 불확실성에도 `H`, 없으면 `Z`를 쓰는
   disagreement 처리
-- I2 v0.4의 기존 parser와 lifecycle을 재사용하는 completion finalizer
+- I2 v0.4의 기존 parser, lifecycle, global-link 검증을 재사용하는 completion finalizer
 - persisted exact accepted completion만 목적지 상태를 available로 만드는 결정
 - 닫힌 기능을 `BLOCKED_NOT_EXECUTED`로 유지하는 명명된 경계
 
@@ -46,14 +46,18 @@ finalize_import_attempt(
   ImportClassification,
   optional_I2_event_bytes,
   append_status,
-  signer_context=...
+  signer_context=...,
+  expected_sequence=...,
+  expected_previous_event_sha256=...
 ) -> ImportDecision
 ```
 
 분류 함수의 명시적 `route_context`는 I2 v0.4가 이미 인증하는 route identity와
 `SRC/DST`를 재사용한다. admission이 없거나 outcome이 망가진 경우에도 source
 state와 completion ID를 추측하지 않도록 필요한 입력이다. 숨은 기본값이나 파일
-검색을 추가하지 않는다. 이 매핑은
+검색을 추가하지 않는다. finalizer의 두 전역 연결 인자는 호출자가 제공한 I2
+sequence와 predecessor evidence이며, 누락되거나 event와 불일치하면
+`no-completion-claim`으로 닫힌다. 이 매핑은
 `spec/import-decision-contract-v0.1.json`에 기계 판독 가능하게 고정했다.
 
 ## 안정된 오류
