@@ -1,0 +1,270 @@
+{
+  "schema_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-PROFILE-NEUTRAL-PRELOADER-MAP-2",
+  "version": "0.2.0",
+  "claim_kind": "public-design-revision-only-not-implementation-not-platform-evidence",
+  "effective_predecessor": {
+    "composition": "v0.3 plus v0.4 replacements plus v0.5 replacements plus v0.1 plus v0.2 replacements",
+    "base_commit": "da4ad3af483652bd755deff9d024a9833c177d39",
+    "base_tree": "e5ad06934a9864b4c5665852e0097f3885d2d277",
+    "v0_1_design_package_manifest_sha256": "13b69bfd8614ea57e49d317902e9563bd8a47eaa13a06be22065f81177b29cad",
+    "v0_1_review_result_record_sha256": "e1423b6d61c95407eeb34f03ba5dacdd372fb4fbbd500c4734af8f3df424eb29"
+  },
+  "finding_dispositions": {
+    "RPNP-RR-001": "two-unidirectional-commit-channels-plus-separate-admission-channel",
+    "RPNP-RR-002": "staged-absent-leaf-then-created-root-object-binding",
+    "RPNP-RR-003": "separate-preloader-job-active-total-created-and-descendant-domains"
+  },
+  "replacement_scope": [
+    "v0.1-channel-topology-and-commit-protocol",
+    "v0.1-output-root-admission-binding",
+    "v0.1-resource-limits-maximum-processes",
+    "corresponding-acceptance-criteria"
+  ],
+  "preserved_v0_1_profiles": [
+    "external-control-trust-base",
+    "neutral-preloader-profile",
+    "runtime-profile-package",
+    "runtime-file-and-module-classes",
+    "path-and-file-authentication",
+    "launch-flags-environment-and-dll-resolution",
+    "verifier-bootstrap-module-and-loaded-PE-closure",
+    "sensitive-audit-policy",
+    "receipt-v2-wire-form",
+    "failure-claim-and-closed-boundaries"
+  ],
+  "runtime_profile_composition": {
+    "package_manifest_name": "runtime-profile-package-files-v0.2.sha256",
+    "package_manifest_row_count": 3,
+    "package_manifest_rows": [
+      "runtime-files.sha256",
+      "runtime-profile-v0.1.json",
+      "runtime-profile-v0.2.json"
+    ],
+    "v0_1_complete_profile_retained_and_hashed": true,
+    "v0_2_document_kind": "supplemental-profile",
+    "v0_2_pins_v0_1_profile_sha256": true,
+    "legacy_maximum_processes_observed_value": 1,
+    "legacy_maximum_processes_disposition": "superseded-no-authority-do-not-enforce",
+    "sole_effective_process_count_authority": "process_job_policy"
+  },
+  "channel_topology": {
+    "pipe_kind": "Windows-anonymous-unidirectional",
+    "pipe_count": 3,
+    "channels": [
+      {
+        "name": "admission",
+        "direction": "preloader-to-verifier",
+        "preloader_end": "write",
+        "verifier_end": "read",
+        "frame": "canonical-ASCII-JSON-one-line-final-LF-maximum-8192-bytes",
+        "sender_closes_after_frame": true,
+        "receiver_requires_immediate_eof": true
+      },
+      {
+        "name": "commit-request",
+        "direction": "verifier-to-preloader",
+        "preloader_end": "read",
+        "verifier_end": "write",
+        "frame": "RUNTIME_ADMISSION_COMMIT\n",
+        "sender_closes_after_frame": true,
+        "receiver_requires_immediate_eof": true
+      },
+      {
+        "name": "commit-reply",
+        "direction": "preloader-to-verifier",
+        "preloader_end": "write",
+        "verifier_end": "read",
+        "frame": "OK\n",
+        "sender_closes_after_frame": true,
+        "receiver_requires_immediate_eof": true
+      }
+    ],
+    "verifier_inherited_handles_in_exact_order": [
+      "admission-read",
+      "commit-request-write",
+      "commit-reply-read",
+      "preloader-process-synchronize-only"
+    ],
+    "preloader_retained_ends": [
+      "admission-write",
+      "commit-request-read",
+      "commit-reply-write"
+    ],
+    "preloader_closes_child_end_duplicates_before_job_assignment": true,
+    "opposite-end-or-extra-handle_inheritance_allowed": false,
+    "retry-reconnect-alternate-or-duplex_allowed": false
+  },
+  "runtime_admission_state_machine": {
+    "type_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-ADMISSION-2",
+    "states_in_order": [
+      "ROOT-ABSENT-BOUND",
+      "ROOT-CREATED-BOUND",
+      "COMMITTING",
+      "COMMIT-ACKED",
+      "SPENT"
+    ],
+    "failure_state": "REJECTED",
+    "private_constructor": true,
+    "process_local": true,
+    "identity_equality_only": true,
+    "copy-or-serialization_allowed": false,
+    "invalid_transition_result": "REJECTED",
+    "root_absent_bindings": [
+      "retained-output-parent-object-identity",
+      "canonical-absent-ASCII-leaf",
+      "workspace-runtime-system-root-identities",
+      "all-external-pins",
+      "three-inherited-pipe-endpoint-wrappers",
+      "preloader-process-handle-and-image",
+      "verifier-process-and-job",
+      "nonce",
+      "retained-runtime-file-inventory-digest"
+    ],
+    "root_absent_contains_output_root_identity": false,
+    "root_created_transition_owner": "authenticated-verifier-root-binder",
+    "root_created_before_candidate_launch": true,
+    "root_created_bindings": [
+      "retained-root-handle",
+      "root-volume-serial",
+      "root-file-index",
+      "exact-parent-leaf-containment",
+      "empty-nonreparse-local-fixed-NTFS-directory"
+    ],
+    "commit_request_transition": "ROOT-CREATED-BOUND-to-COMMITTING",
+    "exact_reply_transition": "COMMITTING-to-COMMIT-ACKED",
+    "live_consumer_first_attempt": "COMMIT-ACKED-to-SPENT-or-REJECTED",
+    "preloader_OK_is_success_authority": false
+  },
+  "root_binding_profile": {
+    "precreation_authority": "retained-parent-identity-plus-canonical-absent-leaf",
+    "exclusive_creation_count": 1,
+    "creation_owner": "verifier",
+    "candidate_creation_authority": false,
+    "created_root_required_checks": [
+      "local-fixed-NTFS",
+      "exact-case",
+      "parent-leaf-containment",
+      "directory-kind",
+      "nonreparse",
+      "empty",
+      "retained-handle-identity"
+    ],
+    "observer_constructed_from_retained_root_handle": true,
+    "witness-and-admission-root-identity-equality_required": true,
+    "preloader_commit-root-recheck_required": true
+  },
+  "process_accounting": {
+    "policy_id": "S0-PUBLIC-ASSEMBLY-PROCESS-JOB-POLICY-2",
+    "preloader_outside_job": 1,
+    "job_limit_flags": [
+      "JOB_OBJECT_LIMIT_ACTIVE_PROCESS",
+      "JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE"
+    ],
+    "job_active_process_limit": 2,
+    "exact_verifier_created": 1,
+    "exact_candidate_created": 1,
+    "additional_descendants_allowed": 0,
+    "breakaway_processes_allowed": 0,
+    "phases": [
+      {
+        "name": "verifier-bootstrap",
+        "active_job_members": 1,
+        "job_total_created": 1
+      },
+      {
+        "name": "candidate-execution",
+        "active_job_members": 2,
+        "job_total_created": 2
+      },
+      {
+        "name": "pre-commit",
+        "active_job_members": 1,
+        "job_total_created": 2,
+        "job_total_terminated": 1
+      }
+    ],
+    "preloader_commit_job_rechecks": [
+      "total-processes-created-equals-2",
+      "active-processes-equals-1-exact-verifier",
+      "total-terminated-processes-equals-1",
+      "no-breakaway-or-unclassified-descendant"
+    ],
+    "verifier_candidate_evidence": [
+      "sole-candidate-process-retained-handle",
+      "candidate-PID",
+      "authenticated-candidate-image",
+      "run-trace-binding"
+    ]
+  },
+  "commit_protocol": {
+    "admission_state_before_request": "ROOT-CREATED-BOUND",
+    "admission_state_while_waiting": "COMMITTING",
+    "admission_state_after_exact_reply": "COMMIT-ACKED",
+    "pre_reply_rechecks": [
+      "job-and-verifier-binding",
+      "job-accounting",
+      "all-retained-runtime-file-identities",
+      "private-runtime-exact-set",
+      "parent-and-created-root-retained-identities",
+      "root-containment",
+      "all-external-pins",
+      "unspent-single-commit"
+    ],
+    "failure_is_terminal": true,
+    "second_commit_allowed": false
+  },
+  "consumer_extension": {
+    "receipt_v2_changed": false,
+    "runtime_admission_serialized": false,
+    "required_atomic_authorities": [
+      "exact-v0.5-publication-witness",
+      "exact-v0.2-COMMIT-ACKED-runtime-admission"
+    ],
+    "same-retained-root-identity_required": true,
+    "spend_on_first_terminal_attempt": true,
+    "post-process-status": "offline-not-success-diagnostic-only"
+  },
+  "failure_routing": {
+    "pre-import-admission-channel-or-authentication-defect": "AR-AUTH/0",
+    "post-launch-root-binding-channel-job-preloader-or-origin-loss": "AR-BOUNDARY/observed-0-or-1",
+    "publication-observer-move-witness-receipt-or-consumer-defect": "AR-RECORD/1",
+    "unauthenticated-process-death": "not-success"
+  },
+  "created_root_failure_residue": {
+    "authority_bearing_in_run_delete_or_rename_allowed": false,
+    "status": "quarantined-not-success",
+    "later_post_process_cleanup": "diagnostic-only-no-upgrade-no-repair"
+  },
+  "mandatory_rejections_added_by_v0_2": [
+    "single-duplex-or-bidirectional-anonymous-pipe",
+    "both-ends-inherited-or-retained-by-one-actor",
+    "missing-EOF-extra-byte-second-frame-or-self-read",
+    "output-root-identity-before-root-exists",
+    "candidate-launch-before-root-binding",
+    "second-root-creation-or-binding",
+    "witness-and-admission-root-identity-mismatch",
+    "preloader-OK-treated-as-success",
+    "undefined-or-single-domain-maximum-processes",
+    "job-active-limit-other-than-2",
+    "second-candidate-helper-or-additional-descendant",
+    "breakaway-or-silent-breakaway",
+    "commit-job-accounting-mismatch"
+  ],
+  "closed_boundaries": [
+    "implementation",
+    "compilation",
+    "runtime-profile-materialization",
+    "dependency-installation",
+    "platform-probe",
+    "real-MoveFileExW",
+    "official-rehearsal",
+    "F0-content",
+    "hidden-oracle",
+    "provider-model-network",
+    "S0-E0",
+    "central-system",
+    "Project-Brain",
+    "commit-push-PR-release-main-integration"
+  ],
+  "next_gate": "S0 V0.14 PUBLIC ASSEMBLY RUNTIME PROFILE + NEUTRAL PRELOADER DESIGN V0.2 INDEPENDENT REREVIEW OPEN"
+}

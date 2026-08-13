@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/s0/public-assembly/runtime-profile-v0.2.schema.json",
+  "title": "S0 public assembly runtime profile v0.2 replacement envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "version",
+    "v0_1_profile_sha256",
+    "legacy_maximum_processes_observed_value",
+    "legacy_maximum_processes_disposition",
+    "channel_policy",
+    "root_binding_policy",
+    "process_job_policy"
+  ],
+  "properties": {
+    "schema_id": {
+      "const": "S0-PUBLIC-ASSEMBLY-RUNTIME-PROFILE-2"
+    },
+    "version": {
+      "const": "0.2.0"
+    },
+    "v0_1_profile_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "legacy_maximum_processes_observed_value": {
+      "const": 1
+    },
+    "legacy_maximum_processes_disposition": {
+      "const": "superseded-no-authority-do-not-enforce"
+    },
+    "channel_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "pipe_kind",
+        "pipe_count",
+        "channels",
+        "verifier_inherited_handles",
+        "require_frame_then_eof",
+        "retry_allowed"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "S0-PUBLIC-ASSEMBLY-CHANNEL-POLICY-2"
+        },
+        "pipe_kind": {
+          "const": "Windows-anonymous-unidirectional"
+        },
+        "pipe_count": {
+          "const": 3
+        },
+        "channels": {
+          "const": [
+            "preloader-to-verifier-admission",
+            "verifier-to-preloader-commit-request",
+            "preloader-to-verifier-commit-reply"
+          ]
+        },
+        "verifier_inherited_handles": {
+          "const": [
+            "admission-read",
+            "commit-request-write",
+            "commit-reply-read",
+            "preloader-process-synchronize-only"
+          ]
+        },
+        "require_frame_then_eof": {
+          "const": true
+        },
+        "retry_allowed": {
+          "const": false
+        }
+      }
+    },
+    "root_binding_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "states",
+        "initial_binding",
+        "created_root_binding",
+        "candidate_launch_state",
+        "commit_reply_state",
+        "live_consumer_terminal_states"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "S0-PUBLIC-ASSEMBLY-ROOT-BINDING-POLICY-2"
+        },
+        "states": {
+          "const": [
+            "ROOT-ABSENT-BOUND",
+            "ROOT-CREATED-BOUND",
+            "COMMITTING",
+            "COMMIT-ACKED",
+            "SPENT",
+            "REJECTED"
+          ]
+        },
+        "initial_binding": {
+          "const": "retained-parent-object-identity-plus-canonical-absent-leaf"
+        },
+        "created_root_binding": {
+          "const": "single-exclusive-verifier-create-authenticate-and-retain"
+        },
+        "candidate_launch_state": {
+          "const": "ROOT-CREATED-BOUND"
+        },
+        "commit_reply_state": {
+          "const": "COMMIT-ACKED"
+        },
+        "live_consumer_terminal_states": {
+          "const": [
+            "SPENT",
+            "REJECTED"
+          ]
+        }
+      }
+    },
+    "process_job_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "preloader_outside_job",
+        "job_active_process_limit",
+        "exact_verifier_created",
+        "exact_candidate_created",
+        "additional_descendants_allowed",
+        "breakaway_allowed",
+        "pre_commit_job_totals"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "S0-PUBLIC-ASSEMBLY-PROCESS-JOB-POLICY-2"
+        },
+        "preloader_outside_job": {
+          "const": 1
+        },
+        "job_active_process_limit": {
+          "const": 2
+        },
+        "exact_verifier_created": {
+          "const": 1
+        },
+        "exact_candidate_created": {
+          "const": 1
+        },
+        "additional_descendants_allowed": {
+          "const": 0
+        },
+        "breakaway_allowed": {
+          "const": false
+        },
+        "pre_commit_job_totals": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "total_created",
+            "active",
+            "terminated"
+          ],
+          "properties": {
+            "total_created": {
+              "const": 2
+            },
+            "active": {
+              "const": 1
+            },
+            "terminated": {
+              "const": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}
