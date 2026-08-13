@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/s0/public-assembly/neutral-preloader-launch-envelope-v0.1.schema.json",
+  "title": "S0 public assembly neutral preloader launch envelope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "version",
+    "control_launcher_policy_id",
+    "runtime_design_package_manifest_sha256",
+    "runtime_design_independent_review_sha256",
+    "neutral_preloader_implementation_manifest_sha256",
+    "neutral_preloader_implementation_independent_review_sha256",
+    "runtime_profile_package_manifest_sha256",
+    "runtime_profile_independent_review_sha256",
+    "assembly_implementation_manifest_sha256",
+    "assembly_implementation_independent_review_sha256",
+    "v0_5_design_package_manifest_sha256",
+    "v0_5_independent_rereview_sha256",
+    "workspace_root",
+    "runtime_root",
+    "system_root",
+    "output_parent",
+    "output_leaf",
+    "runtime_profile_package_manifest_path",
+    "assembly_implementation_manifest_path",
+    "verifier_bootstrap_logical_path",
+    "startup_timeout_milliseconds",
+    "commit_timeout_milliseconds"
+  ],
+  "properties": {
+    "schema_id": {
+      "const": "S0-PUBLIC-ASSEMBLY-NEUTRAL-PRELOADER-LAUNCH-ENVELOPE-1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "control_launcher_policy_id": {
+      "const": "S0-PUBLIC-ASSEMBLY-CONTROL-LAUNCHER-POLICY-1"
+    },
+    "runtime_design_package_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "runtime_design_independent_review_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "neutral_preloader_implementation_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "neutral_preloader_implementation_independent_review_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "runtime_profile_package_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "runtime_profile_independent_review_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "assembly_implementation_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "assembly_implementation_independent_review_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "v0_5_design_package_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "v0_5_independent_rereview_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "workspace_root": {
+      "$ref": "#/$defs/absoluteLocalPath"
+    },
+    "runtime_root": {
+      "$ref": "#/$defs/absoluteLocalPath"
+    },
+    "system_root": {
+      "$ref": "#/$defs/absoluteLocalPath"
+    },
+    "output_parent": {
+      "$ref": "#/$defs/absoluteLocalPath"
+    },
+    "output_leaf": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "runtime_profile_package_manifest_path": {
+      "$ref": "#/$defs/absoluteLocalFilePath"
+    },
+    "assembly_implementation_manifest_path": {
+      "$ref": "#/$defs/absoluteLocalFilePath"
+    },
+    "verifier_bootstrap_logical_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*\\.py$"
+    },
+    "startup_timeout_milliseconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 300000
+    },
+    "commit_timeout_milliseconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 300000
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "absoluteLocalPath": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 4096,
+      "pattern": "^[A-Za-z]:\\\\[^\\r\\n]*$"
+    },
+    "absoluteLocalFilePath": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 4096,
+      "pattern": "^[A-Za-z]:\\\\[^\\r\\n]+$"
+    }
+  }
+}

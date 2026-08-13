@@ -1,0 +1,341 @@
+{
+  "schema_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-PROFILE-NEUTRAL-PRELOADER-MAP-1",
+  "version": "0.1.0",
+  "claim_kind": "public-design-successor-only-not-implementation-not-platform-evidence",
+  "effective_predecessor": {
+    "composition": "v0.3 plus v0.4 replacements plus v0.5 replacements plus this conjunctive launch authority",
+    "base_commit": "41e0b684a7cca387be6d264c4a5b63de2561fd7c",
+    "base_tree": "a14e8b9c9bc8905060cd8811e8934643e2aa4aa3",
+    "implementation_manifest_sha256": "0cc96816404094dec313dbab4bb108744383afb2ca5272834b589235364a9623",
+    "implementation_report_sha256": "520a237109686a17b8c075c15f1cc676a43d450716a6157bce7b48585f0c5005",
+    "v0_5_design_package_manifest_sha256": "6292e322549c79f539b57c1087fd722c5cca96318c45d89fac5343247c429802",
+    "v0_5_independent_rereview_sha256": "7c629c9c4aed5c2e36598e4ad08e4819fa06b73f3f77bf9e7d19714f61b35137"
+  },
+  "design_problem": {
+    "blocking_gap": "no externally authenticated CPython-stdlib-jsonschema transitive runtime closure or pre-Python verifier authenticator",
+    "unsafe_substitutes": [
+      "package-version-only-check",
+      "caller-selected-dependency-root",
+      "caller-selected-python-executable",
+      "post-import-self-hash",
+      "preloader-self-hash",
+      "ambient-site-or-path-discovery"
+    ],
+    "predecessor_live_behavior": "fail-closed-before-output-mutation"
+  },
+  "external_control_trust_base": {
+    "policy_id": "S0-PUBLIC-ASSEMBLY-CONTROL-LAUNCHER-POLICY-1",
+    "trusted_components": [
+      "authenticated-Windows-kernel",
+      "CONTROL-launcher"
+    ],
+    "established_by_assembly_result": false,
+    "preloader_authentication_sequence": [
+      "open-no-reparse-no-share-write-no-share-delete",
+      "authenticate-package-and-binary-from-retained-handle",
+      "create-preloader-suspended-from-locked-path",
+      "compare-child-image-and-retained-file-identity",
+      "resume-only-after-equality"
+    ],
+    "hash-close-path-launch_allowed": false
+  },
+  "future_external_lowercase_sha256_pins": [
+    "runtime_design_package_manifest_sha256",
+    "runtime_design_independent_review_sha256",
+    "neutral_preloader_implementation_manifest_sha256",
+    "neutral_preloader_implementation_independent_review_sha256",
+    "runtime_profile_package_manifest_sha256",
+    "runtime_profile_independent_review_sha256",
+    "assembly_implementation_manifest_sha256",
+    "assembly_implementation_independent_review_sha256",
+    "v0_5_design_package_manifest_sha256",
+    "v0_5_independent_rereview_sha256"
+  ],
+  "neutral_preloader_profile": {
+    "process_kind": "native-win64-pe-no-python-no-powershell-no-clr-no-shell",
+    "default_direct_pe_imports": [
+      "bcrypt.dll",
+      "kernel32.dll"
+    ],
+    "hash_primitive": "CNG-SHA-256",
+    "self_hash_authority": false,
+    "external_binary_authentication_required_before_entry": true,
+    "network_allowed": false,
+    "download_or_repair_allowed": false,
+    "retry_or_fallback_allowed": false,
+    "source_to_binary_correspondence_review_required": true
+  },
+  "runtime_profile_package": {
+    "package_manifest_name": "runtime-profile-package-files.sha256",
+    "package_manifest_row_count": 2,
+    "package_manifest_rows": [
+      "runtime-files.sha256",
+      "runtime-profile-v0.1.json"
+    ],
+    "runtime_file_virtual_roots": [
+      "runtime",
+      "system32"
+    ],
+    "private_runtime_exact_set_required": true,
+    "system32_exact_set_required": false,
+    "file_inventory_cross_check": "profile-json-equals-runtime-files-manifest",
+    "version_or_signature_only_authority": false,
+    "pe_resolution_kinds": [
+      "application-directory-file",
+      "system32-file",
+      "api-set-to-system32-host",
+      "known-dll-system32"
+    ],
+    "pe_edge_kinds": [
+      "static-import",
+      "delay-import",
+      "profiled-dynamic-load"
+    ],
+    "loaded_pe_recheck": "after-each-frozen-preload-phase"
+  },
+  "runtime_file_classes": [
+    "python-executable",
+    "python-dll",
+    "stdlib-source",
+    "stdlib-extension",
+    "third-party-source",
+    "third-party-extension",
+    "package-metadata",
+    "private-dependency-dll",
+    "system-dependency-dll",
+    "bootstrap-support"
+  ],
+  "module_origin_kinds": [
+    "builtin",
+    "frozen",
+    "source",
+    "extension"
+  ],
+  "module_preload_phases": [
+    "python-startup",
+    "verifier-bootstrap",
+    "candidate-bootstrap"
+  ],
+  "path_profile": {
+    "logical_encoding": "ASCII-forward-slash",
+    "safe_row_pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$",
+    "root_form": "absolute-local-drive-letter-path",
+    "extended_path_conversion": "after-validation-only",
+    "exact_component_case_required": true,
+    "forbidden": [
+      "absolute-manifest-row",
+      "backslash",
+      "colon",
+      "dot-segment",
+      "empty-segment",
+      "NUL",
+      "UNC",
+      "device-path",
+      "volume-guid-path",
+      "reserved-DOS-device-segment",
+      "segment-trailing-dot-or-space"
+    ]
+  },
+  "file_authentication_profile": {
+    "open_mode": "handle-open-no-reparse-no-share-write-no-share-delete",
+    "required_object_kind": "regular-single-link-file",
+    "required_stream_inventory": [
+      "::$DATA"
+    ],
+    "identity_fields": [
+      "volume_serial_number",
+      "file_index_high",
+      "file_index_low"
+    ],
+    "hash_from_open_handle": true,
+    "pre_post_identity_and_length_equal": true,
+    "retain_handles_until_verifier_exit": true,
+    "runtime_exact_set_recheck_at_commit": true
+  },
+  "launch_profile": {
+    "python_family": "CPython",
+    "python_version_family": "3.12.x",
+    "pointer_bits": 64,
+    "operating_system": "Windows-10-or-11",
+    "filesystem": "local-fixed-NTFS",
+    "arguments_in_exact_order": [
+      "-I",
+      "-S",
+      "-B",
+      "-X",
+      "utf8",
+      "EXACT_VERIFIER_BOOTSTRAP_PATH"
+    ],
+    "environment_names_in_exact_order": [
+      "SYSTEMDRIVE",
+      "SYSTEMROOT",
+      "WINDIR"
+    ],
+    "current_directory": "authenticated-runtime-root",
+    "dll_resolution_policy_id": "S0-PUBLIC-ASSEMBLY-DLL-RESOLUTION-POLICY-1",
+    "caller_environment_inherited": false,
+    "caller_python_override_allowed": false,
+    "caller_dependency_root_allowed": false,
+    "bytecode_allowed": false,
+    "site_allowed": false,
+    "user_site_allowed": false
+  },
+  "process_profile": {
+    "create_suspended": true,
+    "assign_job_before_resume": true,
+    "job_limit": "JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE",
+    "breakaway_allowed": false,
+    "explicit_handle_list_required": true,
+    "verifier_inherited_handles": [
+      "admission-pipe-read",
+      "liveness-pipe-write-read",
+      "preloader-process-synchronize-only"
+    ],
+    "preloader_retains_authentication_handles": true,
+    "preloader_death_result": "kill-verifier-and-descendants-no-success"
+  },
+  "verifier_bootstrap_profile": {
+    "separate_from_verifier_package_initializer": true,
+    "verifier_import_before_admission_allowed": false,
+    "required_pre_import_checks": [
+      "canonical-admission-frame",
+      "live-preloader-process-handle",
+      "exact-parent-and-verifier-process-identities",
+      "exact-job-membership",
+      "exact-external-pins",
+      "exact-roots-and-output-leaf",
+      "exact-sys-executable",
+      "exact-python-version-and-pointer-width",
+      "exact-launch-flags",
+      "exact-environment",
+      "exact-sys-path",
+      "exact-module-origin-closure",
+      "exact-loaded-PE-origin-closure",
+      "audit-policy-installed"
+    ],
+    "source_only_file_backed_python_loading": true,
+    "pyc_zip_namespace_editable_or_pth_allowed": false
+  },
+  "admission_frame": {
+    "schema_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-ADMISSION-FRAME-1",
+    "encoding": "canonical-ASCII-JSON-one-line-final-LF",
+    "maximum_bytes": 8192,
+    "nonce": "32-CNG-random-bytes-lowercase-hex",
+    "authority_by_value": false,
+    "candidate_visible": false
+  },
+  "runtime_admission": {
+    "type_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-ADMISSION-1",
+    "private_constructor": true,
+    "process_local": true,
+    "one_use": true,
+    "identity_equality_only": true,
+    "copy_or_serialization_allowed": false,
+    "bindings": [
+      "admission-pipe-identity",
+      "liveness-pipe-identity",
+      "preloader-process-handle-and-image",
+      "verifier-process-and-job",
+      "nonce",
+      "workspace-runtime-system-output-root-identities",
+      "all-external-pins",
+      "retained-handle-inventory-digest"
+    ]
+  },
+  "admission_commit_protocol": {
+    "verifier_request": "RUNTIME_ADMISSION_COMMIT\n",
+    "preloader_reply": "OK\n",
+    "request_count": 1,
+    "reply_count": 1,
+    "pre_reply_rechecks": [
+      "job-and-verifier-binding",
+      "all-retained-file-identities",
+      "private-runtime-exact-set",
+      "roots-and-output-parent-identity",
+      "unspent-admission"
+    ],
+    "failure_is_terminal": true
+  },
+  "sensitive_audit_policy": {
+    "policy_id": "S0-PUBLIC-ASSEMBLY-SENSITIVE-AUDIT-POLICY-1",
+    "mode": "explicit-allowlist-and-default-deny-for-sensitive-families",
+    "sensitive_families": [
+      "ctypes.*",
+      "dynamic-code-events",
+      "import",
+      "marshal.*",
+      "open",
+      "os.*",
+      "socket.*",
+      "subprocess.*",
+      "winreg.*"
+    ],
+    "publication_move_owner": "verifier-parent-only",
+    "first_denial_latched": true,
+    "cleanup_exceptions": "exact-four-owned-output-names-and-exact-output-root-enumeration-only"
+  },
+  "consumer_extension": {
+    "receipt_v2_changed": false,
+    "runtime_admission_serialized": false,
+    "required_atomic_authorities": [
+      "exact-v0.5-publication-witness",
+      "exact-runtime-admission"
+    ],
+    "spend_on_first_terminal_attempt": true,
+    "post_process_status": "offline-not-success-diagnostic-only"
+  },
+  "failure_routing": {
+    "pre_output_runtime_or_preloader_defect": "AR-AUTH/0",
+    "post_launch-preloader-lock-job-pipe-origin-loss": "AR-BOUNDARY/observed-0-or-1",
+    "publication-observer-move-witness-consumer-defect": "AR-RECORD/1",
+    "process_death_without_authenticated_diagnostic": "not-success"
+  },
+  "required_future_artifacts": [
+    "approved-runtime-design-package-and-review",
+    "approved-neutral-preloader-source-binary-implementation-package-and-review",
+    "approved-runtime-profile-package-and-review",
+    "updated-approved-assembly-implementation-package-and-review",
+    "exact-future-receipt-v2-bytes-and-sha256",
+    "separate-real-platform-probe-evidence"
+  ],
+  "mandatory_rejections": [
+    "unverified-preloader-entry",
+    "preloader-self-hash-as-authority",
+    "caller-selected-python",
+    "caller-selected-dependency-root",
+    "version-only-package-check",
+    "unlisted-runtime-file",
+    "missing-runtime-file",
+    "changed-runtime-file",
+    "runtime-file-extra-stream-or-link",
+    "runtime-path-reparse-or-escape",
+    "ambient-environment-or-sys-path-entry",
+    "pyc-zip-namespace-editable-pth-site-or-user-site",
+    "module-or-dll-origin-mismatch",
+    "extra-inherited-handle",
+    "wrong-parent-job-process-or-pipe",
+    "copied-or-replayed-admission-frame",
+    "preloader-death-or-lock-loss",
+    "second-admission-commit",
+    "witness-without-runtime-admission",
+    "runtime-admission-without-witness"
+  ],
+  "closed_boundaries": [
+    "implementation",
+    "compilation",
+    "runtime-profile-materialization",
+    "dependency-installation",
+    "platform-probe",
+    "real-MoveFileExW",
+    "official-rehearsal",
+    "F0-content",
+    "hidden-oracle",
+    "provider-model-network",
+    "executor-judge-scoring",
+    "S0-E0",
+    "central-system",
+    "Project-Brain",
+    "commit-push-PR-release-main-integration"
+  ],
+  "next_gate": "S0 V0.14 PUBLIC ASSEMBLY RUNTIME PROFILE + NEUTRAL PRELOADER DESIGN V0.1 INDEPENDENT REREVIEW OPEN"
+}

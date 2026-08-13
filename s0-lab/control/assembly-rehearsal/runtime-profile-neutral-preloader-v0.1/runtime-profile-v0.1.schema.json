@@ -1,0 +1,500 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/s0/public-assembly/runtime-profile-v0.1.schema.json",
+  "title": "S0 public assembly runtime profile v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "version",
+    "profile_id",
+    "launch_policy_id",
+    "job_policy_id",
+    "platform",
+    "virtual_roots",
+    "executable_virtual_path",
+    "runtime_file_manifest_name",
+    "files",
+    "modules",
+    "pe_dependencies",
+    "sys_path",
+    "launch_arguments",
+    "environment_names",
+    "dll_resolution_policy",
+    "audit_policy",
+    "resource_limits"
+  ],
+  "properties": {
+    "schema_id": {
+      "const": "S0-PUBLIC-ASSEMBLY-RUNTIME-PROFILE-1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "profile_id": {
+      "$ref": "#/$defs/safeIdentifier"
+    },
+    "launch_policy_id": {
+      "$ref": "#/$defs/safeIdentifier"
+    },
+    "job_policy_id": {
+      "$ref": "#/$defs/safeIdentifier"
+    },
+    "platform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operating_system",
+        "python_family",
+        "python_version",
+        "machine",
+        "pointer_bits",
+        "filesystem",
+        "drive_type"
+      ],
+      "properties": {
+        "operating_system": {
+          "enum": [
+            "Windows-10",
+            "Windows-11"
+          ]
+        },
+        "python_family": {
+          "const": "CPython"
+        },
+        "python_version": {
+          "type": "string",
+          "pattern": "^3\\.12\\.[0-9]+$"
+        },
+        "machine": {
+          "const": "AMD64"
+        },
+        "pointer_bits": {
+          "const": 64
+        },
+        "filesystem": {
+          "const": "NTFS"
+        },
+        "drive_type": {
+          "const": "fixed-local"
+        }
+      }
+    },
+    "virtual_roots": {
+      "const": [
+        "runtime",
+        "system32"
+      ]
+    },
+    "executable_virtual_path": {
+      "type": "string",
+      "pattern": "^runtime/[A-Za-z0-9][A-Za-z0-9._/-]*$"
+    },
+    "runtime_file_manifest_name": {
+      "const": "runtime-files.sha256"
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/runtimeFile"
+      }
+    },
+    "modules": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/pythonModule"
+      }
+    },
+    "pe_dependencies": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/peDependency"
+      }
+    },
+    "sys_path": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^runtime(?:/[A-Za-z0-9][A-Za-z0-9._/-]*)?$"
+      }
+    },
+    "launch_arguments": {
+      "const": [
+        "-I",
+        "-S",
+        "-B",
+        "-X",
+        "utf8"
+      ]
+    },
+    "environment_names": {
+      "const": [
+        "SYSTEMDRIVE",
+        "SYSTEMROOT",
+        "WINDIR"
+      ]
+    },
+    "dll_resolution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "current_directory",
+        "allowed_resolution_kinds",
+        "allowed_edge_kinds",
+        "forbidden_resolution_sources",
+        "preauthenticated_transitive_graph",
+        "loaded_pe_recheck_per_phase"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "S0-PUBLIC-ASSEMBLY-DLL-RESOLUTION-POLICY-1"
+        },
+        "current_directory": {
+          "const": "runtime-root"
+        },
+        "allowed_resolution_kinds": {
+          "const": [
+            "application-directory-file",
+            "system32-file",
+            "api-set-to-system32-host",
+            "known-dll-system32"
+          ]
+        },
+        "allowed_edge_kinds": {
+          "const": [
+            "static-import",
+            "delay-import",
+            "profiled-dynamic-load"
+          ]
+        },
+        "forbidden_resolution_sources": {
+          "const": [
+            "dll-redirection",
+            "sxs-redirection",
+            "packaged-dependency-graph",
+            "registry-app-path",
+            "unprofiled-dynamic-load",
+            "windows-directory-fallback",
+            "current-directory-fallback",
+            "path-environment"
+          ]
+        },
+        "preauthenticated_transitive_graph": {
+          "const": true
+        },
+        "loaded_pe_recheck_per_phase": {
+          "const": true
+        }
+      }
+    },
+    "audit_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "mode",
+        "sensitive_families",
+        "first_denial_latched"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "S0-PUBLIC-ASSEMBLY-SENSITIVE-AUDIT-POLICY-1"
+        },
+        "mode": {
+          "const": "explicit-allowlist-default-deny"
+        },
+        "sensitive_families": {
+          "const": [
+            "ctypes.*",
+            "dynamic-code-events",
+            "import",
+            "marshal.*",
+            "open",
+            "os.*",
+            "socket.*",
+            "subprocess.*",
+            "winreg.*"
+          ]
+        },
+        "first_denial_latched": {
+          "const": true
+        }
+      }
+    },
+    "resource_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maximum_admission_frame_bytes",
+        "startup_timeout_milliseconds",
+        "commit_timeout_milliseconds",
+        "maximum_processes",
+        "maximum_runtime_files",
+        "maximum_runtime_bytes"
+      ],
+      "properties": {
+        "maximum_admission_frame_bytes": {
+          "const": 8192
+        },
+        "startup_timeout_milliseconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300000
+        },
+        "commit_timeout_milliseconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300000
+        },
+        "maximum_processes": {
+          "const": 1
+        },
+        "maximum_runtime_files": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "maximum_runtime_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10737418240
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "safeIdentifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Z0-9][A-Z0-9._-]*$"
+    },
+    "relativeLogicalPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+    },
+    "virtualPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1032,
+      "pattern": "^(?:runtime|system32)/[A-Za-z0-9][A-Za-z0-9._/-]*$"
+    },
+    "runtimeFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "virtual_root",
+        "logical_path",
+        "sha256",
+        "byte_length",
+        "file_class"
+      ],
+      "properties": {
+        "virtual_root": {
+          "enum": [
+            "runtime",
+            "system32"
+          ]
+        },
+        "logical_path": {
+          "$ref": "#/$defs/relativeLogicalPath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "byte_length": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10737418240
+        },
+        "file_class": {
+          "enum": [
+            "python-executable",
+            "python-dll",
+            "stdlib-source",
+            "stdlib-extension",
+            "third-party-source",
+            "third-party-extension",
+            "package-metadata",
+            "private-dependency-dll",
+            "system-dependency-dll",
+            "bootstrap-support"
+          ]
+        }
+      }
+    },
+    "pythonModule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "origin_kind",
+        "loader",
+        "virtual_path",
+        "sha256",
+        "preload_phase"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*$"
+        },
+        "origin_kind": {
+          "enum": [
+            "builtin",
+            "frozen",
+            "source",
+            "extension"
+          ]
+        },
+        "loader": {
+          "enum": [
+            "BuiltinImporter",
+            "FrozenImporter",
+            "SourceFileLoader",
+            "ExtensionFileLoader"
+          ]
+        },
+        "virtual_path": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/virtualPath"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "preload_phase": {
+          "enum": [
+            "python-startup",
+            "verifier-bootstrap",
+            "candidate-bootstrap"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "origin_kind": {
+                "enum": [
+                  "builtin",
+                  "frozen"
+                ]
+              }
+            },
+            "required": [
+              "origin_kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "virtual_path": {
+                "type": "null"
+              },
+              "sha256": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "virtual_path": {
+                "$ref": "#/$defs/virtualPath"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "peDependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_virtual_path",
+        "dependency_name",
+        "resolution_root",
+        "resolution_kind",
+        "edge_kind",
+        "load_phase",
+        "target_virtual_path",
+        "sha256"
+      ],
+      "properties": {
+        "source_virtual_path": {
+          "$ref": "#/$defs/virtualPath"
+        },
+        "dependency_name": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+\\.[Dd][Ll][Ll]$"
+        },
+        "resolution_root": {
+          "enum": [
+            "application",
+            "runtime",
+            "system32"
+          ]
+        },
+        "resolution_kind": {
+          "enum": [
+            "application-directory-file",
+            "system32-file",
+            "api-set-to-system32-host",
+            "known-dll-system32"
+          ]
+        },
+        "edge_kind": {
+          "enum": [
+            "static-import",
+            "delay-import",
+            "profiled-dynamic-load"
+          ]
+        },
+        "load_phase": {
+          "enum": [
+            "python-startup",
+            "verifier-bootstrap",
+            "candidate-bootstrap"
+          ]
+        },
+        "target_virtual_path": {
+          "$ref": "#/$defs/virtualPath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}
