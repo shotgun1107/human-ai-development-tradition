@@ -1,0 +1,454 @@
+{
+  "$id": "urn:s0:public-assembly:runtime-profile-neutral-preloader:runtime-profile-v0.3.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "admission_frame_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "handle_list_digest_algorithm": {
+          "const": "sha256"
+        },
+        "handle_values_in_frame": {
+          "const": false
+        },
+        "locator_strings_in_frame": {
+          "const": false
+        },
+        "maximum_bytes": {
+          "const": 8192
+        },
+        "schema_id": {
+          "const": "S0-PUBLIC-ASSEMBLY-RUNTIME-ADMISSION-FRAME-3"
+        }
+      },
+      "required": [
+        "schema_id",
+        "maximum_bytes",
+        "handle_list_digest_algorithm",
+        "handle_values_in_frame",
+        "locator_strings_in_frame"
+      ],
+      "type": "object"
+    },
+    "atomic_root_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "abi_id": {
+          "const": "ntcreatefile-v0.3-exact-11-argument-abi"
+        },
+        "create_disposition": {
+          "const": "0x00000002"
+        },
+        "create_options": {
+          "const": "0x00200021"
+        },
+        "desired_access": {
+          "const": "0x00100081"
+        },
+        "direct_import": {
+          "const": "ntdll.dll!NtCreateFile"
+        },
+        "file_attributes": {
+          "const": "0x00000010"
+        },
+        "io_status_information": {
+          "const": "0x0000000000000002"
+        },
+        "object_attributes_flags": {
+          "const": "0x00001040"
+        },
+        "parent_case_sensitive_flag": {
+          "const": 0
+        },
+        "pathname_reopen_allowed": {
+          "const": false
+        },
+        "policy_id": {
+          "const": "atomic-parent-relative-root-create-v0.3"
+        },
+        "root_duplicate_access": {
+          "const": "0x00100081"
+        },
+        "share_access": {
+          "const": "0x00000001"
+        }
+      },
+      "required": [
+        "policy_id",
+        "direct_import",
+        "abi_id",
+        "desired_access",
+        "file_attributes",
+        "share_access",
+        "create_disposition",
+        "create_options",
+        "object_attributes_flags",
+        "parent_case_sensitive_flag",
+        "pathname_reopen_allowed",
+        "io_status_information",
+        "root_duplicate_access"
+      ],
+      "type": "object"
+    },
+    "bootstrap_guard": {
+      "additionalProperties": false,
+      "properties": {
+        "binary_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "binary_virtual_path": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/virtual_path"
+            },
+            {
+              "pattern": "\\.pyd$"
+            }
+          ]
+        },
+        "build_recipe_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "build_recipe_virtual_path": {
+          "$ref": "#/$defs/virtual_path"
+        },
+        "entry_point": {
+          "const": "bind_once_v3"
+        },
+        "failure_consumes_latch": {
+          "const": true
+        },
+        "generic_ffi_allowed": {
+          "const": false
+        },
+        "import_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "module_name": {
+          "const": "s0_runtime_handle_guard_v0_3"
+        },
+        "return_type_id": {
+          "const": "private-nonconstructible-HandleBindingsV3"
+        },
+        "semantic_windows_calls": {
+          "items": false,
+          "maxItems": 11,
+          "minItems": 11,
+          "prefixItems": [
+            {
+              "const": "GetHandleInformation"
+            },
+            {
+              "const": "GetFileType"
+            },
+            {
+              "const": "GetNamedPipeInfo"
+            },
+            {
+              "const": "GetFileInformationByHandleEx"
+            },
+            {
+              "const": "GetProcessId"
+            },
+            {
+              "const": "GetCurrentProcessId"
+            },
+            {
+              "const": "QueryFullProcessImageNameW"
+            },
+            {
+              "const": "NtQueryObject"
+            },
+            {
+              "const": "NtQueryInformationProcess"
+            },
+            {
+              "const": "ReadFile"
+            },
+            {
+              "const": "CloseHandle"
+            }
+          ],
+          "type": "array"
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_virtual_path": {
+          "$ref": "#/$defs/virtual_path"
+        }
+      },
+      "required": [
+        "module_name",
+        "entry_point",
+        "return_type_id",
+        "failure_consumes_latch",
+        "generic_ffi_allowed",
+        "semantic_windows_calls",
+        "source_virtual_path",
+        "source_sha256",
+        "build_recipe_virtual_path",
+        "build_recipe_sha256",
+        "binary_virtual_path",
+        "binary_sha256",
+        "import_manifest_sha256"
+      ],
+      "type": "object"
+    },
+    "effective_process_job_policy_id": {
+      "const": "public-assembly-process-job-policy-v0.2"
+    },
+    "handle_locator_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "argument_value_pattern": {
+          "const": "^0x[0-9a-f]{16}$"
+        },
+        "authority": {
+          "const": "none-locator-only"
+        },
+        "ordered_names": {
+          "items": false,
+          "maxItems": 5,
+          "minItems": 5,
+          "prefixItems": [
+            {
+              "const": "--s0-admission-read"
+            },
+            {
+              "const": "--s0-commit-request-write"
+            },
+            {
+              "const": "--s0-commit-reply-read"
+            },
+            {
+              "const": "--s0-output-root"
+            },
+            {
+              "const": "--s0-preloader-process"
+            }
+          ],
+          "type": "array"
+        },
+        "policy_id": {
+          "const": "ordered-command-line-handle-locators-v0.3"
+        },
+        "scrubbed_sys_argv": {
+          "const": "exact-bootstrap-path-only"
+        }
+      },
+      "required": [
+        "policy_id",
+        "ordered_names",
+        "argument_value_pattern",
+        "authority",
+        "scrubbed_sys_argv"
+      ],
+      "type": "object"
+    },
+    "inherited_handle_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "const": 5
+        },
+        "access_policy_id": {
+          "const": "inherited-five-handle-access-v0.3"
+        },
+        "explicit_list_only": {
+          "const": true
+        },
+        "ordered_roles": {
+          "items": false,
+          "maxItems": 5,
+          "minItems": 5,
+          "prefixItems": [
+            {
+              "const": "admission-read"
+            },
+            {
+              "const": "commit-request-write"
+            },
+            {
+              "const": "commit-reply-read"
+            },
+            {
+              "const": "output-root"
+            },
+            {
+              "const": "preloader-process"
+            }
+          ],
+          "type": "array"
+        },
+        "standard_handles_inherited": {
+          "const": false
+        }
+      },
+      "required": [
+        "count",
+        "access_policy_id",
+        "ordered_roles",
+        "explicit_list_only",
+        "standard_handles_inherited"
+      ],
+      "type": "object"
+    },
+    "platform_binding": {
+      "additionalProperties": false,
+      "properties": {
+        "ntcreatefile_export_rva": {
+          "$ref": "#/$defs/hex_u32"
+        },
+        "ntdll_file_id": {
+          "$ref": "#/$defs/file_id"
+        },
+        "ntdll_pe_machine": {
+          "const": "0x00008664"
+        },
+        "ntdll_pe_timestamp": {
+          "$ref": "#/$defs/hex_u32"
+        },
+        "ntdll_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "ntdll_virtual_path": {
+          "const": "system32/ntdll.dll"
+        },
+        "ntdll_volume_serial": {
+          "$ref": "#/$defs/hex_u64"
+        },
+        "ntdll_size_of_image": {
+          "$ref": "#/$defs/hex_u32"
+        },
+        "windows_build": {
+          "maximum": 4294967295,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "windows_build",
+        "ntdll_virtual_path",
+        "ntdll_sha256",
+        "ntdll_pe_machine",
+        "ntdll_pe_timestamp",
+        "ntdll_size_of_image",
+        "ntdll_volume_serial",
+        "ntdll_file_id",
+        "ntcreatefile_export_rva"
+      ],
+      "type": "object"
+    },
+    "profile_id": {
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,127}$",
+      "type": "string"
+    },
+    "revision": {
+      "const": "0.3.0"
+    },
+    "schema_id": {
+      "const": "urn:s0:public-assembly:runtime-profile-neutral-preloader:runtime-profile:3"
+    },
+    "terminal_state_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "invalid_nonterminal_transition": {
+          "const": "set-rejected-and-fail"
+        },
+        "policy_id": {
+          "const": "immutable-terminal-retry-policy-v0.3"
+        },
+        "terminal_retry": {
+          "const": "fail-without-state-mutation"
+        },
+        "terminal_states": {
+          "items": false,
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "const": "SPENT"
+            },
+            {
+              "const": "REJECTED"
+            }
+          ],
+          "type": "array"
+        }
+      },
+      "required": [
+        "policy_id",
+        "terminal_states",
+        "invalid_nonterminal_transition",
+        "terminal_retry"
+      ],
+      "type": "object"
+    },
+    "v0_1_profile_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "v0_2_profile_sha256": {
+      "$ref": "#/$defs/sha256"
+    }
+  },
+  "required": [
+    "schema_id",
+    "revision",
+    "profile_id",
+    "v0_1_profile_sha256",
+    "v0_2_profile_sha256",
+    "effective_process_job_policy_id",
+    "platform_binding",
+    "admission_frame_policy",
+    "handle_locator_policy",
+    "inherited_handle_policy",
+    "bootstrap_guard",
+    "atomic_root_policy",
+    "terminal_state_policy"
+  ],
+  "title": "S0 public assembly runtime profile v0.3 supplement",
+  "type": "object",
+  "$defs": {
+    "file_id": {
+      "pattern": "^[0-9a-f]{32}$",
+      "type": "string"
+    },
+    "hex_u32": {
+      "pattern": "^0x[0-9a-f]{8}$",
+      "type": "string"
+    },
+    "hex_u64": {
+      "pattern": "^0x[0-9a-f]{16}$",
+      "type": "string"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "virtual_path": {
+      "allOf": [
+        {
+          "pattern": "^[A-Za-z0-9._/-]+$",
+          "type": "string"
+        },
+        {
+          "not": {
+            "pattern": "(^|/)\\.\\.?($|/)"
+          }
+        },
+        {
+          "not": {
+            "pattern": "//"
+          }
+        },
+        {
+          "not": {
+            "pattern": "^/|/$"
+          }
+        }
+      ]
+    }
+  }
+}
