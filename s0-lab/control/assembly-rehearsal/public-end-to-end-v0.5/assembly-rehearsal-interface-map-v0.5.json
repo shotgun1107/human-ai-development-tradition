@@ -1,0 +1,196 @@
+{
+  "schema_id": "S0-PUBLIC-ASSEMBLY-REHEARSAL-INTERFACE-MAP-5",
+  "version": "0.5.0",
+  "claim_kind": "public-model-free-design-successor-only",
+  "predecessor_review_sha256": "b501acacfb04ce62d8c831b303d2c20e1e0cee5f60290a2aa8e287ca7cdd3942",
+  "effective_composition": "v0.3 plus v0.4 replacements plus v0.5 replacements",
+  "retained_closures": [
+    "M-04",
+    "M-05A",
+    "M-06A-core-copied-pair-predicate"
+  ],
+  "target_findings": [
+    "M-07A",
+    "M-06B",
+    "N-01"
+  ],
+  "retained_v0_4_authorities": {
+    "abi_profile_id": "S0-WIN64-NTFS-MOVEFILEEXW-CTYPES-ABI-2",
+    "observer_id": "S0-PUBLIC-ASSEMBLY-PUBLICATION-OBSERVER-2",
+    "live_consumer_id": "S0-PUBLIC-ASSEMBLY-LIVE-CONSUMER-2",
+    "witness_type": "private-process-local-object-identity",
+    "witness_one_use": true,
+    "witness_valid_after_process_exit": false,
+    "observer_event_count": 2,
+    "observer_event_field_count": 23
+  },
+  "last_error_semantics": {
+    "before_every_call": "ctypes.set_last_error(0)",
+    "zero_return": {
+      "acquisition": "ctypes.get_last_error() as immediate next operation",
+      "event_value": "captured-unsigned-32-bit-value"
+    },
+    "nonzero_return": {
+      "get_last_error_called": false,
+      "event_value": 0,
+      "meaning": "not-sampled-on-success-sentinel"
+    },
+    "disambiguators": [
+      "ffi_return_signed_int32",
+      "terminal_status"
+    ]
+  },
+  "run_record_v3": {
+    "schema_id": "S0-PUBLIC-ASSEMBLY-RUN-RECORD-3",
+    "canonicalization": "UTF-8-no-BOM-sorted-keys-ensure-ascii-compact-final-LF",
+    "field_count": 38,
+    "canonical_bytes": 2224,
+    "canonical_sha256": "73b2091e7aab315bcafd487965dc8c3304b19afca56132de471c787254b7fda6",
+    "design_base_commit_semantics": "historical-public-flow-lineage-anchor-not-current-design-authority",
+    "current_design_authority_location": "receipt-v2-external-design-package-and-independent-review-pins",
+    "exact_object": {
+      "actual_response_sha256": "c2f824c6483b625e2fa50d0016443632809471f32ebb235e09f454cf04981bdf",
+      "answer_validation_error_count": 0,
+      "block_id": "BLK-PRACTICE0002",
+      "bundle_manifest_sha256": "e41ee6c71169df646e3c8c0b0e8f3d77e7871d939f651b86a52ea5696feeb637",
+      "canonical_sha256": "bf8e48e1bed4c061df7de896aa14848cdeab6692288a2eda5b445c1a87557863",
+      "claim_kind": "candidate-controller-completion-diagnostic-only-not-rehearsal-pass-not-s0",
+      "denied_input_access_count": 0,
+      "design_base_commit": "f7048e919ab0e698d78ca4ff4cc4eb31ca6f612c",
+      "design_revision": "0.5",
+      "expected_response_sha256": "c2f824c6483b625e2fa50d0016443632809471f32ebb235e09f454cf04981bdf",
+      "final_frames": 1,
+      "i0_manifest_sha256": "f57514f96a2c30366cdf1f1414524711da20c9410186b3017e3dbf902bb612ae",
+      "i1_manifest_sha256": "668d3549ef6f7146ac7200e7be1f362967eca4c2cf66119a1f727bebd245332c",
+      "i2_disposition": "contract-authenticated-no-import-route",
+      "i2_manifest_sha256": "18ccfbcbe73b1170e07bd000376b079528dcf135b806e3f6c77b10efae736bd6",
+      "i3_disposition": "contract-authenticated-no-import-attempt",
+      "i3_manifest_sha256": "e07c9754d61b143bca9747bbcccb58b0861b14f60031422e1e4fd88a0fb93648",
+      "offline_status": "offline-not-success-diagnostic-only",
+      "package_sha256": "15bace158828b8a16a4fd9d76dddfa7b5870bdb580198f0da308c4fa575e03b7",
+      "public_bundle_entry_count": 90,
+      "questions_sha256": "661c09dfb20ea933f521370f9e3f94e2512f49e67020101d3767a6a92a07fe90",
+      "rehearsal_id": "S0-PUBLIC-AR-B2-P01-001",
+      "rehearsal_pass_authority": "same-process-verifier-live-consumer-2-acceptance-only",
+      "representation_id": "P01",
+      "request_manifest_path": "s0-lab/assembly-rehearsal/public-end-to-end-v0.1/request-files.sha256",
+      "request_manifest_sha256": "872f2bca8d2d56c9b664e37ad6092a4dd4d8750d40eb8ba99dfbad7f7c94c9f7",
+      "request_path": "s0-lab/assembly-rehearsal/public-end-to-end-v0.1/inputs/request.json",
+      "request_sha256": "990f12bd98b0f2c7ce64e683a8165c6e67384d6dbc6b4f1f4ec62b19f28b75e2",
+      "response_frames": 1,
+      "result": "candidate-controller-complete-awaiting-live-consumer",
+      "retry_count": 0,
+      "schema_id": "S0-PUBLIC-ASSEMBLY-RUN-RECORD-3",
+      "state": "COMPLETE",
+      "stub_script_frame_count": 1,
+      "stub_transport_id": "S0-PUBLIC-EXACT-ANSWER-STUB-1",
+      "stub_unconsumed_frame_count_on_close": 0,
+      "stub_yielded_frame_count": 1,
+      "transport_calls": 1
+    },
+    "inadmissible_predecessor": {
+      "field_count": 36,
+      "canonical_bytes": 2046,
+      "canonical_sha256": "bc13615933766fd84435fe4faf2d05b37a495b160f8529c699c73aec7784650e",
+      "result": "public-assembly-rehearsal-pass-not-s0"
+    }
+  },
+  "receipt_v2": {
+    "schema_id": "S0-PUBLIC-ASSEMBLY-PUBLICATION-RECEIPT-2",
+    "canonicalization": "UTF-8-no-BOM-sorted-keys-ensure-ascii-compact-final-LF",
+    "field_count": 21,
+    "canonical_byte_length_for_any_admissible_three_digest_tuple": 1173,
+    "field_order_for_review": [
+      "assembly_implementation_manifest_sha256",
+      "design_independent_review_sha256",
+      "design_package_manifest_sha256",
+      "evidence_consumer_id",
+      "observer_id",
+      "offline_status",
+      "platform_profile_id",
+      "publication_outcome",
+      "publication_primitive",
+      "publication_primitive_flags",
+      "receipt_path",
+      "record_path",
+      "record_sha256",
+      "rehearsal_id",
+      "rehearsal_pass_authority",
+      "schema_id",
+      "stub_close_count",
+      "stub_script_frame_count",
+      "stub_transport_calls",
+      "stub_unconsumed_frame_count_on_close",
+      "stub_yielded_frame_count"
+    ],
+    "fixed_values": {
+      "evidence_consumer_id": "S0-PUBLIC-ASSEMBLY-LIVE-CONSUMER-2",
+      "observer_id": "S0-PUBLIC-ASSEMBLY-PUBLICATION-OBSERVER-2",
+      "offline_status": "offline-not-success-diagnostic-only",
+      "platform_profile_id": "S0-WIN64-NTFS-MOVEFILEEXW-CTYPES-ABI-2",
+      "publication_outcome": "controller-files-published-awaiting-live-consumer",
+      "publication_primitive": "MoveFileExW",
+      "publication_primitive_flags": 0,
+      "receipt_path": "publication-receipt.json",
+      "record_path": "run-record.json",
+      "record_sha256": "73b2091e7aab315bcafd487965dc8c3304b19afca56132de471c787254b7fda6",
+      "rehearsal_id": "S0-PUBLIC-AR-B2-P01-001",
+      "rehearsal_pass_authority": "same-process-verifier-live-consumer-2-acceptance-only",
+      "schema_id": "S0-PUBLIC-ASSEMBLY-PUBLICATION-RECEIPT-2",
+      "stub_close_count": 1,
+      "stub_script_frame_count": 1,
+      "stub_transport_calls": 1,
+      "stub_unconsumed_frame_count_on_close": 0,
+      "stub_yielded_frame_count": 1
+    },
+    "external_lowercase_sha256_fields": {
+      "assembly_implementation_manifest_sha256": "future externally supplied public assembly implementation manifest",
+      "design_package_manifest_sha256": "exact v0.5 design-package-files.sha256 bytes",
+      "design_independent_review_sha256": "fresh approving v0.5 independent rereview Markdown bytes"
+    },
+    "actual_bytes_available_now": false,
+    "actual_sha256_available_now": false,
+    "required_before_execution": [
+      "all three exact external lowercase SHA-256 pins",
+      "exact canonical 1173-byte receipt",
+      "exact receipt SHA-256"
+    ],
+    "placeholder_or_predecessor_pin_allowed": false
+  },
+  "success_authority": {
+    "controller_complete_is_rehearsal_pass": false,
+    "live_consumer_acceptance_required": true,
+    "live_consumer_id": "S0-PUBLIC-ASSEMBLY-LIVE-CONSUMER-2",
+    "same_process_required": true,
+    "exact_private_witness_required": true,
+    "files_standalone_success_evidence": false,
+    "serialized_report_success_authority": false,
+    "offline_consumer_success_allowed": false,
+    "post_process_files_status": "offline-not-success-diagnostic-only"
+  },
+  "mandatory_rejections": [
+    "old-consumer-id",
+    "old-platform-profile-id",
+    "old-design-package-pin",
+    "old-review-pin",
+    "old-run-record-schema-or-hash",
+    "old-pass-valued-result",
+    "receipt-single-field-mutation",
+    "correct-files-without-live-witness",
+    "positive-event-last-error-not-zero-sentinel",
+    "failed-event-last-error-not-immediately-captured"
+  ],
+  "closed_boundaries": [
+    "implementation",
+    "platform-probe",
+    "rehearsal-execution",
+    "F0-content",
+    "hidden-oracle",
+    "provider-model-network",
+    "executor-judge-scoring",
+    "I2-I3-import",
+    "S0-E0",
+    "central-system",
+    "Project-Brain"
+  ]
+}
