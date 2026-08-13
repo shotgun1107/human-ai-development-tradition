@@ -1,0 +1,351 @@
+{
+  "authority": {
+    "design_revision": "public-assembly-runtime-profile-neutral-preloader-v0.3",
+    "predecessor_design_sha256": "72bfafac0349b1bc047ead67fef6466c5d398dcaef62cd77da256174f954a642",
+    "predecessor_interface_map_sha256": "8910d41472a4e87e8303f1a0086dfc3cb02479446a0f83b3f8ca261bd03d8d7d",
+    "predecessor_package_manifest_sha256": "fed4c2151f0bebcda14b84551c529ae4d9449a3f9637ce79fd7d312c50d2e68e",
+    "rereview_record_sha256": "99896e35937f5cfce2493aeda059063e25aad58e5b64de5965042b473f1ce090",
+    "status": "design-candidate-fresh-independent-rereview-required"
+  },
+  "atomic_root_create": {
+    "abi": {
+      "architecture": "windows-x86_64",
+      "calling_convention": "windows-x64",
+      "export": "NtCreateFile",
+      "library": "ntdll.dll",
+      "return_type": "NTSTATUS",
+      "signature_id": "ntcreatefile-v0.3-exact-11-argument-abi"
+    },
+    "call": {
+      "allocation_size": null,
+      "create_disposition": {
+        "numeric": "0x00000002",
+        "symbols": [
+          "FILE_CREATE"
+        ]
+      },
+      "create_options": {
+        "numeric": "0x00200021",
+        "symbols": [
+          "FILE_DIRECTORY_FILE",
+          "FILE_SYNCHRONOUS_IO_NONALERT",
+          "FILE_OPEN_REPARSE_POINT"
+        ]
+      },
+      "desired_access": {
+        "numeric": "0x00100081",
+        "symbols": [
+          "FILE_LIST_DIRECTORY",
+          "FILE_READ_ATTRIBUTES",
+          "SYNCHRONIZE"
+        ]
+      },
+      "ea_buffer": null,
+      "ea_length": 0,
+      "file_attributes": {
+        "numeric": "0x00000010",
+        "symbols": [
+          "FILE_ATTRIBUTE_DIRECTORY"
+        ]
+      },
+      "io_status_information_required": {
+        "numeric": "0x0000000000000002",
+        "symbol": "FILE_CREATED"
+      },
+      "object_attributes": {
+        "attributes": {
+          "numeric": "0x00001040",
+          "symbols": [
+            "OBJ_CASE_INSENSITIVE",
+            "OBJ_DONT_REPARSE"
+          ]
+        },
+        "object_name": "one-exact-canonical-leaf-unicode-string",
+        "root_directory": "retained-authenticated-output-parent-handle",
+        "security_descriptor": null,
+        "security_quality_of_service": null
+      },
+      "share_access": {
+        "forbidden_symbols": [
+          "FILE_SHARE_WRITE",
+          "FILE_SHARE_DELETE"
+        ],
+        "numeric": "0x00000001",
+        "symbols": [
+          "FILE_SHARE_READ"
+        ]
+      }
+    },
+    "disallowed_routes": [
+      "CreateDirectoryA",
+      "CreateDirectoryW",
+      "CreateDirectoryExW",
+      "CreateFileA",
+      "CreateFileW",
+      "OpenFile",
+      "second-NtCreateFile",
+      "pathname-reopen",
+      "case-insensitive-retry",
+      "cleanup-and-retry",
+      "alternate-native-api",
+      "direct-system-call"
+    ],
+    "owner": "authenticated-neutral-preloader",
+    "policy_id": "atomic-parent-relative-root-create-v0.3",
+    "postconditions": [
+      "return-ntstatus-success",
+      "iosb-status-equals-return-status",
+      "iosb-information-file-created",
+      "returned-handle-live-and-non-sentinel",
+      "returned-object-is-directory",
+      "local-fixed-ntfs",
+      "non-reparse",
+      "exact-leaf-case",
+      "parent-case-sensitive-flag-zero",
+      "case-folding-alias-collision",
+      "retained-parent-containment",
+      "stable-volume-and-file-id",
+      "one-link",
+      "no-alternate-stream",
+      "empty-new-directory",
+      "no-delete-pending"
+    ],
+    "pre_state": "PRE-ROOT-ABSENT",
+    "success_state": "ROOT-CREATED-HELD"
+  },
+  "admission_frame_v3": {
+    "authority_by_value": false,
+    "encoding": "canonical-ASCII-JSON-one-line-final-LF",
+    "forbidden_fields": [
+      "numeric-handle-values",
+      "handle-locator-strings"
+    ],
+    "maximum_bytes": 8192,
+    "required_v3_bindings": [
+      "preloader-state-ROOT-CREATED-HELD",
+      "output-parent-volume-and-file-id",
+      "output-root-volume-and-file-id",
+      "ordered-five-role-handle-list-digest",
+      "preloader-and-verifier-pid-image-identities",
+      "v0.1-v0.2-v0.3-profile-hashes",
+      "effective-four-row-package-hash",
+      "fresh-nonce",
+      "external-pin-digest"
+    ],
+    "schema_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-ADMISSION-FRAME-3"
+  },
+  "bootstrap_guard": {
+    "api": {
+      "argument": "tuple-of-five-validated-uintptr-locators",
+      "entry_point": "bind_once_v3",
+      "failure_latches": true,
+      "first-call-consumes_latch": true,
+      "module": "s0_runtime_handle_guard_v0_3",
+      "partial_return_forbidden": true,
+      "return_type": "private-nonconstructible-HandleBindingsV3"
+    },
+    "disallowed_capabilities": [
+      "ctypes",
+      "_ctypes",
+      "generic-ffi",
+      "generic-handle-wrapper",
+      "caller-selected-extension-origin",
+      "dynamic-native-loader",
+      "capsule-export",
+      "integer-handle-export",
+      "copy",
+      "pickle",
+      "subclass",
+      "public-constructor"
+    ],
+    "native_validation": [
+      "five-distinct-live-handles-with-expected-inheritance-flag",
+      "admission-handle-list-digest-equals-authenticated-five-entry-construction",
+      "known-locators-have-inheritable-handle-flag",
+      "admission-read-is-pipe-read-not-write",
+      "commit-request-is-pipe-write-not-read",
+      "commit-reply-is-pipe-read-not-write",
+      "pipe-byte-stream-mode",
+      "opposite-ends-not-present-in-verifier",
+      "output-root-is-reduced-access-directory",
+      "output-root-volume-file-id-equals-admission",
+      "output-root-no-write-delete-reparse",
+      "preloader-handle-is-process-query-synchronize-only",
+      "preloader-pid-and-queried-image-path-equal-admission",
+      "admission-binds-control-authenticated-preloader-image-file-id-and-hash",
+      "verifier-parent-pid-equals-live-preloader-pid",
+      "v0.2-job-membership-and-preloader-nonmembership",
+      "current-process-equals-admitted-verifier",
+      "nonce-and-one-frame-eof-peer-binding"
+    ],
+    "semantic_windows_calls": [
+      "GetHandleInformation",
+      "GetFileType",
+      "GetNamedPipeInfo",
+      "GetFileInformationByHandleEx",
+      "GetProcessId",
+      "GetCurrentProcessId",
+      "QueryFullProcessImageNameW",
+      "NtQueryObject",
+      "NtQueryInformationProcess",
+      "ReadFile",
+      "CloseHandle"
+    ],
+    "required_loaded_pe_families": [
+      "python312.dll",
+      "kernel32.dll",
+      "ntdll.dll",
+      "ucrt-runtime",
+      "vcruntime"
+    ],
+    "scrub_after_success": {
+      "guard_public_binding_removed": true,
+      "raw_integer_reachability_forbidden": true,
+      "raw_locator_string_reachability_forbidden": true,
+      "sys_argv": [
+        "<EXACT_BOOTSTRAP_PATH>"
+      ]
+    }
+  },
+  "failure_routing": {
+    "after_file_created_before_verifier_admission": {
+      "class": "AR-BOUNDARY",
+      "count": 0,
+      "residue": "quarantined-root"
+    },
+    "before_root_create_authentication_failure": {
+      "class": "AR-AUTH",
+      "count": 0,
+      "residue": "no-output-root"
+    },
+    "native_guard_failure": {
+      "class": "AR-BOUNDARY",
+      "count": 0,
+      "residue": "quarantined-root"
+    },
+    "post_admission": "frozen-v0.5-precedence"
+  },
+  "handle_locator_policy": {
+    "authority": "none-locator-only",
+    "command_line": {
+      "exact_python_prefix": [
+        "-I",
+        "-S",
+        "-B",
+        "-X",
+        "utf8",
+        "<EXACT_BOOTSTRAP_PATH>"
+      ],
+      "ordered_locator_names": [
+        "--s0-admission-read",
+        "--s0-commit-request-write",
+        "--s0-commit-reply-read",
+        "--s0-output-root",
+        "--s0-preloader-process"
+      ]
+    },
+    "exact_argument_regexes": [
+      "^--s0-admission-read=0x[0-9a-f]{16}$",
+      "^--s0-commit-request-write=0x[0-9a-f]{16}$",
+      "^--s0-commit-reply-read=0x[0-9a-f]{16}$",
+      "^--s0-output-root=0x[0-9a-f]{16}$",
+      "^--s0-preloader-process=0x[0-9a-f]{16}$"
+    ],
+    "forbidden_forms": [
+      "uppercase-hex",
+      "decimal",
+      "sign",
+      "whitespace",
+      "missing-leading-zero",
+      "duplicate-key",
+      "reordered-key",
+      "extra-argument",
+      "response-file",
+      "environment-substitute",
+      "standard-handle-substitute"
+    ],
+    "policy_id": "ordered-command-line-handle-locators-v0.3",
+    "value_constraints": [
+      "uintptr-width",
+      "nonzero",
+      "not-invalid-handle-value",
+      "pairwise-distinct"
+    ]
+  },
+  "inherited_handle_policy": {
+    "access_policy_id": "inherited-five-handle-access-v0.3",
+    "count": 5,
+    "explicit_list_only": true,
+    "handles": [
+      {
+        "access": "read-not-write-data",
+        "kind": "byte-stream-pipe-endpoint",
+        "name": "admission-read"
+      },
+      {
+        "access": "write-not-read-data",
+        "kind": "byte-stream-pipe-endpoint",
+        "name": "commit-request-write"
+      },
+      {
+        "access": "read-not-write-data",
+        "kind": "byte-stream-pipe-endpoint",
+        "name": "commit-reply-read"
+      },
+      {
+        "access": "file-list-directory-read-attributes-synchronize-only",
+        "kind": "directory",
+        "name": "output-root"
+      },
+      {
+        "access": "process-query-limited-information-synchronize-only",
+        "kind": "process",
+        "name": "preloader-process"
+      }
+    ],
+    "opposite_pipe_ends_inherited": false,
+    "standard_handles_inherited": false
+  },
+  "package_composition": {
+    "effective_rows": [
+      "runtime-files.sha256",
+      "runtime-profile-v0.1.json",
+      "runtime-profile-v0.2.json",
+      "runtime-profile-v0.3.json"
+    ],
+    "manifest_order": "ascii-sort-by-virtual-path",
+    "predecessor_profile_pins_required": 2,
+    "row_count": 4
+  },
+  "preloader_state_machine": {
+    "states": [
+      "PRE-ROOT-ABSENT",
+      "ROOT-CREATED-HELD",
+      "VERIFIER-LAUNCHED",
+      "COMMIT-REQUESTED",
+      "COMMIT-REPLIED",
+      "FAILED"
+    ],
+    "terminal_states": [
+      "COMMIT-REPLIED",
+      "FAILED"
+    ]
+  },
+  "revision": "0.3.0",
+  "schema_id": "urn:s0:public-assembly:runtime-profile-neutral-preloader:interface-map:3",
+  "verifier_admission_state_machine": {
+    "invalid_nonterminal_transition": "atomically-set-REJECTED-and-fail",
+    "states": [
+      "ROOT-CREATED-BOUND",
+      "COMMITTING",
+      "COMMIT-ACKED",
+      "SPENT",
+      "REJECTED"
+    ],
+    "terminal_retry": "fail-without-state-mutation",
+    "terminal_states": [
+      "SPENT",
+      "REJECTED"
+    ]
+  }
+}
