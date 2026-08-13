@@ -1,0 +1,236 @@
+{
+  "admission_frame_policy": {
+    "forbidden_fields": [
+      "numeric-handle-values",
+      "handle-locator-strings"
+    ],
+    "guard_observation_policy_id": "known-five-handles-only-v0.4",
+    "handle_list_digest_algorithm": "sha256",
+    "kernel_semantics_policy_id": "pinned-windows-handle-list-semantics-v0.4",
+    "maximum_bytes": 8192,
+    "preloader_responsibility_id": "authenticated-preloader-exact-handle-list-v0.4",
+    "required_v4_bindings": [
+      "launch-handle-set-evidence-sha256",
+      "actual-verifier-pid",
+      "createprocess-success-bound-v0.4",
+      "preloader-responsibility-id",
+      "kernel-semantics-policy-id",
+      "guard-observation-policy-id",
+      "v0.1-v0.2-v0.3-v0.4-profile-hashes",
+      "effective-five-row-package-hash"
+    ],
+    "schema_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-ADMISSION-FRAME-4"
+  },
+  "atomic_root_policy": {
+    "abi_id": "ntcreatefile-v0.3-exact-11-argument-abi",
+    "allocation_size_null": true,
+    "argument_count": 11,
+    "continuous_original_retention": true,
+    "create_disposition": "0x00000002",
+    "create_options": "0x00200021",
+    "desired_access": "0x00100081",
+    "direct_import": "ntdll.dll!NtCreateFile",
+    "duplicate_access": "0x00100081",
+    "duplicate_same_object_required": true,
+    "ea_buffer_null": true,
+    "ea_length": 0,
+    "file_attributes": "0x00000010",
+    "io_status_information": "0x0000000000000002",
+    "no_second_create": true,
+    "object_attributes_flags": "0x00001040",
+    "object_name_policy": "one-exact-canonical-leaf-unicode-string",
+    "object_root_directory": "retained-authenticated-output-parent-handle",
+    "parent_case_sensitive_flag": 0,
+    "pathname_reopen_allowed": false,
+    "postcondition_policy_id": "atomic-root-postconditions-complete-v0.4",
+    "quarantined_failure_residue": true,
+    "required_postconditions": [
+      "return-ntstatus-success-not-warning",
+      "iosb-status-equals-return-status",
+      "iosb-information-file-created",
+      "returned-handle-live-and-non-sentinel",
+      "returned-object-is-directory",
+      "local-fixed-ntfs",
+      "non-reparse",
+      "exact-leaf-case-and-parent-containment",
+      "stable-volume-and-file-id",
+      "one-link-no-alternate-stream-empty-directory",
+      "no-delete-pending",
+      "granted-access-and-share-equal-frozen-call",
+      "duplicate-identifies-same-object"
+    ],
+    "security_descriptor_null": true,
+    "security_quality_of_service_null": true,
+    "share_access": "0x00000001"
+  },
+  "authority": {
+    "design_revision": "public-assembly-runtime-profile-neutral-preloader-v0.4",
+    "predecessor_acceptance_plan_sha256": "a20d0dab51fb038ecda998dcbd8dbbd9483797b723a843e39368281e65716a13",
+    "predecessor_design_sha256": "971d15f4fe666d656973898a0aa38b92370cd4b8a89e92aaff00ecf7241e9456",
+    "predecessor_interface_map_sha256": "30d39aa73734173c0d7908bf97fb8a75d42eafca8997f464b3001ff22abbaf39",
+    "predecessor_package_manifest_sha256": "c2ecd2931e15a99b68d3e669026342f59a42995268f8b4937ba96e63d731481b",
+    "predecessor_rereview_record_sha256": "9085e20666fdaa1246e47430993149f103c31c4e0e64652ad57d77bbed42675e",
+    "predecessor_schema_sha256": "1404f4981d3d7815e98a6c5d745596f15bb8d50a296410584d03d7ccb11ce3dd",
+    "status": "design-candidate-fresh-independent-rereview-required"
+  },
+  "bootstrap_guard": {
+    "entry_point": "bind_once_v4",
+    "failure_consumes_latch": true,
+    "first_call_consumes_latch": true,
+    "module": "s0_runtime_handle_guard_v0_4",
+    "process_wide_handle_absence_claimed": false,
+    "return_type": "private-nonconstructible-HandleBindingsV4",
+    "validation_scope": [
+      "five-known-locator-grammar-liveness-distinctness-inherit-flag",
+      "three-known-pipe-kind-direction-mode-state-frame-nonce-eof",
+      "known-root-kind-access-identity-reparse-policy",
+      "known-preloader-process-access-pid-image-parent-and-job",
+      "current-verifier-pid-image",
+      "launch-handle-set-evidence-digest-current-pid-and-success-policy"
+    ]
+  },
+  "handle_locator_policy": {
+    "argument_value_pattern": "^0x[0-9a-f]{16}$",
+    "authority": "none-locator-only",
+    "ordered_names": [
+      "--s0-admission-read",
+      "--s0-commit-request-write",
+      "--s0-commit-reply-read",
+      "--s0-output-root",
+      "--s0-preloader-process"
+    ],
+    "policy_id": "ordered-command-line-handle-locators-v0.4",
+    "scrubbed_sys_argv": "exact-bootstrap-path-only"
+  },
+  "inheritance_responsibility": {
+    "guard_observation_policy_id": "known-five-handles-only-v0.4",
+    "kernel_semantics_policy_id": "pinned-windows-handle-list-semantics-v0.4",
+    "preloader_responsibility_id": "authenticated-preloader-exact-handle-list-v0.4",
+    "process_wide_absence_observer": "authenticated-preloader-construction-plus-pinned-kernel-semantics-and-platform-probe",
+    "verifier_guard_is_process_wide_enumerator": false
+  },
+  "launch_handle_set_evidence": {
+    "evidence_schema_id": "S0-LAUNCH-HANDLE-SET-EVIDENCE-1",
+    "encoding": "exact-ascii-final-lf",
+    "hash_algorithm": "sha256",
+    "raw_handle_values_in_admission_frame": false,
+    "required_evidence_bindings": [
+      "run-nonce",
+      "preloader-image-and-runtime-package-hashes",
+      "application-bootstrap-verifier-identities",
+      "creation-flags-and-startupinfoex-dwflags",
+      "bInheritHandles-true",
+      "attribute-entry-id-count-byte-length-and-handle-count",
+      "five-ordered-role-kind-access-and-fixed-width-locator-records",
+      "precreation-verifier-pid-zero"
+    ],
+    "required_postcreation_admission_bindings": [
+      "evidence-sha256",
+      "actual-verifier-pid",
+      "createprocess-success-bound-v0.4"
+    ]
+  },
+  "package_composition": {
+    "effective_rows": [
+      "runtime-files.sha256",
+      "runtime-profile-v0.1.json",
+      "runtime-profile-v0.2.json",
+      "runtime-profile-v0.3.json",
+      "runtime-profile-v0.4.json"
+    ],
+    "manifest_order": "ascii-sort-by-virtual-path",
+    "predecessor_profile_pins_required": 3,
+    "row_count": 5
+  },
+  "platform_profile_requirements": {
+    "required_loaded_pe_families": [
+      "python312.dll",
+      "kernel32.dll",
+      "ntdll.dll",
+      "ucrt-runtime",
+      "vcruntime"
+    ],
+    "required_system_images": [
+      "kernel32.dll!CreateProcessW",
+      "ntdll.dll!NtCreateFile"
+    ]
+  },
+  "process_creation_policy": {
+    "api": "kernel32.dll!CreateProcessW",
+    "application_name_policy_id": "authenticated-exact-verifier-application-v0.4",
+    "attribute_count": 1,
+    "attribute_id": "PROC_THREAD_ATTRIBUTE_HANDLE_LIST",
+    "b_inherit_handles": true,
+    "creation_flags": [
+      "CREATE_SUSPENDED",
+      "CREATE_UNICODE_ENVIRONMENT",
+      "EXTENDED_STARTUPINFO_PRESENT",
+      "CREATE_NO_WINDOW"
+    ],
+    "creation_flags_numeric": "0x08080404",
+    "current_directory_policy_id": "authenticated-exact-current-directory-v0.4",
+    "environment_policy_id": "authenticated-exact-environment-block-v0.4",
+    "handle_array_bytes_x64": 40,
+    "handle_count": 5,
+    "attribute_id_numeric": "0x00020002",
+    "attribute_storage_lifetime": "unchanged-until-createprocess-returns",
+    "command_line_policy_id": "authenticated-writable-canonical-command-line-v0.4",
+    "job_policy_id": "public-assembly-process-job-policy-v0.2",
+    "mitigation_policy_id": "authenticated-effective-mitigation-policy-v0.4",
+    "ordered_handles": [
+      {
+        "access": "read-not-write-data",
+        "kind": "byte-stream-pipe-endpoint",
+        "role": "admission-read"
+      },
+      {
+        "access": "write-not-read-data",
+        "kind": "byte-stream-pipe-endpoint",
+        "role": "commit-request-write"
+      },
+      {
+        "access": "read-not-write-data",
+        "kind": "byte-stream-pipe-endpoint",
+        "role": "commit-reply-read"
+      },
+      {
+        "access": "file-list-directory-read-attributes-synchronize-only",
+        "kind": "directory",
+        "role": "output-root"
+      },
+      {
+        "access": "process-query-limited-information-synchronize-only",
+        "kind": "process",
+        "role": "preloader-process"
+      }
+    ],
+    "opposite_pipe_ends_inherited": false,
+    "security_attributes_policy_id": "authenticated-process-thread-security-attributes-v0.4",
+    "startupinfoex_dwflags": 0,
+    "standard_handles_inherited": false,
+    "token_policy_id": "authenticated-effective-token-policy-v0.4"
+  },
+  "revision": "0.4.0",
+  "schema_id": "urn:s0:public-assembly:runtime-profile-neutral-preloader:interface-map:4",
+  "semantic_relations": [
+    "profile-predecessor-hashes-equal-authenticated-v0.1-v0.2-v0.3-objects",
+    "runtime-files-manifest-hash-and-path-equal-package-row",
+    "guard-source-build-compiler-linker-imports-binary-loaded-image-form-one-provenance-chain",
+    "guard-binary-and-loaded-image-file-identities-equal",
+    "kernel32-and-ntdll-profile-identities-equal-loaded-images-and-direct-imports",
+    "launch-evidence-five-entries-equal-process-creation-handle-array",
+    "postcreation-admission-binds-evidence-current-verifier-pid-and-success-policy",
+    "guard-five-locators-equal-launch-evidence-five-positions",
+    "root-duplicate-and-retained-original-identify-same-object",
+    "package-rows-equal-exact-effective-five-row-order"
+  ],
+  "terminal_state_policy": {
+    "invalid_nonterminal_transition": "set-rejected-and-fail",
+    "policy_id": "immutable-terminal-retry-policy-v0.3",
+    "terminal_retry": "fail-without-state-mutation",
+    "terminal_states": [
+      "SPENT",
+      "REJECTED"
+    ]
+  }
+}
