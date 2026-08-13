@@ -1,0 +1,165 @@
+{
+  "schema_id": "S0-PUBLIC-ASSEMBLY-REHEARSAL-INTERFACE-MAP-4",
+  "version": "0.4.0",
+  "claim_kind": "public-model-free-design-successor-only",
+  "predecessor_review_sha256": "e71c1312be10312bdc767910b3bcb18abdca6883797278e148e19fc812982c22",
+  "effective_composition": "v0.3 plus v0.4 replacements",
+  "inherited_closed_findings": [
+    "M-04",
+    "M-07"
+  ],
+  "target_findings": [
+    "M-05A",
+    "M-06A"
+  ],
+  "abi_profile": {
+    "profile_id": "S0-WIN64-NTFS-MOVEFILEEXW-CTYPES-ABI-2",
+    "process": "64-bit-CPython-3.12.x-on-64-bit-Windows-10-or-11",
+    "pointer_bits": 64,
+    "filesystem": "local-NTFS",
+    "dll": "kernel32.dll",
+    "export": "MoveFileExW",
+    "c_declaration": "BOOL WINAPI MoveFileExW(LPCWSTR lpExistingFileName, LPCWSTR lpNewFileName, DWORD dwFlags);",
+    "calling_convention": "Microsoft-x64-Windows-WINAPI",
+    "python_loader": "ctypes.WinDLL(\"kernel32\", use_last_error=True)",
+    "argtypes": [
+      "ctypes.c_wchar_p",
+      "ctypes.c_wchar_p",
+      "ctypes.c_uint32"
+    ],
+    "restype": "ctypes.c_int32",
+    "lpcwstr_encoding": "NUL-terminated-16-bit-UTF-16",
+    "path_form": "absolute-extended-length-prefix",
+    "path_prefix": "\\\\?\\",
+    "embedded_nul_allowed": false,
+    "flags_numeric": 0,
+    "set_last_error_before_call": 0,
+    "success_predicate": "signed-32-bit-return-nonzero",
+    "failure_capture": "ctypes.get_last_error-immediately-after-zero-return",
+    "replace_existing": false,
+    "copy_allowed": false,
+    "fallback_allowed": false,
+    "retry_count": 0,
+    "failure_model": "process-interruption-and-api-failure-only",
+    "power_loss_claim": false,
+    "kernel_crash_claim": false,
+    "directory_metadata_durability_claim": false
+  },
+  "observer": {
+    "observer_id": "S0-PUBLIC-ASSEMBLY-PUBLICATION-OBSERVER-2",
+    "ownership": "verifier-parent-process-outside-candidate-child",
+    "candidate_process": "separate-verifier-created-child-process",
+    "run_capability": "private-parent-process-object-bound-to-child-handle-and-pipe",
+    "candidate_ipc_messages": [
+      "PUBLISH_RECORD\\n",
+      "PUBLISH_RECEIPT\\n"
+    ],
+    "parent_success_reply": "OK\\n",
+    "candidate_direct_ffi_allowed": false,
+    "candidate_trace_mutation_allowed": false,
+    "candidate_witness_access_allowed": false,
+    "event_count": 2,
+    "event_order": [
+      "record",
+      "receipt"
+    ],
+    "record_path_pair": [
+      "run-record.pending",
+      "run-record.json"
+    ],
+    "receipt_path_pair": [
+      "publication-receipt.pending",
+      "publication-receipt.json"
+    ]
+  },
+  "observer_event_fields": [
+    "observer_instance_identity",
+    "run_capability_identity",
+    "ordinal",
+    "output_root_identity",
+    "source_path",
+    "destination_path",
+    "pre_volume_serial_number",
+    "pre_file_index_high",
+    "pre_file_index_low",
+    "pre_byte_length",
+    "pre_sha256",
+    "destination_absent_before_call",
+    "abi_profile_id",
+    "flags_numeric",
+    "ffi_return_signed_int32",
+    "last_error_uint32",
+    "source_absent_after_success",
+    "post_volume_serial_number",
+    "post_file_index_high",
+    "post_file_index_low",
+    "post_byte_length",
+    "post_sha256",
+    "terminal_status"
+  ],
+  "file_identity": {
+    "tuple": [
+      "volume_serial_number",
+      "file_index_high",
+      "file_index_low"
+    ],
+    "pre_post_equality_required": true,
+    "copy_created_identity_accepted": false
+  },
+  "publication_witness": {
+    "type": "private-process-local-object-identity",
+    "issuer": "same-observer-instance",
+    "issued_after_exact_events": 2,
+    "serializable": false,
+    "candidate_visible": false,
+    "one_use": true,
+    "valid_after_process_exit": false
+  },
+  "live_consumer": {
+    "consumer_id": "S0-PUBLIC-ASSEMBLY-LIVE-CONSUMER-2",
+    "ownership": "verifier-parent-process-outside-candidate-child",
+    "requires_same_process": true,
+    "requires_exact_witness_identity": true,
+    "requires_same_observer_identity": true,
+    "requires_same_run_capability_identity": true,
+    "requires_exact_two_event_trace": true,
+    "requires_current_file_identity_match": true,
+    "requires_exact_final_pair": true,
+    "requires_pending_absent": true,
+    "requires_v0_3_receipt_bindings": true,
+    "requires_nonquarantined_root": true,
+    "repeat_consumption_allowed": false
+  },
+  "success_claim": {
+    "controller_complete_is_rehearsal_pass": false,
+    "live_consumer_acceptance_required": true,
+    "files_standalone_success_evidence": false,
+    "offline_consumer_success_allowed": false,
+    "post_process_files_status": "offline-not-success-diagnostic-only"
+  },
+  "copied_pair_hostile": {
+    "exact_pending_bytes_copied_to_both_final_names": "not-success",
+    "pending_names_removed": "still-not-success-without-witness",
+    "fabricated_witness": "reject",
+    "foreign_observer_or_root_witness": "reject",
+    "replayed_witness": "reject",
+    "post_witness_file_copy_replacement": "reject-file-identity-mismatch"
+  },
+  "failure_routing_delta": {
+    "abi_or_platform_failure": "AR-AUTH/0",
+    "observer_or_witness_or_live_consumer_failure": "AR-RECORD/1"
+  },
+  "closed_boundaries": [
+    "implementation",
+    "platform-probe",
+    "rehearsal-execution",
+    "F0-content",
+    "hidden-oracle",
+    "provider-model-network",
+    "executor-judge-scoring",
+    "I2-I3-import",
+    "S0-E0",
+    "central-system",
+    "Project-Brain"
+  ]
+}
