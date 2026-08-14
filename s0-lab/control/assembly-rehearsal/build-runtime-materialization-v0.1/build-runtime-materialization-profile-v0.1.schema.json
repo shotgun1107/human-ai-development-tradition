@@ -1,0 +1,659 @@
+{
+  "$defs": {
+    "artifact_identity": {
+      "additionalProperties": false,
+      "properties": {
+        "byte_length": {
+          "maximum": 68719476736,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "virtual_path": {
+          "$ref": "#/$defs/virtual_path"
+        }
+      },
+      "required": [
+        "virtual_path",
+        "byte_length",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "binary_profile": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact": {
+          "$ref": "#/$defs/artifact_identity"
+        },
+        "authenticode_certificate_table_size": {
+          "const": 0
+        },
+        "debug_directory_count": {
+          "const": 0
+        },
+        "delay_import_count": {
+          "const": 0
+        },
+        "entry_point_rva": {
+          "$ref": "#/$defs/hex_u32"
+        },
+        "export_manifest": {
+          "$ref": "#/$defs/artifact_identity"
+        },
+        "image_size": {
+          "maximum": 4294967295,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "import_manifest": {
+          "$ref": "#/$defs/artifact_identity"
+        },
+        "load_config_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "machine": {
+          "const": "AMD64-PE32+"
+        },
+        "required_mitigations": {
+          "const": [
+            "ASLR",
+            "HIGH_ENTROPY_VA",
+            "NX_COMPAT",
+            "CONTROL_FLOW_GUARD"
+          ]
+        },
+        "section_manifest": {
+          "$ref": "#/$defs/artifact_identity"
+        },
+        "subsystem": {
+          "enum": [
+            "WINDOWS-CUI",
+            "WINDOWS-GUI"
+          ]
+        },
+        "tls_callback_count": {
+          "const": 0
+        },
+        "writable_executable_section_count": {
+          "const": 0
+        }
+      },
+      "required": [
+        "artifact",
+        "machine",
+        "image_size",
+        "entry_point_rva",
+        "subsystem",
+        "section_manifest",
+        "import_manifest",
+        "export_manifest",
+        "load_config_sha256",
+        "required_mitigations",
+        "authenticode_certificate_table_size",
+        "debug_directory_count",
+        "delay_import_count",
+        "tls_callback_count",
+        "writable_executable_section_count"
+      ],
+      "type": "object"
+    },
+    "build_command": {
+      "additionalProperties": false,
+      "properties": {
+        "acceptable_exit_code": {
+          "const": 0
+        },
+        "argv": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "type": "array"
+        },
+        "command_id": {
+          "pattern": "^[A-Z][A-Z0-9-]{0,63}$",
+          "type": "string"
+        },
+        "declared_inputs": {
+          "items": {
+            "$ref": "#/$defs/virtual_path"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "declared_outputs": {
+          "items": {
+            "$ref": "#/$defs/virtual_path"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "environment": {
+          "additionalProperties": {
+            "maxLength": 4096,
+            "type": "string"
+          },
+          "maxProperties": 32,
+          "type": "object"
+        },
+        "max_output_bytes": {
+          "const": 16777216
+        },
+        "shell": {
+          "const": false
+        },
+        "stdin": {
+          "const": "closed"
+        },
+        "timeout_seconds": {
+          "maximum": 3600,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "tool_id": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "type": "string"
+        },
+        "working_directory": {
+          "$ref": "#/$defs/virtual_path"
+        }
+      },
+      "required": [
+        "command_id",
+        "tool_id",
+        "argv",
+        "working_directory",
+        "environment",
+        "stdin",
+        "timeout_seconds",
+        "max_output_bytes",
+        "acceptable_exit_code",
+        "declared_inputs",
+        "declared_outputs",
+        "shell"
+      ],
+      "type": "object"
+    },
+    "manifest_identity": {
+      "additionalProperties": false,
+      "properties": {
+        "byte_length": {
+          "maximum": 68719476736,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "row_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "virtual_path": {
+          "$ref": "#/$defs/virtual_path"
+        }
+      },
+      "required": [
+        "virtual_path",
+        "byte_length",
+        "sha256",
+        "row_count"
+      ],
+      "type": "object"
+    },
+    "runtime_row": {
+      "additionalProperties": false,
+      "properties": {
+        "byte_length": {
+          "maximum": 2147483648,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "classification": {
+          "enum": [
+            "native-executable",
+            "native-library",
+            "python-source",
+            "python-runtime",
+            "python-dependency",
+            "profile",
+            "manifest",
+            "public-input"
+          ]
+        },
+        "load_or_read_phase": {
+          "pattern": "^[A-Z][A-Z0-9-]{0,63}$",
+          "type": "string"
+        },
+        "provenance_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "provenance_path": {
+          "$ref": "#/$defs/virtual_path"
+        },
+        "semantic_role": {
+          "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$",
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "virtual_path": {
+          "$ref": "#/$defs/virtual_path"
+        }
+      },
+      "required": [
+        "virtual_path",
+        "semantic_role",
+        "provenance_manifest_sha256",
+        "provenance_path",
+        "byte_length",
+        "sha256",
+        "classification",
+        "load_or_read_phase"
+      ],
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "tool_identity": {
+      "additionalProperties": false,
+      "properties": {
+        "byte_length": {
+          "maximum": 68719476736,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "file_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        "import_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "machine": {
+          "const": "AMD64-PE32+"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "virtual_path": {
+          "$ref": "#/$defs/virtual_path"
+        }
+      },
+      "required": [
+        "virtual_path",
+        "byte_length",
+        "sha256",
+        "file_version",
+        "machine",
+        "import_manifest_sha256"
+      ],
+      "type": "object"
+    },
+    "tool_entry": {
+      "additionalProperties": false,
+      "properties": {
+        "identity": {
+          "$ref": "#/$defs/tool_identity"
+        },
+        "role": {
+          "enum": [
+            "compiler",
+            "linker",
+            "resource-compiler",
+            "archive-tool",
+            "static-inspector",
+            "materializer"
+          ]
+        },
+        "tool_id": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "tool_id",
+        "role",
+        "identity"
+      ],
+      "type": "object"
+    },
+    "virtual_path": {
+      "maxLength": 512,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$",
+      "type": "string"
+    },
+    "hex_u32": {
+      "pattern": "^0x[0-9a-f]{8}$",
+      "type": "string"
+    }
+  },
+  "$id": "urn:s0:public-assembly:build-runtime-materialization:profile:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority": {
+      "additionalProperties": false,
+      "properties": {
+        "assembly_design_manifest_sha256": {
+          "const": "6292e322549c79f539b57c1087fd722c5cca96318c45d89fac5343247c429802"
+        },
+        "assembly_implementation_manifest_sha256": {
+          "const": "0cc96816404094dec313dbab4bb108744383afb2ca5272834b589235364a9623"
+        },
+        "approving_design_review_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bounded_integration_control_decision_sha256": {
+          "const": "acdbc42e75197ca22a078c4e8c8353f834be17dd6332f0c9ca361d70c6722d1a"
+        },
+        "bounded_integration_implementation_manifest_sha256": {
+          "const": "7469f62d67c9d5f416f38db7e4a14b5f3819e739cf38a71f1fec452421a7fabe"
+        },
+        "design_package_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "integration_design_v0_2_manifest_sha256": {
+          "const": "1349c6c4c97d24256f98216eb86a353451891419044b61d22c5c14d7eded5e7c"
+        },
+        "i0_implementation_manifest_sha256": {
+          "const": "f57514f96a2c30366cdf1f1414524711da20c9410186b3017e3dbf902bb612ae"
+        },
+        "i1_implementation_manifest_sha256": {
+          "const": "668d3549ef6f7146ac7200e7be1f362967eca4c2cf66119a1f727bebd245332c"
+        },
+        "i2_implementation_manifest_sha256": {
+          "const": "18ccfbcbe73b1170e07bd000376b079528dcf135b806e3f6c77b10efae736bd6"
+        },
+        "i3_implementation_manifest_sha256": {
+          "const": "e07c9754d61b143bca9747bbcccb58b0861b14f60031422e1e4fd88a0fb93648"
+        },
+        "public_bundle_manifest_sha256": {
+          "const": "e41ee6c71169df646e3c8c0b0e8f3d77e7871d939f651b86a52ea5696feeb637"
+        },
+        "rpnp_design_manifest_sha256": {
+          "const": "abecc3951f29201f24e7fd069865d5a10cf76587b2c1e7c8013ff9226479e589"
+        },
+        "rpnp_implementation_manifest_sha256": {
+          "const": "5022d517864cae19520a1e3e34a683965609abf0ef29e167b30a11bade4a32c2"
+        }
+      },
+      "required": [
+        "assembly_design_manifest_sha256",
+        "assembly_implementation_manifest_sha256",
+        "rpnp_design_manifest_sha256",
+        "rpnp_implementation_manifest_sha256",
+        "integration_design_v0_2_manifest_sha256",
+        "i0_implementation_manifest_sha256",
+        "i1_implementation_manifest_sha256",
+        "i2_implementation_manifest_sha256",
+        "i3_implementation_manifest_sha256",
+        "public_bundle_manifest_sha256",
+        "bounded_integration_implementation_manifest_sha256",
+        "bounded_integration_control_decision_sha256",
+        "design_package_manifest_sha256",
+        "approving_design_review_sha256"
+      ],
+      "type": "object"
+    },
+    "binary_profiles": {
+      "additionalProperties": false,
+      "properties": {
+        "native_preloader": {
+          "$ref": "#/$defs/binary_profile"
+        },
+        "runtime_guard": {
+          "$ref": "#/$defs/binary_profile"
+        }
+      },
+      "required": [
+        "native_preloader",
+        "runtime_guard"
+      ],
+      "type": "object"
+    },
+    "build_execution_authorized_by_profile": {
+      "const": false
+    },
+    "build_plan": {
+      "additionalProperties": false,
+      "properties": {
+        "commands": {
+          "items": {
+            "$ref": "#/$defs/build_command"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "type": "array"
+        },
+        "parallel_process_limit": {
+          "const": 1
+        },
+        "post_build_normalization_allowed": {
+          "const": false
+        },
+        "source_date_epoch": {
+          "maximum": 4102444800,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "virtual_source_root": {
+          "const": "source"
+        }
+      },
+      "required": [
+        "source_date_epoch",
+        "virtual_source_root",
+        "parallel_process_limit",
+        "post_build_normalization_allowed",
+        "commands"
+      ],
+      "type": "object"
+    },
+    "candidate_only": {
+      "const": true
+    },
+    "complete_profile_status": {
+      "const": "COMPLETE-AUTHENTICATED"
+    },
+    "external_closures": {
+      "additionalProperties": false,
+      "properties": {
+        "cpython_distribution": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "materializer_inspector_source": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "native_source": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "python_dependencies": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "toolchain": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "windows_platform": {
+          "$ref": "#/$defs/manifest_identity"
+        }
+      },
+      "required": [
+        "native_source",
+        "materializer_inspector_source",
+        "toolchain",
+        "cpython_distribution",
+        "python_dependencies",
+        "windows_platform"
+      ],
+      "type": "object"
+    },
+    "reproducibility": {
+      "additionalProperties": false,
+      "properties": {
+        "build_ids": {
+          "const": [
+            "A",
+            "B"
+          ]
+        },
+        "byte_identical_outputs_required": {
+          "const": true
+        },
+        "clean_independent_roots": {
+          "const": true
+        },
+        "cross_build_reuse_allowed": {
+          "const": false
+        },
+        "runtime_tree_byte_identity_required": {
+          "const": true
+        }
+      },
+      "required": [
+        "build_ids",
+        "clean_independent_roots",
+        "cross_build_reuse_allowed",
+        "byte_identical_outputs_required",
+        "runtime_tree_byte_identity_required"
+      ],
+      "type": "object"
+    },
+    "resource_limits": {
+      "const": {
+        "build_root_bytes_each": 34359738368,
+        "captured_output_bytes_per_command": 16777216,
+        "concurrent_build_processes": 1,
+        "cpython_dependency_bundle_bytes": 4294967296,
+        "materialization_seconds": 1800,
+        "materialization_staging_bytes_each": 4294967296,
+        "private_bytes_aggregate": 17179869184,
+        "runtime_file_count": 20000,
+        "runtime_tree_bytes": 2147483648,
+        "source_bytes": 268435456,
+        "toolchain_bundle_bytes": 25769803776,
+        "wall_seconds_per_build": 3600
+      }
+    },
+    "runtime_package": {
+      "additionalProperties": false,
+      "properties": {
+        "ambient_discovery_allowed": {
+          "const": false
+        },
+        "authenticode_allowed": {
+          "const": false
+        },
+        "manifest": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "publish_policy": {
+          "const": "single-same-volume-atomic-rename-after-closed-rehash"
+        },
+        "rows": {
+          "items": {
+            "$ref": "#/$defs/runtime_row"
+          },
+          "maxItems": 20000,
+          "minItems": 1,
+          "type": "array"
+        },
+        "runtime_tree_bytes": {
+          "maximum": 2147483648,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "manifest",
+        "rows",
+        "runtime_tree_bytes",
+        "publish_policy",
+        "ambient_discovery_allowed",
+        "authenticode_allowed"
+      ],
+      "type": "object"
+    },
+    "schema_id": {
+      "const": "S0-PUBLIC-ASSEMBLY-BUILD-PROFILE-1"
+    },
+    "semantic_relations": {
+      "const": [
+        "all-predecessor-manifest-targets-equal-authenticated-source-bytes",
+        "native-source-build-recipe-toolchain-objects-binaries-form-one-chain",
+        "every-command-tool-and-input-equals-an-authenticated-manifest-row",
+        "build-a-and-build-b-output-path-sets-and-bytes-equal",
+        "binary-inspection-record-equals-exact-built-binary-bytes",
+        "runtime-row-provenance-equals-source-or-built-output-row",
+        "runtime-a-and-runtime-b-manifests-and-file-bytes-equal",
+        "materialized-binary-equals-static-inspected-binary",
+        "loaded-image-must-equal-materialized-runtime-row-in-later-probe",
+        "diagnostic-records-never-authorize-live-or-rehearsal-state",
+        "tool-ids-roles-and-command-references-are-unique-and-closed",
+        "runtime-paths-pass-exact-windows-canonicalization-and-object-policy",
+        "semantic-validator-implementation-equals-authenticated-inspector-source-row",
+        "tool-role-set-includes-compiler-linker-static-inspector-and-materializer"
+      ]
+    },
+    "semantic_validator": {
+      "additionalProperties": false,
+      "properties": {
+        "implementation": {
+          "$ref": "#/$defs/artifact_identity"
+        },
+        "policy_id": {
+          "const": "build-runtime-materialization-v0.1-semantic-validator"
+        }
+      },
+      "required": [
+        "policy_id",
+        "implementation"
+      ],
+      "type": "object"
+    },
+    "tools": {
+      "items": {
+        "$ref": "#/$defs/tool_entry"
+      },
+      "maxItems": 64,
+      "minItems": 4,
+      "type": "array"
+    },
+    "version": {
+      "const": "0.1.0"
+    }
+  },
+  "required": [
+    "schema_id",
+    "version",
+    "candidate_only",
+    "build_execution_authorized_by_profile",
+    "complete_profile_status",
+    "authority",
+    "external_closures",
+    "tools",
+    "build_plan",
+    "reproducibility",
+    "binary_profiles",
+    "runtime_package",
+    "resource_limits",
+    "semantic_relations",
+    "semantic_validator"
+  ],
+  "title": "S0 public assembly build and runtime materialization profile v0.1",
+  "type": "object"
+}
