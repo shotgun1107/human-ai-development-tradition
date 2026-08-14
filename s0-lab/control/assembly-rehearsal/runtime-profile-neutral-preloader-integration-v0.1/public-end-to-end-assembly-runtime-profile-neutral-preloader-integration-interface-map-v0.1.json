@@ -1,0 +1,125 @@
+{
+  "api_policy": {
+    "assembly_live_entry": "s0_public_assembly_verifier.harness.run_live_public_candidate",
+    "current_offline_entry": "s0_public_runtime_preloader.prepare_assembly_runtime_launch",
+    "forbidden_authority_entries": [
+      "s0_public_runtime_preloader.NeutralPreloader.prepare-direct-from-assembly",
+      "s0_public_runtime_preloader.ValidatedProfileCandidate",
+      "s0_public_runtime_preloader.source_audit.inspect_source_structure",
+      "s0_public_runtime_preloader.source_audit.inspect_source_text",
+      "s0_public_runtime_preloader.validate_assembly_artifact_bundle-result",
+      "s0_public_runtime_preloader.validate_runtime_profile_candidate"
+    ],
+    "forbidden_live_parameters": [
+      "allowed_read_paths",
+      "backend_factory",
+      "consumer_factory",
+      "dependency_root",
+      "loader_factory",
+      "observer_factory",
+      "preloader_executable",
+      "python_executable",
+      "subprocess_factory",
+      "sys_path"
+    ],
+    "future_offline_admission_entry": "s0_public_runtime_preloader.prepare_assembly_runtime_admission_diagnostic",
+    "offline_result_is_live_authority": false,
+    "reusable_python_object_is_authority": false
+  },
+  "artifact_policy": {
+    "ambient_dependency_discovery_allowed": false,
+    "caller_selected_executable_allowed": false,
+    "fixed_launch_control_virtual_path": "runtime/launch-inputs.json",
+    "future_candidate_root": "s0-lab/assembly-rehearsal/public-end-to-end-v0.2",
+    "manifest_chain": [
+      "assembly-v0.2-implementation-files",
+      "native-preloader-source-and-build-inputs",
+      "native-preloader-build-outputs-and-imports",
+      "runtime-files",
+      "effective-five-row-runtime-package",
+      "platform-profile-evidence"
+    ],
+    "required_runtime_roles": [
+      "native-preloader-executable",
+      "python-executable",
+      "python-runtime-dll",
+      "python-standard-library-closure",
+      "python-extension-module-closure",
+      "jsonschema-and-transitive-closure",
+      "assembly-child-bootstrap-bytes",
+      "assembly-verifier-and-guard-bytes"
+    ],
+    "runtime_package_effective_rows": [
+      "runtime-files.sha256",
+      "runtime-profile-v0.1.json",
+      "runtime-profile-v0.2.json",
+      "runtime-profile-v0.3.json",
+      "runtime-profile-v0.4.json"
+    ],
+    "runtime_targets_authenticated_before_import_or_load": true
+  },
+  "authority_pins": {
+    "assembly_candidate_report_sha256": "520a237109686a17b8c075c15f1cc676a43d450716a6157bce7b48585f0c5005",
+    "assembly_implementation_manifest_sha256": "0cc96816404094dec313dbab4bb108744383afb2ca5272834b589235364a9623",
+    "base_commit": "dc1c385562738f9fed1d97775c707625be0f5bb7",
+    "base_tree": "21309ce5aaabaefe357c67fb72a547940e11f9cc",
+    "rpnp_design_manifest_sha256": "abecc3951f29201f24e7fd069865d5a10cf76587b2c1e7c8013ff9226479e589",
+    "rpnp_design_rereview_record_sha256": "9fca4e14309304e5540d4e4e210dcfea72890729764aa4af5dadc736497c4e71",
+    "rpnp_implementation_candidate_report_sha256": "6e828246b91ddcc6d1b219289096ea87827fe0dde517fe3e15d444c74abe125d",
+    "rpnp_implementation_manifest_sha256": "5022d517864cae19520a1e3e34a683965609abf0ef29e167b30a11bade4a32c2",
+    "rpnp_implementation_rereview_record_sha256": "03d35804483564a13668edb54e92ab00e6f5195ca4b371ee8d20a748a552c34a"
+  },
+  "decision": {
+    "integration_status": "design-one-exact-bridge",
+    "live_status": "keep-fail-closed",
+    "minor_disposition": {
+      "RPNP-V03-IR-001": "deferred-only-while-standalone-validator-has-zero-authority-call-paths",
+      "RPNP-V03-IR-002": "deferred-nonauthoritative-source-diagnostic"
+    },
+    "rpnp_revision_required_before_design": false
+  },
+  "gate_order": [
+    "integration-design-independent-rereview",
+    "assembly-v0.2-bounded-integration-implementation",
+    "implementation-and-security-independent-rereview",
+    "build-and-runtime-materialization",
+    "source-build-binary-import-and-semantic-review",
+    "bounded-real-windows-platform-probe",
+    "assembly-live-candidate-reconsideration",
+    "official-public-assembly-rehearsal-reconsideration"
+  ],
+  "process_policy": {
+    "child_import_after_runtime_sentinels": true,
+    "control_parent_responsibility": "authenticate-all-public-source-runtime-binary-and-platform-inputs-before-action",
+    "native_preloader_api": "kernel32.dll!CreateProcessW",
+    "native_preloader_responsibility": "construct-only-ordered-five-handle-list-and-create-verifier",
+    "offline_plan_native_api_reachable": false,
+    "ordered_process_chain": [
+      "control-parent",
+      "authenticated-native-preloader",
+      "python-verifier-child"
+    ],
+    "verifier_guard_responsibility": "validate-five-known-handles-without-process-wide-absence-claim"
+  },
+  "revision": "0.1.0",
+  "schema_id": "urn:s0:public-assembly:runtime-profile-neutral-preloader:integration-interface-map:1",
+  "state_machine": {
+    "failure_policy": "immutable-rejected-terminal-no-reuse",
+    "offline_stop_before": "OUTPUT-ROOT-RESERVED",
+    "ordered_states": [
+      "NEW",
+      "PUBLIC-SOURCE-AUTHENTICATED",
+      "RUNTIME-PACKAGE-AUTHENTICATED",
+      "BINARY-IMPORTS-AUTHENTICATED",
+      "PLATFORM-PROFILE-ADMITTED",
+      "OUTPUT-ROOT-RESERVED",
+      "PRELOADER-STARTED",
+      "VERIFIER-CREATED-SUSPENDED",
+      "ADMISSION-BOUND",
+      "VERIFIER-RESUMED",
+      "TERMINAL"
+    ],
+    "output_absent_before_reservation": true,
+    "retry_reuses_authority_or_resource": false
+  }
+}
