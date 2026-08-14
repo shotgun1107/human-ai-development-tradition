@@ -1,0 +1,815 @@
+{
+  "$defs": {
+    "binary_profile": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "role": {
+                "const": "native-preloader-executable"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "required_direct_imports": {
+                "const": [
+                  "kernel32.dll!CreateProcessW"
+                ]
+              },
+              "required_exports": {
+                "const": []
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "role": {
+                "const": "runtime-handle-guard-extension"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "required_direct_imports": {
+                "const": [
+                  "ntdll.dll!NtCreateFile"
+                ]
+              },
+              "required_exports": {
+                "const": [
+                  "PyInit_s0_runtime_handle_guard_v0_4"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "artifact_byte_length": {
+          "maximum": 2147483648,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "artifact_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "authenticode_certificate_table_size": {
+          "const": 0
+        },
+        "bound_import_count": {
+          "const": 0
+        },
+        "clr_header_size": {
+          "const": 0
+        },
+        "codeview_record_count": {
+          "const": 0
+        },
+        "debug_directory_count": {
+          "const": 0
+        },
+        "delay_import_count": {
+          "const": 0
+        },
+        "dynamic_loader_import_count": {
+          "const": 0
+        },
+        "embedded_host_path_match_count": {
+          "const": 0
+        },
+        "entry_point_rva": {
+          "pattern": "^0x[0-9A-F]{8}$",
+          "type": "string"
+        },
+        "export_allowlist_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "export_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "generic_ffi_import_count": {
+          "const": 0
+        },
+        "image_size": {
+          "maximum": 4294967295,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "import_allowlist_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "import_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "load_config_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "machine": {
+          "const": "AMD64-PE32+"
+        },
+        "pdb_reference_count": {
+          "const": 0
+        },
+        "relocation_table_present": {
+          "const": true
+        },
+        "relocation_table_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "required_direct_imports": {
+          "items": {
+            "pattern": "^[A-Za-z0-9_.-]+![A-Za-z0-9_@?$.-]+$",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "required_exports": {
+          "items": {
+            "pattern": "^[A-Za-z_][A-Za-z0-9_@?$.-]*$",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "required_mitigations": {
+          "const": [
+            "ASLR",
+            "HIGH_ENTROPY_VA",
+            "NX_COMPAT",
+            "CONTROL_FLOW_GUARD"
+          ]
+        },
+        "resource_table_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "role": {
+          "enum": [
+            "native-preloader-executable",
+            "runtime-handle-guard-extension"
+          ]
+        },
+        "section_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "shell_network_provider_plugin_import_count": {
+          "const": 0
+        },
+        "static_inspector_loaded_target": {
+          "const": false
+        },
+        "subsystem": {
+          "enum": [
+            "WINDOWS-CUI",
+            "WINDOWS-GUI"
+          ]
+        },
+        "tls_callback_count": {
+          "const": 0
+        },
+        "unbound_timestamp_count": {
+          "const": 0
+        },
+        "windows_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "writable_executable_section_count": {
+          "const": 0
+        }
+      },
+      "required": [
+        "role",
+        "artifact_sha256",
+        "artifact_byte_length",
+        "machine",
+        "entry_point_rva",
+        "subsystem",
+        "image_size",
+        "section_manifest_sha256",
+        "import_manifest_sha256",
+        "export_manifest_sha256",
+        "import_allowlist_manifest_sha256",
+        "export_allowlist_manifest_sha256",
+        "relocation_table_present",
+        "relocation_table_sha256",
+        "resource_table_sha256",
+        "windows_manifest_sha256",
+        "load_config_sha256",
+        "required_mitigations",
+        "required_direct_imports",
+        "required_exports",
+        "authenticode_certificate_table_size",
+        "bound_import_count",
+        "clr_header_size",
+        "codeview_record_count",
+        "debug_directory_count",
+        "delay_import_count",
+        "dynamic_loader_import_count",
+        "embedded_host_path_match_count",
+        "generic_ffi_import_count",
+        "pdb_reference_count",
+        "shell_network_provider_plugin_import_count",
+        "tls_callback_count",
+        "unbound_timestamp_count",
+        "writable_executable_section_count",
+        "static_inspector_loaded_target"
+      ],
+      "type": "object"
+    },
+    "dll_binding": {
+      "additionalProperties": false,
+      "properties": {
+        "dll_name": {
+          "pattern": "^[A-Za-z0-9_.-]+\\.dll$",
+          "type": "string"
+        },
+        "runtime_virtual_path": {
+          "$ref": "#/$defs/virtual_path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "dll_name",
+        "runtime_virtual_path",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "manifest_identity": {
+      "additionalProperties": false,
+      "properties": {
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "target_count": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "target_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "total_target_bytes": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "manifest_sha256",
+        "target_count",
+        "total_target_bytes",
+        "target_set_sha256"
+      ],
+      "type": "object"
+    },
+    "module_binding": {
+      "additionalProperties": false,
+      "properties": {
+        "is_package": {
+          "type": "boolean"
+        },
+        "module_name": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*)*$",
+          "type": "string"
+        },
+        "runtime_virtual_path": {
+          "$ref": "#/$defs/virtual_path"
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "module_name",
+        "runtime_virtual_path",
+        "source_sha256",
+        "is_package"
+      ],
+      "type": "object"
+    },
+    "path_array": {
+      "items": {
+        "$ref": "#/$defs/virtual_path"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "role_bindings": {
+      "additionalProperties": false,
+      "properties": {
+        "assembly_source_files": {
+          "$ref": "#/$defs/path_array"
+        },
+        "bootstrap": {
+          "$ref": "#/$defs/virtual_path"
+        },
+        "cpython_dll": {
+          "$ref": "#/$defs/virtual_path"
+        },
+        "cpython_standard_library": {
+          "$ref": "#/$defs/path_array"
+        },
+        "fixed_public_input_files": {
+          "$ref": "#/$defs/path_array"
+        },
+        "i0_source_files": {
+          "$ref": "#/$defs/path_array"
+        },
+        "i1_source_files": {
+          "$ref": "#/$defs/path_array"
+        },
+        "i2_source_files": {
+          "$ref": "#/$defs/path_array"
+        },
+        "i3_source_files": {
+          "$ref": "#/$defs/path_array"
+        },
+        "manifest_files": {
+          "$ref": "#/$defs/path_array"
+        },
+        "native_guard": {
+          "$ref": "#/$defs/virtual_path"
+        },
+        "profile_files": {
+          "$ref": "#/$defs/path_array"
+        },
+        "python_dependency_files": {
+          "$ref": "#/$defs/path_array"
+        },
+        "verifier_application": {
+          "$ref": "#/$defs/virtual_path"
+        }
+      },
+      "required": [
+        "verifier_application",
+        "cpython_dll",
+        "cpython_standard_library",
+        "native_guard",
+        "python_dependency_files",
+        "bootstrap",
+        "assembly_source_files",
+        "i0_source_files",
+        "i1_source_files",
+        "i2_source_files",
+        "i3_source_files",
+        "profile_files",
+        "manifest_files",
+        "fixed_public_input_files"
+      ],
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "virtual_path": {
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*:)(?!.*(?:^|/)\\.{1,2}(?:/|$))[^\\u0000\\r\\n]+$",
+      "type": "string"
+    }
+  },
+  "$id": "urn:human-ai-development-tradition:s0:public-assembly-build-runtime-materialization-admission-package:2",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority_extension": {
+      "additionalProperties": false,
+      "properties": {
+        "approving_design_review_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "baseline_commit": {
+          "const": "64077a5862aa5678a83ba2f9f48fc71493ed2808"
+        },
+        "baseline_tree": {
+          "const": "db271b4f08cabcdb038d17ce0d1705d2897b5115"
+        },
+        "bounded_integration_verification_manifest_sha256": {
+          "const": "8f8140d678e5846639ff382b32035c342dc8b2dd7d929da5ff37a759f8aa9d7b"
+        },
+        "design_package_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "integration_design_v0_1_manifest_sha256": {
+          "const": "f55352771432404f4c2e9337665184e18afde076b8b3efe7a455ee6694d60e6b"
+        }
+      },
+      "required": [
+        "baseline_commit",
+        "baseline_tree",
+        "bounded_integration_verification_manifest_sha256",
+        "integration_design_v0_1_manifest_sha256",
+        "design_package_manifest_sha256",
+        "approving_design_review_sha256"
+      ],
+      "type": "object"
+    },
+    "base_profile": {
+      "$ref": "urn:s0:public-assembly:build-runtime-materialization:profile:1"
+    },
+    "base_profile_schema_sha256": {
+      "const": "77977adfd852cae50589f68996c7e2c06fdb5b58164a469d0d87436c8761d254"
+    },
+    "base_profile_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "binary_policy_extension": {
+      "additionalProperties": false,
+      "properties": {
+        "native_preloader": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/binary_profile"
+            },
+            {
+              "properties": {
+                "role": {
+                  "const": "native-preloader-executable"
+                }
+              }
+            }
+          ]
+        },
+        "runtime_handle_guard": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/binary_profile"
+            },
+            {
+              "properties": {
+                "role": {
+                  "const": "runtime-handle-guard-extension"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "native_preloader",
+        "runtime_handle_guard"
+      ],
+      "type": "object"
+    },
+    "build_execution_authorized": {
+      "const": false
+    },
+    "candidate_only": {
+      "const": true
+    },
+    "complete_profile_status": {
+      "enum": [
+        "BLOCKED-MISSING-EXTERNAL-PIN",
+        "COMPLETE-PUBLIC-CANDIDATE"
+      ]
+    },
+    "external_pin_closure": {
+      "additionalProperties": false,
+      "properties": {
+        "compiler_linker_sdk_crt_identities": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "cpython_distribution": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "materializer_inspector_source": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "native_source": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "offline_toolchain_bundle": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "python_dependencies": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "runtime_tree_profile": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "windows_platform": {
+          "$ref": "#/$defs/manifest_identity"
+        }
+      },
+      "required": [
+        "native_source",
+        "materializer_inspector_source",
+        "offline_toolchain_bundle",
+        "compiler_linker_sdk_crt_identities",
+        "cpython_distribution",
+        "python_dependencies",
+        "windows_platform",
+        "runtime_tree_profile"
+      ],
+      "type": "object"
+    },
+    "failure_matrix": {
+      "additionalProperties": false,
+      "properties": {
+        "base_matrix_sha256": {
+          "const": "326144bda84cfdd77c2dfaa4e6c5bd069852a8e74bc6edfc1f9e165b8a50420b"
+        },
+        "effective_row_count": {
+          "const": 63
+        },
+        "first_primary_failure_is_immutable": {
+          "const": true
+        },
+        "output_created_before_primary_failure_is_required": {
+          "const": true
+        },
+        "replaced_row_ids": {
+          "const": [
+            "BRM-BUILD-003",
+            "BRM-BUILD-005",
+            "BRM-RETRY-001"
+          ]
+        },
+        "revision_matrix_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "base_matrix_sha256",
+        "revision_matrix_sha256",
+        "replaced_row_ids",
+        "effective_row_count",
+        "first_primary_failure_is_immutable",
+        "output_created_before_primary_failure_is_required"
+      ],
+      "type": "object"
+    },
+    "publication_transaction": {
+      "additionalProperties": false,
+      "properties": {
+        "comparison_peer": {
+          "const": "B"
+        },
+        "destination_authority_after_final_record": {
+          "const": false
+        },
+        "destination_visibility": {
+          "const": "private-nonauthoritative-candidate-root"
+        },
+        "final_record_schema": {
+          "const": "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-FINAL-RECORD-2"
+        },
+        "ordered_phases": {
+          "const": [
+            "RUNTIME-TREES-BYTE-IDENTICAL",
+            "RUNTIME-B-QUARANTINED",
+            "PREPUBLICATION-RECORD-FROZEN",
+            "RUNTIME-A-ATOMICALLY-PUBLISHED",
+            "POSTPUBLICATION-IDENTITY-VERIFIED",
+            "FINAL-DIAGNOSTIC-RECORDS-FROZEN"
+          ]
+        },
+        "postpublication_failure_action": {
+          "const": "quarantine-published-candidate-and-grant-no-authority"
+        },
+        "prepublication_record_may_claim_publish_success": {
+          "const": false
+        },
+        "prepublication_record_schema": {
+          "const": "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-PREPUBLISH-RECORD-2"
+        },
+        "publication_owner": {
+          "const": "A"
+        },
+        "publication_transaction": {
+          "const": "single-same-volume-atomic-rename"
+        },
+        "unselected_root_disposition": {
+          "const": "quarantine-B-before-A-publication"
+        }
+      },
+      "required": [
+        "publication_owner",
+        "comparison_peer",
+        "unselected_root_disposition",
+        "prepublication_record_schema",
+        "prepublication_record_may_claim_publish_success",
+        "publication_transaction",
+        "destination_visibility",
+        "ordered_phases",
+        "final_record_schema",
+        "postpublication_failure_action",
+        "destination_authority_after_final_record"
+      ],
+      "type": "object"
+    },
+    "resource_limits": {
+      "const": {
+        "build_root_bytes_each": 34359738368,
+        "captured_output_bytes_per_command": 16777216,
+        "concurrent_build_processes": 1,
+        "cpython_dependency_bundle_bytes": 4294967296,
+        "materialization_seconds": 1800,
+        "materialization_staging_bytes_each": 4294967296,
+        "private_bytes_aggregate": 17179869184,
+        "runtime_file_count": 20000,
+        "runtime_tree_bytes": 2147483648,
+        "source_bytes": 268435456,
+        "toolchain_bundle_bytes": 25769803776,
+        "wall_seconds_per_build": 3600
+      }
+    },
+    "runtime_policy_extension": {
+      "additionalProperties": false,
+      "properties": {
+        "application_selection_policy": {
+          "const": "exact-authenticated-runtime-row-only"
+        },
+        "bytecode_read_allowed": {
+          "const": false
+        },
+        "bytecode_write_allowed": {
+          "const": false
+        },
+        "cpython_abi": {
+          "const": "CPython-3.12-Windows-AMD64"
+        },
+        "current_directory_import_allowed": {
+          "const": false
+        },
+        "dll_map": {
+          "items": {
+            "$ref": "#/$defs/dll_binding"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "dll_search_policy": {
+          "const": "application-directory-and-explicit-authenticated-runtime-directories-only"
+        },
+        "host_python_allowed": {
+          "const": false
+        },
+        "initial_python_flags": {
+          "const": [
+            "-I",
+            "-S",
+            "-B"
+          ]
+        },
+        "jsonschema_distribution_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "jsonschema_version": {
+          "const": "4.26.0"
+        },
+        "module_map": {
+          "items": {
+            "$ref": "#/$defs/module_binding"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "package_install_allowed": {
+          "const": false
+        },
+        "path_application_selection_allowed": {
+          "const": false
+        },
+        "pythonpath_allowed": {
+          "const": false
+        },
+        "registry_application_selection_allowed": {
+          "const": false
+        },
+        "required_role_bindings": {
+          "$ref": "#/$defs/role_bindings"
+        },
+        "site_import_allowed": {
+          "const": false
+        },
+        "source_only_authenticated_imports": {
+          "const": true
+        },
+        "source_only_resolution_algorithm": {
+          "const": "exact-module-map-no-namespace-fallback-no-bytecode"
+        },
+        "unclassified_runtime_row_allowed": {
+          "const": false
+        },
+        "user_site_allowed": {
+          "const": false
+        }
+      },
+      "required": [
+        "cpython_abi",
+        "initial_python_flags",
+        "jsonschema_version",
+        "jsonschema_distribution_manifest_sha256",
+        "required_role_bindings",
+        "module_map",
+        "dll_map",
+        "source_only_authenticated_imports",
+        "source_only_resolution_algorithm",
+        "application_selection_policy",
+        "dll_search_policy",
+        "host_python_allowed",
+        "user_site_allowed",
+        "site_import_allowed",
+        "pythonpath_allowed",
+        "current_directory_import_allowed",
+        "path_application_selection_allowed",
+        "registry_application_selection_allowed",
+        "package_install_allowed",
+        "bytecode_read_allowed",
+        "bytecode_write_allowed",
+        "unclassified_runtime_row_allowed"
+      ],
+      "type": "object"
+    },
+    "schema_id": {
+      "const": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-ADMISSION-PACKAGE-2"
+    },
+    "semantic_relations": {
+      "const": [
+        "embedded-base-profile-validates-against-exact-v0.1-schema",
+        "embedded-base-profile-canonical-bytes-equal-base-profile-sha256",
+        "base-authority-and-v0.2-authority-extension-equal-authenticated-original-bytes",
+        "baseline-commit-and-tree-equal-fixed-v0.1-design-basis",
+        "all-ten-external-pin-classes-are-present-and-outer-authenticated-before-import-or-process",
+        "base-external-closure-fields-equal-v0.2-external-pin-manifest-identities",
+        "design-package-manifest-equals-exact-v0.2-package",
+        "approving-review-equals-fresh-independent-review-of-exact-v0.2-package",
+        "two-binary-roles-are-present-exactly-once",
+        "binary-policy-fields-equal-static-inspection-of-exact-artifact-bytes-without-loading",
+        "guard-export-and-direct-import-assignments-equal-effective-rpnp-design",
+        "import-and-export-manifests-equal-exact-allowlist-manifests",
+        "materialized-native-binary-bytes-equal-statically-inspected-artifact-bytes",
+        "runtime-required-role-bindings-reference-present-unique-base-runtime-rows",
+        "every-base-runtime-row-has-exactly-one-required-role-or-is-rejected",
+        "module-map-and-dll-map-reference-only-authenticated-runtime-rows",
+        "python-import-resolution-uses-only-exact-module-map-source-bytes",
+        "jsonschema-distribution-manifest-equals-authenticated-python-dependency-closure",
+        "cpython-abi-flags-jsonschema-and-ambient-denials-equal-runtime-profile",
+        "effective-mutation-matrix-is-base-minus-three-plus-twenty-replacements",
+        "revision-matrix-sha256-equals-authenticated-v0.2-mutation-matrix",
+        "every-effective-mutation-row-has-one-primary-failure-and-one-output-created-bit",
+        "later-cleanup-record-and-retry-events-never-replace-the-first-primary-failure",
+        "publication-owner-is-A-before-build-and-never-selected-from-results",
+        "runtime-B-is-quarantined-before-runtime-A-publication",
+        "prepublication-record-does-not-claim-unobserved-publication-facts",
+        "final-record-is-frozen-only-after-publish-reopen-identity-and-byte-rehash",
+        "publication-or-final-record-failure-grants-no-live-or-rehearsal-authority",
+        "all-twelve-resource-limits-equal-base-profile-interface-and-v0.2-schema",
+        "semantic-validator-implementation-equals-materializer-inspector-source-row-and-executes-base-plus-v0.2-relations",
+        "diagnostic-records-and-published-candidate-root-never-authorize-live-or-rehearsal-state"
+      ]
+    },
+    "semantic_validator": {
+      "additionalProperties": false,
+      "properties": {
+        "entry_point": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.:]*$",
+          "type": "string"
+        },
+        "implementation_manifest": {
+          "$ref": "#/$defs/manifest_identity"
+        },
+        "policy_id": {
+          "const": "build-runtime-materialization-v0.2-semantic-validator"
+        }
+      },
+      "required": [
+        "policy_id",
+        "implementation_manifest",
+        "entry_point"
+      ],
+      "type": "object"
+    },
+    "version": {
+      "const": "0.2.0"
+    }
+  },
+  "required": [
+    "schema_id",
+    "version",
+    "candidate_only",
+    "build_execution_authorized",
+    "complete_profile_status",
+    "base_profile_schema_sha256",
+    "base_profile_sha256",
+    "base_profile",
+    "authority_extension",
+    "external_pin_closure",
+    "binary_policy_extension",
+    "runtime_policy_extension",
+    "failure_matrix",
+    "publication_transaction",
+    "resource_limits",
+    "semantic_relations",
+    "semantic_validator"
+  ],
+  "title": "S0 public assembly build and runtime materialization admission package v0.2",
+  "type": "object"
+}

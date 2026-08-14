@@ -1,0 +1,235 @@
+{
+  "base_matrix_sha256": "326144bda84cfdd77c2dfaa4e6c5bd069852a8e74bc6edfc1f9e165b8a50420b",
+  "composition_algorithm": "traverse-base-order; enrich retained row from retained_rows; replace removed row at its position by matching replacement_rows in listed order",
+  "effective_row_count": 63,
+  "failure_precedence": [
+    "freeze-the-first-primary-failure-at-the-first-failed-action-boundary",
+    "use-suffix-0-only-when-no-admitted-output-or-created-residue-exists-at-that-boundary",
+    "use-suffix-1-when-any-admitted-output-or-created-residue-exists-at-that-boundary",
+    "cleanup-quarantine-record-and-retry-failures-are-secondary-and-never-replace-the-frozen-primary",
+    "a-retry-attempt-is-rejected-before-reuse-and-retains-the-exact-prior-primary-class"
+  ],
+  "removed_base_row_ids": [
+    "BRM-BUILD-003",
+    "BRM-BUILD-005",
+    "BRM-RETRY-001"
+  ],
+  "replacement_rows": [
+    {
+      "action_boundary": "after successful command exit and before output admission",
+      "expected_primary_failure": "BR-BUILD/0",
+      "id": "BRM-BUILD-003A",
+      "mutation": "all declared outputs are missing and no admitted output or residue exists",
+      "output_created_before_primary_failure": false,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "after successful command exit and before output admission",
+      "expected_primary_failure": "BR-BUILD/1",
+      "id": "BRM-BUILD-003B",
+      "mutation": "at least one declared output exists but another declared output is missing",
+      "output_created_before_primary_failure": true,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "during exact output enumeration",
+      "expected_primary_failure": "BR-BUILD/1",
+      "id": "BRM-BUILD-003C",
+      "mutation": "an extra undeclared output or residue exists",
+      "output_created_before_primary_failure": true,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "at timeout before first admitted output",
+      "expected_primary_failure": "BR-BUILD/0",
+      "id": "BRM-BUILD-005A",
+      "mutation": "wall-time bound exceeded before any admitted output or residue exists",
+      "output_created_before_primary_failure": false,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "at timeout after first created output or residue",
+      "expected_primary_failure": "BR-BUILD/1",
+      "id": "BRM-BUILD-005B",
+      "mutation": "wall-time bound exceeded after an admitted output or residue exists",
+      "output_created_before_primary_failure": true,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "at capture bound before first admitted output",
+      "expected_primary_failure": "BR-BUILD/0",
+      "id": "BRM-BUILD-005C",
+      "mutation": "captured-output bound exceeded before any admitted output or residue exists",
+      "output_created_before_primary_failure": false,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "at capture bound after first created output or residue",
+      "expected_primary_failure": "BR-BUILD/1",
+      "id": "BRM-BUILD-005D",
+      "mutation": "captured-output bound exceeded after an admitted output or residue exists",
+      "output_created_before_primary_failure": true,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "at private-byte bound before first admitted output",
+      "expected_primary_failure": "BR-BUILD/0",
+      "id": "BRM-BUILD-005E",
+      "mutation": "aggregate private-byte bound exceeded before any admitted output or residue exists",
+      "output_created_before_primary_failure": false,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "at private-byte bound after first created output or residue",
+      "expected_primary_failure": "BR-BUILD/1",
+      "id": "BRM-BUILD-005F",
+      "mutation": "aggregate private-byte bound exceeded after an admitted output or residue exists",
+      "output_created_before_primary_failure": true,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "before starting a disallowed concurrent process with no prior output",
+      "expected_primary_failure": "BR-BUILD/0",
+      "id": "BRM-BUILD-005G",
+      "mutation": "process-count bound would be exceeded before any admitted output or residue exists",
+      "output_created_before_primary_failure": false,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "before starting a disallowed concurrent process after prior output",
+      "expected_primary_failure": "BR-BUILD/1",
+      "id": "BRM-BUILD-005H",
+      "mutation": "process-count bound would be exceeded after an admitted output or residue exists",
+      "output_created_before_primary_failure": true,
+      "phase": "build"
+    },
+    {
+      "action_boundary": "before any retry input use",
+      "expected_primary_failure": "BR-AUTH/0",
+      "id": "BRM-RETRY-001A",
+      "mutation": "retry attempted after frozen BR-AUTH/0",
+      "output_created_before_primary_failure": false,
+      "phase": "terminal",
+      "preserved_prior_primary_failure": "BR-AUTH/0"
+    },
+    {
+      "action_boundary": "before any retry input use",
+      "expected_primary_failure": "BR-SOURCE/0",
+      "id": "BRM-RETRY-001B",
+      "mutation": "retry attempted after frozen BR-SOURCE/0",
+      "output_created_before_primary_failure": false,
+      "phase": "terminal",
+      "preserved_prior_primary_failure": "BR-SOURCE/0"
+    },
+    {
+      "action_boundary": "before any retry input use",
+      "expected_primary_failure": "BR-TOOLCHAIN/0",
+      "id": "BRM-RETRY-001C",
+      "mutation": "retry attempted after frozen BR-TOOLCHAIN/0",
+      "output_created_before_primary_failure": false,
+      "phase": "terminal",
+      "preserved_prior_primary_failure": "BR-TOOLCHAIN/0"
+    },
+    {
+      "action_boundary": "before any retry root creation",
+      "expected_primary_failure": "BR-BUILD/0",
+      "id": "BRM-RETRY-001D",
+      "mutation": "retry attempted after frozen BR-BUILD/0",
+      "output_created_before_primary_failure": false,
+      "phase": "terminal",
+      "preserved_prior_primary_failure": "BR-BUILD/0"
+    },
+    {
+      "action_boundary": "before any retry root or residue reuse",
+      "expected_primary_failure": "BR-BUILD/1",
+      "id": "BRM-RETRY-001E",
+      "mutation": "retry attempted after frozen BR-BUILD/1",
+      "output_created_before_primary_failure": true,
+      "phase": "terminal",
+      "preserved_prior_primary_failure": "BR-BUILD/1"
+    },
+    {
+      "action_boundary": "before any unequal output selection or reuse",
+      "expected_primary_failure": "BR-REPRO/1",
+      "id": "BRM-RETRY-001F",
+      "mutation": "retry attempted after frozen BR-REPRO/1",
+      "output_created_before_primary_failure": true,
+      "phase": "terminal",
+      "preserved_prior_primary_failure": "BR-REPRO/1"
+    },
+    {
+      "action_boundary": "before any rejected binary selection or reuse",
+      "expected_primary_failure": "BR-BINARY/1",
+      "id": "BRM-RETRY-001G",
+      "mutation": "retry attempted after frozen BR-BINARY/1",
+      "output_created_before_primary_failure": true,
+      "phase": "terminal",
+      "preserved_prior_primary_failure": "BR-BINARY/1"
+    },
+    {
+      "action_boundary": "before any staging or published-candidate reuse",
+      "expected_primary_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-RETRY-001H",
+      "mutation": "retry attempted after frozen BR-MATERIALIZE/1",
+      "output_created_before_primary_failure": true,
+      "phase": "terminal",
+      "preserved_prior_primary_failure": "BR-MATERIALIZE/1"
+    },
+    {
+      "action_boundary": "before any record reconstruction or candidate reuse",
+      "expected_primary_failure": "BR-RECORD/1",
+      "id": "BRM-RETRY-001I",
+      "mutation": "retry attempted after frozen BR-RECORD/1",
+      "output_created_before_primary_failure": true,
+      "phase": "terminal",
+      "preserved_prior_primary_failure": "BR-RECORD/1"
+    }
+  ],
+  "retained_rows": [
+    {"expected_primary_failure":"BR-AUTH/0","id":"BRM-AUTH-001","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-AUTH/0","id":"BRM-AUTH-002","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-AUTH/0","id":"BRM-AUTH-003","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-SOURCE/0","id":"BRM-SOURCE-001","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-SOURCE/0","id":"BRM-SOURCE-002","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-SOURCE/0","id":"BRM-SOURCE-003","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-SOURCE/0","id":"BRM-SOURCE-004","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-TOOLCHAIN/0","id":"BRM-TOOL-001","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-TOOLCHAIN/0","id":"BRM-TOOL-002","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-TOOLCHAIN/0","id":"BRM-TOOL-003","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-TOOLCHAIN/0","id":"BRM-TOOL-004","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-TOOLCHAIN/0","id":"BRM-TOOL-005","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-BUILD/0","id":"BRM-BUILD-001","output_created_before_primary_failure":false},
+    {"expected_primary_failure":"BR-BUILD/1","id":"BRM-BUILD-002","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-BUILD/1","id":"BRM-BUILD-004","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-REPRO/1","id":"BRM-REPRO-001","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-REPRO/1","id":"BRM-REPRO-002","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-REPRO/1","id":"BRM-REPRO-003","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-REPRO/1","id":"BRM-REPRO-004","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-REPRO/1","id":"BRM-REPRO-005","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-BINARY/1","id":"BRM-PE-001","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-BINARY/1","id":"BRM-PE-002","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-BINARY/1","id":"BRM-PE-003","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-BINARY/1","id":"BRM-PE-004","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-BINARY/1","id":"BRM-PE-005","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-BINARY/1","id":"BRM-PE-006","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-BINARY/1","id":"BRM-PE-007","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-PATH-001","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-PATH-002","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-PATH-003","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-TREE-001","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-TREE-002","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-TREE-003","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-PUBLISH-001","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-PUBLISH-002","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-REPRO/1","id":"BRM-RUNTIME-001","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-RUNTIME-002","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-RUNTIME-003","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-BINARY/1","id":"BRM-RUNTIME-004","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-MATERIALIZE/1","id":"BRM-RUNTIME-005","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-RECORD/1","id":"BRM-RECORD-001","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-RECORD/1","id":"BRM-RECORD-002","output_created_before_primary_failure":true},
+    {"expected_primary_failure":"BR-RECORD/1","id":"BRM-RECORD-003","output_created_before_primary_failure":true}
+  ],
+  "schema_id": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-MUTATION-MATRIX-2",
+  "version": "0.2.0"
+}
