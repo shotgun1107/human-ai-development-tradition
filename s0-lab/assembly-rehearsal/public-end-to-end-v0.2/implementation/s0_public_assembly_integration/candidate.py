@@ -42,6 +42,12 @@ def _verify_manifest(raw: bytes, targets: Mapping[str, bytes], expected_hash: st
         raise ValueError("public input manifest differs from its exact pin")
     if type(targets) not in {dict, type(MappingProxyType({}))}:
         raise ValueError("public input targets are not one exact mapping")
+    target_items = tuple(targets.items())
+    if any(type(path) is not str or type(value) is not bytes for path, value in target_items):
+        raise ValueError("public input target entries are not exact string-to-bytes pairs")
+    target_snapshot = MappingProxyType(dict(target_items))
+    if len(target_snapshot) != len(target_items):
+        raise ValueError("public input target entries are not unique")
     lines = raw[:-1].split(b"\n")
     paths: list[str] = []
     for line in lines:
@@ -50,10 +56,10 @@ def _verify_manifest(raw: bytes, targets: Mapping[str, bytes], expected_hash: st
             raise ValueError("public input manifest row is malformed")
         digest = digest_raw.decode("ascii")
         path = path_raw.decode("ascii")
-        if hashlib.sha256(targets.get(path, b"")).hexdigest() != digest:
+        if hashlib.sha256(target_snapshot.get(path, b"")).hexdigest() != digest:
             raise ValueError("public input target differs from its manifest")
         paths.append(path)
-    if len(paths) != expected_rows or paths != sorted(paths) or len(set(paths)) != len(paths) or set(targets) != set(paths):
+    if len(paths) != expected_rows or paths != sorted(paths) or len(set(paths)) != len(paths) or set(target_snapshot) != set(paths):
         raise ValueError("public input manifest closure is not exact")
 
 

@@ -25,8 +25,11 @@ is used.
 
 `prepare_offline_integration_diagnostic` first authenticates the RPNP v0.3
 implementation and integration v0.1/v0.2 manifests plus their exact 11/5/6
-target closures in the same call. It then passes original authenticated bytes,
-byte mappings, the PUBLIC in-memory synthetic static bundle, and exact
+target closures in the same call. Every target key must have exact type
+`str`, every target value must have exact type `bytes`, and each mapping is
+copied into a private immutable snapshot before manifest comparison. It then
+passes original authenticated bytes, byte mappings, the PUBLIC in-memory
+synthetic static bundle, and exact
 `OfflinePreloaderInputs` to the sole admitted
 `prepare_assembly_runtime_launch` bridge. It does not call a standalone
 validator or source-audit function and exposes no dependency injection.
@@ -40,10 +43,11 @@ diagnostics with `candidate_only=true`, `native_api_reachable=false`, and
 
 ## Verification result
 
-The focused suite contains five passing tests: exact happy-path bridge use,
+The focused suite contains six passing tests: exact happy-path bridge use,
 authenticated-byte mutation rejection, nonoffline-result rejection, and
 changed/missing/extra closure rejection before bridge use, plus source-level
-absence of ambient/native/process/network execution surfaces. The verifier
+absence of ambient/native/process/network execution surfaces and rejection of
+nonexact target key/value types before bridge use. The verifier
 requires an explicit lowercase SHA-256 pin for its own implementation
 manifest, authenticates that manifest and its exact three rows, and then
 authenticates all 32/11/6/5/6 targets. Only after authentication does it copy
@@ -54,6 +58,11 @@ original source inputs and requires byte-for-byte equality with its pre-run
 snapshot as a deterministic swap sentinel. Candidate
 execution makes zero native, process, network, or provider calls; verifier
 orchestration uses the explicitly reported Python unittest process.
+
+The minor revision closes independent-review finding `ARPNP-INT-IR-001` at
+candidate level by rejecting mutable `bytearray` and `memoryview` values and
+nonexact string key subclasses across all three public closure mappings. This
+is an author-side correction and is not an independent rereview result.
 
 This is implementation evidence for a later independent implementation and
 security rereview only. It is not a runtime materialization, native preloader,

@@ -120,6 +120,43 @@ class OfflineIntegrationTests(unittest.TestCase):
             bridge.assert_not_called()
             self.assertEqual(result.state_trace, ("OFFLINE-NEW", "OFFLINE-REJECTED"))
 
+    def test_nonexact_target_key_and_value_types_reject_before_bridge(self) -> None:
+        artifacts, closure, profile_raw, static_material, inputs = self._material()
+
+        class PathText(str):
+            pass
+
+        closure_fields = (
+            "rpnp_implementation_targets",
+            "integration_v01_targets",
+            "integration_v02_targets",
+        )
+        for field in closure_fields:
+            base = dict(getattr(closure, field))
+            first_path = next(iter(base))
+            first_value = base[first_path]
+            mutations = (
+                {**base, first_path: bytearray(first_value)},
+                {**base, first_path: memoryview(first_value)},
+                {
+                    PathText(path) if path == first_path else path: value
+                    for path, value in base.items()
+                },
+            )
+            for targets in mutations:
+                mutated = dataclasses.replace(closure, **{field: targets})
+                with mock.patch.object(candidate, "prepare_assembly_runtime_launch") as bridge:
+                    result = candidate.prepare_offline_integration_diagnostic(
+                        artifacts=artifacts,
+                        closure=mutated,
+                        profile_raw=profile_raw,
+                        schema_raw=synthetic.SCHEMA_RAW,
+                        static_material=static_material,
+                        inputs=inputs,
+                    )
+                bridge.assert_not_called()
+                self.assertEqual(result.state_trace, ("OFFLINE-NEW", "OFFLINE-REJECTED"))
+
     def test_candidate_source_has_no_live_or_ambient_execution_surface(self) -> None:
         source_path = INTEGRATION_IMPLEMENTATION / "s0_public_assembly_integration/candidate.py"
         tree = ast.parse(source_path.read_text(encoding="utf-8"))
