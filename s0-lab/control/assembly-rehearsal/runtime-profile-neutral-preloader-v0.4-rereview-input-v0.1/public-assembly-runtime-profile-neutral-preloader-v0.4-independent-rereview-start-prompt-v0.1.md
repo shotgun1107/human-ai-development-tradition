@@ -27,9 +27,10 @@ call another agent and do not use an earlier reviewer conclusion.
   `41e0b684a7cca387be6d264c4a5b63de2561fd7c`
 - authenticated `origin/main` tree:
   `a14e8b9c9bc8905060cd8811e8934643e2aa4aa3`
-- expected initial source state: detached at the exact review commit, with an
-  empty `git status --porcelain=v1`, a clean index, and no untracked or
-  unclassified ignored path
+- expected initial source state: `HEAD` exactly at the review commit in an
+  isolated worktree, whether detached or attached to an exact local source
+  branch, with an empty `git status --porcelain=v1`, a clean index, and no
+  untracked or unclassified ignored path
 
 The source-ref tip, review commit, local commit, and review tree must reproduce
 exactly. The sole-parent relation must reproduce exactly. The payload parent
