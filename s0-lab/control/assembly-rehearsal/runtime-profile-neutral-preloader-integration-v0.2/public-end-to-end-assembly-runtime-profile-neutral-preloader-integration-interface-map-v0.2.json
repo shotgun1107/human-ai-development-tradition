@@ -1,0 +1,184 @@
+{
+  "api_policy": {
+    "assembly_live_entry": "s0_public_assembly_verifier.harness.run_live_public_candidate",
+    "current_offline_entry": "s0_public_runtime_preloader.prepare_assembly_runtime_launch",
+    "forbidden_authority_entries": [
+      "s0_public_runtime_preloader.NeutralPreloader.prepare-direct-from-assembly",
+      "s0_public_runtime_preloader.ValidatedProfileCandidate",
+      "s0_public_runtime_preloader.source_audit.inspect_source_structure",
+      "s0_public_runtime_preloader.source_audit.inspect_source_text",
+      "s0_public_runtime_preloader.validate_assembly_artifact_bundle-result",
+      "s0_public_runtime_preloader.validate_runtime_profile_candidate"
+    ],
+    "forbidden_live_parameters": [
+      "allowed_read_paths",
+      "backend_factory",
+      "consumer_factory",
+      "dependency_root",
+      "loader_factory",
+      "observer_factory",
+      "preloader_executable",
+      "python_executable",
+      "subprocess_factory",
+      "sys_path"
+    ],
+    "future_offline_admission_entry": "s0_public_runtime_preloader.prepare_assembly_runtime_admission_diagnostic",
+    "offline_result_is_live_authority": false,
+    "reusable_python_object_is_authority": false
+  },
+  "atomic_root_policy": {
+    "control_parent_creates_or_opens_leaf": false,
+    "control_supplied_path_is_intent_only": true,
+    "creator": "authenticated-native-preloader-only",
+    "create_api": "ntdll.dll!NtCreateFile",
+    "create_count": 1,
+    "create_disposition": "FILE_CREATE",
+    "original_handle_continuously_retained": true,
+    "original_handle_inherited": false,
+    "output_parent_handle_handoff_from_control": "none",
+    "parent_to_preloader_root_handle_handoff": "none",
+    "preloader_authenticates_and_retains_output_parent_handle": true,
+    "pre_root_state": "PRE-ROOT-ABSENT",
+    "reopen_or_second_create_allowed": false,
+    "root_created_state": "ROOT-CREATED-HELD",
+    "verifier_duplicate_access": "FILE_LIST_DIRECTORY|FILE_READ_ATTRIBUTES|SYNCHRONIZE",
+    "verifier_duplicate_same_object_required": true,
+    "verifier_handle_position": 4
+  },
+  "authority_pins": {
+    "assembly_candidate_report_sha256": "520a237109686a17b8c075c15f1cc676a43d450716a6157bce7b48585f0c5005",
+    "assembly_design_manifest_sha256": "6292e322549c79f539b57c1087fd722c5cca96318c45d89fac5343247c429802",
+    "assembly_design_rereview_sha256": "7c629c9c4aed5c2e36598e4ad08e4819fa06b73f3f77bf9e7d19714f61b35137",
+    "assembly_implementation_manifest_sha256": "0cc96816404094dec313dbab4bb108744383afb2ca5272834b589235364a9623",
+    "predecessor_integration_commit": "80af894b4d97f5bbb60f1c43fdfde87a15fd3873",
+    "predecessor_integration_manifest_sha256": "f55352771432404f4c2e9337665184e18afde076b8b3efe7a455ee6694d60e6b",
+    "predecessor_integration_tree": "a604245d4711b145963e927a9c6dff55a74dd8f1",
+    "rpnp_design_manifest_sha256": "abecc3951f29201f24e7fd069865d5a10cf76587b2c1e7c8013ff9226479e589",
+    "rpnp_design_rereview_record_sha256": "9fca4e14309304e5540d4e4e210dcfea72890729764aa4af5dadc736497c4e71",
+    "rpnp_implementation_candidate_report_sha256": "6e828246b91ddcc6d1b219289096ea87827fe0dde517fe3e15d444c74abe125d",
+    "rpnp_implementation_manifest_sha256": "5022d517864cae19520a1e3e34a683965609abf0ef29e167b30a11bade4a32c2",
+    "rpnp_implementation_rereview_record_sha256": "03d35804483564a13668edb54e92ab00e6f5195ca4b371ee8d20a748a552c34a"
+  },
+  "decision": {
+    "ARPNP-INT-RR-001": "proposed-closed-by-preloader-sole-root-creation-and-retention",
+    "ARPNP-INT-RR-002": "proposed-closed-by-exact-nested-state-and-terminal-composition",
+    "integration_status": "design-one-exact-bridge-revision",
+    "live_status": "keep-fail-closed",
+    "minor_disposition": {
+      "RPNP-V03-IR-001": "deferred-only-while-standalone-validator-has-zero-authority-call-paths",
+      "RPNP-V03-IR-002": "deferred-nonauthoritative-source-diagnostic"
+    }
+  },
+  "gate_order": [
+    "integration-design-v0.2-independent-rereview",
+    "assembly-v0.2-bounded-integration-implementation",
+    "implementation-and-security-independent-rereview",
+    "build-and-runtime-materialization",
+    "source-build-binary-import-and-semantic-review",
+    "bounded-real-windows-platform-probe",
+    "assembly-live-candidate-reconsideration",
+    "official-public-assembly-rehearsal-reconsideration"
+  ],
+  "offline_lane": {
+    "native_api_reachable": false,
+    "ordered_states": [
+      "OFFLINE-NEW",
+      "OFFLINE-PUBLIC-ARTIFACTS-AUTHENTICATED",
+      "OFFLINE-PLAN-VALIDATED"
+    ],
+    "rehearsal_pass": false,
+    "terminal_states": [
+      "OFFLINE-DIAGNOSTIC-COMPLETE",
+      "OFFLINE-REJECTED"
+    ],
+    "transition_to_live_allowed": false
+  },
+  "process_policy": {
+    "child_import_after_guard_and_sentinels": true,
+    "control_parent_responsibility": "authenticate-all-public-source-runtime-binary-platform-and-output-parent-inputs-before-preloader-start",
+    "native_preloader_responsibility": "sole-root-create-retain-duplicate-exact-five-handle-list-and-verifier-create",
+    "ordered_process_chain": [
+      "control-parent",
+      "authenticated-native-preloader",
+      "python-verifier-child"
+    ],
+    "verifier_guard_responsibility": "one-use-bind-five-known-handles-and-root-same-object-before-python-import"
+  },
+  "required_mutations": [
+    "control-parent-creates-or-opens-root-leaf",
+    "root-created-before-preloader-start",
+    "path-reopen-second-create-alternate-api-alias-or-reparse",
+    "original-root-handle-closed-before-final-preloader-recheck",
+    "verifier-root-duplicate-wrong-access-role-or-object",
+    "admission-bound-before-resume-or-after-python-import",
+    "child-state-skip-repeat-reorder-or-fabrication",
+    "publication-witness-missing-early-copied-reused-or-misbound",
+    "commit-before-publication-and-child-complete",
+    "preloader-reply-missing-malformed-early-duplicated-or-treated-as-authority",
+    "consumer-missing-rejected-retried-or-given-stale-authority",
+    "generic-terminal-child-complete-exit-files-hashes-or-report-treated-as-authority",
+    "offline-diagnostic-promoted-to-live"
+  ],
+  "revision": "0.2.0",
+  "schema_id": "urn:s0:public-assembly:runtime-profile-neutral-preloader:integration-interface-map:2",
+  "state_composition": {
+    "assembly_controller_states": [
+      "NEW",
+      "PREFLIGHT_AUTHENTICATED",
+      "REQUEST_RECONSTRUCTED",
+      "OUTPUT_RESERVED",
+      "RUNNER_ENTERED",
+      "INVOKED_ONCE",
+      "RESPONSE_CAPTURED",
+      "ANSWER_VALIDATED",
+      "TEMP_RECORD_VERIFIED",
+      "COMPLETE"
+    ],
+    "assembly_complete_is_live_or_rehearsal_authority": false,
+    "live_ordered_nonterminal_states": [
+      "NEW",
+      "PUBLIC-SOURCE-AUTHENTICATED",
+      "RUNTIME-PACKAGE-AUTHENTICATED",
+      "BINARY-IMPORTS-AUTHENTICATED",
+      "PLATFORM-PROFILE-ADMITTED",
+      "PRELOADER-STARTED",
+      "ROOT-CREATED-HELD",
+      "VERIFIER-CREATED-SUSPENDED",
+      "VERIFIER-RESUMED",
+      "ADMISSION-ROOT-CREATED-BOUND",
+      "ASSEMBLY-CONTROLLER-ACTIVE",
+      "PUBLICATION-WITNESS-ISSUED",
+      "ASSEMBLY-CONTROLLER-COMPLETE",
+      "ADMISSION-COMMITTING",
+      "ADMISSION-COMMIT-ACKED"
+    ],
+    "live_terminal_states": [
+      "LIVE-CONSUMED",
+      "REJECTED"
+    ],
+    "live_consumed_requirements": [
+      "preloader-COMMIT-REPLIED",
+      "runtime-admission-SPENT",
+      "publication-witness-consumed",
+      "assembly-controller-COMPLETE",
+      "current-process-live-consumer-decision"
+    ],
+    "preloader_states": [
+      "PRE-ROOT-ABSENT",
+      "ROOT-CREATED-HELD",
+      "VERIFIER-LAUNCHED",
+      "COMMIT-REQUESTED",
+      "COMMIT-REPLIED",
+      "FAILED"
+    ],
+    "runtime_admission_states": [
+      "ROOT-CREATED-BOUND",
+      "COMMITTING",
+      "COMMIT-ACKED",
+      "SPENT",
+      "REJECTED"
+    ],
+    "serialized_state_or_terminal_is_authority": false,
+    "terminal_retry_policy": "fail-without-state-mutation-or-authority-reuse"
+  }
+}
