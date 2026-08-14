@@ -1,0 +1,220 @@
+{
+  "authority": {
+    "assembly_design_manifest_sha256": "6292e322549c79f539b57c1087fd722c5cca96318c45d89fac5343247c429802",
+    "assembly_implementation_manifest_sha256": "0cc96816404094dec313dbab4bb108744383afb2ca5272834b589235364a9623",
+    "baseline_commit": "64077a5862aa5678a83ba2f9f48fc71493ed2808",
+    "baseline_tree": "db271b4f08cabcdb038d17ce0d1705d2897b5115",
+    "bounded_integration_control_decision_sha256": "acdbc42e75197ca22a078c4e8c8353f834be17dd6332f0c9ca361d70c6722d1a",
+    "bounded_integration_implementation_manifest_sha256": "7469f62d67c9d5f416f38db7e4a14b5f3819e739cf38a71f1fec452421a7fabe",
+    "bounded_integration_verification_manifest_sha256": "8f8140d678e5846639ff382b32035c342dc8b2dd7d929da5ff37a759f8aa9d7b",
+    "integration_design_v0_1_manifest_sha256": "f55352771432404f4c2e9337665184e18afde076b8b3efe7a455ee6694d60e6b",
+    "integration_design_v0_2_manifest_sha256": "1349c6c4c97d24256f98216eb86a353451891419044b61d22c5c14d7eded5e7c",
+    "i0_implementation_manifest_sha256": "f57514f96a2c30366cdf1f1414524711da20c9410186b3017e3dbf902bb612ae",
+    "i1_implementation_manifest_sha256": "668d3549ef6f7146ac7200e7be1f362967eca4c2cf66119a1f727bebd245332c",
+    "i2_implementation_manifest_sha256": "18ccfbcbe73b1170e07bd000376b079528dcf135b806e3f6c77b10efae736bd6",
+    "i3_implementation_manifest_sha256": "e07c9754d61b143bca9747bbcccb58b0861b14f60031422e1e4fd88a0fb93648",
+    "public_bundle_manifest_sha256": "e41ee6c71169df646e3c8c0b0e8f3d77e7871d939f651b86a52ea5696feeb637",
+    "rpnp_design_manifest_sha256": "abecc3951f29201f24e7fd069865d5a10cf76587b2c1e7c8013ff9226479e589",
+    "rpnp_implementation_manifest_sha256": "5022d517864cae19520a1e3e34a683965609abf0ef29e167b30a11bade4a32c2"
+  },
+  "binary_policy": {
+    "authenticode_certificate_table_size": 0,
+    "debug_directory_allowed": false,
+    "delay_imports_allowed": false,
+    "dynamic_loader_imports_allowed": false,
+    "generic_ffi_allowed": false,
+    "guard_entry_point": "PyInit_s0_runtime_handle_guard_v0_4",
+    "guard_module": "s0_runtime_handle_guard_v0_4",
+    "machine": "AMD64-PE32+",
+    "managed_clr_allowed": false,
+    "pdb_allowed": false,
+    "required_mitigations": [
+      "ASLR",
+      "HIGH_ENTROPY_VA",
+      "NX_COMPAT",
+      "CONTROL_FLOW_GUARD"
+    ],
+    "tls_callbacks_allowed": false,
+    "writable_executable_section_allowed": false
+  },
+  "build_policy": {
+    "build_count": 2,
+    "cache_reuse_allowed": false,
+    "command_search_allowed": false,
+    "compiler_family_selected_by_design": false,
+    "cross_build_object_reuse_allowed": false,
+    "environment_allowlist_required": true,
+    "host_absolute_path_embedding_allowed": false,
+    "incremental_build_allowed": false,
+    "network_allowed": false,
+    "package_manager_allowed": false,
+    "parallel_process_limit": 1,
+    "post_build_normalization_allowed": false,
+    "registry_discovery_allowed": false,
+    "same_bytes_required": true,
+    "shell_allowed": false,
+    "tool_selection": "exact-manifest-virtual-path-only"
+  },
+  "claim_boundary": {
+    "build_executed": false,
+    "candidate_only": true,
+    "design_only": true,
+    "native_api_reachable": false,
+    "rehearsal_pass": false,
+    "runtime_materialized": false,
+    "s0_executed": false
+  },
+  "external_pins_required_before_implementation": [
+    "native-source-manifest",
+    "materializer-and-static-inspector-source-manifest",
+    "offline-toolchain-bundle-manifest",
+    "compiler-linker-sdk-header-library-crt-identities",
+    "cpython-3.12-x64-distribution-manifest",
+    "python-dependency-manifest",
+    "windows-build-and-system-image-manifest",
+    "canonical-build-profile",
+    "runtime-tree-profile",
+    "approving-independent-design-review"
+  ],
+  "failure_policy": {
+    "cleanup_replaces_primary_failure": false,
+    "failure_classes": [
+      "BR-AUTH/0",
+      "BR-SOURCE/0",
+      "BR-TOOLCHAIN/0",
+      "BR-BUILD/0",
+      "BR-BUILD/1",
+      "BR-REPRO/1",
+      "BR-BINARY/1",
+      "BR-MATERIALIZE/1",
+      "BR-RECORD/1"
+    ],
+    "first_primary_failure_preserved": true,
+    "post_output_residue": "quarantined",
+    "retry_reuses_objects": false,
+    "retry_requires_new_version_and_fresh-roots": true
+  },
+  "future_profile": {
+    "canonicalization": "UTF-8-no-BOM-sorted-keys-ensure-ascii-compact-final-LF",
+    "complete_profile_status_now": "BLOCKED-MISSING-EXTERNAL-PIN",
+    "schema_id": "S0-PUBLIC-ASSEMBLY-BUILD-PROFILE-1",
+    "schema_path": "s0-lab/control/assembly-rehearsal/build-runtime-materialization-v0.1/build-runtime-materialization-profile-v0.1.schema.json"
+  },
+  "materialization_policy": {
+    "ads_allowed": false,
+    "atomic_publish": "one-same-volume-rename-after-closed-rehash",
+    "casefold_collision_allowed": false,
+    "cross_volume_publish_allowed": false,
+    "destination_must_be_absent": true,
+    "extra_file_allowed": false,
+    "hardlink_allowed": false,
+    "manifest_exact_file_set": true,
+    "partial_publish_allowed": false,
+    "path_reopen_outside_retained_parent_allowed": false,
+    "post_publish_mutation_allowed": false,
+    "reparse_allowed": false,
+    "runtime_manifest_rows_bind": [
+      "virtual-path",
+      "semantic-role",
+      "provenance-row",
+      "byte-length",
+      "sha256",
+      "executable-data-class",
+      "load-read-phase"
+    ]
+  },
+  "ordered_design_phases": [
+    "AUTHORITY-PINS-AUTHENTICATED",
+    "SOURCE-CLOSURE-AUTHENTICATED",
+    "TOOLCHAIN-CLOSURE-AUTHENTICATED",
+    "BUILD-PROFILE-AUTHENTICATED",
+    "BUILD-A-COMPLETE",
+    "BUILD-B-COMPLETE",
+    "OUTPUTS-BYTE-IDENTICAL",
+    "BINARY-INSPECTION-COMPLETE",
+    "RUNTIME-A-MATERIALIZED",
+    "RUNTIME-B-MATERIALIZED",
+    "RUNTIME-TREES-BYTE-IDENTICAL",
+    "RECORDS-FROZEN"
+  ],
+  "records": [
+    "S0-PUBLIC-ASSEMBLY-BUILD-RECORD-1",
+    "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-RECORD-1",
+    "S0-PUBLIC-ASSEMBLY-BINARY-INSPECTION-RECORD-1"
+  ],
+  "reproducibility_policy": {
+    "build_roots": [
+      "A",
+      "B"
+    ],
+    "declared_outputs_only": true,
+    "generated_source_reuse_allowed": false,
+    "independent_clean_roots": true,
+    "runtime_tree_comparison": "manifest-and-every-file-byte-equality",
+    "select_better_output_allowed": false,
+    "tool_process_reuse_allowed": false
+  },
+  "resource_limits": {
+    "build_root_bytes_each": 34359738368,
+    "captured_output_bytes_per_command": 16777216,
+    "concurrent_build_processes": 1,
+    "cpython_dependency_bundle_bytes": 4294967296,
+    "materialization_seconds": 1800,
+    "materialization_staging_bytes_each": 4294967296,
+    "private_bytes_aggregate": 17179869184,
+    "runtime_file_count": 20000,
+    "runtime_tree_bytes": 2147483648,
+    "source_bytes": 268435456,
+    "toolchain_bundle_bytes": 25769803776,
+    "wall_seconds_per_build": 3600
+  },
+  "runtime_policy": {
+    "ambient_module_discovery_allowed": false,
+    "bytecode_writes_allowed": false,
+    "cpython_abi": "3.12-x64",
+    "initial_python_flags": [
+      "-I",
+      "-S",
+      "-B"
+    ],
+    "jsonschema_version": "4.26.0",
+    "path_or_registry_application_selection_allowed": false,
+    "pythonpath_allowed": false,
+    "source_only_authenticated_imports": true,
+    "user_site_allowed": false
+  },
+  "schema_id": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-INTERFACE-MAP-1",
+  "semantic_relations": [
+    "all-predecessor-manifest-targets-equal-authenticated-source-bytes",
+    "native-source-build-recipe-toolchain-objects-binaries-form-one-chain",
+    "every-command-tool-and-input-equals-an-authenticated-manifest-row",
+    "build-a-and-build-b-output-path-sets-and-bytes-equal",
+    "binary-inspection-record-equals-exact-built-binary-bytes",
+    "runtime-row-provenance-equals-source-or-built-output-row",
+    "runtime-a-and-runtime-b-manifests-and-file-bytes-equal",
+    "materialized-binary-equals-static-inspected-binary",
+    "loaded-image-must-equal-materialized-runtime-row-in-later-probe",
+    "diagnostic-records-never-authorize-live-or-rehearsal-state",
+    "tool-ids-roles-and-command-references-are-unique-and-closed",
+    "runtime-paths-pass-exact-windows-canonicalization-and-object-policy",
+    "semantic-validator-implementation-equals-authenticated-inspector-source-row",
+    "tool-role-set-includes-compiler-linker-static-inspector-and-materializer"
+  ],
+  "semantic_validator_policy": {
+    "future_implementation_required": true,
+    "policy_id": "build-runtime-materialization-v0.1-semantic-validator",
+    "string-presence_is_execution_evidence": false
+  },
+  "source_classes": {
+    "future_native": [
+      "native-preloader-executable-source",
+      "cpython-guard-extension-source",
+      "private-common-headers",
+      "deterministic-build-recipe",
+      "static-inspector-and-materializer-source"
+    ],
+    "retained_python": "exact-assembly-child-verifier-bootstrap-and-i0-i3-admitted-source",
+    "rpnp_v0_3": "offline-plan-and-validation-only-not-live-native-source"
+  },
+  "version": "0.1.0"
+}

@@ -1,0 +1,283 @@
+{
+  "claim_kind": "public-design-mutation-expectations-only-not-executed-evidence",
+  "mutations": [
+    {
+      "expected_failure": "BR-AUTH/0",
+      "id": "BRM-AUTH-001",
+      "mutation": "missing approving design review pin",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-AUTH/0",
+      "id": "BRM-AUTH-002",
+      "mutation": "uppercase or malformed authority digest",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-AUTH/0",
+      "id": "BRM-AUTH-003",
+      "mutation": "candidate-selected or predecessor design pin",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-SOURCE/0",
+      "id": "BRM-SOURCE-001",
+      "mutation": "missing native source manifest row",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-SOURCE/0",
+      "id": "BRM-SOURCE-002",
+      "mutation": "changed retained Python source byte",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-SOURCE/0",
+      "id": "BRM-SOURCE-003",
+      "mutation": "generated or normalized Python source",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-SOURCE/0",
+      "id": "BRM-SOURCE-004",
+      "mutation": "RPNP offline implementation promoted as native live preloader",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-TOOLCHAIN/0",
+      "id": "BRM-TOOL-001",
+      "mutation": "PATH or registry tool discovery",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-TOOLCHAIN/0",
+      "id": "BRM-TOOL-002",
+      "mutation": "unmanifested compiler DLL header library or response file",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-TOOLCHAIN/0",
+      "id": "BRM-TOOL-003",
+      "mutation": "network package manager update or telemetry reachable",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-TOOLCHAIN/0",
+      "id": "BRM-TOOL-004",
+      "mutation": "shell command replaces exact argv",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-TOOLCHAIN/0",
+      "id": "BRM-TOOL-005",
+      "mutation": "unlisted inherited environment key",
+      "phase": "pre-process"
+    },
+    {
+      "expected_failure": "BR-BUILD/0",
+      "id": "BRM-BUILD-001",
+      "mutation": "tool exits nonzero before declared output",
+      "phase": "build"
+    },
+    {
+      "expected_failure": "BR-BUILD/1",
+      "id": "BRM-BUILD-002",
+      "mutation": "tool exits nonzero after declared output",
+      "phase": "build"
+    },
+    {
+      "expected_failure": "BR-BUILD/1",
+      "id": "BRM-BUILD-003",
+      "mutation": "missing or extra undeclared output",
+      "phase": "build"
+    },
+    {
+      "expected_failure": "BR-BUILD/1",
+      "id": "BRM-BUILD-004",
+      "mutation": "output written outside clean build root",
+      "phase": "build"
+    },
+    {
+      "expected_failure": "BR-BUILD/1",
+      "id": "BRM-BUILD-005",
+      "mutation": "timeout capture bound memory bound or process bound exceeded",
+      "phase": "build"
+    },
+    {
+      "expected_failure": "BR-REPRO/1",
+      "id": "BRM-REPRO-001",
+      "mutation": "only one build executed",
+      "phase": "comparison"
+    },
+    {
+      "expected_failure": "BR-REPRO/1",
+      "id": "BRM-REPRO-002",
+      "mutation": "A and B share cache object generated source or process",
+      "phase": "comparison"
+    },
+    {
+      "expected_failure": "BR-REPRO/1",
+      "id": "BRM-REPRO-003",
+      "mutation": "one corresponding output byte differs",
+      "phase": "comparison"
+    },
+    {
+      "expected_failure": "BR-REPRO/1",
+      "id": "BRM-REPRO-004",
+      "mutation": "path sets differ while selected binaries match",
+      "phase": "comparison"
+    },
+    {
+      "expected_failure": "BR-REPRO/1",
+      "id": "BRM-REPRO-005",
+      "mutation": "post-build patch normalization or better-output selection",
+      "phase": "comparison"
+    },
+    {
+      "expected_failure": "BR-BINARY/1",
+      "id": "BRM-PE-001",
+      "mutation": "wrong machine PE format entry point subsystem or image size",
+      "phase": "static-inspection"
+    },
+    {
+      "expected_failure": "BR-BINARY/1",
+      "id": "BRM-PE-002",
+      "mutation": "added removed changed delay bound or ordinal import",
+      "phase": "static-inspection"
+    },
+    {
+      "expected_failure": "BR-BINARY/1",
+      "id": "BRM-PE-003",
+      "mutation": "missing guard initialization export or unexpected export",
+      "phase": "static-inspection"
+    },
+    {
+      "expected_failure": "BR-BINARY/1",
+      "id": "BRM-PE-004",
+      "mutation": "dynamic loader generic FFI shell network provider or plugin import",
+      "phase": "static-inspection"
+    },
+    {
+      "expected_failure": "BR-BINARY/1",
+      "id": "BRM-PE-005",
+      "mutation": "certificate table TLS callback CLR header debug directory PDB or CodeView present",
+      "phase": "static-inspection"
+    },
+    {
+      "expected_failure": "BR-BINARY/1",
+      "id": "BRM-PE-006",
+      "mutation": "writable executable section or required mitigation missing",
+      "phase": "static-inspection"
+    },
+    {
+      "expected_failure": "BR-BINARY/1",
+      "id": "BRM-PE-007",
+      "mutation": "embedded host username drive build root temp path or unbound timestamp",
+      "phase": "static-inspection"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-PATH-001",
+      "mutation": "absolute drive UNC backslash colon NUL dot or dotdot path",
+      "phase": "materialization"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-PATH-002",
+      "mutation": "trailing dot space reserved device or casefold collision",
+      "phase": "materialization"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-PATH-003",
+      "mutation": "reparse hardlink ADS or nonregular object",
+      "phase": "materialization"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-TREE-001",
+      "mutation": "missing extra duplicate or hash-mismatched runtime row",
+      "phase": "materialization"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-TREE-002",
+      "mutation": "pyc PDB log test toolchain source key cache temp user F0 or unclassified file",
+      "phase": "materialization"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-TREE-003",
+      "mutation": "short write reopen identity drift or read-back hash mismatch",
+      "phase": "materialization"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-PUBLISH-001",
+      "mutation": "existing destination cross-volume partial or duplicate publish",
+      "phase": "publication"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-PUBLISH-002",
+      "mutation": "post-publication file or identity change",
+      "phase": "publication"
+    },
+    {
+      "expected_failure": "BR-REPRO/1",
+      "id": "BRM-RUNTIME-001",
+      "mutation": "runtime A and B manifests match but one file differs",
+      "phase": "runtime-comparison"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-RUNTIME-002",
+      "mutation": "host Python site package PATH PYTHONPATH registry or package install satisfies a missing row",
+      "phase": "runtime-validation"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-RUNTIME-003",
+      "mutation": "jsonschema or transitive dependency closure incomplete",
+      "phase": "runtime-validation"
+    },
+    {
+      "expected_failure": "BR-BINARY/1",
+      "id": "BRM-RUNTIME-004",
+      "mutation": "materialized native binary differs from inspected output",
+      "phase": "runtime-validation"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-RUNTIME-005",
+      "mutation": "bytecode load or write or module outside authenticated source map",
+      "phase": "runtime-validation"
+    },
+    {
+      "expected_failure": "BR-RECORD/1",
+      "id": "BRM-RECORD-001",
+      "mutation": "record noncanonical hash-mismatched truncated or missing final LF",
+      "phase": "record-freeze"
+    },
+    {
+      "expected_failure": "BR-RECORD/1",
+      "id": "BRM-RECORD-002",
+      "mutation": "record claims live rehearsal S0 signature or production authority",
+      "phase": "record-freeze"
+    },
+    {
+      "expected_failure": "BR-RECORD/1",
+      "id": "BRM-RECORD-003",
+      "mutation": "record write read-back or close failure after successful materialization",
+      "phase": "record-freeze"
+    },
+    {
+      "expected_failure": "BR-MATERIALIZE/1",
+      "id": "BRM-RETRY-001",
+      "mutation": "retry reuses failed root object cache or selected output",
+      "phase": "terminal"
+    }
+  ],
+  "schema_id": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-MUTATION-MATRIX-1",
+  "version": "0.1.0"
+}
