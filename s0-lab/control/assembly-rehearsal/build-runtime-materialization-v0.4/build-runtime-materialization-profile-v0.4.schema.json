@@ -1,0 +1,601 @@
+{
+  "$defs": {
+    "dll_resolution_binding": {
+      "additionalProperties": false,
+      "properties": {
+        "directory_index": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "dll_name": {
+          "pattern": "^[A-Za-z0-9_.-]+\\.dll$",
+          "type": "string"
+        },
+        "parent_directory_virtual_path": {
+          "$ref": "#/$defs/virtual_directory"
+        },
+        "parent_windows_directory_identity_key": {
+          "$ref": "#/$defs/windows_directory_identity_key"
+        },
+        "runtime_virtual_path": {
+          "$ref": "#/$defs/virtual_path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "dll_name",
+        "runtime_virtual_path",
+        "parent_directory_virtual_path",
+        "parent_windows_directory_identity_key",
+        "directory_index",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "physical_directory_identity": {
+      "additionalProperties": false,
+      "properties": {
+        "file_id": {
+          "pattern": "^[0-9a-f]{32}$",
+          "type": "string"
+        },
+        "identity_source": {
+          "const": "FILE_ID_INFO"
+        },
+        "reparse_point": {
+          "const": false
+        },
+        "volume_serial_number": {
+          "pattern": "^[0-9a-f]{16}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identity_source",
+        "volume_serial_number",
+        "file_id",
+        "reparse_point"
+      ],
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "virtual_directory": {
+      "maxLength": 1024,
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*//)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*[\\\\:\\x00-\\x1f\\x7f])(?!.*/$)(?!.*\\.(?:/|$))[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$",
+      "type": "string"
+    },
+    "virtual_path": {
+      "maxLength": 1024,
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*//)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*[\\\\:\\x00-\\x1f\\x7f])(?!.*/$)(?!.*\\.(?:/|$))[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$",
+      "type": "string"
+    },
+    "windows_directory": {
+      "additionalProperties": false,
+      "properties": {
+        "directory_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "index": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "physical_identity": {
+          "$ref": "#/$defs/physical_directory_identity"
+        },
+        "source_kind": {
+          "enum": [
+            "application-directory",
+            "dll-map-parent"
+          ]
+        },
+        "source_role": {
+          "enum": [
+            "verifier_application",
+            "dll_map"
+          ]
+        },
+        "virtual_directory": {
+          "$ref": "#/$defs/virtual_directory"
+        },
+        "windows_directory_identity_key": {
+          "$ref": "#/$defs/windows_directory_identity_key"
+        }
+      },
+      "required": [
+        "index",
+        "virtual_directory",
+        "windows_directory_identity_key",
+        "source_kind",
+        "source_role",
+        "directory_identity_sha256",
+        "physical_identity"
+      ],
+      "type": "object"
+    },
+    "windows_directory_identity_key": {
+      "maxLength": 1024,
+      "minLength": 1,
+      "pattern": "^[a-z0-9._-]+(?:/[a-z0-9._-]+)*$",
+      "type": "string"
+    }
+  },
+  "$id": "urn:human-ai-development-tradition:s0:public-assembly-build-runtime-materialization-admission-package:4",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority_extension": {
+      "additionalProperties": false,
+      "properties": {
+        "approving_design_review_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "base_final_record_schema_sha256": {
+          "const": "f63fd9059404d75cd6f5333907313599eeba374bdf207d7056cfbd1ba438e43d"
+        },
+        "base_package_manifest_sha256": {
+          "const": "1d3ddfa20c6e0413b7d0420c17e35e3c2251bba77ee6421cc40d92b40e9c5277"
+        },
+        "base_prepublication_record_schema_sha256": {
+          "const": "1c9c355cedf162b343b59cd08de8816fd8e6488b5d729b3e02470246c0cf1eec"
+        },
+        "base_review_sha256": {
+          "const": "e84775d2cb07ea5353192bd3c3cbe80dec487af5bafa4ea36a91ade8b74914cc"
+        },
+        "design_package_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "final_record_schema_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "prepublication_record_schema_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "base_package_manifest_sha256",
+        "base_review_sha256",
+        "base_prepublication_record_schema_sha256",
+        "base_final_record_schema_sha256",
+        "design_package_manifest_sha256",
+        "approving_design_review_sha256",
+        "prepublication_record_schema_sha256",
+        "final_record_schema_sha256"
+      ],
+      "type": "object"
+    },
+    "base_profile": {
+      "$ref": "urn:human-ai-development-tradition:s0:public-assembly-build-runtime-materialization-admission-package:3"
+    },
+    "base_profile_schema_sha256": {
+      "const": "b9f87936be3b4376e3b6cc5ede9aaab2cc66b853b249c4ecacbd6a6160f7efc7"
+    },
+    "base_profile_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "build_execution_authorized": {
+      "const": false
+    },
+    "candidate_only": {
+      "const": true
+    },
+    "complete_profile_status": {
+      "const": "PUBLIC-DESIGN-CANDIDATE-ONLY"
+    },
+    "direct_v0_3_execution_allowed": {
+      "const": false
+    },
+    "effective_runtime_dll_search_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "admitted_case_rule": {
+          "const": "ascii-case-insensitive-A-through-Z-only"
+        },
+        "application_directory_position": {
+          "const": 0
+        },
+        "application_directory_source_role": {
+          "const": "verifier_application"
+        },
+        "canonical_separator": {
+          "const": "/"
+        },
+        "derivation_policy": {
+          "const": "application-directory-index-zero-then-unique-dll-map-parent-identity-keys-in-unsigned-ascii-order"
+        },
+        "directory_identity_preimage": {
+          "const": "ascii:windows_directory_identity_key=<ascii-lowercase-canonical-virtual-directory>\n"
+        },
+        "dll_resolution_bindings": {
+          "items": {
+            "$ref": "#/$defs/dll_resolution_binding"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "dos_device_segment_policy": {
+          "const": "reject-case-insensitive-CON-PRN-AUX-NUL-COM1-through-COM9-LPT1-through-LPT9-before-first-dot"
+        },
+        "duplicate_identity_key_allowed": {
+          "const": false
+        },
+        "forbidden_separator": {
+          "const": "\\"
+        },
+        "host_filled_directory_allowed": {
+          "const": false
+        },
+        "ordered_dll_search_directories": {
+          "items": {
+            "$ref": "#/$defs/windows_directory"
+          },
+          "minItems": 1,
+          "prefixItems": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/windows_directory"
+                },
+                {
+                  "properties": {
+                    "index": {
+                      "const": 0
+                    },
+                    "source_kind": {
+                      "const": "application-directory"
+                    },
+                    "source_role": {
+                      "const": "verifier_application"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "array"
+        },
+        "path_grammar": {
+          "const": "nonempty-forward-slash-ASCII-segments-no-empty-dot-dotdot-trailing-slash-trailing-dot-colon-backslash-control-or-DOS-device-segment"
+        },
+        "path_or_registry_derived_directory_allowed": {
+          "const": false
+        },
+        "physical_identity_duplicate_allowed": {
+          "const": false
+        },
+        "reparse_point_allowed": {
+          "const": false
+        },
+        "resolution_mode": {
+          "const": "exact-dll-map-virtual-path-parent-identity-key-directory-index-and-sha256-only"
+        }
+      },
+      "required": [
+        "application_directory_source_role",
+        "application_directory_position",
+        "canonical_separator",
+        "forbidden_separator",
+        "path_grammar",
+        "admitted_case_rule",
+        "dos_device_segment_policy",
+        "derivation_policy",
+        "directory_identity_preimage",
+        "ordered_dll_search_directories",
+        "dll_resolution_bindings",
+        "duplicate_identity_key_allowed",
+        "physical_identity_duplicate_allowed",
+        "reparse_point_allowed",
+        "resolution_mode",
+        "host_filled_directory_allowed",
+        "path_or_registry_derived_directory_allowed"
+      ],
+      "type": "object"
+    },
+    "failure_matrix": {
+      "additionalProperties": false,
+      "properties": {
+        "base_effective_row_count": {
+          "const": 97
+        },
+        "base_matrix_sha256": {
+          "const": "965606a860409dc6810ffd7b969d9eb77de0f23aae0dcc49130a8145767f5685"
+        },
+        "composition": {
+          "const": "retain-all-97-v0.3-effective-rows-in-order-then-append-14-v0.4-rows-in-published-order"
+        },
+        "effective_row_count": {
+          "const": 111
+        },
+        "revision_matrix_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "v0_4_additional_row_count": {
+          "const": 14
+        }
+      },
+      "required": [
+        "base_matrix_sha256",
+        "revision_matrix_sha256",
+        "composition",
+        "base_effective_row_count",
+        "v0_4_additional_row_count",
+        "effective_row_count"
+      ],
+      "type": "object"
+    },
+    "publication_no_replace_policy": {
+      "const": {
+        "api_dll": "kernel32.dll",
+        "api_name": "SetFileInformationByHandle",
+        "destination_name_source": "same-intended-final-name-as-authenticated-recheck",
+        "destination_overwrite_allowed": false,
+        "file_information_class_name": "FileRenameInfoEx",
+        "file_information_class_numeric": 22,
+        "file_name_length_rule": "UTF-16LE-byte-count-excluding-terminal-NUL",
+        "flags_numeric": 0,
+        "linearization_point": "successful-SetFileInformationByHandle-call",
+        "posix_semantics_flag_numeric": 2,
+        "posix_semantics_flag_set": false,
+        "precheck_authority": "diagnostic-only",
+        "replace_if_exists_flag_numeric": 1,
+        "replace_if_exists_flag_set": false,
+        "retry_allowed": false,
+        "root_directory_handle_source": "same-retained-destination-parent-handle-as-authenticated-recheck",
+        "same_volume_required": true,
+        "source_handle_required_access": [
+          "DELETE",
+          "SYNCHRONIZE"
+        ],
+        "source_handle_source": "retained-runtime-A-root-handle",
+        "terminal_failure": "BR-MATERIALIZE/1"
+      }
+    },
+    "publication_no_replace_policy_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "publication_transaction": {
+      "additionalProperties": false,
+      "properties": {
+        "comparison_peer": {
+          "const": "B"
+        },
+        "destination_absent_recheck_observation_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "intended_final_name": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+          "type": "string"
+        },
+        "file_name_length_bytes": {
+          "maximum": 256,
+          "minimum": 2,
+          "type": "integer"
+        },
+        "ordered_phases": {
+          "const": [
+            "RUNTIME-TREES-BYTE-IDENTICAL",
+            "RUNTIME-B-QUARANTINED",
+            "PREPUBLICATION-RECORD-BODY-FROZEN",
+            "PREPUBLICATION-RECORD-CLOSE-READBACK-VERIFIED",
+            "DESTINATION-ABSENT-RECHECK-PASSED",
+            "NO-REPLACE-ATOMIC-RENAME-INVOKED",
+            "RUNTIME-A-ATOMICALLY-PUBLISHED",
+            "POSTPUBLICATION-IDENTITY-VERIFIED",
+            "FINAL-RECORD-BODY-FROZEN",
+            "FINAL-RECORD-CLOSE-READBACK-VERIFIED",
+            "FINAL-DIAGNOSTIC-RECORDS-FROZEN"
+          ]
+        },
+        "postpublication_failure_action": {
+          "const": "quarantine-published-candidate-and-grant-no-authority"
+        },
+        "prepublication_record_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "publication_owner": {
+          "const": "A"
+        },
+        "retained_destination_parent_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "retained_runtime_A_source_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "publication_owner",
+        "comparison_peer",
+        "prepublication_record_sha256",
+        "retained_runtime_A_source_identity_sha256",
+        "retained_destination_parent_identity_sha256",
+        "intended_final_name",
+        "file_name_length_bytes",
+        "destination_absent_recheck_observation_sha256",
+        "ordered_phases",
+        "postpublication_failure_action"
+      ],
+      "type": "object"
+    },
+    "record_schema_bindings": {
+      "additionalProperties": false,
+      "properties": {
+        "final_record_schema_id": {
+          "const": "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-FINAL-RECORD-4"
+        },
+        "final_record_schema_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "prepublication_record_schema_id": {
+          "const": "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-PREPUBLISH-RECORD-4"
+        },
+        "prepublication_record_schema_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "prepublication_record_schema_id",
+        "prepublication_record_schema_sha256",
+        "final_record_schema_id",
+        "final_record_schema_sha256"
+      ],
+      "type": "object"
+    },
+    "resource_limits": {
+      "const": {
+        "build_root_bytes_each": 34359738368,
+        "captured_output_bytes_per_command": 16777216,
+        "concurrent_build_processes": 1,
+        "cpython_dependency_bundle_bytes": 4294967296,
+        "materialization_seconds": 1800,
+        "materialization_staging_bytes_each": 4294967296,
+        "private_bytes_aggregate": 17179869184,
+        "runtime_file_count": 20000,
+        "runtime_tree_bytes": 2147483648,
+        "source_bytes": 268435456,
+        "toolchain_bundle_bytes": 25769803776,
+        "wall_seconds_per_build": 3600
+      }
+    },
+    "schema_id": {
+      "const": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-ADMISSION-PACKAGE-4"
+    },
+    "semantic_relations": {
+      "const": [
+        "embedded-v0.2-profile-validates-against-exact-authenticated-v0.2-schema",
+        "embedded-v0.2-profile-canonical-bytes-equal-base-profile-sha256",
+        "direct-v0.2-profile-execution-is-forbidden",
+        "v0.3-design-package-and-approving-review-equal-outer-authenticated-exact-bytes",
+        "record-schema-authority-hashes-equal-publication-transaction-schema-hashes-and-exact-authenticated-schema-bytes",
+        "target-set-preimage-uses-exact-s0-brm-target-set-preimage-1-ascii-lf-grammar",
+        "target-set-paths-are-canonical-relative-ascii-and-strictly-unsigned-ascii-sorted",
+        "target-set-rows-bind-path-byte-length-target-byte-length-and-target-sha256",
+        "target-set-count-total-bytes-duplicates-and-empty-set-rules-are-enforced",
+        "every-manifest-identity-target-set-sha256-equals-canonical-target-set-preimage-hash",
+        "native-preloader-required-direct-imports-equal-createprocessw-then-ntcreatefile",
+        "runtime-handle-guard-required-direct-imports-equal-effective-v0.4-observation-call-closure",
+        "runtime-handle-guard-required-export-equals-pyinit-v0.4",
+        "each-role-full-import-set-equals-authenticated-role-import-allowlist-manifest",
+        "unlisted-binary-imports-are-rejected",
+        "application-directory-equals-parent-of-verifier_application-runtime-row",
+        "dll-search-directory-identity-sha256-equals-sha256-of-exact-directory-line-preimage",
+        "ordered-dll-search-directories-equal-application-directory-plus-sorted-unique-dll-map-parents",
+        "dll-resolution-bindings-are-bijective-with-dll-map-and-bind-exact-path-directory-index-and-sha256",
+        "dll-search-directory-order-is-unique-and-cannot-be-host-path-or-registry-filled",
+        "every-dll-resolution-uses-only-the-exact-authenticated-dll-map-virtual-path-and-sha256",
+        "v0.3-effective-mutation-matrix-is-v0.2-effective-63-plus-published-34-rows",
+        "every-effective-mutation-row-has-one-primary-failure-and-one-output-created-bit",
+        "later-cleanup-record-and-retry-events-never-replace-the-first-primary-failure",
+        "prepublication-record-validates-against-exact-authenticated-prepublication-schema-v0.3",
+        "prepublication-record-body-field-order-equals-schema-published-order",
+        "prepublication-body-canonical-closed-and-readback-hashes-are-byte-equal",
+        "prepublication-record-forbids-rename-final-identity-postpublication-and-pass-fields",
+        "destination-absent-recheck-uses-the-same-retained-parent-and-intended-final-name",
+        "destination-absent-recheck-occurs-after-prepublication-readback-and-immediately-before-rename",
+        "destination-recheck-failure-freezes-br-materialize-1-before-rename",
+        "final-record-validates-against-exact-authenticated-final-schema-v0.3",
+        "final-record-body-field-order-equals-schema-published-order",
+        "final-body-canonical-closed-and-readback-hashes-are-byte-equal",
+        "final-record-is-frozen-only-after-rename-reopen-identity-file-set-byte-and-target-set-rehash",
+        "final-record-prepublication-hash-and-destination-recheck-hash-equal-prior-frozen-evidence",
+        "publication-owner-is-A-before-build-and-never-selected-from-results",
+        "runtime-B-is-quarantined-before-runtime-A-publication",
+        "publication-or-record-failure-grants-no-live-rehearsal-or-s0-authority",
+        "all-v0.2-nonreplaced-authority-binary-runtime-failure-resource-and-claim-relations-remain-effective",
+        "semantic-validator-implementation-is-outer-authenticated-before-import-or-process",
+        "schema-or-semantic-validation-success-is-diagnostic-only",
+        "embedded-v0.3-profile-validates-against-exact-authenticated-v0.3-schema",
+        "embedded-v0.3-profile-canonical-bytes-equal-base-profile-sha256",
+        "direct-v0.3-profile-execution-is-forbidden",
+        "v0.4-design-package-and-approving-review-equal-outer-authenticated-exact-bytes",
+        "virtual-directory-paths-pass-the-exact-canonical-forward-slash-ASCII-segment-grammar",
+        "windows-directory-identity-key-equals-ASCII-lowercase-of-the-canonical-virtual-directory",
+        "duplicate-windows-directory-identity-keys-reject-before-directory-hashing",
+        "directory-identity-sha256-equals-sha256-of-the-exact-windows-directory-identity-key-preimage",
+        "materialized-search-directories-have-pairwise-distinct-FILE-ID-INFO-identities-and-are-not-reparse-points",
+        "ordered-dll-search-directories-use-application-index-zero-then-strict-identity-key-byte-order",
+        "dll-resolution-bindings-include-the-exact-parent-identity-key-index-runtime-path-and-target-sha256",
+        "publication-uses-kernel32-SetFileInformationByHandle-FileRenameInfoEx-class-22-with-flags-zero",
+        "replace-if-exists-and-posix-semantics-flags-are-both-unset",
+        "publication-uses-the-retained-runtime-A-source-handle-and-the-same-parent-handle-and-name-as-the-recheck",
+        "destination-absence-recheck-is-diagnostic-and-the-no-replace-call-is-the-only-publication-linearization-point",
+        "destination-creation-after-recheck-causes-the-no-replace-call-to-fail-without-overwrite",
+        "any-no-replace-call-failure-freezes-BR-MATERIALIZE-1-grants-no-authority-and-cannot-retry",
+        "v0.4-effective-mutation-matrix-is-v0.3-effective-97-plus-published-14-rows",
+        "v0.4-prepublication-record-binds-the-exact-no-replace-policy-source-parent-name-class-and-flags-before-publication",
+        "v0.4-final-record-binds-the-successful-no-replace-linearization-point-and-postpublication-rehash-evidence",
+        "v0.4-record-schema-hashes-equal-the-outer-authority-pins-and-exact-authenticated-schema-bytes",
+        "publication-no-replace-policy-sha256-equals-sha256-of-rfc8785-jcs-UTF8-policy-object-plus-one-final-LF",
+        "publication-file-name-length-bytes-equals-the-exact-UTF16LE-byte-count-of-the-authenticated-final-leaf-without-NUL",
+        "retained-runtime-A-source-handle-identity-sha256-equals-the-exact-S0-BRM-PUBLICATION-SOURCE-HANDLE-1-preimage-hash",
+        "retained-destination-parent-identity-sha256-equals-the-exact-S0-BRM-PUBLICATION-PARENT-HANDLE-1-preimage-hash",
+        "all-nonreplaced-v0.3-relations-remain-exactly-effective"
+      ]
+    },
+    "semantic_validator": {
+      "additionalProperties": false,
+      "properties": {
+        "executes_all_v0_3_nonreplaced_relations": {
+          "const": true
+        },
+        "executes_all_v0_4_relations": {
+          "const": true
+        },
+        "implementation_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "implementation_target_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "imported_before_outer_authentication": {
+          "const": false
+        },
+        "outer_verifier_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "implementation_manifest_sha256",
+        "implementation_target_sha256",
+        "outer_verifier_sha256",
+        "imported_before_outer_authentication",
+        "executes_all_v0_3_nonreplaced_relations",
+        "executes_all_v0_4_relations"
+      ],
+      "type": "object"
+    },
+    "version": {
+      "const": "0.4.0"
+    }
+  },
+  "required": [
+    "schema_id",
+    "version",
+    "candidate_only",
+    "build_execution_authorized",
+    "complete_profile_status",
+    "direct_v0_3_execution_allowed",
+    "authority_extension",
+    "base_profile_schema_sha256",
+    "base_profile_sha256",
+    "base_profile",
+    "effective_runtime_dll_search_policy",
+    "publication_no_replace_policy",
+    "publication_no_replace_policy_sha256",
+    "publication_transaction",
+    "record_schema_bindings",
+    "failure_matrix",
+    "resource_limits",
+    "semantic_relations",
+    "semantic_validator"
+  ],
+  "title": "S0 public assembly build and runtime materialization admission package v0.4",
+  "type": "object"
+}
