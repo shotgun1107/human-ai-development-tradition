@@ -1,0 +1,179 @@
+{
+  "$defs": {
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "$id": "urn:human-ai-development-tradition:s0:public-assembly-build-runtime-materialization:prepublication-record:4",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "body": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_pin_closure_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "base_v0_3_profile_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "build_admission_package_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "comparison_peer": {
+          "const": "B"
+        },
+        "destination_absent_observation_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "destination_absent_observed": {
+          "const": true
+        },
+        "effective_v0_4_profile_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "file_information_class_numeric": {
+          "const": 22
+        },
+        "file_name_length_bytes": {
+          "maximum": 256,
+          "minimum": 2,
+          "type": "integer"
+        },
+        "intended_final_name": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+          "type": "string"
+        },
+        "prepublication_state": {
+          "const": "PREPUBLICATION-RECORD-BODY-FROZEN"
+        },
+        "publication_no_replace_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "publication_owner": {
+          "const": "A"
+        },
+        "publication_primitive_id": {
+          "const": "kernel32.dll!SetFileInformationByHandle:FileRenameInfoEx:22"
+        },
+        "rename_flags_numeric": {
+          "const": 0
+        },
+        "retained_destination_parent_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "retained_runtime_a_source_handle_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "runtime_a_staging_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "runtime_b_quarantine_receipt_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "runtime_b_staging_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "runtime_tree_equality_evidence_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "semantic_validation_record_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "transaction_id": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "transaction_id",
+        "authority_pin_closure_sha256",
+        "build_admission_package_sha256",
+        "base_v0_3_profile_sha256",
+        "effective_v0_4_profile_sha256",
+        "semantic_validation_record_sha256",
+        "runtime_a_staging_identity_sha256",
+        "runtime_b_staging_identity_sha256",
+        "runtime_tree_equality_evidence_sha256",
+        "publication_owner",
+        "comparison_peer",
+        "runtime_b_quarantine_receipt_sha256",
+        "retained_runtime_a_source_handle_identity_sha256",
+        "retained_destination_parent_identity_sha256",
+        "intended_final_name",
+        "destination_absent_observation_sha256",
+        "destination_absent_observed",
+        "publication_no_replace_policy_sha256",
+        "publication_primitive_id",
+        "file_information_class_numeric",
+        "rename_flags_numeric",
+        "file_name_length_bytes",
+        "prepublication_state"
+      ],
+      "type": "object"
+    },
+    "body_canonical_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "body_closed_file_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "body_field_order": {
+      "const": [
+        "transaction_id",
+        "authority_pin_closure_sha256",
+        "build_admission_package_sha256",
+        "base_v0_3_profile_sha256",
+        "effective_v0_4_profile_sha256",
+        "semantic_validation_record_sha256",
+        "runtime_a_staging_identity_sha256",
+        "runtime_b_staging_identity_sha256",
+        "runtime_tree_equality_evidence_sha256",
+        "publication_owner",
+        "comparison_peer",
+        "runtime_b_quarantine_receipt_sha256",
+        "retained_runtime_a_source_handle_identity_sha256",
+        "retained_destination_parent_identity_sha256",
+        "intended_final_name",
+        "destination_absent_observation_sha256",
+        "destination_absent_observed",
+        "publication_no_replace_policy_sha256",
+        "publication_primitive_id",
+        "file_information_class_numeric",
+        "rename_flags_numeric",
+        "file_name_length_bytes",
+        "prepublication_state"
+      ]
+    },
+    "body_hashes_equal": {
+      "const": true
+    },
+    "body_readback_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "record_package_codec": {
+      "const": "rfc8785-jcs-utf8-no-bom-plus-single-final-lf"
+    },
+    "schema_id": {
+      "const": "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-PREPUBLISH-RECORD-4"
+    },
+    "version": {
+      "const": "0.4.0"
+    }
+  },
+  "required": [
+    "schema_id",
+    "version",
+    "record_package_codec",
+    "body_field_order",
+    "body",
+    "body_canonical_sha256",
+    "body_closed_file_sha256",
+    "body_readback_sha256",
+    "body_hashes_equal"
+  ],
+  "title": "S0 public assembly runtime materialization prepublication record v0.4",
+  "type": "object"
+}

@@ -1,0 +1,137 @@
+{
+  "base_effective_row_count": 97,
+  "base_matrix_sha256": "965606a860409dc6810ffd7b969d9eb77de0f23aae0dcc49130a8145767f5685",
+  "composition_algorithm": "retain all 97 authenticated v0.3 effective rows in exact order, then append v0_4_additional_rows in published order",
+  "effective_row_count": 111,
+  "schema_id": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-MUTATION-MATRIX-4",
+  "v0_4_additional_row_count": 14,
+  "v0_4_additional_rows": [
+    {
+      "action_boundary": "before directory identity hashing and before candidate import or process",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V03-IR-001",
+      "id": "BRM-V04-DLLALIAS-001",
+      "mutation": "a virtual directory has an empty segment, doubled or trailing separator, backslash, colon, dot or dotdot segment, trailing-dot segment, control byte, non-ASCII byte, or DOS-device segment",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before directory identity hashing and before candidate import or process",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V03-IR-001",
+      "id": "BRM-V04-DLLALIAS-002",
+      "mutation": "windows_directory_identity_key is not the exact ASCII-lowercase transform of canonical virtual_directory",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before directory identity hashing and before candidate import or process",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V03-IR-001",
+      "id": "BRM-V04-DLLALIAS-003",
+      "mutation": "two byte-distinct virtual directories such as Lib and lib have the same Windows directory identity key",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before directory identity hashing and before candidate import or process",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V03-IR-001",
+      "id": "BRM-V04-DLLALIAS-004",
+      "mutation": "directory identity SHA-256 is not the hash of the exact ASCII windows_directory_identity_key preimage with one final LF",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during directory inventory validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V03-IR-001",
+      "id": "BRM-V04-DLLALIAS-005",
+      "mutation": "directory order is not application index zero followed by strict unsigned-ASCII identity-key order",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during physical directory identity validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V03-IR-001",
+      "id": "BRM-V04-DLLALIAS-006",
+      "mutation": "two logical search directories resolve to the same FILE_ID_INFO volume-serial-number and file-id pair",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during physical directory identity validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V03-IR-001",
+      "id": "BRM-V04-DLLALIAS-007",
+      "mutation": "a materialized search directory is a reparse point or its FILE_ID_INFO evidence is missing or malformed",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during DLL binding validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V03-IR-001",
+      "id": "BRM-V04-DLLALIAS-008",
+      "mutation": "a DLL binding parent identity key, directory index, runtime virtual path, or target SHA-256 differs from the authenticated DLL map and directory inventory",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before the no-replace publication call",
+      "expected_primary_failure": "BR-MATERIALIZE/1",
+      "finding": "BRM-V03-IR-002",
+      "id": "BRM-V04-NOREPLACE-001",
+      "mutation": "publication uses an API, DLL, file-information-class name, or numeric class other than kernel32 SetFileInformationByHandle FileRenameInfoEx class 22",
+      "output_created_before_primary_failure": true,
+      "phase": "publication"
+    },
+    {
+      "action_boundary": "before the no-replace publication call",
+      "expected_primary_failure": "BR-MATERIALIZE/1",
+      "finding": "BRM-V03-IR-002",
+      "id": "BRM-V04-NOREPLACE-002",
+      "mutation": "FileRenameInfoEx flags are not zero or REPLACE_IF_EXISTS or POSIX_SEMANTICS is set",
+      "output_created_before_primary_failure": true,
+      "phase": "publication"
+    },
+    {
+      "action_boundary": "before the no-replace publication call",
+      "expected_primary_failure": "BR-MATERIALIZE/1",
+      "finding": "BRM-V03-IR-002",
+      "id": "BRM-V04-NOREPLACE-003",
+      "mutation": "source handle, destination-parent handle, intended final name, access rights, same-volume fact, or UTF-16LE name length differs from the authenticated transaction",
+      "output_created_before_primary_failure": true,
+      "phase": "publication"
+    },
+    {
+      "action_boundary": "after diagnostic destination recheck and before the no-replace call linearization point",
+      "expected_primary_failure": "BR-MATERIALIZE/1",
+      "finding": "BRM-V03-IR-002",
+      "id": "BRM-V04-NOREPLACE-004",
+      "mutation": "another actor creates the destination and the publication call overwrites it, reports success, or advances to the published phase",
+      "output_created_before_primary_failure": true,
+      "phase": "publication"
+    },
+    {
+      "action_boundary": "at the no-replace call result",
+      "expected_primary_failure": "BR-MATERIALIZE/1",
+      "finding": "BRM-V03-IR-002",
+      "id": "BRM-V04-NOREPLACE-005",
+      "mutation": "any failed no-replace call is recorded as published, PASS, live, rehearsal, or S0 authority",
+      "output_created_before_primary_failure": true,
+      "phase": "publication"
+    },
+    {
+      "action_boundary": "after any no-replace publication failure",
+      "expected_primary_failure": "BR-MATERIALIZE/1",
+      "finding": "BRM-V03-IR-002",
+      "id": "BRM-V04-NOREPLACE-006",
+      "mutation": "the publication is retried, a replacement-capable fallback is used, or a new destination name is selected",
+      "output_created_before_primary_failure": true,
+      "phase": "retry"
+    }
+  ],
+  "version": "0.4.0"
+}
