@@ -1,0 +1,251 @@
+{
+  "$defs": {
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "$id": "urn:human-ai-development-tradition:s0:public-assembly-build-runtime-materialization-admission-package:5",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority_extension": {
+      "additionalProperties": false,
+      "properties": {
+        "approving_design_review_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "base_package_manifest_sha256": {
+          "const": "7af9c640f90f4cf42b85b77bb4851af6f33b71890b64355b62e449d58e528884"
+        },
+        "base_review_sha256": {
+          "const": "7cc81d81c12a4ca1ffec7db8c1bb10fcae161b8ed5fac6e5fe96add550334313"
+        },
+        "design_package_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "effective_profile_schema_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "final_record_schema_sha256": {
+          "const": "db385701a3a4a6130734e94b0f238b006b8eb5bd9d96f677c3559337a5399430"
+        },
+        "prepublication_record_schema_sha256": {
+          "const": "39f8bc081c7d60c4d560704cbe92737b255cc75da922b7f1c1cf13d31c1d8b58"
+        }
+      },
+      "required": [
+        "base_package_manifest_sha256",
+        "base_review_sha256",
+        "design_package_manifest_sha256",
+        "approving_design_review_sha256",
+        "effective_profile_schema_sha256",
+        "prepublication_record_schema_sha256",
+        "final_record_schema_sha256"
+      ],
+      "type": "object"
+    },
+    "base_profile": {
+      "allOf": [
+        {
+          "$ref": "urn:human-ai-development-tradition:s0:public-assembly-build-runtime-materialization-admission-package:4"
+        },
+        {
+          "properties": {
+            "publication_no_replace_policy_sha256": {
+              "const": "3fd2df85e665c2a7b968d1c75f5c4ef2f85eb16e19682f718be4d3675b4a654b"
+            }
+          },
+          "required": [
+            "publication_no_replace_policy",
+            "publication_no_replace_policy_sha256"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "base_profile_schema_sha256": {
+      "const": "6b55b98aa56111a1ffdc589eda90a605e58b04005bb5449015ed44b6ab4d7882"
+    },
+    "base_profile_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "build_execution_authorized": {
+      "const": false
+    },
+    "candidate_only": {
+      "const": true
+    },
+    "claim_boundary": {
+      "const": {
+        "build_executed": false,
+        "candidate_only": true,
+        "design_only": true,
+        "native_api_reachable": false,
+        "rehearsal_pass": false,
+        "runtime_materialized": false,
+        "s0_executed": false
+      }
+    },
+    "complete_profile_status": {
+      "const": "BLOCKED-DESIGN-ONLY"
+    },
+    "direct_v0_4_execution_allowed": {
+      "const": false
+    },
+    "effective_mutation_matrix": {
+      "additionalProperties": false,
+      "properties": {
+        "base_effective_row_count": {
+          "const": 111
+        },
+        "base_matrix_sha256": {
+          "const": "9d2522bdce4a64b612fbac300ff3090d317da32e7bb85b7c021e2ae030a8bf0e"
+        },
+        "composition": {
+          "const": "retain-all-111-v0.4-effective-rows-in-order-then-append-4-v0.5-rows-in-published-order"
+        },
+        "effective_row_count": {
+          "const": 115
+        },
+        "revision_matrix_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "v0_5_additional_row_count": {
+          "const": 4
+        }
+      },
+      "required": [
+        "base_matrix_sha256",
+        "revision_matrix_sha256",
+        "composition",
+        "base_effective_row_count",
+        "v0_5_additional_row_count",
+        "effective_row_count"
+      ],
+      "type": "object"
+    },
+    "effective_semantic_relations_sha256": {
+      "const": "5af2b472f4abf96c446ae56fa90f02d54fa87cdebe4e6129fcc4c3c1de1610db"
+    },
+    "publication_no_replace_policy_authority": {
+      "const": {
+        "base_interface_map_policy_summary_authoritative_for_hash": false,
+        "base_profile_policy_hash_authoritative_without_v0_5_recomputation": false,
+        "field_count": 20,
+        "hash_preimage": "RFC8785-JCS-UTF8-exact-normative-object-plus-one-final-LF",
+        "normative_object_path": "base_profile.publication_no_replace_policy",
+        "normative_policy_sha256": "3fd2df85e665c2a7b968d1c75f5c4ef2f85eb16e19682f718be4d3675b4a654b",
+        "single_normative_object": true
+      }
+    },
+    "publication_no_replace_policy_sha256": {
+      "const": "3fd2df85e665c2a7b968d1c75f5c4ef2f85eb16e19682f718be4d3675b4a654b"
+    },
+    "record_schema_bindings": {
+      "const": {
+        "final_record_schema_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-FINAL-RECORD-4",
+        "final_record_schema_sha256": "db385701a3a4a6130734e94b0f238b006b8eb5bd9d96f677c3559337a5399430",
+        "prepublication_record_schema_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-PREPUBLISH-RECORD-4",
+        "prepublication_record_schema_sha256": "39f8bc081c7d60c4d560704cbe92737b255cc75da922b7f1c1cf13d31c1d8b58"
+      }
+    },
+    "schema_id": {
+      "const": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-ADMISSION-PACKAGE-5"
+    },
+    "semantic_relation_patch": {
+      "const": {
+        "all_other_indices_byte_identical": true,
+        "base_relation_count": 68,
+        "effective_relation_count": 68,
+        "effective_relations_preimage_grammar": "S0-BRM-SEMANTIC-RELATIONS-5",
+        "effective_relations_sha256": "5af2b472f4abf96c446ae56fa90f02d54fa87cdebe4e6129fcc4c3c1de1610db",
+        "replacement_index_zero_based": 15,
+        "replacement_value": "application-directory-equals-parent-of-verifier-application-runtime-row",
+        "required_old_value": "application-directory-equals-parent-of-verifier_application-runtime-row"
+      }
+    },
+    "semantic_validator": {
+      "additionalProperties": false,
+      "properties": {
+        "executes_corrected_effective_relation_set": {
+          "const": true
+        },
+        "implementation_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "implementation_target_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "imported_before_outer_authentication": {
+          "const": false
+        },
+        "rejects_base_v0_4_relation_typo": {
+          "const": true
+        },
+        "uses_only_normative_policy_object": {
+          "const": true
+        },
+        "verifies_all_v0_5_relations": {
+          "const": true
+        },
+        "outer_verifier_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "implementation_manifest_sha256",
+        "implementation_target_sha256",
+        "outer_verifier_sha256",
+        "imported_before_outer_authentication",
+        "executes_corrected_effective_relation_set",
+        "rejects_base_v0_4_relation_typo",
+        "uses_only_normative_policy_object",
+        "verifies_all_v0_5_relations"
+      ],
+      "type": "object"
+    },
+    "v0_5_semantic_relations": {
+      "const": [
+        "embedded-v0.4-profile-validates-against-exact-authenticated-v0.4-schema",
+        "embedded-v0.4-profile-canonical-bytes-equal-base-profile-sha256",
+        "direct-v0.4-profile-execution-is-forbidden",
+        "effective-semantic-relations-are-the-exact-v0.4-array-with-only-zero-based-index-15-replaced",
+        "effective-semantic-relations-sha256-equals-the-exact-S0-BRM-SEMANTIC-RELATIONS-5-preimage-hash",
+        "all-other-v0.4-semantic-relation-bytes-order-and-count-remain-identical",
+        "publication-no-replace-policy-hash-uses-only-base_profile.publication_no_replace_policy",
+        "base-interface-map-policy-summary-is-nonauthoritative-for-policy-hashing",
+        "embedded-v0.4-policy-hash-is-recomputed-and-must-equal-the-v0.5-constant",
+        "prepublication-and-final-record-policy-hashes-equal-the-v0.5-normative-policy-hash",
+        "v0.5-effective-mutation-matrix-is-v0.4-effective-111-plus-published-4-rows",
+        "all-nonreplaced-v0.4-rules-records-resources-and-claim-boundaries-remain-effective"
+      ]
+    },
+    "version": {
+      "const": "0.5.0"
+    }
+  },
+  "required": [
+    "schema_id",
+    "version",
+    "candidate_only",
+    "build_execution_authorized",
+    "complete_profile_status",
+    "direct_v0_4_execution_allowed",
+    "authority_extension",
+    "base_profile_schema_sha256",
+    "base_profile_sha256",
+    "base_profile",
+    "semantic_relation_patch",
+    "effective_semantic_relations_sha256",
+    "publication_no_replace_policy_authority",
+    "publication_no_replace_policy_sha256",
+    "record_schema_bindings",
+    "effective_mutation_matrix",
+    "v0_5_semantic_relations",
+    "semantic_validator",
+    "claim_boundary"
+  ],
+  "title": "S0 public assembly build and runtime materialization admission overlay v0.5",
+  "type": "object"
+}
