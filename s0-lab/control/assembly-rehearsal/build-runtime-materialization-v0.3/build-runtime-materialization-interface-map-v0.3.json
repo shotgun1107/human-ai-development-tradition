@@ -1,0 +1,175 @@
+{
+  "authority_extension": {
+    "base_package_manifest_sha256": "47b956ca352f0e8ac969cdd36b801234c1436cefe50308c1e4d7c2b4e9bf1304",
+    "base_review_sha256": "d5066d11172cdc33441e39087898a33ab14b5371533a0f4f529de92eb80be051",
+    "outer_pin_fields": [
+      "design_package_manifest_sha256",
+      "approving_design_review_sha256",
+      "prepublication_record_schema_sha256",
+      "final_record_schema_sha256"
+    ]
+  },
+  "base_bindings": {
+    "base_package_manifest_sha256": "47b956ca352f0e8ac969cdd36b801234c1436cefe50308c1e4d7c2b4e9bf1304",
+    "base_profile_schema_id": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-ADMISSION-PACKAGE-2",
+    "base_profile_schema_sha256": "bcdf56d47f8ed8fbccfa3964c3d89739adde567b8342916da3f5333278000039",
+    "base_review_sha256": "d5066d11172cdc33441e39087898a33ab14b5371533a0f4f529de92eb80be051",
+    "composition": "authenticated-v0.2-base-plus-mandatory-v0.3-corrections",
+    "direct_v0_2_execution_allowed": false
+  },
+  "claim_boundary": {
+    "build_executed": false,
+    "candidate_only": true,
+    "design_only": true,
+    "native_api_reachable": false,
+    "rehearsal_pass": false,
+    "runtime_materialized": false,
+    "s0_executed": false
+  },
+  "effective_binary_import_policy": {
+    "full_import_set_source": "exact-authenticated-role-import-allowlist-manifest",
+    "native_preloader_required_direct_imports": [
+      "kernel32.dll!CreateProcessW",
+      "ntdll.dll!NtCreateFile"
+    ],
+    "runtime_handle_guard_required_direct_imports": [
+      "kernel32.dll!GetHandleInformation",
+      "kernel32.dll!GetFileType",
+      "kernel32.dll!GetNamedPipeInfo",
+      "kernel32.dll!GetFileInformationByHandleEx",
+      "kernel32.dll!GetProcessId",
+      "kernel32.dll!GetCurrentProcessId",
+      "kernel32.dll!QueryFullProcessImageNameW",
+      "ntdll.dll!NtQueryObject",
+      "ntdll.dll!NtQueryInformationProcess",
+      "kernel32.dll!ReadFile",
+      "kernel32.dll!CloseHandle"
+    ],
+    "runtime_handle_guard_required_exports": [
+      "PyInit_s0_runtime_handle_guard_v0_4"
+    ],
+    "unlisted_import_allowed": false
+  },
+  "effective_mutation_matrix": {
+    "base_effective_row_count": 63,
+    "base_matrix_sha256": "b091b3eaf4bfba09a671845229a4b0bdbafbce385e4e776f15a3c38c55db2b5e",
+    "composition": "retain-all-63-v0.2-effective-rows-in-order-then-append-34-v0.3-rows-in-published-order",
+    "effective_row_count": 97,
+    "v0_3_additional_row_count": 34
+  },
+  "ordered_design_phases": [
+    "AUTHORITY-PINS-AUTHENTICATED",
+    "SOURCE-CLOSURE-AUTHENTICATED",
+    "TOOLCHAIN-CLOSURE-AUTHENTICATED",
+    "BUILD-ADMISSION-PACKAGE-AUTHENTICATED",
+    "BUILD-A-COMPLETE",
+    "BUILD-B-COMPLETE",
+    "OUTPUTS-BYTE-IDENTICAL",
+    "BINARY-INSPECTION-COMPLETE",
+    "RUNTIME-A-MATERIALIZED",
+    "RUNTIME-B-MATERIALIZED",
+    "RUNTIME-TREES-BYTE-IDENTICAL",
+    "RUNTIME-B-QUARANTINED",
+    "PREPUBLICATION-RECORD-BODY-FROZEN",
+    "PREPUBLICATION-RECORD-CLOSE-READBACK-VERIFIED",
+    "DESTINATION-ABSENT-RECHECK-PASSED",
+    "RUNTIME-A-ATOMICALLY-PUBLISHED",
+    "POSTPUBLICATION-IDENTITY-VERIFIED",
+    "FINAL-RECORD-BODY-FROZEN",
+    "FINAL-RECORD-CLOSE-READBACK-VERIFIED",
+    "FINAL-DIAGNOSTIC-RECORDS-FROZEN"
+  ],
+  "publication_policy": {
+    "comparison_peer": "B",
+    "destination_absent_recheck_authority": "retained-destination-parent",
+    "destination_absent_recheck_position": "after-prepublication-record-close-readback-and-immediately-before-rename",
+    "destination_authority_after_final_record": false,
+    "final_record_schema_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-FINAL-RECORD-3",
+    "postpublication_failure_action": "quarantine-published-candidate-and-grant-no-authority",
+    "prepublication_record_schema_id": "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-PREPUBLISH-RECORD-3",
+    "publication_owner": "A",
+    "publication_transaction": "single-same-volume-atomic-rename",
+    "record_package_codec": "rfc8785-jcs-utf8-no-bom-plus-single-final-lf",
+    "unselected_root_disposition": "quarantine-B-before-A-publication"
+  },
+  "runtime_dll_search_policy": {
+    "application_directory_position": 0,
+    "application_directory_source_role": "verifier_application",
+    "directory_derivation": "application-directory-first-then-unique-dll-map-parent-directories-in-unsigned-ascii-order",
+    "directory_identity_preimage": "ascii:directory=<virtual_directory>\\n",
+    "directory_inventory_field": "ordered_dll_search_directories",
+    "dll_resolution_binding_field": "dll_resolution_bindings",
+    "duplicate_directory_allowed": false,
+    "host_filled_directory_allowed": false,
+    "path_or_registry_derived_directory_allowed": false,
+    "resolution_mode": "exact-dll-map-virtual-path-and-sha256-only"
+  },
+  "schema_id": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-INTERFACE-MAP-3",
+  "semantic_relations": [
+    "embedded-v0.2-profile-validates-against-exact-authenticated-v0.2-schema",
+    "embedded-v0.2-profile-canonical-bytes-equal-base-profile-sha256",
+    "direct-v0.2-profile-execution-is-forbidden",
+    "v0.3-design-package-and-approving-review-equal-outer-authenticated-exact-bytes",
+    "record-schema-authority-hashes-equal-publication-transaction-schema-hashes-and-exact-authenticated-schema-bytes",
+    "target-set-preimage-uses-exact-s0-brm-target-set-preimage-1-ascii-lf-grammar",
+    "target-set-paths-are-canonical-relative-ascii-and-strictly-unsigned-ascii-sorted",
+    "target-set-rows-bind-path-byte-length-target-byte-length-and-target-sha256",
+    "target-set-count-total-bytes-duplicates-and-empty-set-rules-are-enforced",
+    "every-manifest-identity-target-set-sha256-equals-canonical-target-set-preimage-hash",
+    "native-preloader-required-direct-imports-equal-createprocessw-then-ntcreatefile",
+    "runtime-handle-guard-required-direct-imports-equal-effective-v0.4-observation-call-closure",
+    "runtime-handle-guard-required-export-equals-pyinit-v0.4",
+    "each-role-full-import-set-equals-authenticated-role-import-allowlist-manifest",
+    "unlisted-binary-imports-are-rejected",
+    "application-directory-equals-parent-of-verifier-application-runtime-row",
+    "dll-search-directory-identity-sha256-equals-sha256-of-exact-directory-line-preimage",
+    "ordered-dll-search-directories-equal-application-directory-plus-sorted-unique-dll-map-parents",
+    "dll-resolution-bindings-are-bijective-with-dll-map-and-bind-exact-path-directory-index-and-sha256",
+    "dll-search-directory-order-is-unique-and-cannot-be-host-path-or-registry-filled",
+    "every-dll-resolution-uses-only-the-exact-authenticated-dll-map-virtual-path-and-sha256",
+    "v0.3-effective-mutation-matrix-is-v0.2-effective-63-plus-published-34-rows",
+    "every-effective-mutation-row-has-one-primary-failure-and-one-output-created-bit",
+    "later-cleanup-record-and-retry-events-never-replace-the-first-primary-failure",
+    "prepublication-record-validates-against-exact-authenticated-prepublication-schema-v0.3",
+    "prepublication-record-body-field-order-equals-schema-published-order",
+    "prepublication-body-canonical-closed-and-readback-hashes-are-byte-equal",
+    "prepublication-record-forbids-rename-final-identity-postpublication-and-pass-fields",
+    "destination-absent-recheck-uses-the-same-retained-parent-and-intended-final-name",
+    "destination-absent-recheck-occurs-after-prepublication-readback-and-immediately-before-rename",
+    "destination-recheck-failure-freezes-br-materialize-1-before-rename",
+    "final-record-validates-against-exact-authenticated-final-schema-v0.3",
+    "final-record-body-field-order-equals-schema-published-order",
+    "final-body-canonical-closed-and-readback-hashes-are-byte-equal",
+    "final-record-is-frozen-only-after-rename-reopen-identity-file-set-byte-and-target-set-rehash",
+    "final-record-prepublication-hash-and-destination-recheck-hash-equal-prior-frozen-evidence",
+    "publication-owner-is-A-before-build-and-never-selected-from-results",
+    "runtime-B-is-quarantined-before-runtime-A-publication",
+    "publication-or-record-failure-grants-no-live-rehearsal-or-s0-authority",
+    "all-v0.2-nonreplaced-authority-binary-runtime-failure-resource-and-claim-relations-remain-effective",
+    "semantic-validator-implementation-is-outer-authenticated-before-import-or-process",
+    "schema-or-semantic-validation-success-is-diagnostic-only"
+  ],
+  "target_set_policy": {
+    "duplicate_path_allowed": false,
+    "empty_set_allowed": false,
+    "encoding": "ascii",
+    "hash_algorithm": "sha256",
+    "header_fields": [
+      "schema_id",
+      "target_count",
+      "total_target_bytes"
+    ],
+    "line_ending": "lf",
+    "ordering": "strict-ascending-unsigned-ascii-path-bytes",
+    "path_policy": "nonempty-repository-relative-forward-slash-segments-each-matching-[A-Za-z0-9._-]+-no-empty-dot-or-dotdot-segment",
+    "row_fields": [
+      "path_byte_length",
+      "path",
+      "target_byte_length",
+      "target_sha256"
+    ],
+    "schema_id": "S0-BRM-TARGET-SET-PREIMAGE-1",
+    "terminal_lf_required": true
+  },
+  "version": "0.3.0"
+}

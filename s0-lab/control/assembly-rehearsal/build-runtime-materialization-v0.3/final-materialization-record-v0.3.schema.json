@@ -1,0 +1,167 @@
+{
+  "$defs": {
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "target_row": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*[\\\\:\\x00-\\x1f\\x7f])[A-Za-z0-9._/-]+$",
+          "type": "string"
+        },
+        "target_byte_length": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "target_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "target_byte_length",
+        "target_sha256"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "urn:human-ai-development-tradition:s0:public-assembly-build-runtime-materialization:final-record:3",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "body": {
+      "additionalProperties": false,
+      "properties": {
+        "atomic_rename_result": {
+          "const": "success"
+        },
+        "destination_absent_recheck_observation_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "final_destination_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "final_state": {
+          "const": "FINAL-RECORD-BODY-FROZEN"
+        },
+        "intended_final_name": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+          "type": "string"
+        },
+        "postpublication_identity_verified": {
+          "const": true
+        },
+        "prepublication_record_package_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "reopened_exact_file_count": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "reopened_runtime_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "reopened_target_rows": {
+          "items": {
+            "$ref": "#/$defs/target_row"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "reopened_target_set_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "reopened_total_bytes": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "retained_destination_parent_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "runtime_a_prepublication_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "transaction_id": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "prepublication_record_package_sha256",
+        "transaction_id",
+        "destination_absent_recheck_observation_sha256",
+        "atomic_rename_result",
+        "runtime_a_prepublication_identity_sha256",
+        "final_destination_identity_sha256",
+        "retained_destination_parent_identity_sha256",
+        "intended_final_name",
+        "reopened_runtime_manifest_sha256",
+        "reopened_exact_file_count",
+        "reopened_total_bytes",
+        "reopened_target_rows",
+        "reopened_target_set_sha256",
+        "postpublication_identity_verified",
+        "final_state"
+      ],
+      "type": "object"
+    },
+    "body_canonical_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "body_closed_file_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "body_field_order": {
+      "const": [
+        "prepublication_record_package_sha256",
+        "transaction_id",
+        "destination_absent_recheck_observation_sha256",
+        "atomic_rename_result",
+        "runtime_a_prepublication_identity_sha256",
+        "final_destination_identity_sha256",
+        "retained_destination_parent_identity_sha256",
+        "intended_final_name",
+        "reopened_runtime_manifest_sha256",
+        "reopened_exact_file_count",
+        "reopened_total_bytes",
+        "reopened_target_rows",
+        "reopened_target_set_sha256",
+        "postpublication_identity_verified",
+        "final_state"
+      ]
+    },
+    "body_hashes_equal": {
+      "const": true
+    },
+    "body_readback_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "record_package_codec": {
+      "const": "rfc8785-jcs-utf8-no-bom-plus-single-final-lf"
+    },
+    "schema_id": {
+      "const": "S0-PUBLIC-ASSEMBLY-RUNTIME-MATERIALIZATION-FINAL-RECORD-3"
+    },
+    "version": {
+      "const": "0.3.0"
+    }
+  },
+  "required": [
+    "schema_id",
+    "version",
+    "record_package_codec",
+    "body_field_order",
+    "body",
+    "body_canonical_sha256",
+    "body_closed_file_sha256",
+    "body_readback_sha256",
+    "body_hashes_equal"
+  ],
+  "title": "S0 public assembly runtime materialization final record v0.3",
+  "type": "object"
+}
