@@ -1,0 +1,317 @@
+{
+  "base_effective_row_count": 63,
+  "base_matrix_sha256": "b091b3eaf4bfba09a671845229a4b0bdbafbce385e4e776f15a3c38c55db2b5e",
+  "composition_algorithm": "retain all 63 authenticated v0.2 effective rows in exact order, then append v0_3_additional_rows in published order",
+  "effective_row_count": 97,
+  "schema_id": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-MUTATION-MATRIX-3",
+  "v0_3_additional_row_count": 34,
+  "v0_3_additional_rows": [
+    {
+      "action_boundary": "before candidate import or process after target-set policy parse",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-001",
+      "id": "BRM-V03-TARGETSET-001",
+      "mutation": "target-set grammar ID, encoding, line ending, field order, or terminal-LF rule is missing, unknown, or changed",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before target-set hashing",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-001",
+      "id": "BRM-V03-TARGETSET-002",
+      "mutation": "a target path is absolute, empty, contains backslash, colon, control, or dot segment, or is not ASCII",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before target-set hashing",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-001",
+      "id": "BRM-V03-TARGETSET-003",
+      "mutation": "two target rows have the same canonical path",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before target-set hashing",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-001",
+      "id": "BRM-V03-TARGETSET-004",
+      "mutation": "target rows are not in strict ascending unsigned ASCII path-byte order",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before target-set digest comparison",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-001",
+      "id": "BRM-V03-TARGETSET-005",
+      "mutation": "path byte length, target byte length, or target SHA-256 differs from authenticated bytes",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before target-set digest comparison",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-001",
+      "id": "BRM-V03-TARGETSET-006",
+      "mutation": "target_count differs from the number of canonical rows",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before target-set digest comparison",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-001",
+      "id": "BRM-V03-TARGETSET-007",
+      "mutation": "total_target_bytes differs from the sum of target byte lengths",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before target-set hashing",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-001",
+      "id": "BRM-V03-TARGETSET-008",
+      "mutation": "target set is empty",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "after static import inspection of the preloader",
+      "expected_primary_failure": "BR-BINARY/1",
+      "finding": "BRM-V02-IR-002",
+      "id": "BRM-V03-BINARY-001",
+      "mutation": "native preloader omits kernel32.dll!CreateProcessW",
+      "output_created_before_primary_failure": true,
+      "phase": "binary"
+    },
+    {
+      "action_boundary": "after static import inspection of the preloader",
+      "expected_primary_failure": "BR-BINARY/1",
+      "finding": "BRM-V02-IR-002",
+      "id": "BRM-V03-BINARY-002",
+      "mutation": "native preloader omits ntdll.dll!NtCreateFile",
+      "output_created_before_primary_failure": true,
+      "phase": "binary"
+    },
+    {
+      "action_boundary": "after static import inspection of the preloader",
+      "expected_primary_failure": "BR-BINARY/1",
+      "finding": "BRM-V02-IR-002",
+      "id": "BRM-V03-BINARY-003",
+      "mutation": "preloader required-direct-import order differs or an unlisted import is outside its authenticated allowlist",
+      "output_created_before_primary_failure": true,
+      "phase": "binary"
+    },
+    {
+      "action_boundary": "after static import inspection of the guard",
+      "expected_primary_failure": "BR-BINARY/1",
+      "finding": "BRM-V02-IR-002",
+      "id": "BRM-V03-BINARY-004",
+      "mutation": "guard imports ntdll.dll!NtCreateFile",
+      "output_created_before_primary_failure": true,
+      "phase": "binary"
+    },
+    {
+      "action_boundary": "after static import inspection of the guard",
+      "expected_primary_failure": "BR-BINARY/1",
+      "finding": "BRM-V02-IR-002",
+      "id": "BRM-V03-BINARY-005",
+      "mutation": "guard omits, reorders, or changes one of the exact eleven effective v0.4 observation-call direct imports",
+      "output_created_before_primary_failure": true,
+      "phase": "binary"
+    },
+    {
+      "action_boundary": "after static import/export inspection of the guard",
+      "expected_primary_failure": "BR-BINARY/1",
+      "finding": "BRM-V02-IR-002",
+      "id": "BRM-V03-BINARY-006",
+      "mutation": "guard import owner DLL, full import allowlist, or PyInit_s0_runtime_handle_guard_v0_4 export differs",
+      "output_created_before_primary_failure": true,
+      "phase": "binary"
+    },
+    {
+      "action_boundary": "before candidate import or process during runtime policy validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-003",
+      "id": "BRM-V03-DLLDIR-001",
+      "mutation": "ordered DLL-search-directory inventory is missing or empty",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during runtime policy validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-003",
+      "id": "BRM-V03-DLLDIR-002",
+      "mutation": "an extra directory not derived from the application row or DLL-map parents is present",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during runtime policy validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-003",
+      "id": "BRM-V03-DLLDIR-003",
+      "mutation": "application directory is not index zero or derived DLL parent directories are reordered",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during runtime policy validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-003",
+      "id": "BRM-V03-DLLDIR-004",
+      "mutation": "a canonical DLL-search directory is duplicated",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during runtime policy validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-003",
+      "id": "BRM-V03-DLLDIR-005",
+      "mutation": "a search directory is host-filled rather than derived from authenticated runtime rows",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during runtime policy validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-003",
+      "id": "BRM-V03-DLLDIR-006",
+      "mutation": "PATH, registry, current directory, user site, or another ambient source contributes a DLL directory",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during runtime policy validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-003",
+      "id": "BRM-V03-DLLDIR-007",
+      "mutation": "application directory differs from the parent of the exact verifier_application runtime row",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before candidate import or process during runtime policy validation",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V02-IR-003",
+      "id": "BRM-V03-DLLDIR-008",
+      "mutation": "DLL resolution binding is missing, duplicated, path-mismatched, index-mismatched, hash-mismatched, or basename-colliding",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before prepublication body freeze",
+      "expected_primary_failure": "BR-RECORD/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-PRECORD-001",
+      "mutation": "prepublication record omits one required package or body field",
+      "output_created_before_primary_failure": true,
+      "phase": "record"
+    },
+    {
+      "action_boundary": "before prepublication body freeze",
+      "expected_primary_failure": "BR-RECORD/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-PRECORD-002",
+      "mutation": "prepublication record contains an unknown field",
+      "output_created_before_primary_failure": true,
+      "phase": "record"
+    },
+    {
+      "action_boundary": "before prepublication body freeze",
+      "expected_primary_failure": "BR-RECORD/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-PRECORD-003",
+      "mutation": "prepublication body contains rename success, final identity, postpublication rehash, or PASS",
+      "output_created_before_primary_failure": true,
+      "phase": "record"
+    },
+    {
+      "action_boundary": "after prepublication body close and before destination recheck",
+      "expected_primary_failure": "BR-RECORD/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-PRECORD-004",
+      "mutation": "prepublication canonical, closed-file, and readback body hashes are not all equal",
+      "output_created_before_primary_failure": true,
+      "phase": "record"
+    },
+    {
+      "action_boundary": "after prepublication body readback and before destination recheck",
+      "expected_primary_failure": "BR-RECORD/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-PRECORD-005",
+      "mutation": "prepublication body field order or record package codec differs from the authenticated schema",
+      "output_created_before_primary_failure": true,
+      "phase": "record"
+    },
+    {
+      "action_boundary": "immediately before atomic rename",
+      "expected_primary_failure": "BR-MATERIALIZE/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-PUBLISH-001",
+      "mutation": "destination-absent recheck is skipped, reordered, fabricated, or stale",
+      "output_created_before_primary_failure": true,
+      "phase": "publication"
+    },
+    {
+      "action_boundary": "immediately before atomic rename",
+      "expected_primary_failure": "BR-MATERIALIZE/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-PUBLISH-002",
+      "mutation": "destination exists at the required recheck",
+      "output_created_before_primary_failure": true,
+      "phase": "publication"
+    },
+    {
+      "action_boundary": "immediately before atomic rename",
+      "expected_primary_failure": "BR-MATERIALIZE/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-PUBLISH-003",
+      "mutation": "recheck parent identity or intended final name differs from the frozen prepublication body",
+      "output_created_before_primary_failure": true,
+      "phase": "publication"
+    },
+    {
+      "action_boundary": "before final record body freeze",
+      "expected_primary_failure": "BR-RECORD/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-FRECORD-001",
+      "mutation": "final record omits one required package, body, target-row, or rehash field",
+      "output_created_before_primary_failure": true,
+      "phase": "record"
+    },
+    {
+      "action_boundary": "before final record body freeze",
+      "expected_primary_failure": "BR-RECORD/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-FRECORD-002",
+      "mutation": "final record contains an unknown or prepublication-only field",
+      "output_created_before_primary_failure": true,
+      "phase": "record"
+    },
+    {
+      "action_boundary": "before final record body freeze",
+      "expected_primary_failure": "BR-RECORD/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-FRECORD-003",
+      "mutation": "final record is frozen before reopen, identity, file-count, byte-count, row-hash, or canonical target-set verification",
+      "output_created_before_primary_failure": true,
+      "phase": "record"
+    },
+    {
+      "action_boundary": "after final body close and before diagnostic exposure",
+      "expected_primary_failure": "BR-RECORD/1",
+      "finding": "BRM-V02-IR-004",
+      "id": "BRM-V03-FRECORD-004",
+      "mutation": "final canonical, closed-file, and readback body hashes differ or prior evidence hashes do not match",
+      "output_created_before_primary_failure": true,
+      "phase": "record"
+    }
+  ],
+  "version": "0.3.0"
+}
