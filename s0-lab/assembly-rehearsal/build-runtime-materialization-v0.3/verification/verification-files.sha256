@@ -1,0 +1,6 @@
+4304a23496edf0fec66b445d9b5bc3d26f17adbbfc1217d087a8c49a1e12190b  s0-lab/assembly-rehearsal/build-runtime-materialization-v0.3/README.md
+7d9c02bf378af8f7136be13c47b9907b77f1935d217d179707b19b428cbd384c  s0-lab/assembly-rehearsal/build-runtime-materialization-v0.3/README.sha256
+4c91cc9c248894e8ec2f30cc5339061f591e21ac63429a2b046194a7458095a5  s0-lab/assembly-rehearsal/build-runtime-materialization-v0.3/verification/implementation-files.sha256
+fe9d9b68118a4e005d05ea8c18b94786e87b48dd0a8ecc5e3ffa8de42dce3bf7  s0-lab/assembly-rehearsal/build-runtime-materialization-v0.3/verification/public-build-runtime-materialization-implementation-candidate-report-v0.3.md
+2814f55a372353a036bea55276b5986e212cbb01c1cdce7723dc819239acb988  s0-lab/assembly-rehearsal/build-runtime-materialization-v0.3/verification/public-build-runtime-materialization-implementation-candidate-report-v0.3.sha256
+a809a805b47e9b2536414cfbb397f3af885e7fb0109721b7423c7af5bd148bff  s0-lab/assembly-rehearsal/build-runtime-materialization-v0.3/verification/verify_candidate.py
