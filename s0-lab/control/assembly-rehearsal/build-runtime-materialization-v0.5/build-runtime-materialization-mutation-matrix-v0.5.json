@@ -1,0 +1,47 @@
+{
+  "base_effective_row_count": 111,
+  "base_matrix_sha256": "9d2522bdce4a64b612fbac300ff3090d317da32e7bb85b7c021e2ae030a8bf0e",
+  "composition_algorithm": "retain all 111 authenticated v0.4 effective rows in exact order, then append v0_5_additional_rows in published order",
+  "effective_row_count": 115,
+  "schema_id": "S0-PUBLIC-ASSEMBLY-BUILD-RUNTIME-MATERIALIZATION-MUTATION-MATRIX-5",
+  "v0_5_additional_row_count": 4,
+  "v0_5_additional_rows": [
+    {
+      "action_boundary": "before semantic validator import or candidate process",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V04-IR-001",
+      "id": "BRM-V05-RELATION-001",
+      "mutation": "the authenticated v0.4 relation at zero-based index 15 is not replaced by the exact v0.3 byte string application-directory-equals-parent-of-verifier-application-runtime-row",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before semantic validator import or candidate process",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V04-IR-001",
+      "id": "BRM-V05-RELATION-002",
+      "mutation": "any other semantic relation byte, index, order, count, preimage line, or effective relation digest differs from the exact one-position patch",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before policy hashing, record freeze, candidate import, or process",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V04-IR-002",
+      "id": "BRM-V05-POLICY-001",
+      "mutation": "any object other than base_profile.publication_no_replace_policy is treated as the publication policy hash preimage, including the v0.4 interface-map summary",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    },
+    {
+      "action_boundary": "before policy hashing, record freeze, candidate import, or process",
+      "expected_primary_failure": "BR-AUTH/0",
+      "finding": "BRM-V04-IR-002",
+      "id": "BRM-V05-POLICY-002",
+      "mutation": "the sole normative policy is not the exact 20-field authenticated object, its RFC8785-JCS-UTF8-plus-final-LF hash is not 3fd2df85e665c2a7b968d1c75f5c4ef2f85eb16e19682f718be4d3675b4a654b, or a record binds another digest",
+      "output_created_before_primary_failure": false,
+      "phase": "authority"
+    }
+  ],
+  "version": "0.5.0"
+}
