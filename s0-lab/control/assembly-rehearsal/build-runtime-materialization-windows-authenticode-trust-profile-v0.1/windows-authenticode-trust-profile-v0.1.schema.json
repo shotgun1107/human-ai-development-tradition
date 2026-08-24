@@ -1,0 +1,172 @@
+{
+  "$id": "urn:human-ai-development-tradition:s0:public-brm-windows-authenticode-trust-profile:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "base_authority": {
+      "additionalProperties": false,
+      "properties": {
+        "handoff_commit": { "$ref": "#/$defs/git_oid" },
+        "handoff_tree": { "$ref": "#/$defs/git_oid" },
+        "recovery_package_manifest_sha256": { "const": "1994a35319047cbca7418bb68293bab174642d7ce06484f24a0a234577f06b83" },
+        "recovery_review_record_sha256": { "const": "3cb76b0d2da2e303efb6f1a8353946180ca3c5d962ba9983747cfa67ad064f80" }
+      },
+      "required": ["handoff_commit", "handoff_tree", "recovery_package_manifest_sha256", "recovery_review_record_sha256"],
+      "type": "object"
+    },
+    "byte_identity_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "exclusive_fresh_destination_required": { "const": true },
+        "file_identity_reuse_allowed": { "const": false },
+        "post_signature_sha256_must_equal_download_sha256": { "const": true },
+        "preexecution_sha256_must_equal_download_sha256": { "const": true },
+        "retry_with_same_file_allowed": { "const": false }
+      },
+      "required": ["exclusive_fresh_destination_required", "file_identity_reuse_allowed", "post_signature_sha256_must_equal_download_sha256", "preexecution_sha256_must_equal_download_sha256", "retry_with_same_file_allowed"],
+      "type": "object"
+    },
+    "claim_boundary": {
+      "additionalProperties": false,
+      "properties": {
+        "bootstrapper_executed": { "const": false },
+        "build_executed": { "const": false },
+        "candidate_only": { "const": true },
+        "certificate_identity_preapproved": { "const": false },
+        "download_performed": { "const": false },
+        "f0_content_accessed": { "const": false },
+        "installation_performed": { "const": false },
+        "native_api_reachable": { "const": false },
+        "provider_or_model_called": { "const": false },
+        "rehearsal_pass": { "const": false },
+        "runtime_materialized": { "const": false },
+        "s0_executed": { "const": false },
+        "signature_verified": { "const": false },
+        "trust_store_mutated": { "const": false }
+      },
+      "required": ["bootstrapper_executed", "build_executed", "candidate_only", "certificate_identity_preapproved", "download_performed", "f0_content_accessed", "installation_performed", "native_api_reachable", "provider_or_model_called", "rehearsal_pass", "runtime_materialized", "s0_executed", "signature_verified", "trust_store_mutated"],
+      "type": "object"
+    },
+    "evidence_record_schema_id": { "const": "S0-PUBLIC-BRM-AUTHENTICODE-EVIDENCE-RECORD-1" },
+    "microsoft_guidance_authority": {
+      "additionalProperties": false,
+      "properties": {
+        "guidance_kb": { "const": "5125813" },
+        "guidance_published_date": { "const": "2026-08-20" },
+        "guidance_uri": { "const": "https://support.microsoft.com/en-us/servicing/os/windows/docs/2026/08/next-generation-code-signing" },
+        "required_api_delegation": { "const": "WinVerifyTrust-or-approved-CryptoAPI-chain-policy" },
+        "static_algorithm_pin_allowed": { "const": false },
+        "static_intermediate_ca_pin_allowed": { "const": false },
+        "static_issuer_pin_allowed": { "const": false },
+        "static_key_size_pin_allowed": { "const": false },
+        "static_leaf_serial_pin_allowed": { "const": false },
+        "static_leaf_thumbprint_pin_allowed": { "const": false },
+        "static_subject_pin_allowed": { "const": false }
+      },
+      "required": ["guidance_kb", "guidance_published_date", "guidance_uri", "required_api_delegation", "static_algorithm_pin_allowed", "static_intermediate_ca_pin_allowed", "static_issuer_pin_allowed", "static_key_size_pin_allowed", "static_leaf_serial_pin_allowed", "static_leaf_thumbprint_pin_allowed", "static_subject_pin_allowed"],
+      "type": "object"
+    },
+    "recovery_v0_2_compatibility": {
+      "additionalProperties": false,
+      "properties": {
+        "conflicting_requirements": {
+          "const": ["exact-signer-subject", "exact-signer-issuer", "exact-signer-thumbprint", "exact-signer-serial", "exact-signature-algorithm", "exact-timestamp-algorithm"]
+        },
+        "required_resolution": { "const": "RECOVERY-V0.3-MUST-REPLACE-STATIC-CERTIFICATE-PINS-WITH-WINDOWS-TRUST-API-POLICY" },
+        "status": { "const": "BLOCKED-REQUIRES-RECOVERY-V0.3-ALIGNMENT" }
+      },
+      "required": ["conflicting_requirements", "required_resolution", "status"],
+      "type": "object"
+    },
+    "revocation_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "cache_only_allowed": { "const": false },
+        "entire_chain_except_root_required": { "const": true },
+        "network_retrieval_required": { "const": true },
+        "offline_allowed": { "const": false },
+        "revoked_allowed": { "const": false },
+        "soft_fail_allowed": { "const": false },
+        "stale_allowed": { "const": false },
+        "unknown_allowed": { "const": false }
+      },
+      "required": ["cache_only_allowed", "entire_chain_except_root_required", "network_retrieval_required", "offline_allowed", "revoked_allowed", "soft_fail_allowed", "stale_allowed", "unknown_allowed"],
+      "type": "object"
+    },
+    "schema_id": { "const": "S0-PUBLIC-BRM-WINDOWS-AUTHENTICODE-TRUST-PROFILE-1" },
+    "selected_bootstrapper": {
+      "additionalProperties": false,
+      "properties": {
+        "exact_fixed_url": { "const": "https://download.visualstudio.microsoft.com/download/pr/fa619120-9c0e-47e6-bfe0-3ee96fb671b2/236367b68ba9a51708263ab10a1c85546cc4a8eca78b365168811d19c4fb2f29/vs_BuildTools.exe" },
+        "final_uri_must_equal_requested_uri": { "const": true },
+        "redirect_count": { "const": 0 },
+        "release": { "const": "17.14.39" },
+        "release_build": { "const": "17.14.37614.0" },
+        "selection_status": { "const": "SELECTED-NOT-DOWNLOADED" }
+      },
+      "required": ["exact_fixed_url", "final_uri_must_equal_requested_uri", "redirect_count", "release", "release_build", "selection_status"],
+      "type": "object"
+    },
+    "status": { "const": "BLOCKED-REQUIRES-RECOVERY-V0.3-ALIGNMENT" },
+    "timestamp_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "algorithm_selection": { "const": "WINDOWS-TRUST-API-AGILE" },
+        "legacy_authenticode_countersignature_allowed_if_windows_trusts": { "const": true },
+        "present_required": { "const": true },
+        "rfc3161_allowed": { "const": true },
+        "timestamp_chain_trusted_required": { "const": true },
+        "timestamp_policy_error_required": { "const": 0 },
+        "timestamp_revocation_good_required": { "const": true }
+      },
+      "required": ["algorithm_selection", "legacy_authenticode_countersignature_allowed_if_windows_trusts", "present_required", "rfc3161_allowed", "timestamp_chain_trusted_required", "timestamp_policy_error_required", "timestamp_revocation_good_required"],
+      "type": "object"
+    },
+    "trust_store_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "automatic_enrollment_allowed": { "const": false },
+        "candidate_provided_root_allowed": { "const": false },
+        "disallowed_ctl_enforced": { "const": true },
+        "private_static_store_required": { "const": false },
+        "source": { "const": "WINDOWS-SYSTEM-TRUST-AND-DISALLOWED-CTL-AT-VERIFICATION-TIME" },
+        "store_mutation_allowed": { "const": false },
+        "store_snapshot_status": { "const": "UNRESOLVED-REQUIRES-RECOVERY-V0.3" }
+      },
+      "required": ["automatic_enrollment_allowed", "candidate_provided_root_allowed", "disallowed_ctl_enforced", "private_static_store_required", "source", "store_mutation_allowed", "store_snapshot_status"],
+      "type": "object"
+    },
+    "verification_procedure": {
+      "additionalProperties": false,
+      "properties": {
+        "action_guid": { "const": "{00AAC56B-CD44-11D0-8CC2-00C04FC295EE}" },
+        "action_id": { "const": "WINTRUST_ACTION_GENERIC_VERIFY_V2" },
+        "candidate_callback_allowed": { "const": false },
+        "dw_prov_flags_required": { "const": ["WTD_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT", "WTD_DISABLE_MD2_MD4", "WTD_MOTW"] },
+        "dw_state_action_close_required": { "const": true },
+        "dw_state_action_verify": { "const": "WTD_STATEACTION_VERIFY" },
+        "dw_ui_choice": { "const": "WTD_UI_NONE" },
+        "dw_ui_context": { "const": "WTD_UICONTEXT_INSTALL" },
+        "dw_union_choice": { "const": "WTD_CHOICE_FILE" },
+        "fdw_revocation_checks": { "const": "WTD_REVOKE_WHOLECHAIN" },
+        "file_handle_required": { "const": true },
+        "implementation_status": { "const": "DESIGN-ONLY-NOT-IMPLEMENTED" },
+        "pg_known_subject": { "type": "null" },
+        "platform_api": { "const": "WinVerifyTrust" },
+        "policy_callback_data": { "type": "null" },
+        "return_success": { "const": "EXACT-LONG-ZERO" },
+        "sip_client_data": { "type": "null" },
+        "window_handle": { "const": "INVALID_HANDLE_VALUE" }
+      },
+      "required": ["action_guid", "action_id", "candidate_callback_allowed", "dw_prov_flags_required", "dw_state_action_close_required", "dw_state_action_verify", "dw_ui_choice", "dw_ui_context", "dw_union_choice", "fdw_revocation_checks", "file_handle_required", "implementation_status", "pg_known_subject", "platform_api", "policy_callback_data", "return_success", "sip_client_data", "window_handle"],
+      "type": "object"
+    },
+    "version": { "const": "0.1.0" }
+  },
+  "required": ["base_authority", "byte_identity_policy", "claim_boundary", "evidence_record_schema_id", "microsoft_guidance_authority", "recovery_v0_2_compatibility", "revocation_policy", "schema_id", "selected_bootstrapper", "status", "timestamp_policy", "trust_store_policy", "verification_procedure", "version"],
+  "type": "object",
+  "$defs": {
+    "git_oid": { "pattern": "^[0-9a-f]{40}$", "type": "string" },
+    "sha256": { "pattern": "^[0-9a-f]{64}$", "type": "string" }
+  }
+}

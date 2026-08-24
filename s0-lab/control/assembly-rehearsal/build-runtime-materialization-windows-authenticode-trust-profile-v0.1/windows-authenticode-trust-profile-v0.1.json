@@ -1,0 +1,120 @@
+{
+  "base_authority": {
+    "handoff_commit": "2cb57954c92199dd92af84b8b510b38e3444bebd",
+    "handoff_tree": "0b325f0b54f2f2315cee167d05ceffc51f000f2c",
+    "recovery_package_manifest_sha256": "1994a35319047cbca7418bb68293bab174642d7ce06484f24a0a234577f06b83",
+    "recovery_review_record_sha256": "3cb76b0d2da2e303efb6f1a8353946180ca3c5d962ba9983747cfa67ad064f80"
+  },
+  "byte_identity_policy": {
+    "exclusive_fresh_destination_required": true,
+    "file_identity_reuse_allowed": false,
+    "post_signature_sha256_must_equal_download_sha256": true,
+    "preexecution_sha256_must_equal_download_sha256": true,
+    "retry_with_same_file_allowed": false
+  },
+  "claim_boundary": {
+    "bootstrapper_executed": false,
+    "build_executed": false,
+    "candidate_only": true,
+    "certificate_identity_preapproved": false,
+    "download_performed": false,
+    "f0_content_accessed": false,
+    "installation_performed": false,
+    "native_api_reachable": false,
+    "provider_or_model_called": false,
+    "rehearsal_pass": false,
+    "runtime_materialized": false,
+    "s0_executed": false,
+    "signature_verified": false,
+    "trust_store_mutated": false
+  },
+  "evidence_record_schema_id": "S0-PUBLIC-BRM-AUTHENTICODE-EVIDENCE-RECORD-1",
+  "microsoft_guidance_authority": {
+    "guidance_kb": "5125813",
+    "guidance_published_date": "2026-08-20",
+    "guidance_uri": "https://support.microsoft.com/en-us/servicing/os/windows/docs/2026/08/next-generation-code-signing",
+    "required_api_delegation": "WinVerifyTrust-or-approved-CryptoAPI-chain-policy",
+    "static_algorithm_pin_allowed": false,
+    "static_intermediate_ca_pin_allowed": false,
+    "static_issuer_pin_allowed": false,
+    "static_key_size_pin_allowed": false,
+    "static_leaf_serial_pin_allowed": false,
+    "static_leaf_thumbprint_pin_allowed": false,
+    "static_subject_pin_allowed": false
+  },
+  "recovery_v0_2_compatibility": {
+    "conflicting_requirements": [
+      "exact-signer-subject",
+      "exact-signer-issuer",
+      "exact-signer-thumbprint",
+      "exact-signer-serial",
+      "exact-signature-algorithm",
+      "exact-timestamp-algorithm"
+    ],
+    "required_resolution": "RECOVERY-V0.3-MUST-REPLACE-STATIC-CERTIFICATE-PINS-WITH-WINDOWS-TRUST-API-POLICY",
+    "status": "BLOCKED-REQUIRES-RECOVERY-V0.3-ALIGNMENT"
+  },
+  "revocation_policy": {
+    "cache_only_allowed": false,
+    "entire_chain_except_root_required": true,
+    "network_retrieval_required": true,
+    "offline_allowed": false,
+    "revoked_allowed": false,
+    "soft_fail_allowed": false,
+    "stale_allowed": false,
+    "unknown_allowed": false
+  },
+  "schema_id": "S0-PUBLIC-BRM-WINDOWS-AUTHENTICODE-TRUST-PROFILE-1",
+  "selected_bootstrapper": {
+    "exact_fixed_url": "https://download.visualstudio.microsoft.com/download/pr/fa619120-9c0e-47e6-bfe0-3ee96fb671b2/236367b68ba9a51708263ab10a1c85546cc4a8eca78b365168811d19c4fb2f29/vs_BuildTools.exe",
+    "final_uri_must_equal_requested_uri": true,
+    "redirect_count": 0,
+    "release": "17.14.39",
+    "release_build": "17.14.37614.0",
+    "selection_status": "SELECTED-NOT-DOWNLOADED"
+  },
+  "status": "BLOCKED-REQUIRES-RECOVERY-V0.3-ALIGNMENT",
+  "timestamp_policy": {
+    "algorithm_selection": "WINDOWS-TRUST-API-AGILE",
+    "legacy_authenticode_countersignature_allowed_if_windows_trusts": true,
+    "present_required": true,
+    "rfc3161_allowed": true,
+    "timestamp_chain_trusted_required": true,
+    "timestamp_policy_error_required": 0,
+    "timestamp_revocation_good_required": true
+  },
+  "trust_store_policy": {
+    "automatic_enrollment_allowed": false,
+    "candidate_provided_root_allowed": false,
+    "disallowed_ctl_enforced": true,
+    "private_static_store_required": false,
+    "source": "WINDOWS-SYSTEM-TRUST-AND-DISALLOWED-CTL-AT-VERIFICATION-TIME",
+    "store_mutation_allowed": false,
+    "store_snapshot_status": "UNRESOLVED-REQUIRES-RECOVERY-V0.3"
+  },
+  "verification_procedure": {
+    "action_guid": "{00AAC56B-CD44-11D0-8CC2-00C04FC295EE}",
+    "action_id": "WINTRUST_ACTION_GENERIC_VERIFY_V2",
+    "candidate_callback_allowed": false,
+    "dw_prov_flags_required": [
+      "WTD_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT",
+      "WTD_DISABLE_MD2_MD4",
+      "WTD_MOTW"
+    ],
+    "dw_state_action_close_required": true,
+    "dw_state_action_verify": "WTD_STATEACTION_VERIFY",
+    "dw_ui_choice": "WTD_UI_NONE",
+    "dw_ui_context": "WTD_UICONTEXT_INSTALL",
+    "dw_union_choice": "WTD_CHOICE_FILE",
+    "fdw_revocation_checks": "WTD_REVOKE_WHOLECHAIN",
+    "file_handle_required": true,
+    "implementation_status": "DESIGN-ONLY-NOT-IMPLEMENTED",
+    "pg_known_subject": null,
+    "platform_api": "WinVerifyTrust",
+    "policy_callback_data": null,
+    "return_success": "EXACT-LONG-ZERO",
+    "sip_client_data": null,
+    "window_handle": "INVALID_HANDLE_VALUE"
+  },
+  "version": "0.1.0"
+}

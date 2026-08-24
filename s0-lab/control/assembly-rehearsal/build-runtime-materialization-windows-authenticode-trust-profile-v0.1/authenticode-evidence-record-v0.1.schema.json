@@ -1,0 +1,30 @@
+{
+  "$id": "urn:human-ai-development-tradition:s0:public-brm-authenticode-evidence-record:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action_guid": { "const": "{00AAC56B-CD44-11D0-8CC2-00C04FC295EE}" },
+    "byte_length": { "minimum": 1, "type": "integer" },
+    "chain_certificate_sha256": { "items": { "$ref": "#/$defs/sha256" }, "minItems": 2, "type": "array", "uniqueItems": true },
+    "code_signing_eku_present": { "const": true },
+    "decision": { "const": "ACCEPTED-PREEXECUTION" },
+    "download_sha256": { "$ref": "#/$defs/sha256" },
+    "evidence_schema_id": { "const": "S0-PUBLIC-BRM-AUTHENTICODE-EVIDENCE-RECORD-1" },
+    "final_uri": { "const": "https://download.visualstudio.microsoft.com/download/pr/fa619120-9c0e-47e6-bfe0-3ee96fb671b2/236367b68ba9a51708263ab10a1c85546cc4a8eca78b365168811d19c4fb2f29/vs_BuildTools.exe" },
+    "post_signature_sha256": { "$ref": "#/$defs/sha256" },
+    "preexecution_sha256": { "$ref": "#/$defs/sha256" },
+    "process_count_before_acceptance": { "const": 0 },
+    "redirect_count": { "const": 0 },
+    "revocation_disposition": { "const": "GOOD-ENTIRE-CHAIN-EXCEPT-ROOT" },
+    "signer_leaf_sha256_observation": { "$ref": "#/$defs/sha256" },
+    "timestamp_kind": { "enum": ["RFC3161", "AUTHENTICODE-COUNTERSIGNATURE"] },
+    "timestamp_policy_error": { "const": 0 },
+    "trust_store_mutated": { "const": false },
+    "winverifytrust_return": { "const": 0 }
+  },
+  "required": ["action_guid", "byte_length", "chain_certificate_sha256", "code_signing_eku_present", "decision", "download_sha256", "evidence_schema_id", "final_uri", "post_signature_sha256", "preexecution_sha256", "process_count_before_acceptance", "redirect_count", "revocation_disposition", "signer_leaf_sha256_observation", "timestamp_kind", "timestamp_policy_error", "trust_store_mutated", "winverifytrust_return"],
+  "type": "object",
+  "$defs": {
+    "sha256": { "pattern": "^[0-9a-f]{64}$", "type": "string" }
+  }
+}
