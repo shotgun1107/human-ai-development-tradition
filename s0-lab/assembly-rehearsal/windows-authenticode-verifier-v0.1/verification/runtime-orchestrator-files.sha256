@@ -1,0 +1,3 @@
+12d17988b6d507c0373257bfb8249807d6c4847876081d880efbcd9e59895103  s0-lab/assembly-rehearsal/windows-authenticode-verifier-v0.1/implementation/s0_windows_authenticode_verifier/__init__.py
+27a5cd33033ea6406263bbebe0b968e200c25ef3379e27071e058b3ab254599f  s0-lab/assembly-rehearsal/windows-authenticode-verifier-v0.1/implementation/s0_windows_authenticode_verifier/authority.py
+d99ed1f98faf7fa6c3413cbac2fbeeda28dc464e522ff06ebe249f328fcdf967  s0-lab/assembly-rehearsal/windows-authenticode-verifier-v0.1/implementation/s0_windows_authenticode_verifier/verifier.py
