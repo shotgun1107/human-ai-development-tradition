@@ -1,0 +1,253 @@
+{
+  "$id": "urn:human-ai-development-tradition:s0:public-brm-authenticode-provider-observation:2",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Non-authoritative raw Windows Authenticode provider observation",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_id": { "const": "S0-PUBLIC-BRM-AUTHENTICODE-PROVIDER-OBSERVATION-2" },
+    "record_status": { "const": "RAW-OBSERVATION-NONAUTHORITATIVE" },
+    "observation_id": { "$ref": "#/$defs/sha256" },
+    "profile_package_manifest_sha256": { "$ref": "#/$defs/sha256" },
+    "verifier_implementation_manifest_sha256": { "$ref": "#/$defs/sha256" },
+    "semantic_contract_sha256": { "const": "0eda037e7615faee3d59aef7d54e37507e1f46670875c7c19672006f349f270d" },
+    "acquisition": { "$ref": "#/$defs/acquisition" },
+    "wintrust": { "$ref": "#/$defs/wintrust" },
+    "signer": { "$ref": "#/$defs/signer" },
+    "timestamp": { "$ref": "#/$defs/timestamp" },
+    "effective_trust_authority": { "$ref": "#/$defs/effective_trust_authority" },
+    "process_count_before_observation_close": { "const": 0 },
+    "trust_store_mutation_count": { "const": 0 }
+  },
+  "required": [
+    "schema_id",
+    "record_status",
+    "observation_id",
+    "profile_package_manifest_sha256",
+    "verifier_implementation_manifest_sha256",
+    "semantic_contract_sha256",
+    "acquisition",
+    "wintrust",
+    "signer",
+    "timestamp",
+    "effective_trust_authority",
+    "process_count_before_observation_close",
+    "trust_store_mutation_count"
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "git_file_id": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+    "volume_serial": { "type": "string", "pattern": "^[0-9a-f]{16}$" },
+    "long_result": { "type": "integer", "minimum": -2147483648, "maximum": 2147483647 },
+    "nullable_datetime": {
+      "oneOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "null" }
+      ]
+    },
+    "file_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "volume_serial_hex": { "$ref": "#/$defs/volume_serial" },
+        "file_id_hex": { "$ref": "#/$defs/git_file_id" },
+        "reparse_point": { "type": "boolean" },
+        "byte_length": { "type": "integer", "minimum": 1 }
+      },
+      "required": ["volume_serial_hex", "file_id_hex", "reparse_point", "byte_length"]
+    },
+    "acquisition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "requested_uri": { "const": "https://download.visualstudio.microsoft.com/download/pr/fa619120-9c0e-47e6-bfe0-3ee96fb671b2/236367b68ba9a51708263ab10a1c85546cc4a8eca78b365168811d19c4fb2f29/vs_BuildTools.exe" },
+        "final_uri": { "type": "string", "format": "uri" },
+        "redirect_count": { "type": "integer", "minimum": 0 },
+        "destination_creation": { "const": "CREATE_NEW-EXCLUSIVE-OUTSIDE-REPOSITORY" },
+        "same_open_file_handle_retained": { "type": "boolean" },
+        "download_close_identity": { "$ref": "#/$defs/file_identity" },
+        "post_signature_identity": { "$ref": "#/$defs/file_identity" },
+        "preexecution_identity": { "$ref": "#/$defs/file_identity" },
+        "download_sha256": { "$ref": "#/$defs/sha256" },
+        "post_signature_sha256": { "$ref": "#/$defs/sha256" },
+        "preexecution_sha256": { "$ref": "#/$defs/sha256" }
+      },
+      "required": [
+        "requested_uri",
+        "final_uri",
+        "redirect_count",
+        "destination_creation",
+        "same_open_file_handle_retained",
+        "download_close_identity",
+        "post_signature_identity",
+        "preexecution_identity",
+        "download_sha256",
+        "post_signature_sha256",
+        "preexecution_sha256"
+      ]
+    },
+    "wintrust": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "action_guid": { "const": "{00AAC56B-CD44-11D0-8CC2-00C04FC295EE}" },
+        "window_handle": { "const": "INVALID_HANDLE_VALUE" },
+        "dw_ui_choice": { "const": "WTD_UI_NONE" },
+        "dw_ui_context": { "const": "WTD_UICONTEXT_INSTALL" },
+        "dw_union_choice": { "const": "WTD_CHOICE_FILE" },
+        "fdw_revocation_checks": { "const": "WTD_REVOKE_NONE" },
+        "dw_prov_flags": { "const": ["WTD_DISABLE_MD2_MD4", "WTD_MOTW"] },
+        "state_action_verify": { "const": "WTD_STATEACTION_VERIFY" },
+        "verify_return": { "$ref": "#/$defs/long_result" },
+        "provider_state_extraction": { "enum": ["SUCCEEDED", "FAILED", "NOT-AVAILABLE"] },
+        "provider_state_binding_sha256": { "$ref": "#/$defs/sha256" },
+        "state_action_close": { "const": "WTD_STATEACTION_CLOSE" },
+        "close_attempted": { "type": "boolean" },
+        "close_return": { "$ref": "#/$defs/long_result" },
+        "candidate_callback_used": { "const": false },
+        "candidate_store_used": { "const": false },
+        "custom_signature_parser_used": { "const": false }
+      },
+      "required": [
+        "action_guid",
+        "window_handle",
+        "dw_ui_choice",
+        "dw_ui_context",
+        "dw_union_choice",
+        "fdw_revocation_checks",
+        "dw_prov_flags",
+        "state_action_verify",
+        "verify_return",
+        "provider_state_extraction",
+        "provider_state_binding_sha256",
+        "state_action_close",
+        "close_attempted",
+        "close_return",
+        "candidate_callback_used",
+        "candidate_store_used",
+        "custom_signature_parser_used"
+      ]
+    },
+    "chain_element": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "position": { "type": "integer", "minimum": 0 },
+        "role": { "enum": ["LEAF", "INTERMEDIATE", "ROOT"] },
+        "certificate_der_sha256": { "$ref": "#/$defs/sha256" },
+        "trust_status_error_mask_hex": { "type": "string", "pattern": "^[0-9a-f]{8}$" },
+        "trust_status_info_mask_hex": { "type": "string", "pattern": "^[0-9a-f]{8}$" },
+        "revocation_disposition": { "enum": ["GOOD", "REVOKED", "UNKNOWN", "OFFLINE", "UNCHECKED"] },
+        "freshness_disposition": { "enum": ["FRESH", "STALE", "UNKNOWN", "NOT-APPLICABLE-ROOT"] },
+        "retrieval_source": { "enum": ["NETWORK", "FRESH-CACHE", "UNKNOWN", "NOT-APPLICABLE-ROOT"] },
+        "this_update": { "$ref": "#/$defs/nullable_datetime" },
+        "next_update": { "$ref": "#/$defs/nullable_datetime" },
+        "disallowed": { "type": "boolean" }
+      },
+      "required": [
+        "position",
+        "role",
+        "certificate_der_sha256",
+        "trust_status_error_mask_hex",
+        "trust_status_info_mask_hex",
+        "revocation_disposition",
+        "freshness_disposition",
+        "retrieval_source",
+        "this_update",
+        "next_update",
+        "disallowed"
+      ]
+    },
+    "chain_array": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/chain_element" }
+    },
+    "chain_call": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "chain_engine": { "const": "HCCE_LOCAL_MACHINE" },
+        "chain_flags": { "const": ["CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT", "CERT_CHAIN_REVOCATION_ACCUMULATIVE_TIMEOUT"] },
+        "url_retrieval_timeout_ms": { "const": 10000 },
+        "cache_only": { "const": false },
+        "additional_candidate_store_used": { "const": false },
+        "chain_build_succeeded": { "type": "boolean" }
+      },
+      "required": ["chain_engine", "chain_flags", "url_retrieval_timeout_ms", "cache_only", "additional_candidate_store_used", "chain_build_succeeded"]
+    },
+    "signer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "leaf_certificate_der_sha256": { "$ref": "#/$defs/sha256" },
+        "provider_state_chain": { "$ref": "#/$defs/chain_array" },
+        "rebuilt_chain": { "$ref": "#/$defs/chain_array" },
+        "chain_call": { "$ref": "#/$defs/chain_call" },
+        "code_signing_eku_present": { "type": "boolean" },
+        "authenticode_policy_error": { "$ref": "#/$defs/long_result" },
+        "microsoft_root_policy_error": { "$ref": "#/$defs/long_result" },
+        "microsoft_root_policy_flags": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+        "test_root_flag_used": { "type": "boolean" }
+      },
+      "required": [
+        "leaf_certificate_der_sha256",
+        "provider_state_chain",
+        "rebuilt_chain",
+        "chain_call",
+        "code_signing_eku_present",
+        "authenticode_policy_error",
+        "microsoft_root_policy_error",
+        "microsoft_root_policy_flags",
+        "test_root_flag_used"
+      ]
+    },
+    "nullable_sha256": {
+      "oneOf": [
+        { "$ref": "#/$defs/sha256" },
+        { "type": "null" }
+      ]
+    },
+    "timestamp": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "present": { "type": "boolean" },
+        "kind": { "enum": ["RFC3161", "AUTHENTICODE-COUNTERSIGNATURE", "NONE"] },
+        "signing_time": { "$ref": "#/$defs/nullable_datetime" },
+        "leaf_certificate_der_sha256": { "$ref": "#/$defs/nullable_sha256" },
+        "provider_state_chain": { "type": "array", "items": { "$ref": "#/$defs/chain_element" } },
+        "rebuilt_chain": { "type": "array", "items": { "$ref": "#/$defs/chain_element" } },
+        "chain_call": { "$ref": "#/$defs/chain_call" },
+        "authenticode_ts_policy_error": { "$ref": "#/$defs/long_result" }
+      },
+      "required": ["present", "kind", "signing_time", "leaf_certificate_der_sha256", "provider_state_chain", "rebuilt_chain", "chain_call", "authenticode_ts_policy_error"]
+    },
+    "effective_trust_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "chain_engine": { "const": "HCCE_LOCAL_MACHINE" },
+        "trusted_root_scope": { "const": "LOCAL-MACHINE-ROOT" },
+        "intermediate_scope": { "const": "LOCAL-MACHINE-CA-PLUS-CHAIN-ENGINE-RETRIEVAL" },
+        "disallowed_scope": { "const": "LOCAL-MACHINE-DISALLOWED-AND-EFFECTIVE-WINDOWS-DISALLOWED-CTL" },
+        "snapshot_canonicalization": { "const": "SORTED-DER-SHA256-PLUS-CTL-SEQUENCE-AND-SIGNER-METADATA" },
+        "pre_verification_snapshot_sha256": { "$ref": "#/$defs/sha256" },
+        "post_verification_snapshot_sha256": { "$ref": "#/$defs/sha256" },
+        "store_mutation_observed": { "type": "boolean" },
+        "automatic_update_suppression_claimed": { "const": false }
+      },
+      "required": [
+        "chain_engine",
+        "trusted_root_scope",
+        "intermediate_scope",
+        "disallowed_scope",
+        "snapshot_canonicalization",
+        "pre_verification_snapshot_sha256",
+        "post_verification_snapshot_sha256",
+        "store_mutation_observed",
+        "automatic_update_suppression_claimed"
+      ]
+    }
+  }
+}

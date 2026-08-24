@@ -1,0 +1,261 @@
+{
+  "$id": "urn:human-ai-development-tradition:s0:public-brm-windows-authenticode-trust-profile:2",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Exact S0 v0.14 Windows Authenticode trust profile v0.2",
+  "description": "The package manifest authenticates the profile bytes; this schema additionally accepts only the exact reviewed v0.2 value.",
+  "type": "object",
+  "const": {
+    "schema_id": "S0-PUBLIC-BRM-WINDOWS-AUTHENTICODE-TRUST-PROFILE-2",
+    "version": "0.2.0",
+    "status": "BLOCKED-REQUIRES-RECOVERY-V0.3-ALIGNMENT-AND-VERIFIER-IMPLEMENTATION",
+    "base_authority": {
+      "handoff_commit": "2cb57954c92199dd92af84b8b510b38e3444bebd",
+      "handoff_tree": "0b325f0b54f2f2315cee167d05ceffc51f000f2c",
+      "recovery_package_manifest_sha256": "1994a35319047cbca7418bb68293bab174642d7ce06484f24a0a234577f06b83",
+      "recovery_review_record_sha256": "3cb76b0d2da2e303efb6f1a8353946180ca3c5d962ba9983747cfa67ad064f80",
+      "v0_1_candidate_commit": "2aaf014927b04816602b45513d1df6c7e4f83608",
+      "v0_1_candidate_tree": "c619bebb4624f45b6bb10b72edba9f5ab87187ad",
+      "v0_1_package_manifest_sha256": "6105b0ec246318e69ae189fcf686fa0266d18ea06c58039c07c9bca100f49bee",
+      "v0_1_review_commit": "bb97d9eec2ee24ced3b153959a957576b2a3889d",
+      "v0_1_review_record_sha256": "a46c0cd2aa0e90aeaca7070577fbbb68a1982a9bfa6c6f1408f006bfe8508406"
+    },
+    "selected_bootstrapper": {
+      "release": "17.14.39",
+      "release_build": "17.14.37614.0",
+      "exact_fixed_url": "https://download.visualstudio.microsoft.com/download/pr/fa619120-9c0e-47e6-bfe0-3ee96fb671b2/236367b68ba9a51708263ab10a1c85546cc4a8eca78b365168811d19c4fb2f29/vs_BuildTools.exe",
+      "redirect_count": 0,
+      "final_uri_must_equal_requested_uri": true,
+      "selection_status": "SELECTED-NOT-DOWNLOADED"
+    },
+    "algorithm_agility": {
+      "guidance_kb": "5125813",
+      "guidance_published_date": "2026-08-20",
+      "guidance_uri": "https://support.microsoft.com/en-us/servicing/os/windows/docs/2026/08/next-generation-code-signing",
+      "static_subject_pin_allowed": false,
+      "static_issuer_pin_allowed": false,
+      "static_thumbprint_pin_allowed": false,
+      "static_serial_pin_allowed": false,
+      "static_intermediate_or_root_pin_allowed": false,
+      "static_key_size_pin_allowed": false,
+      "static_digest_algorithm_pin_allowed": false,
+      "observed_certificate_identity_is_future_authority": false
+    },
+    "byte_and_file_identity": {
+      "destination_creation": "CREATE_NEW-EXCLUSIVE-OUTSIDE-REPOSITORY",
+      "same_open_file_handle_required": true,
+      "reparse_point_allowed": false,
+      "volume_serial_and_file_id_required": true,
+      "byte_length_stability_required": true,
+      "download_postsignature_preexecution_sha256_equality_required": true,
+      "retry_reuse_allowed": false
+    },
+    "verification_api_composition": {
+      "winverifytrust": {
+        "platform_api": "WinVerifyTrust",
+        "action_id": "WINTRUST_ACTION_GENERIC_VERIFY_V2",
+        "action_guid": "{00AAC56B-CD44-11D0-8CC2-00C04FC295EE}",
+        "window_handle": "INVALID_HANDLE_VALUE",
+        "dw_ui_choice": "WTD_UI_NONE",
+        "dw_ui_context": "WTD_UICONTEXT_INSTALL",
+        "dw_union_choice": "WTD_CHOICE_FILE",
+        "fdw_revocation_checks": "WTD_REVOKE_NONE",
+        "dw_prov_flags": [
+          "WTD_DISABLE_MD2_MD4",
+          "WTD_MOTW"
+        ],
+        "state_action_verify": "WTD_STATEACTION_VERIFY",
+        "state_action_close": "WTD_STATEACTION_CLOSE",
+        "exact_success_return": "LONG-ZERO",
+        "file_handle_required": true,
+        "candidate_callback_allowed": false,
+        "candidate_store_allowed": false,
+        "custom_signature_parser_allowed": false,
+        "revocation_authority": "NONE-SEPARATE-CERTGETCERTIFICATECHAIN-PATH-IS-SOLE-REVOCATION-AUTHORITY"
+      },
+      "retained_provider_state": {
+        "retain_until_all_extraction_and_policy_checks_complete": true,
+        "signer_chain_source": "WTHelperProvDataFromStateData-AND-WTHelperGetProvSignerFromChain",
+        "timestamp_source": "COUNTERSIGNER-FROM-SAME-RETAINED-PROVIDER-STATE",
+        "close_after_decision_inputs_captured": true,
+        "close_return_must_be_long_zero": true
+      },
+      "chain_builder": {
+        "platform_api": "CertGetCertificateChain",
+        "chain_engine": "HCCE_LOCAL_MACHINE",
+        "chain_flags": [
+          "CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT",
+          "CERT_CHAIN_REVOCATION_ACCUMULATIVE_TIMEOUT"
+        ],
+        "url_retrieval_timeout_ms": 10000,
+        "cache_only_allowed": false,
+        "fresh_cache_allowed": true,
+        "additional_candidate_store_allowed": false,
+        "ignored_error_allowed": false,
+        "same_ordered_chain_as_provider_state_required": true
+      },
+      "signer_policy": {
+        "normal_policy": "CERT_CHAIN_POLICY_AUTHENTICODE",
+        "normal_policy_error_required": 0,
+        "supplier_policy": "CERT_CHAIN_POLICY_MICROSOFT_ROOT",
+        "supplier_policy_flags": 0,
+        "supplier_test_root_flag_allowed": false,
+        "supplier_policy_error_required": 0,
+        "same_signer_chain_for_both_policies_required": true,
+        "code_signing_eku_required": true,
+        "supplier_assurance_composition": "EXACT-MICROSOFT-OPERATED-URL-PLUS-GENERIC-AUTHENTICODE-PLUS-AUTHENTICODE-CHAIN-POLICY-PLUS-MICROSOFT-ROOT-POLICY-ON-SAME-SIGNER-CHAIN"
+      },
+      "timestamp_policy": {
+        "present_required": true,
+        "accepted_kinds": [
+          "RFC3161",
+          "AUTHENTICODE-COUNTERSIGNATURE"
+        ],
+        "platform_policy": "CERT_CHAIN_POLICY_AUTHENTICODE_TS",
+        "policy_error_required": 0,
+        "same_countersigner_as_provider_state_required": true,
+        "same_ordered_chain_as_chain_builder_required": true,
+        "trusted_time_semantics": "WINDOWS-AUTHENTICODE-POLICY",
+        "static_timestamp_authority_pin_allowed": false
+      }
+    },
+    "revocation_and_freshness": {
+      "sole_authoritative_path": "CERTGETCERTIFICATECHAIN-FOR-SIGNER-AND-TIMESTAMP-SEPARATELY",
+      "scope": "EVERY-NONROOT-ELEMENT-OF-SIGNER-AND-TIMESTAMP-CHAINS",
+      "good_required": true,
+      "fresh_required": true,
+      "per_element_evidence_required": true,
+      "network_capable_retrieval_required": true,
+      "actual_network_fetch_required": false,
+      "fresh_cache_allowed": true,
+      "cache_only_allowed": false,
+      "unknown_allowed": false,
+      "offline_allowed": false,
+      "unchecked_allowed": false,
+      "stale_allowed": false,
+      "soft_fail_allowed": false,
+      "root_revocation_mode": "NOT-CHECKED-ROOT-MUST-BE-TRUSTED-AND-NOT-DISALLOWED"
+    },
+    "effective_trust_authority": {
+      "chain_engine": "HCCE_LOCAL_MACHINE",
+      "trusted_root_scope": "LOCAL-MACHINE-ROOT",
+      "intermediate_scope": "LOCAL-MACHINE-CA-PLUS-CHAIN-ENGINE-RETRIEVAL",
+      "disallowed_scope": "LOCAL-MACHINE-DISALLOWED-AND-EFFECTIVE-WINDOWS-DISALLOWED-CTL",
+      "pre_and_post_snapshot_hash_equality_required": true,
+      "snapshot_canonicalization": "SORTED-DER-SHA256-PLUS-CTL-SEQUENCE-AND-SIGNER-METADATA",
+      "store_mutation_allowed": false,
+      "automatic_update_suppression_claimed": false,
+      "drift_during_verification_allowed": false,
+      "authority_status": "UNRESOLVED-REQUIRES-RECOVERY-V0.3-AND-IMPLEMENTATION-REVIEW"
+    },
+    "evidence_and_decision": {
+      "raw_observation_schema_id": "S0-PUBLIC-BRM-AUTHENTICODE-PROVIDER-OBSERVATION-2",
+      "decision_schema_id": "S0-PUBLIC-BRM-AUTHENTICODE-PREEXECUTION-DECISION-2",
+      "semantic_contract_id": "S0-PUBLIC-BRM-AUTHENTICODE-SEMANTIC-RELATIONS-2",
+      "semantic_contract_sha256": "0eda037e7615faee3d59aef7d54e37507e1f46670875c7c19672006f349f270d",
+      "raw_observation_is_authority": false,
+      "schema_validity_alone_is_authority": false,
+      "eligible_decision_requires_authenticated_verifier": true,
+      "process_count_before_decision": 0
+    },
+    "recovery_v0_2_conflict_dispositions": [
+      {
+        "constraint": "signer-subject",
+        "classification": "PROHIBITED-STATIC-IDENTITY-PIN",
+        "replacement": "SAME-SIGNER-CHAIN-PASSES-AUTHENTICODE-AND-MICROSOFT-ROOT-POLICIES"
+      },
+      {
+        "constraint": "signer-issuer",
+        "classification": "PROHIBITED-STATIC-IDENTITY-PIN",
+        "replacement": "WINDOWS-CHAIN-BUILD-AND-POLICY-RESULT-ON-SAME-SIGNER-CHAIN"
+      },
+      {
+        "constraint": "signer-thumbprint",
+        "classification": "PROHIBITED-STATIC-IDENTITY-PIN",
+        "replacement": "OBSERVATION-ONLY-PLUS-SAME-CHAIN-RELATIONAL-BINDING"
+      },
+      {
+        "constraint": "signer-serial",
+        "classification": "PROHIBITED-STATIC-IDENTITY-PIN",
+        "replacement": "OBSERVATION-ONLY-PLUS-SAME-CHAIN-RELATIONAL-BINDING"
+      },
+      {
+        "constraint": "intermediate-identities",
+        "classification": "PROHIBITED-STATIC-CHAIN-PIN",
+        "replacement": "WINDOWS-CHAIN-BUILD-AND-PER-ELEMENT-POLICY-EVIDENCE"
+      },
+      {
+        "constraint": "intermediate-thumbprints",
+        "classification": "PROHIBITED-STATIC-CHAIN-PIN",
+        "replacement": "OBSERVATION-ONLY-PLUS-PROVIDER-STATE-TO-CHAIN-BUILDER-EQUALITY"
+      },
+      {
+        "constraint": "root-identities",
+        "classification": "PROHIBITED-STATIC-ROOT-PIN",
+        "replacement": "MICROSOFT-ROOT-POLICY-PLUS-SYSTEM-ROOT-AND-DISALLOWED-AUTHORITY"
+      },
+      {
+        "constraint": "root-thumbprints",
+        "classification": "PROHIBITED-STATIC-ROOT-PIN",
+        "replacement": "OBSERVATION-ONLY-PLUS-MICROSOFT-ROOT-POLICY-WITH-TEST-ROOT-DISABLED"
+      },
+      {
+        "constraint": "timestamp-authority",
+        "classification": "PROHIBITED-STATIC-IDENTITY-PIN",
+        "replacement": "AUTHENTICODE-TS-POLICY-ON-SAME-EXTRACTED-COUNTERSIGNER"
+      },
+      {
+        "constraint": "timestamp-chain-and-root",
+        "classification": "PROHIBITED-STATIC-CHAIN-PIN",
+        "replacement": "WINDOWS-TIMESTAMP-CHAIN-BUILD-POLICY-AND-PER-ELEMENT-EVIDENCE"
+      },
+      {
+        "constraint": "authenticode-digest-algorithm",
+        "classification": "PROHIBITED-STATIC-ALGORITHM-PIN",
+        "replacement": "WINDOWS-AUTHENTICODE-POLICY-ALGORITHM-AGILITY"
+      },
+      {
+        "constraint": "timestamp-digest-algorithm",
+        "classification": "PROHIBITED-STATIC-ALGORITHM-PIN",
+        "replacement": "WINDOWS-AUTHENTICODE-TS-POLICY-ALGORITHM-AGILITY"
+      },
+      {
+        "constraint": "chain-policy-verification-time",
+        "classification": "PRESERVED-SECURITY-PROPERTY",
+        "replacement": "EXACT-AUTHENTICODE-AND-AUTHENTICODE-TS-POLICY-RESULTS-BOUND-TO-RETAINED-STATE"
+      },
+      {
+        "constraint": "revocation-mode-scope-freshness",
+        "classification": "PRESERVED-SECURITY-PROPERTY",
+        "replacement": "ONE-EXACT-CERTGETCERTIFICATECHAIN-PATH-WITH-PER-ELEMENT-HARD-FAIL-EVIDENCE"
+      },
+      {
+        "constraint": "trusted-and-disallowed-store-authority",
+        "classification": "PRESERVED-SECURITY-PROPERTY",
+        "replacement": "EXACT-SCOPE-PLUS-PRE-POST-CANONICAL-SNAPSHOT-BINDING-PENDING-RECOVERY-V0.3"
+      }
+    ],
+    "required_external_authorities": {
+      "v0_2_profile_package_manifest": "CREATED-BY-THIS-PACKAGE-BUT-MUST-BE-AUTHENTICATED-OUTSIDE-THE-OBSERVATION",
+      "verifier_implementation_manifest": "MISSING-NOT-AUTHORED-BY-THIS-GATE",
+      "recovery_v0_3_alignment": "MISSING-NOT-AUTHORED-BY-THIS-GATE",
+      "effective_trust_authority_implementation": "MISSING-NOT-AUTHORED-BY-THIS-GATE"
+    },
+    "claim_boundary": {
+      "candidate_only": true,
+      "f0_content_accessed": false,
+      "download_performed": false,
+      "signature_verified": false,
+      "native_api_reachable": false,
+      "trust_store_queried": false,
+      "trust_store_mutated": false,
+      "bootstrapper_executed": false,
+      "installation_performed": false,
+      "build_executed": false,
+      "runtime_materialized": false,
+      "rehearsal_pass": false,
+      "s0_executed": false,
+      "e0_executed": false,
+      "provider_or_model_called": false
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "$id": "urn:human-ai-development-tradition:s0:public-brm-authenticode-preexecution-decision:2",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Derived non-authorizing Windows Authenticode preexecution decision",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_id": { "const": "S0-PUBLIC-BRM-AUTHENTICODE-PREEXECUTION-DECISION-2" },
+    "record_status": { "const": "DERIVED-DECISION-REQUIRES-AUTHENTICATED-SEMANTIC-VALIDATOR" },
+    "profile_package_manifest_sha256": { "$ref": "#/$defs/sha256" },
+    "verifier_implementation_manifest_sha256": { "$ref": "#/$defs/sha256" },
+    "observation_record_sha256": { "$ref": "#/$defs/sha256" },
+    "semantic_contract_sha256": { "const": "0eda037e7615faee3d59aef7d54e37507e1f46670875c7c19672006f349f270d" },
+    "semantic_validator_manifest_sha256": { "$ref": "#/$defs/sha256" },
+    "semantic_validator_output_sha256": { "$ref": "#/$defs/sha256" },
+    "relation_results": { "$ref": "#/$defs/relation_results" },
+    "terminal_decision": { "enum": ["REJECTED-BEFORE-PROCESS", "PASS-TRUST-POLICY-FOR-LATER-GATE-CONSIDERATION"] },
+    "decision_reason": { "type": "string", "minLength": 1 },
+    "process_count_before_decision": { "const": 0 },
+    "process_authority_granted": { "const": false },
+    "trust_store_mutation_observed": { "const": false },
+    "package_gate_status": { "const": "DESIGN-PACKAGE-BLOCKED-NO-EXECUTION-AUTHORITY" }
+  },
+  "required": [
+    "schema_id",
+    "record_status",
+    "profile_package_manifest_sha256",
+    "verifier_implementation_manifest_sha256",
+    "observation_record_sha256",
+    "semantic_contract_sha256",
+    "semantic_validator_manifest_sha256",
+    "semantic_validator_output_sha256",
+    "relation_results",
+    "terminal_decision",
+    "decision_reason",
+    "process_count_before_decision",
+    "process_authority_granted",
+    "trust_store_mutation_observed",
+    "package_gate_status"
+  ],
+  "allOf": [
+    {
+      "if": { "properties": { "terminal_decision": { "const": "PASS-TRUST-POLICY-FOR-LATER-GATE-CONSIDERATION" } }, "required": ["terminal_decision"] },
+      "then": {
+        "properties": {
+          "relation_results": {
+            "not": {
+              "contains": {
+                "type": "object",
+                "properties": { "result": { "const": false } },
+                "required": ["result"]
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "relation_results": {
+            "contains": {
+              "type": "object",
+              "properties": { "result": { "const": false } },
+              "required": ["result"]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "relation_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "enum": [
+            "AUTH02-R01", "AUTH02-R02", "AUTH02-R03", "AUTH02-R04", "AUTH02-R05", "AUTH02-R06", "AUTH02-R07", "AUTH02-R08", "AUTH02-R09", "AUTH02-R10", "AUTH02-R11",
+            "AUTH02-R12", "AUTH02-R13", "AUTH02-R14", "AUTH02-R15", "AUTH02-R16", "AUTH02-R17", "AUTH02-R18", "AUTH02-R19", "AUTH02-R20", "AUTH02-R21", "AUTH02-R22",
+            "AUTH02-R23", "AUTH02-R24", "AUTH02-R25", "AUTH02-R26", "AUTH02-R27", "AUTH02-R28", "AUTH02-R29", "AUTH02-R30", "AUTH02-R31", "AUTH02-R32", "AUTH02-R33"
+          ]
+        },
+        "result": { "type": "boolean" },
+        "evidence_path": { "type": "string", "minLength": 1 },
+        "detail": { "type": "string", "minLength": 1 }
+      },
+      "required": ["id", "result", "evidence_path", "detail"]
+    },
+    "relation_results": {
+      "type": "array",
+      "minItems": 33,
+      "maxItems": 33,
+      "prefixItems": [
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R01" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R02" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R03" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R04" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R05" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R06" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R07" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R08" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R09" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R10" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R11" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R12" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R13" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R14" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R15" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R16" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R17" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R18" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R19" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R20" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R21" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R22" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R23" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R24" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R25" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R26" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R27" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R28" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R29" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R30" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R31" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R32" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/relation_result" }, { "properties": { "id": { "const": "AUTH02-R33" } } }] }
+      ],
+      "items": false
+    }
+  }
+}
