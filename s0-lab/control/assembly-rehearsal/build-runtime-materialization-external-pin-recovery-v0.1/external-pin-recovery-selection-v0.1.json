@@ -1,0 +1,134 @@
+{
+  "base_authority": {
+    "base_main_commit": "39263f431a82649ddc0bbd3545ed6d95b0780adc",
+    "base_main_tree": "6697b497565ddde92dffc6b9eb8ee528ea4a2e83",
+    "build_runtime_design_manifest_sha256": "ca52a47378c9cbd46eae5d94fec8466562c40d702dfdc8d2e1f63c61e4b3f98c",
+    "build_runtime_design_review_sha256": "5353431dfa8bc36b7d86c0ece1eabf88bad0cb598f1a8f73092cdebf2c95e2f9",
+    "build_runtime_design_control_decision_sha256": "d4fc2bc7ea6a6f606efd9395be230e8aec408cf07a48c246825409cfac7f3eaf",
+    "build_runtime_implementation_manifest_sha256": "c653931163e1818fe17b0f53b7d7e6d9e843cde3eea8752b952c8b30dd796798",
+    "build_runtime_implementation_review_sha256": "821dc552b91efe1e7590b449e5e407b58ea9989590ac7149526e926c45a8f263",
+    "build_runtime_main_integration_decision_sha256": "d9292c9dd495afebdc6a7fc2b648acef31be0de5f4be418e232c503fa16e33c8"
+  },
+  "claim_boundary": {
+    "build_executed": false,
+    "candidate_only": true,
+    "compiler_invoked": false,
+    "download_performed": false,
+    "f0_content_accessed": false,
+    "installation_performed": false,
+    "native_api_reachable": false,
+    "provider_or_model_called": false,
+    "rehearsal_pass": false,
+    "runtime_materialized": false,
+    "s0_executed": false
+  },
+  "external_pin_classes": [
+    {
+      "binding": "external_pin_closure.native_source",
+      "class": "native-source",
+      "index": 0,
+      "recovery_status": "MISSING-REQUIRES-SEPARATE-SOURCE-AUTHORING",
+      "selected_input": "UNSELECTED"
+    },
+    {
+      "binding": "external_pin_closure.materializer_inspector_source",
+      "class": "materializer-and-inspector-source",
+      "index": 1,
+      "recovery_status": "MISSING-REQUIRES-SEPARATE-SOURCE-AUTHORING",
+      "selected_input": "UNSELECTED"
+    },
+    {
+      "binding": "external_pin_closure.offline_toolchain_bundle",
+      "class": "offline-toolchain-bundle",
+      "index": 2,
+      "recovery_status": "SELECTED-NOT-DOWNLOADED",
+      "selected_input": "visual-studio-build-tools-2022-17.14.39-fixed-offline-layout-en-US"
+    },
+    {
+      "binding": "external_pin_closure.compiler_linker_sdk_crt_identities",
+      "class": "compiler-linker-sdk-headers-libraries-crt",
+      "index": 3,
+      "recovery_status": "SELECTED-NOT-DOWNLOADED",
+      "selected_input": "msvc-v143-x64-x86-plus-windows-11-sdk-26100"
+    },
+    {
+      "binding": "external_pin_closure.cpython_distribution",
+      "class": "cpython-distribution",
+      "index": 4,
+      "recovery_status": "SELECTED-NOT-DOWNLOADED",
+      "selected_input": "python-3.12.10-embed-amd64.zip"
+    },
+    {
+      "binding": "external_pin_closure.python_dependencies",
+      "class": "python-dependencies",
+      "index": 5,
+      "recovery_status": "ROOT-SELECTED-TRANSITIVE-CLOSURE-UNRESOLVED",
+      "selected_input": "jsonschema-4.26.0-py3-none-any.whl"
+    },
+    {
+      "binding": "external_pin_closure.windows_platform",
+      "class": "windows-platform",
+      "index": 6,
+      "recovery_status": "LOCAL-OBSERVATION-NOT-AUTHORITY",
+      "selected_input": "windows-amd64-platform-manifest-to-be-authored"
+    },
+    {
+      "binding": "canonical embedded base_profile plus base_profile_sha256",
+      "class": "canonical-build-profile",
+      "index": 7,
+      "recovery_status": "PRESENT-IN-AUTHENTICATED-DESIGN-CLOSURE",
+      "selected_input": "authenticated-v0.5-effective-design"
+    },
+    {
+      "binding": "external_pin_closure.runtime_tree_profile",
+      "class": "runtime-tree-profile",
+      "index": 8,
+      "recovery_status": "MISSING-REQUIRES-OTHER-PIN-CLOSURES-FIRST",
+      "selected_input": "UNSELECTED"
+    },
+    {
+      "binding": "authority_extension.approving_design_review_sha256",
+      "class": "approving-review",
+      "index": 9,
+      "recovery_status": "PRESENT-AUTHENTICATED",
+      "selected_input": "5353431dfa8bc36b7d86c0ece1eabf88bad0cb598f1a8f73092cdebf2c95e2f9"
+    }
+  ],
+  "schema_id": "S0-PUBLIC-BRM-EXTERNAL-PIN-RECOVERY-SELECTION-1",
+  "selected_cpython": {
+    "artifact": "python-3.12.10-embed-amd64.zip",
+    "artifact_sha256_from_official_spdx": "4acbed6dd1c744b0376e3b1cf57ce906f9dc9e95e68824584c8099a63025a3c3",
+    "download_url": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip",
+    "official_release_url": "https://www.python.org/downloads/release/python-31210/",
+    "official_spdx_url": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip.spdx.json",
+    "selection_status": "SELECTED-NOT-DOWNLOADED",
+    "target": "windows-amd64",
+    "version": "3.12.10"
+  },
+  "selected_python_dependency_root": {
+    "artifact": "jsonschema-4.26.0-py3-none-any.whl",
+    "artifact_sha256": "d489f15263b8d200f8387e64b4c3a75f06629559fb73deb8fdfb525f2dab50ce",
+    "artifact_size": 90630,
+    "download_url": "https://files.pythonhosted.org/packages/69/90/f63fb5873511e014207a475e2bb4e8b2e570d655b00ac19a9a0ca0a385ee/jsonschema-4.26.0-py3-none-any.whl",
+    "official_metadata_url": "https://pypi.org/pypi/jsonschema/4.26.0/json",
+    "selection_status": "ROOT-SELECTED-TRANSITIVE-CLOSURE-UNRESOLVED",
+    "version": "4.26.0"
+  },
+  "selected_toolchain": {
+    "build_number": "17.14.37614.0",
+    "component_ids": [
+      "Microsoft.VisualStudio.Component.VC.Tools.x86.x64",
+      "Microsoft.VisualStudio.Component.Windows11SDK.26100"
+    ],
+    "fixed_release": "17.14.39",
+    "language": "en-US",
+    "offline_layout_required": true,
+    "official_component_url": "https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=visualstudio",
+    "official_offline_layout_url": "https://learn.microsoft.com/en-us/visualstudio/install/create-an-offline-installation-of-visual-studio?view=visualstudio",
+    "official_release_history_url": "https://learn.microsoft.com/en-gb/visualstudio/releases/2022/release-history",
+    "product": "Visual Studio Build Tools 2022",
+    "selection_status": "SELECTED-NOT-DOWNLOADED",
+    "workload_id": "Microsoft.VisualStudio.Workload.VCTools"
+  },
+  "version": "0.1.0"
+}
