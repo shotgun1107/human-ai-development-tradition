@@ -21,6 +21,15 @@
 - Ordinary Git approval such as `ㄱㄱ` authorizes only the named commit and push; it does not open or combine technical roles or gates.
 - Apply this policy prospectively to all new work after its adoption. Existing historical artifacts remain evidence and are not retroactively invalidated solely because this policy did not previously exist.
 
+## Session continuity, capacity, and fail-fast operation
+
+- Chat promises and compressed conversation summaries are not authoritative. At every new, resumed, or compacted session, read the latest root `AGENTS.md` completely and reconstruct operational state from authenticated Git artifacts before acting. A user correction that must survive compaction must be written into root `AGENTS.md` by the DOCUMENTATION role before any role relies on it.
+- When F0 is not explicitly allowed, never run broad recursive path discovery under `s0-lab/reviews/`, including `rg --files`, recursive Git tree listing, or operating-system glob exclusion schemes. Use only exact supplied public paths and allowlists or authenticated manifests. Never rely on slash- or backslash-sensitive exclusions to protect F0. An exclusion mismatch or any protected filename exposure is a boundary failure: stop immediately, report it, and assign a fresh uncontaminated role agent.
+- Before opening a multi-role gate, CONTROL must check available agent and thread capacity and plan the sequential role handoffs. Reuse an existing agent only when it remains in the same role for the candidate and every prior input is within the current allowlist; otherwise assign a fresh agent. Do not start a role sequence unless every required role can be allocated, and never let CONTROL absorb a blocked role.
+- After direct ordinary commit or push approval such as `ㄱㄱ` or `rr`, the approval-bearing CONTROL or root session must execute the exact path in **Commit and push approval fast path** itself. Do not delegate the Git mutation to a child without the direct approval transcript. Subagents may prepare and authenticate staged scope but must not become an extra approval hop.
+- Fail fast on latency: do not silently poll an unchanged agent or tool repeatedly. If the same blocker repeats, a required role cannot start, or completion will exceed 60 seconds, immediately give the user a concise blocker or status update and reroute or stop. Do not spend minutes retrying the same capacity, approval, or path failure.
+- These rules persist through context compaction and apply prospectively. `ㄱㄱ` and `rr` authorize commit or push only; they never authorize implementation, review, another gate, a pull request, or a `main` merge.
+
 ## S0 role isolation
 
 - Follow the role and allowed-input list in the current thread prompt. An allowlist is a maximum, not a suggestion to inspect the rest of the repository.
