@@ -109,6 +109,38 @@
 - Keep text checks independently labeled. A BOM, UTF-8, final-LF, trailing-whitespace, sidecar-format, or sidecar-hash failure must identify its own failed check rather than a combined status label. The canonical tool does not replace task-specific branch, HEAD, exact-change-set, role-boundary, or frozen-input checks.
 - Keep facts, inferences, proposals, and test results distinguishable.
 - Do not use real customer, personal, secret, or past-project content in S0.
+
+### Commit and push approval fast path
+
+- Treat an unambiguous response such as `ㄱㄱ` to a clear ordinary Git
+  approval request as authorization for the named commit and push only. It
+  does not authorize implementation, document revision, test expansion,
+  independent review, another technical gate, PR creation, or main merge.
+- Finish every task-owned byte change before requesting commit or push
+  approval. Before the approval request, stage only the exact proposed scope
+  unless the user explicitly requires it to remain unstaged, then require:
+  exact branch and base identity, exact staged path set, zero unrelated
+  staged/unstaged/untracked paths, `git diff --cached --check`, every required
+  canonical text/sidecar check, final manifest and report hashes, applicable
+  bounded tests, clean F0 aggregates and anomaly counts, and a quiet F0 diff
+  against the proposed commit parent. Do not request approval while a known
+  hash cascade, sidecar update, whitespace correction, or generated artifact
+  remains unfinished.
+- After approval, use the fast path: recheck only branch/HEAD, the already
+  approved staged path set, unchanged staged bytes or hashes, F0 pre-push
+  invariants, and then commit, push, and verify the live remote tip. Do not
+  rerun a full test suite, regenerate artifacts, rewrite documentation, or
+  reopen completed analysis merely because approval was granted.
+- If an unexpected post-approval failure requires any byte change, stop the
+  fast path and report the exact condition immediately. Apply only the
+  smallest correction inside the already approved scope, rerun only checks
+  invalidated by those changed bytes, and state why any hash cascade or
+  bounded test rerun is unavoidable. A change outside the approved scope
+  requires a new approval request.
+- Keep the post-approval path short and continuously visible. If commit and
+  push cannot complete promptly, report the blocker before beginning a long
+  repair or validation sequence.
+
 - When preserving, reviewing, transferring, or publishing completed work would materially benefit from a branch, commit, or push, the agent may identify that need independently and proactively request the user's approval. Before approval, state the exact repository, intended scope, branch, and whether the request covers commit, push, or both; do not perform the operation until the user approves it.
 - For an ordinary commit or push approval request, make the request visually prominent with a clear heading, bold text, or an emoji, and state the repository, branch, scope, and requested Git action. Do not require or invent an all-caps approval token, security code, or gate-like passphrase. After such a clear request, an unambiguous response such as `ㄱㄱ`, `승인`, or `푸시해` is sufficient approval. Reserve exact gate phrases for work that genuinely changes an experimental gate, role-independence boundary, sealed boundary, or similarly sensitive authority.
 - When the user explicitly requests a cross-PC or cross-session handoff
