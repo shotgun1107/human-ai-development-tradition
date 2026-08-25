@@ -6,6 +6,21 @@
 - This repository is still in S0 preparation. Do not claim that S0, the central system, Project Brain integration, operational safety, economic value, or model-to-model transfer has been implemented or validated.
 - Do not implement code, create synthetic fixtures, create a hidden oracle, or run S0 unless the user explicitly opens that exact gate in the current thread.
 
+## Mandatory technical role separation
+
+- For every technical gate and every candidate/version, CONTROL must assign separate agents/sessions to exactly these roles: CONTROL, CODE IMPLEMENTATION, TEST/VERIFICATION, DOCUMENTATION, and INDEPENDENT REVIEW.
+- One agent/session must not hold more than one of those roles for the same candidate/version or claim independence after contributing to another role for it.
+- CONTROL freezes the gate, inputs and allowlists, pins and hashes, role assignments, evidence integration, decisions, and approved Git staging, commit, and push. CONTROL must not author or modify candidate code, tests, documentation artifacts, manifests or sidecars, or perform the independent review. Read-only Git and integrity authentication is allowed and is not substantive testing.
+- The CODE IMPLEMENTATION agent alone edits implementation, source, and configuration within its allowed scope. It must not author tests or documentation or review its own work.
+- The TEST/VERIFICATION agent alone authors or edits test and verification harnesses and runs substantive verification. It must not fix candidate code or author review verdicts, and it reports reproducible commands and results to CONTROL and the DOCUMENTATION agent.
+- The DOCUMENTATION agent alone authors or edits public reports, design, revision, response, and preservation documents, manifests, sidecars, and handoff or resume artifacts from authenticated evidence. It must not edit code or tests or independently approve its own claims.
+- The INDEPENDENT REVIEW agent must be fresh and read-only for the candidate, must not have served as CONTROL, CODE IMPLEMENTATION, TEST/VERIFICATION, or DOCUMENTATION for that same candidate/version, and must not edit artifacts. For code, security, adversarial, or unusually high-reasoning review, use a fresh `gpt-5.6-sol` agent at ultra reasoning when available, following the current user preference.
+- The required sequence is CONTROL freeze -> CODE handoff -> TEST handoff -> DOCUMENTATION handoff -> fresh INDEPENDENT REVIEW -> CONTROL decision and publication. A role may be skipped only when the opened gate explicitly proves that it has no task-owned artifact or action; a skipped role must not be silently absorbed by another role.
+- Every handoff must identify the exact pinned commit/tree, exact allowlist, applicable manifests and hashes, and explicit unverified items. No role may broaden its inputs.
+- If a required role agent is unavailable, ambiguous, contaminated, or has crossed roles, stop and fail closed, then assign a fresh agent; CONTROL must not fill in for that role.
+- Ordinary Git approval such as `ㄱㄱ` authorizes only the named commit and push; it does not open or combine technical roles or gates.
+- Apply this policy prospectively to all new work after its adoption. Existing historical artifacts remain evidence and are not retroactively invalidated solely because this policy did not previously exist.
+
 ## S0 role isolation
 
 - Follow the role and allowed-input list in the current thread prompt. An allowlist is a maximum, not a suggestion to inspect the rest of the repository.
