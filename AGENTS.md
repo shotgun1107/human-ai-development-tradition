@@ -6,6 +6,13 @@
 - This repository is still in S0 preparation. Do not claim that S0, the central system, Project Brain integration, operational safety, economic value, or model-to-model transfer has been implemented or validated.
 - Do not implement code, create synthetic fixtures, create a hidden oracle, or run S0 unless the user explicitly opens that exact gate in the current thread.
 
+## Delegation boundary for ordinary work
+
+- Outside an explicitly opened technical gate and candidate/version, and unless the user explicitly requests delegation, root/CONTROL MUST perform the work directly. It MUST NOT spawn subagents merely for explanations, status reports, read-only repository authentication, ordinary approved Git operations, routine repository maintenance, or non-candidate operating-policy and documentation edits.
+- The mandatory multi-role split below applies to substantive technical candidate work and candidate-owned implementation, tests, verification, documentation, and independent-review artifacts. Repository involvement alone does not make an ordinary task a multi-role technical gate.
+- CONTROL MAY directly edit root `AGENTS.md` when the user explicitly requests a project-wide operating-policy correction. Candidate-specific reports, manifests, sidecars, preservation records, and technical claims remain owned by the DOCUMENTATION role inside the applicable technical gate.
+- Ordinary non-technical work does not require a fresh independent reviewer unless the user explicitly requests one. CONTROL MUST still perform proportionate direct validation and MUST preserve every existing gate, role, F0, and Git-approval boundary.
+
 ## Mandatory technical role separation
 
 - For every technical gate and every candidate/version, CONTROL must assign separate agents/sessions to exactly these roles: CONTROL, CODE IMPLEMENTATION, TEST/VERIFICATION, DOCUMENTATION, and INDEPENDENT REVIEW.
@@ -33,7 +40,7 @@
 
 ## Session continuity, capacity, and fail-fast operation
 
-- Chat promises and compressed conversation summaries are not authoritative. At every new, resumed, or compacted session, read the latest root `AGENTS.md` completely and reconstruct operational state from authenticated Git artifacts before acting. A user correction that must survive compaction must be written into root `AGENTS.md` by the DOCUMENTATION role before any role relies on it.
+- Chat promises and compressed conversation summaries are not authoritative. At every new, resumed, or compacted session, read the latest root `AGENTS.md` completely and reconstruct operational state from authenticated Git artifacts before acting. A user correction that must survive compaction must be written into root `AGENTS.md` before any role relies on it: CONTROL writes project-wide non-candidate operating policy directly, while the DOCUMENTATION role writes candidate-owned technical documentation and evidence within its opened gate.
 - When F0 is not explicitly allowed, never run broad recursive path discovery under `s0-lab/reviews/`, including `rg --files`, recursive Git tree listing, or operating-system glob exclusion schemes. Use only exact supplied public paths and allowlists or authenticated manifests. Never rely on slash- or backslash-sensitive exclusions to protect F0. An exclusion mismatch or any protected filename exposure is a boundary failure: stop immediately, report it, and assign a fresh uncontaminated role agent.
 - Before opening a multi-role gate, CONTROL must check available agent and thread capacity and plan the sequential role handoffs. Reuse an existing agent only when it remains in the same role for the candidate and every prior input is within the current allowlist; otherwise assign a fresh agent. Do not start a role sequence unless every required role can be allocated, and never let CONTROL absorb a blocked role.
 - After direct ordinary commit or push approval such as `ㄱㄱ` or `rr`, the approval-bearing CONTROL or root session must execute the exact path in **Commit and push approval fast path** itself. Do not delegate the Git mutation to a child without the direct approval transcript. Subagents may prepare and authenticate staged scope but must not become an extra approval hop.
