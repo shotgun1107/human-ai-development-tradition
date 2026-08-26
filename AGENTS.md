@@ -21,6 +21,16 @@
 - Ordinary Git approval such as `ㄱㄱ` authorizes only the named commit and push; it does not open or combine technical roles or gates.
 - Apply this policy prospectively to all new work after its adoption. Existing historical artifacts remain evidence and are not retroactively invalidated solely because this policy did not previously exist.
 
+## Mandatory pre-CODE adversarial freeze
+
+- Before every CODE handoff for every technical gate and candidate/version, CONTROL MUST freeze an end-to-end bounded and falsifiable adversarial checklist. It MUST cover the current candidate's complete attack surface and MUST NOT merely replay findings from an earlier version or review.
+- At minimum, the checklist MUST map attacker capabilities and concurrency; trusted and untrusted prerequisites and authority sources; the complete data, execution, and evidence flow; authority mutability, caller-mintability, and rebinding; verified bytes versus the bytes actually executed or imported; interpreter, standard-library, native-library, and import closure; full inventory and shadow artifacts; and external-artifact URL, redirects, digest, size, and provenance.
+- Where Windows paths are in scope, the checklist MUST cover the complete path lifecycle: ACLs, volume and root identity, symlink, junction, and reparse behavior, rename and replacement, retained identities and handles, repository exclusion, and TOCTOU through final output and evidence writes. It MUST also cover the evidence producer, output root, sidecars, pre/post measurements, published-command reproducibility, failure, cleanup, and close paths, resource bounds, and every permitted claim, nonclaim, and blocker.
+- Every checklist row MUST freeze the CODE defense owner and action, the TEST/VERIFICATION adversarial or discriminating diagnostic case and expected fail-closed result, the DOCUMENTATION allowed claim and required nonclaim, and the INDEPENDENT REVIEW closure criterion. Every unverified prerequisite MUST remain explicit and MUST block any authority or claim broader than the verified evidence.
+- The checklist is a bounded testable threat model, not a claim to cover every possible attack. Unknowns MUST be marked `unverified` and MUST NOT be silently promoted to assumptions.
+- After an initial failure whose cause is not isolated, and always before a second speculative correction for the same blocker, TEST/VERIFICATION MUST produce a discriminating diagnostic matrix and evidence. CONTROL MUST stop repeated hypothesis-only CODE edits until that evidence isolates the next correction.
+- Fresh INDEPENDENT REVIEW remains a backstop and MUST NOT substitute for CONTROL's precommitted threat freeze. The freeze itself MUST NOT open a gate, broaden an allowlist, combine roles, grant F0 access, or authorize staging, commit, push, or any other Git mutation.
+
 ## Session continuity, capacity, and fail-fast operation
 
 - Chat promises and compressed conversation summaries are not authoritative. At every new, resumed, or compacted session, read the latest root `AGENTS.md` completely and reconstruct operational state from authenticated Git artifacts before acting. A user correction that must survive compaction must be written into root `AGENTS.md` by the DOCUMENTATION role before any role relies on it.
