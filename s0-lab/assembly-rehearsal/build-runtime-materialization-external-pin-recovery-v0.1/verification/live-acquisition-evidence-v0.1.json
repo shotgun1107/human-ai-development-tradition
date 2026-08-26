@@ -1,0 +1,169 @@
+{
+  "acquisition": {
+    "acquired_files_deleted": false,
+    "acquired_files_executed": false,
+    "artifacts": {
+      "cpython": {
+        "authenticated": true,
+        "download_relative_path": "downloads/python-3.12.10-embed-amd64.zip",
+        "expected_sha256": "4acbed6dd1c744b0376e3b1cf57ce906f9dc9e95e68824584c8099a63025a3c3",
+        "expected_sha256_match": true,
+        "final_url": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip",
+        "observed_sha256": "4acbed6dd1c744b0376e3b1cf57ce906f9dc9e95e68824584c8099a63025a3c3",
+        "observed_size": 11133606,
+        "process_authority_granted": false,
+        "redirect_count": 0,
+        "requested_url": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip",
+        "status": "ACQUIRED-AUTHENTICATED"
+      },
+      "vs_build_tools": {
+        "authenticated": false,
+        "download_relative_path": "downloads/vs_BuildTools.exe",
+        "expected_sha256": null,
+        "expected_size": null,
+        "final_url": "https://download.visualstudio.microsoft.com/download/pr/fa619120-9c0e-47e6-bfe0-3ee96fb671b2/236367b68ba9a51708263ab10a1c85546cc4a8eca78b365168811d19c4fb2f29/vs_BuildTools.exe",
+        "observed_sha256": "236367b68ba9a51708263ab10a1c85546cc4a8eca78b365168811d19c4fb2f29",
+        "observed_size": 4473936,
+        "process_authority_granted": false,
+        "redirect_count": 0,
+        "requested_url": "https://download.visualstudio.microsoft.com/download/pr/fa619120-9c0e-47e6-bfe0-3ee96fb671b2/236367b68ba9a51708263ab10a1c85546cc4a8eca78b365168811d19c4fb2f29/vs_BuildTools.exe",
+        "status": "ACQUIRED-UNAUTHENTICATED",
+        "url_digest_resemblance_is_authority": false
+      }
+    },
+    "files_preserved": true,
+    "jsonschema": {
+      "acquired": false,
+      "installed": false
+    }
+  },
+  "candidate": {
+    "blocker_count": 13,
+    "blockers": [
+      {
+        "description": "independent trust review item IR-001 remains unresolved",
+        "id": "IR-001"
+      },
+      {
+        "description": "independent trust review item IR-002 remains unresolved",
+        "id": "IR-002"
+      },
+      {
+        "description": "independent trust review item IR-003 remains unresolved",
+        "id": "IR-003"
+      },
+      {
+        "description": "supplier assurance evidence is absent",
+        "id": "SUPPLIER-ASSURANCE"
+      },
+      {
+        "description": "an authenticated effective-trust snapshot is absent",
+        "id": "EFFECTIVE-TRUST-SNAPSHOT"
+      },
+      {
+        "description": "an authenticated acquisition producer is absent",
+        "id": "ACQUISITION-PRODUCER"
+      },
+      {
+        "description": "an independent semantic validator is absent",
+        "id": "SEMANTIC-VALIDATOR"
+      },
+      {
+        "description": "authenticated freshness provenance is absent",
+        "id": "FRESHNESS-PROVENANCE"
+      },
+      {
+        "description": "the complete jsonschema transitive dependency closure is absent",
+        "id": "JSONSCHEMA-TRANSITIVE-CLOSURE"
+      },
+      {
+        "description": "authenticated native-component source is absent",
+        "id": "NATIVE-SOURCE"
+      },
+      {
+        "description": "authenticated materializer source provenance is absent",
+        "id": "MATERIALIZER-SOURCE"
+      },
+      {
+        "description": "a verified offline toolchain layout is absent",
+        "id": "OFFLINE-TOOLCHAIN-LAYOUT"
+      },
+      {
+        "description": "a verified runtime profile is absent",
+        "id": "RUNTIME-PROFILE"
+      }
+    ],
+    "eligible": false,
+    "outcomes": {
+      "build_claimed": false,
+      "build_validated": false,
+      "e0_claimed": false,
+      "e0_validated": false,
+      "install_claimed": false,
+      "install_validated": false,
+      "process_authority_granted": false,
+      "process_executed": false,
+      "rehearsal_claimed": false,
+      "rehearsal_validated": false,
+      "runtime_claimed": false,
+      "runtime_validated": false,
+      "s0_claimed": false,
+      "s0_validated": false
+    }
+  },
+  "external_storage": {
+    "exact_local_root_retained_by_control_outside_public_artifact": true,
+    "normalized_root": "<OUT-OF-REPOSITORY-ROOT>"
+  },
+  "f0_content_access": "NONE",
+  "pinned_source": {
+    "base_commit": "defec54dd0f6bf9896bc22beab2732f4ae660e48",
+    "branch": "codex/s0-build-runtime-external-pin-recovery-implementation-v01",
+    "tree": "3f6711d5d6491a250bde7c36b769051229fe7e43"
+  },
+  "schema": "S0-PUBLIC-BRM-EXTERNAL-PIN-RECOVERY-LIVE-ACQUISITION-EVIDENCE-1",
+  "staging": {
+    "archive_sha256": "4acbed6dd1c744b0376e3b1cf57ce906f9dc9e95e68824584c8099a63025a3c3",
+    "directory_count": 0,
+    "executed": false,
+    "file_count": 35,
+    "imported": false,
+    "installed": false,
+    "process_authority_granted": false,
+    "relative_path": "cpython-3.12.10-embed-amd64-staged",
+    "target_set_sha256": "6fc8da66db95821ca8692de9d224d63673b11c0a47593cfa86fced2fb32549df",
+    "total_size": 22501299
+  },
+  "status": "LIVE-ACQUISITION-COMPLETED-CANDIDATE-BLOCKED",
+  "verification": {
+    "snapshot_unit_verification": {
+      "counts": {
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "passed": 24,
+        "run": 24,
+        "skipped": 0,
+        "unexpected_successes": 0
+      },
+      "exit_codes": {
+        "child": 0,
+        "verifier": 0
+      },
+      "hashes_stable": {
+        "original_inputs": true,
+        "snapshot": true
+      },
+      "sentinels": {
+        "original_input_swap": {
+          "passed": true
+        },
+        "snapshot_mutation": {
+          "passed": true
+        }
+      },
+      "status": "PASSED"
+    }
+  },
+  "version": "0.1.0"
+}
