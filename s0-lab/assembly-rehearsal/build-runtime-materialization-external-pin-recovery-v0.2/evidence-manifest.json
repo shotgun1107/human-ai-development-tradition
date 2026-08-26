@@ -1,0 +1,531 @@
+{
+  "schema_version": "1.0",
+  "candidate": "EXTERNAL PIN RECOVERY IMPLEMENTATION V0.2 REVISION",
+  "gate": "S0 V0.14 PUBLIC END-TO-END ASSEMBLY REHEARSAL BUILD AND RUNTIME MATERIALIZATION EXTERNAL PIN RECOVERY IMPLEMENTATION V0.2 INDEPENDENT CODE AND SECURITY REREVIEW RESULT PRESERVATION OPEN",
+  "implementation_gate": "S0 V0.14 PUBLIC END-TO-END ASSEMBLY REHEARSAL BUILD AND RUNTIME MATERIALIZATION EXTERNAL PIN RECOVERY IMPLEMENTATION V0.2 REVISION OPEN",
+  "git_base": {
+    "branch": "codex/s0-build-runtime-external-pin-recovery-implementation-v02-revision",
+    "commit": "a9264101b4fd0e678dad20131c03267b60b88bcc",
+    "tree": "6e62a22d8f262e6d40a63f1480f5984f9d6f63d2",
+    "parent": "defec54dd0f6bf9896bc22beab2732f4ae660e48",
+    "v0_2_artifacts_in_base_tree": false
+  },
+  "repository_artifacts": [
+    {
+      "path": "implementation/s0_public_external_pin_recovery/__init__.py",
+      "role": "CODE IMPLEMENTATION",
+      "sha256": "56b43e5091371afa2ac2b96ac0220744537e5bc1b6bf0274da822a1ee9c18ccb"
+    },
+    {
+      "path": "implementation/s0_public_external_pin_recovery/errors.py",
+      "role": "CODE IMPLEMENTATION",
+      "sha256": "bdb75b464b3e381d53acd44d477c8f837c170ccbe7844b019969c451ed6168d2"
+    },
+    {
+      "path": "implementation/s0_public_external_pin_recovery/pins.py",
+      "role": "CODE IMPLEMENTATION",
+      "sha256": "8ec74ae91a452a6c4367977364462ce273d6ff6307a0b8b43f517f54c224576d"
+    },
+    {
+      "path": "implementation/s0_public_external_pin_recovery/canonical.py",
+      "role": "CODE IMPLEMENTATION",
+      "sha256": "bafea3f6e2b4f19e98edbbea0a70a05750e9f2fa12b57c84f963269e6ed7a461"
+    },
+    {
+      "path": "implementation/s0_public_external_pin_recovery/candidate.py",
+      "role": "CODE IMPLEMENTATION",
+      "sha256": "23365c09e2369024adce3faa5bba83bcb6ab71cd0d6c7e0f9506e022cf762d43"
+    },
+    {
+      "path": "implementation/s0_public_external_pin_recovery/win32_secure.py",
+      "role": "CODE IMPLEMENTATION",
+      "sha256": "b9c64a30cdf3e15c1334b4078ee4572cabf696c1ba4dada1e67abb43af013149"
+    },
+    {
+      "path": "implementation/s0_public_external_pin_recovery/acquisition.py",
+      "role": "CODE IMPLEMENTATION",
+      "sha256": "3b8790b981dbf372e2147866c3fed11affb34dc92a4ccd3b78a8c84cebebc9f6"
+    },
+    {
+      "path": "implementation/s0_public_external_pin_recovery/materialize.py",
+      "role": "CODE IMPLEMENTATION",
+      "sha256": "b5cd48c1a0a714f164c71ff30df430a27b0eb2e4452795e30c8dbad1cb37f5a5"
+    },
+    {
+      "path": "tests/test_foundation_acquisition.py",
+      "role": "TEST/VERIFICATION",
+      "sha256": "79fe011b09d28fe52313b26daf8a283d557466e4740a5d2bee401b0b1f9943bb"
+    },
+    {
+      "path": "tests/test_materialization_security.py",
+      "role": "TEST/VERIFICATION",
+      "sha256": "4c24b9df3c5571916968ed763700d7c05a151350d3456c08e48c3ba7e34b8cf4"
+    },
+    {
+      "path": "verification/verify_candidate.py",
+      "role": "TEST/VERIFICATION",
+      "sha256": "3684fe2c0ba240100247bb3d68b0b30571c66731ba689100b5ced3a1b1a8dda0"
+    },
+    {
+      "path": "verification/acquire_live_artifacts.py",
+      "role": "TEST/VERIFICATION",
+      "sha256": "b0d65dd7cc39e092e783002bfac5edf0d19032e4faecef14fd55d0c7ee620df0"
+    }
+  ],
+  "verification": {
+    "direct_test_commands": [
+      "python -I -S -B s0-lab/assembly-rehearsal/build-runtime-materialization-external-pin-recovery-v0.2/tests/test_foundation_acquisition.py",
+      "python -I -S -B s0-lab/assembly-rehearsal/build-runtime-materialization-external-pin-recovery-v0.2/tests/test_materialization_security.py"
+    ],
+    "reproduction_command": "python -I -S -B <v0.2>/verification/verify_candidate.py --evidence-out <fresh-out-of-repo-verifier-evidence.json>",
+    "verifier_exit": 0,
+    "status": "verified-candidate-test-bytes-under-unverified-host-runtime",
+    "frozen_source_test_hashes_pre": "10/10",
+    "frozen_source_test_hashes_post": "10/10",
+    "foundation_tests": "11/11",
+    "materialization_security_tests": "8/8",
+    "direct_tests_rerun_in_cycle_3": false,
+    "direct_test_bytes_unchanged_from_cycle_2": true,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "expected_failures": 0,
+    "nonce_bound_structured_results": true,
+    "authenticated_stdin_memory_loader": true,
+    "recursive_exact_inventory": true,
+    "reparse_symlink_nonregular_rejection": true,
+    "filesystem_mutation_sentinel_detected": true,
+    "path_byte_swap_sentinel_detected": true,
+    "shadow_pyd_sentinel_detected": true,
+    "shadow_pyc_sentinel_detected": true,
+    "forged_child_result_sentinel_detected": true,
+    "authenticated_scope": "candidate and test bytes only",
+    "host_runtime": {
+      "authority": "UNAUTHENTICATED",
+      "role": "TRUSTED-PREREQUISITE",
+      "observed_interpreter_sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+      "observed_interpreter_size": 104952,
+      "interpreter_identity_stable_pre_post": true,
+      "interpreter_bytes_stable_pre_post": true,
+      "site_disabled": true,
+      "unverified_closure": [
+        "interpreter",
+        "standard library",
+        "site",
+        "platform",
+        "OS DLLs"
+      ]
+    },
+    "applicable_blockers": [
+      "RUNTIME-PROFILE"
+    ],
+    "evidence_sha256": "76d062c28817e09a8e2b10fc30b8bf7cee93ea00e5678c5e519007ddfc9c087e"
+  },
+  "live_run": {
+    "reproduction_command": "python -I -S -B <v0.2>/verification/acquire_live_artifacts.py --verification-evidence <canonical-verifier-record.json> --external-root <fresh-out-of-repo-root>",
+    "offline_binding_command": "python -I -S -B <v0.2>/verification/acquire_live_artifacts.py --verification-evidence <canonical-verifier-record.json> --offline-binding-check",
+    "external_root": "<fresh-out-of-repo-root>",
+    "exit": 0,
+    "status": "completed-blocked-nonexecuting",
+    "bound_verifier_sha256": "76d062c28817e09a8e2b10fc30b8bf7cee93ea00e5678c5e519007ddfc9c087e",
+    "bound_verifier_hashes_match_pre_post": true,
+    "bound_verifier_full_parsed_records_match_pre_post": true,
+    "bound_verifier_pre_measurement": "read, parse, and SHA-256 hash before live operation phase",
+    "bound_verifier_post_measurement": "independent reread, reparse, and rehash after live operation phase",
+    "verifier_record_parsed_and_validated": true,
+    "verifier_digest_derived_internally": true,
+    "caller_supplied_verifier_digest_accepted": false,
+    "candidate_modules_loaded_from": "<authenticated-memory>",
+    "candidate_module_count": 8,
+    "candidate_inventory_and_bytes_authenticated_before_load": true,
+    "repository_path_fallback": false,
+    "live_harness_sha256": "b0d65dd7cc39e092e783002bfac5edf0d19032e4faecef14fd55d0c7ee620df0",
+    "external_root_binding": {
+      "fresh_exclusive_secure_creation": true,
+      "identity_retained_full_lifecycle": true,
+      "path_fallback": false,
+      "evidence_writes_handle_relative": true,
+      "sidecar_writes_handle_relative": true,
+      "evidence_final_reauthenticated": true,
+      "sidecar_final_reauthenticated": true,
+      "identity_stable": true,
+      "persisted_after_close": true,
+      "deleted": false
+    },
+    "offline_binding_check": {
+      "exit": 0,
+      "rename_attack_failed_closed": true,
+      "replacement_attack_failed_closed": true,
+      "preexisting_repository_junction_failed_closed": true,
+      "direct_repository_target_failed_closed": true,
+      "mklink_junction_against_existing_root_failed": true,
+      "mklink_evidence_classification": "name-collision and replacement rejection",
+      "dynamic_in_place_fsctl_reparse_conversion_covered": false,
+      "repository_sentinel_absent": true,
+      "initial_syntax_error": "failed before action",
+      "minimal_control_flow_correction": true,
+      "initial_failed_attempt_counted_as_pass": false
+    },
+    "runtime_producer_authority": "UNAUTHENTICATED",
+    "runtime_producer_role": "TRUSTED-PREREQUISITE",
+    "producer_authenticated": false,
+    "runtime_authenticated": false,
+    "unverified_closure": [
+      "live harness",
+      "interpreter",
+      "standard library",
+      "platform",
+      "OS DLLs",
+      "network stack"
+    ],
+    "applicable_blockers": [
+      "ACQUISITION-PRODUCER",
+      "RUNTIME-PROFILE"
+    ],
+    "evidence_json_sha256": "ee25ce05a42132f821ddaa7e682914fa65201bd25ea262a8e0cd7aaf7932ebaf",
+    "companion_sidecar_recorded_sha256": "ee25ce05a42132f821ddaa7e682914fa65201bd25ea262a8e0cd7aaf7932ebaf",
+    "companion_sidecar_file_sha256": "7681768362c98777cf64a1477574caddbffb48602dc77254319706776a7fbd95",
+    "external_files_committed": false
+  },
+  "artifacts": {
+    "cpython": {
+      "pin_id": "cpython-3.12.10-embed-amd64",
+      "source": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip",
+      "expected_sha256": "4acbed6dd1c744b0376e3b1cf57ce906f9dc9e95e68824584c8099a63025a3c3",
+      "observed_sha256": "4acbed6dd1c744b0376e3b1cf57ce906f9dc9e95e68824584c8099a63025a3c3",
+      "observed_size": 11133606,
+      "http_length": 11133606,
+      "authenticated": true,
+      "acquisition_evidence_sha256": "7548040d9f7cb484dfb5d78fe7783c673e6f020a34331007cca2a0b38850d4a7",
+      "materialized_files": 35,
+      "materialized_bytes": 22501299,
+      "target_set_sha256": "6fc8da66db95821ca8692de9d224d63673b11c0a47593cfa86fced2fb32549df",
+      "archive_final_reauthenticated": true,
+      "outputs_final_reauthenticated": "35/35"
+    },
+    "visual_studio_build_tools": {
+      "pin_id": "vs-build-tools-17.14.39-17.14.37614.0",
+      "status": "acquired-unauthenticated",
+      "expected_sha256": null,
+      "expected_size": null,
+      "observed_sha256_non_authoritative": "236367b68ba9a51708263ab10a1c85546cc4a8eca78b365168811d19c4fb2f29",
+      "observed_size": 4473936,
+      "http_length": 4473936,
+      "acquisition_evidence_sha256": "1a15a979d9a5b627ff92a2d195740c0a6a650558823cddcf7c3f7acf6a94b14a",
+      "executed": false
+    },
+    "jsonschema": {
+      "status": "source-unavailable",
+      "acquired": false
+    }
+  },
+  "independent_review_cycle_1": {
+    "verdict": "REVISE-AND-REREVIEW",
+    "blocking": 0,
+    "major": 2,
+    "minor": 1,
+    "findings": [
+      {
+        "id": "BRM-EPRI01-IR-001",
+        "topic": "path and parent binding",
+        "cycle_1_disposition": "CLOSED-IN-BOUNDED-SCOPE"
+      },
+      {
+        "id": "BRM-EPRI01-IR-002",
+        "topic": "stable identity and final reauthentication",
+        "cycle_1_disposition": "CLOSED-IN-BOUNDED-SCOPE"
+      },
+      {
+        "id": "BRM-EPRI01-IR-003",
+        "topic": "mutable exported pin authority",
+        "severity": "MAJOR",
+        "cycle_1_disposition": "OPEN"
+      },
+      {
+        "id": "BRM-EPRI01-IR-004",
+        "topic": "mutable verifier execution inputs and incomplete inventory",
+        "severity": "MAJOR",
+        "cycle_1_disposition": "OPEN"
+      },
+      {
+        "id": null,
+        "topic": "caller-supplied verifier digest",
+        "severity": "MINOR",
+        "cycle_1_disposition": "OPEN"
+      }
+    ]
+  },
+  "cycle_2_response": {
+    "implementation": {
+      "authority_source": "three closure-held primitive tuples",
+      "public_pin_objects_and_maps": "compatibility views only",
+      "downstream_trusted_value_capture": "immutable",
+      "exported_identity_trusted": false,
+      "exported_views_reread_for_authority": false
+    },
+    "test_coverage": [
+      "object.__setattr__ mutation across all six exported fields and views",
+      "rebinding",
+      "clones",
+      "subclasses",
+      "proxies",
+      "mid-stream mutation",
+      "authenticated in-memory verifier execution",
+      "recursive exact inventory and shadow .pyd/.pyc sentinels"
+    ],
+    "test_observed_code_defect": false,
+    "independent_rereview_completed": true,
+    "rereview_verdict": "REVISE-AND-REREVIEW",
+    "supported_api_closures": [
+      "BRM-EPRI01-IR-001",
+      "BRM-EPRI01-IR-002",
+      "BRM-EPRI01-IR-003"
+    ],
+    "retained_open_finding": "BRM-EPRI01-IR-004"
+  },
+  "independent_review_cycle_2": {
+    "verdict": "REVISE-AND-REREVIEW",
+    "blocking": 0,
+    "major": 2,
+    "minor": 1,
+    "prior_finding_disposition": {
+      "BRM-EPRI01-IR-001": "CLOSED-IN-BOUNDED-SUPPORTED-APIS",
+      "BRM-EPRI01-IR-002": "CLOSED-IN-BOUNDED-SUPPORTED-APIS",
+      "BRM-EPRI01-IR-003": "CLOSED-IN-BOUNDED-SUPPORTED-APIS",
+      "BRM-EPRI01-IR-004": "OPEN"
+    },
+    "new_findings": [
+      {
+        "id": null,
+        "severity": "MAJOR",
+        "topic": "candidate and test bytes bound under unpinned and unrecorded interpreter, standard-library, site, platform, and OS-DLL closure",
+        "cycle_2_disposition": "OPEN"
+      },
+      {
+        "id": null,
+        "severity": "MAJOR",
+        "topic": "live harness imported repository candidate before hash authentication",
+        "cycle_2_disposition": "OPEN"
+      },
+      {
+        "id": null,
+        "severity": "MINOR",
+        "topic": "public reproduction commands omitted required evidence arguments",
+        "cycle_2_disposition": "OPEN"
+      }
+    ]
+  },
+  "cycle_3_response": {
+    "changed_role": "TEST/VERIFICATION",
+    "changed_paths": [
+      "verification/verify_candidate.py",
+      "verification/acquire_live_artifacts.py"
+    ],
+    "code_and_direct_test_bytes_unchanged": true,
+    "direct_tests_rerun": false,
+    "latest_authenticated_direct_results": {
+      "foundation": "11/11",
+      "materialization_security": "8/8"
+    },
+    "response_evidence": [
+      "candidate and test byte binding explicitly scoped under an unverified host runtime",
+      "observed interpreter identity and bytes recorded stable without authenticating the runtime closure",
+      "all eight live candidate modules loaded from authenticated memory after inventory and byte authentication",
+      "complete verifier and live reproduction commands"
+    ],
+    "fresh_independent_rereview_completed": true,
+    "rereview_verdict": "REVISE-AND-REREVIEW",
+    "supported_scope_closures": [
+      "BRM-EPRI01-IR-001",
+      "BRM-EPRI01-IR-002",
+      "BRM-EPRI01-IR-003",
+      "BRM-EPRI01-IR-004"
+    ],
+    "runtime_live_authority_authenticated": false
+  },
+  "independent_review_cycle_3": {
+    "verdict": "REVISE-AND-REREVIEW",
+    "blocking": 0,
+    "major": 1,
+    "minor": 2,
+    "prior_finding_disposition": {
+      "BRM-EPRI01-IR-001": "CLOSED-IN-BOUNDED-SUPPORTED-SCOPE",
+      "BRM-EPRI01-IR-002": "CLOSED-IN-BOUNDED-SUPPORTED-SCOPE",
+      "BRM-EPRI01-IR-003": "CLOSED-IN-BOUNDED-SUPPORTED-SCOPE",
+      "BRM-EPRI01-IR-004": "CLOSED-FOR-CALIBRATED-CANDIDATE-TEST-BYTE-SCOPE"
+    },
+    "runtime_live_authority": "EXPLICITLY-ABSENT",
+    "findings": [
+      {
+        "id": null,
+        "severity": "MAJOR",
+        "topic": "live external-root identity not retained and evidence-path reopen could rebind",
+        "cycle_3_disposition": "OPEN"
+      },
+      {
+        "id": null,
+        "severity": "MINOR",
+        "topic": "verifier-record pre/post stability claimed from one measurement",
+        "cycle_3_disposition": "OPEN"
+      },
+      {
+        "id": null,
+        "severity": "MINOR",
+        "topic": "direct-test reproduction commands omitted -S",
+        "cycle_3_disposition": "OPEN"
+      }
+    ]
+  },
+  "cycle_4_response": {
+    "changed_role": "TEST/VERIFICATION",
+    "changed_paths": [
+      "verification/acquire_live_artifacts.py"
+    ],
+    "other_repository_artifact_bytes_unchanged": "11/11",
+    "offline_binding_check_exit": 0,
+    "offline_attack_cases_failed_closed": [
+      "rename",
+      "replacement",
+      "mklink existing-name collision",
+      "preexisting repository junction",
+      "direct repository target"
+    ],
+    "repository_sentinel_absent": true,
+    "retained_root_full_lifecycle": true,
+    "evidence_sidecar_handle_relative_final_reauthentication": true,
+    "verifier_record_actual_reread_reparse_rehash_pre_post": true,
+    "direct_test_commands_include_site_disable": true,
+    "fresh_independent_rereview_completed": true,
+    "rereview_verdict": "PASS-FOR-BOUNDED-WINDOWS-EXTERNAL-PIN-RECOVERY-IMPLEMENTATION-V0.2-NO-LIVE-AUTHORITY",
+    "bounded_closure_claimed": true,
+    "live_authority_claimed": false
+  },
+  "independent_review_cycle_4": {
+    "verdict": "PASS-FOR-BOUNDED-WINDOWS-EXTERNAL-PIN-RECOVERY-IMPLEMENTATION-V0.2-NO-LIVE-AUTHORITY",
+    "blocking": 0,
+    "major": 0,
+    "minor": 2,
+    "authenticated_boundary": {
+      "repository_hashes": "18/18",
+      "external_hashes": "4/4",
+      "branch": "codex/s0-build-runtime-external-pin-recovery-implementation-v02-revision",
+      "head": "a9264101b4fd0e678dad20131c03267b60b88bcc",
+      "tree": "6e62a22d8f262e6d40a63f1480f5984f9d6f63d2",
+      "parent": "defec54dd0f6bf9896bc22beab2732f4ae660e48",
+      "read_only": true,
+      "f0_content_accessed": false,
+      "execution_performed": false
+    },
+    "prior_finding_disposition": {
+      "BRM-EPRI01-IR-001": "CLOSED-IN-BOUNDED-SUPPORTED-SCOPE",
+      "BRM-EPRI01-IR-002": "CLOSED-IN-BOUNDED-SUPPORTED-SCOPE",
+      "BRM-EPRI01-IR-003": "CLOSED-IN-BOUNDED-SUPPORTED-SCOPE",
+      "BRM-EPRI01-IR-004": "CLOSED-FOR-CALIBRATED-CANDIDATE-TEST-BYTE-BINDING-UNDER-UNAUTHENTICATED-TRUSTED-PREREQUISITE",
+      "cycle_3_external_root_major": "CLOSED-IN-BOUNDED-SCOPE",
+      "cycle_3_verifier_pre_post_minor": "CLOSED",
+      "cycle_3_direct_site_disable_minor": "CLOSED"
+    },
+    "authority_boundary": {
+      "runtime": "ABSENT",
+      "producer": "ABSENT",
+      "live": "ABSENT",
+      "applicable_blockers": [
+        "RUNTIME-PROFILE",
+        "ACQUISITION-PRODUCER"
+      ]
+    },
+    "remaining_minor_findings": [
+      {
+        "topic": "published offline command omitted required --verification-evidence",
+        "reviewed_artifact_disposition": "OPEN",
+        "result_preservation_disposition": "CORRECTED-IN-PUBLIC-DOCUMENTATION-AFTER-PASSING-REVIEW"
+      },
+      {
+        "topic": "failed mklink /J against existing root demonstrates name-collision and replacement rejection, not in-place FSCTL reparse conversion",
+        "reviewed_artifact_disposition": "OPEN-IN-UNCHANGED-TEST-ARTIFACT",
+        "dynamic_in_place_fsctl_reparse_conversion_covered": false
+      }
+    ]
+  },
+  "result_preservation": {
+    "status": "DOCUMENTATION-COMPLETE-PRESERVATION-REVIEW-PENDING",
+    "technical_cycle_4_rereview_complete": true,
+    "code_test_verification_bytes_unchanged": true,
+    "documentation_corrections": [
+      "offline reproduction command includes parser-required --verification-evidence",
+      "mklink existing-root evidence limited to name-collision and replacement rejection"
+    ],
+    "preservation_review_pending": true,
+    "commit_recorded": false,
+    "push_recorded": false,
+    "main_integration_recorded": false
+  },
+  "revision_history": [
+    {
+      "cycle": 1,
+      "verification_evidence_sha256": "0c948aab236ef8cba546125f1e8731fec72877ab42584a5423efadba4fa06f29",
+      "live_evidence_sha256": "68cb60bb14ac6c894c144915ad0745e8aee966a602cda200250d25a1be2363e8",
+      "independent_review_verdict": "REVISE-AND-REREVIEW"
+    },
+    {
+      "cycle": 2,
+      "verification_evidence_sha256": "c6681cba3fd5bb12cdbcbd024710f4b7c99394ab73d36c9362fe3b3671c6ba7c",
+      "live_evidence_sha256": "93d82386208567e7fc94e716b70f3a4e1671ddd873313d160037202411d96804",
+      "independent_review_verdict": "REVISE-AND-REREVIEW"
+    },
+    {
+      "cycle": 3,
+      "verification_evidence_sha256": "76d062c28817e09a8e2b10fc30b8bf7cee93ea00e5678c5e519007ddfc9c087e",
+      "live_evidence_sha256": "b90506d1016a8476da09e1a4e71b1dc96a1eba14e04c2c91e90645baf27a1e96",
+      "independent_review_verdict": "REVISE-AND-REREVIEW"
+    },
+    {
+      "cycle": 4,
+      "verification_evidence_sha256": "76d062c28817e09a8e2b10fc30b8bf7cee93ea00e5678c5e519007ddfc9c087e",
+      "live_evidence_sha256": "ee25ce05a42132f821ddaa7e682914fa65201bd25ea262a8e0cd7aaf7932ebaf",
+      "independent_review_verdict": "PASS-FOR-BOUNDED-WINDOWS-EXTERNAL-PIN-RECOVERY-IMPLEMENTATION-V0.2-NO-LIVE-AUTHORITY"
+    }
+  ],
+  "blockers": {
+    "fixed_list_unresolved": [
+      "ACQUISITION-PRODUCER",
+      "BRM-EPRI01-IR-001",
+      "BRM-EPRI01-IR-002",
+      "BRM-EPRI01-IR-003",
+      "BRM-EPRI01-IR-004",
+      "EFFECTIVE-TRUST-SNAPSHOT",
+      "FRESHNESS-PROVENANCE",
+      "IR-001",
+      "IR-002",
+      "IR-003",
+      "JSONSCHEMA-TRANSITIVE-CLOSURE",
+      "MATERIALIZER-SOURCE",
+      "NATIVE-SOURCE",
+      "OFFLINE-TOOLCHAIN-LAYOUT",
+      "RUNTIME-PROFILE",
+      "SEMANTIC-VALIDATOR",
+      "SUPPLIER-ASSURANCE"
+    ],
+    "live_specific_unresolved": [
+      "CPYTHON-EXPECTED-SIZE-UNPINNED",
+      "VS-BUILD-TOOLS-UNAUTHENTICATED-PIN",
+      "VS-BUILD-TOOLS-EXPECTED-SIZE-UNPINNED",
+      "JSONSCHEMA-SOURCE-UNAVAILABLE"
+    ]
+  },
+  "claim_states": {
+    "process": false,
+    "installation": false,
+    "build": false,
+    "runtime": false,
+    "rehearsal": false,
+    "s0": false,
+    "e0": false,
+    "acquired_byte_executed_or_imported_or_installed_or_compiled_or_linked": false
+  },
+  "pending": [
+    "independent review of preservation-only documentation corrections",
+    "final CONTROL result-preservation and publication decision",
+    "commit, push, and main integration"
+  ]
+}
