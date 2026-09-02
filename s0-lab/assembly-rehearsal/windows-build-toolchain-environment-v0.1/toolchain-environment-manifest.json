@@ -144,7 +144,9 @@
       "exitCode": 0
     }
   },
-  "status": "AWAITING-INDEPENDENT-REVIEW",
+  "status": "PASS-BOUNDED — INTEGRATION-READY",
+  "finalIndependentReview": {"verdict": "PASS-BOUNDED — INTEGRATION-READY", "findings": {"critical": 0, "high": 0, "medium": 0, "low": 0}, "r6RebootRediscoverySmoke": "discharged", "candidateDefectCount": 0},
+  "controlDecision": {"publication": "accepted-and-published", "scope": "bounded local Windows build-toolchain environment evidence only", "candidateCommit": "2e45f2ce0dd37b0972bde820892588d087ae8d4f", "tree": "79747c6b5676475a06237ca65946d6a54fa8cea1", "soleParent": "8683c726eabbdb13d0229858ab68da125e3fe57a", "localMainAndOriginMainExact": true},
   "finalPostRebootVerification": {
     "candidate": "R6",
     "status": "PASS",

@@ -1,10 +1,16 @@
 # Windows Build Toolchain Environment V0.1 Status Report
 
-Status: `AWAITING-INDEPENDENT-REVIEW`
+Status: `PASS-BOUNDED — INTEGRATION-READY`
 
 ## Purpose
 
 This auxiliary environment task removes the immediate Windows C++ build-tool blocker by discovering the existing toolchain, using the standard Microsoft installer only when the required workload was absent, and proving one isolated x64 compile-and-run path. It does not implement or run S0.
+
+## Final independent review and CONTROL decision
+
+Independent verdict: `PASS-BOUNDED — INTEGRATION-READY`; critical/high/medium/low findings: `0/0/0/0`. The review confirms R6 reboot discharge, rediscovery, smoke compile/run, and candidate defect count `0`.
+
+CONTROL publication decision: accepted and published as the bounded local Windows build-toolchain environment evidence only. Local `main` and live `origin/main` both resolve exactly to candidate commit `2e45f2ce0dd37b0972bde820892588d087ae8d4f`, tree `79747c6b5676475a06237ca65946d6a54fa8cea1`, sole parent `8683c726eabbdb13d0229858ab68da125e3fe57a`. This does not broaden any claim to general compiler/security/production suitability or validate S0, the central system, Project Brain integration, operational safety, economic value, or model-to-model transfer.
 
 Repository evidence is bound to base commit `8683c726eabbdb13d0229858ab68da125e3fe57a` and tree `c0ce101bc9140639651f3e8b64424c1448eaa1b1`.
 
@@ -106,4 +112,4 @@ The Windows restart prerequisite is discharged for this candidate by R6. The app
 
 The evidence supports only that the named Build Tools instance and required named components were present after the installation, and that the observed isolated x64 smoke source compiled and ran successfully with the recorded commands and bytes.
 
-It does not establish fixed source-URL or transitive-package provenance, mutable online package immutability, replay of installer argv, general compiler correctness, every SDK/library/architecture/generator/build system, or the historical absence of every global `PATH` edit. It does not validate S0, the central system, Project Brain integration, operational safety, economic value, or model-to-model transfer. Independent review has not yet issued a verdict; this report awaits fresh independent review and CONTROL decision, not approval.
+It does not establish fixed source-URL or transitive-package provenance, mutable online package immutability, replay of installer argv, general compiler correctness, every SDK/library/architecture/generator/build system, or the historical absence of every global `PATH` edit. It does not validate S0, the central system, Project Brain integration, operational safety, economic value, or model-to-model transfer.
