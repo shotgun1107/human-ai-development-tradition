@@ -1,0 +1,206 @@
+{
+  "allowedClaims": [
+    "The named Visual Studio 2022 Build Tools instance and five named workload/component requirements were observed after installation.",
+    "The recorded isolated x64 smoke source compiled and executed successfully with the recorded commands and artifact hashes.",
+    "The installation procedure made no global PATH mutation, and the current non-developer process did not resolve cl.exe or MSBuild.exe.",
+    "Visual Studio 2017 WDExpress was preserved by the installation procedure."
+  ],
+  "evidence": {
+    "codeRawRoot": {
+      "fileCount": 0,
+      "path": "C:\\Users\\SSAFY\\AppData\\Local\\Temp\\s0-windows-build-toolchain-env-v01-8b4f00fc24b24929b912ecf4e9e1c3ad\\code-install",
+      "reparsePointCount": 0,
+      "totalBytes": 0
+    },
+    "testVerificationRawRoot": {
+      "inventory": {
+        "boundFileCount": 60,
+        "boundTotalBytes": 151766,
+        "mismatchCount": 0,
+        "name": "inventory.json",
+        "sha256": "825569b20174c7c1d7eb8f7778dc9d9b6422a4a44073e7a7f2d0271871a8eafb",
+        "size": 10653
+      },
+      "path": "C:\\Users\\SSAFY\\AppData\\Local\\Temp\\s0-windows-build-toolchain-env-v01-8b4f00fc24b24929b912ecf4e9e1c3ad\\test-verification",
+      "physicalFileCount": 61,
+      "physicalTotalBytes": 162419,
+      "reparsePointCount": 0,
+      "verificationSummary": {
+        "name": "verification-summary.json",
+        "sha256": "ae629cdbef603c37363a33da78ab70aaf5d52d6b0754caa9f35204f8d05597ca",
+        "size": 6119
+      }
+    }
+  },
+  "gate": "WINDOWS BUILD TOOLCHAIN ENVIRONMENT EXISTING TOOLCHAIN DISCOVERY AND STANDARD INSTALLATION V0.1",
+  "installation": {
+    "artifact": {
+      "authenticodeSigner": "Microsoft",
+      "authenticodeStatus": "Valid",
+      "filename": "vs_BuildTools.exe",
+      "sha256": "236367b68ba9a51708263ab10a1c85546cc4a8eca78b365168811d19c4fb2f29",
+      "size": 4473936,
+      "sourceUrlVerification": "unverified in this gate"
+    },
+    "bootstrapper": {
+      "arguments": [
+        "--quiet",
+        "--wait",
+        "--norestart",
+        "--add",
+        "Microsoft.VisualStudio.Workload.VCTools",
+        "--includeRecommended"
+      ],
+      "endUtc": "2026-09-02T03:13:01.8108048Z",
+      "executablePath": "C:\\Users\\SSAFY\\AppData\\Local\\Temp\\s0-v01-live-504690da91a42646967203c8\\artifacts\\vs_BuildTools.exe",
+      "exitCode": 3010,
+      "invocationCount": 1,
+      "startUtc": "2026-09-02T03:09:03.4839677Z"
+    },
+    "globalPathMutationPerformed": false,
+    "officialOnlinePackagesPinned": false,
+    "postInstallerProcessAggregate": 0,
+    "transitivePackageProvenanceFixed": false,
+    "visualStudio2017WDExpressPreserved": true
+  },
+  "instance": {
+    "components": [
+      "Microsoft.Component.MSBuild",
+      "Microsoft.VisualStudio.Component.VC.CMake.Project",
+      "Microsoft.VisualStudio.Component.VC.Tools.x86.x64",
+      "Microsoft.VisualStudio.Component.Windows10SDK",
+      "Microsoft.VisualStudio.Workload.VCTools"
+    ],
+    "installationPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools",
+    "installationVersion": "17.14.37614.0",
+    "instanceId": "c50d3a2f",
+    "isComplete": true,
+    "isLaunchable": true,
+    "isPrerelease": false,
+    "productId": "Microsoft.VisualStudio.Product.BuildTools"
+  },
+  "nonclaims": [
+    "No claim of fixed source-URL or transitive-package provenance is made; the source URL was unverified in this gate and official online packages are mutable.",
+    "No general compiler-correctness claim follows from one smoke compile and run.",
+    "No claim covers every installed SDK, library, architecture, generator, or build system.",
+    "No claim is made that no global PATH edit ever occurred historically.",
+    "No conclusion that a reboot is unnecessary follows from the mixed reboot indicators.",
+    "No S0, central-system, Project Brain integration, operational-safety, economic-value, or model-to-model-transfer result was implemented or validated."
+  ],
+  "pinnedRepository": {
+    "baseCommit": "8683c726eabbdb13d0229858ab68da125e3fe57a",
+    "tree": "c0ce101bc9140639651f3e8b64424c1448eaa1b1"
+  },
+  "postVerificationProcessAggregates": {
+    "compiler": 0,
+    "installer": 0,
+    "msiexec": 0
+  },
+  "reboot": {
+    "phase": "pre-reboot-historical",
+    "automaticRebootPerformed": false,
+    "cbsRebootPendingKeyPresent": false,
+    "installerExitCode": 3010,
+    "pendingFileRenameOperationsPresent": true,
+    "restartRequiredBeforeReliance": true,
+    "vswhereInstanceIsRebootRequired": false,
+    "windowsUpdateRebootRequiredKeyPresent": false
+  },
+  "schemaVersion": "0.1",
+  "smokeTest": {
+    "activation": {
+      "command": "call \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 -host_arch=x64",
+      "exitCode": 0
+    },
+    "artifacts": [
+      {
+        "name": "10-smoke-run.stdout.txt",
+        "sha256": "9acf255a721370b090d067734fa4b984ecaf777d08e0dd3dee4f12a7ca6f9860",
+        "size": 23
+      },
+      {
+        "name": "smoke.cpp",
+        "sha256": "0126ac2ec9c0371c72ead715ed1ad9610a8dfe61e82c2af9b187c23261514f1e",
+        "size": 93
+      },
+      {
+        "name": "smoke.exe",
+        "sha256": "4f505ea933e19a916459c0538fdd4fe5d6c9da8ae883f41db9f0d249ce79f54d",
+        "size": 111104
+      },
+      {
+        "name": "smoke.obj",
+        "sha256": "b96b59bd2bc992676de449e3439484c23437bdd32c6f0f2fc9c68271600e1203",
+        "size": 1248
+      }
+    ],
+    "compile": {
+      "command": "cl.exe /nologo /W4 /WX /EHsc /Fe:smoke.exe /Fo:smoke.obj smoke.cpp",
+      "exitCode": 0
+    },
+    "exactStdoutEscaped": "S0_TOOLCHAIN_SMOKE_OK\\r\\n",
+    "run": {
+      "command": "smoke.exe",
+      "exitCode": 0
+    }
+  },
+  "status": "AWAITING-INDEPENDENT-REVIEW",
+  "finalPostRebootVerification": {
+    "candidate": "R6",
+    "status": "PASS",
+    "vswhereExitCode": 0,
+    "compileExitCode": 0,
+    "runExitCode": 0,
+    "exactStdoutLine": "S0_TOOLCHAIN_POST_REBOOT_OK",
+    "approxBootUtc": "2026-09-02T03:56:15.5303584Z",
+    "verificationSummary": {"size": 1446, "sha256": "043054FCDB6EDE25D1F9E10EF2CEF8340BE8DC2676BD84C03C2743784EBF0E43"},
+    "inventory": {"size": 2376, "sha256": "660E9BEF00BE4940CEBE72E5D41A8AB661A57F41C47D3F740D2157CA1878314B"},
+    "artifactSha256": {"smoke.cpp": "E5C21AE8268CE1570F37BEB15A5F66FA0A544AE77CC4DEF0F3FB57F9EA0CAEA1", "smoke.obj": "38D49E2D335D20A2D621CEF44B79F28059342D46C977C088A8C361A3DAC7DC43", "smoke.exe": "B0AE578967681A2BBCD3CD70B79C988C5366F9135970BDE6577883E8D82D68B0", "stdout": "36425EEA7858A44D4683520E960BB6EB17A5395E33FFBAECE9106CB7C60C63D5"},
+    "rebootRequirementDischargedForCandidate": true,
+    "r3ToR5": "R3 and R5 establish harness failures before compile/run and 0/0; R4 preserves only a generic substantive failure after 0.292s and does not prove stage/run counts",
+    "r3ToR5EvidenceBoundary": "R4 stage/run counts unverified",
+    "capturedRelevantInstallerBuildProcessCount": 1,
+    "capturedRelevantInstallerBuildProcessIdentity": "unverified",
+    "currentTargetedProcessAggregates": {"compiler": 0, "installer": 0, "msiexec": 0},
+    "currentCleanupBlocker": false,
+    "remainingPendingRename": "generic if evidenced; not attributed to installer"
+  },
+  "toolUse": {
+    "nonDeveloperPathResolution": [
+      {
+        "command": "C:\\Windows\\System32\\where.exe MSBuild.exe",
+        "exitCode": 1,
+        "resolved": false
+      },
+      {
+        "command": "C:\\Windows\\System32\\where.exe cl.exe",
+        "exitCode": 1,
+        "resolved": false
+      }
+    ],
+    "requiresDeveloperEnvironmentOrExactPaths": true
+  },
+  "tools": [
+    {
+      "binaryVersion": "19.44.35228.0",
+      "name": "cl.exe",
+      "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+      "toolsetDirectoryVersion": "14.44.35207"
+    },
+    {
+      "name": "cmake.exe",
+      "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+      "version": "3.31.6-msvc6"
+    },
+    {
+      "name": "MSBuild.exe",
+      "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\amd64\\MSBuild.exe",
+      "version": "17.14.51.32402"
+    },
+    {
+      "name": "rc.exe",
+      "path": "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe",
+      "sdkDirectoryVersion": "10.0.26100.0"
+    }
+  ]
+}
