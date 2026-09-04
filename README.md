@@ -36,7 +36,17 @@
 
 초기 방식은 모델 파인튜닝이 아닙니다. 검색 가능한 문서, 출처와 버전이 연결된 규칙, RAG, 프롬프트 주입, 재현 가능한 테스트처럼 사람이 검토하고 철회할 수 있는 외부 기억으로 시작합니다.
 
-## 현재 상태
+## 기반 상태와 현재 작업 라우팅
+
+현재 기술 작업의 완료 상태, 선행조건, 차단 사유와 다음 허용 gate는
+[현재 작업 원장](./s0-lab/control/CURRENT-WORK-LEDGER.md)에서 확인합니다.
+작업별 설계·구현·검토 경로와 단계 순서는
+[workstream 구조](./s0-lab/control/workstreams/README.md)에서 확인합니다.
+이 원장은 실행 순서를 찾기 위한 파생 색인이며, 최신 Git 객체와 루트
+`AGENTS.md`보다 우선하지 않습니다.
+
+아래 표는 초기 S0 준비 기반의 누적 상태입니다. 이 표의 누락이나 오래된
+항목으로 현재 구현 순서 또는 다음 gate를 추론하지 않습니다.
 
 | 단계 | 상태 | 의미 |
 |---|---|---|
@@ -46,12 +56,16 @@
 | SM0·SM1 데이터 형식 | 동결 | 답안과 10개 manifest/schema 형식 고정 |
 | F0-PUBLIC v0.1 | 동결 | 비밀 없는 공개 합성 연습자료 작성·독립 검토 완료 |
 | I0 최소 구현 | 제한 동결 | 공개 harness와 F0-PUBLIC refreeze 완료, S0·전체 시스템 검증은 아님 |
-| F0-PUBLIC 질문 계약 v0.4 | 거부 | 독립 심사에서 Critical 4·Major 3, 실패 후보로 보존 |
-| 질문 계약 v0.5 | 설계 대기 | 별도 경로에서 재설계해야 하며 후보 문서는 아직 없음 |
-| E0 효과시험 v0.1 | 독립 심사 전 | 분리 브랜치에 설계 후보만 존재, 자료·구현·실행은 닫힘 |
+| F0-PUBLIC 질문 계약 | v0.14 설계 기준선 채택 | v0.4 실패부터 v0.13까지는 이력으로 보존; v0.14는 독립 검토 0건과 CONTROL 통합 승인, 구현·실행은 닫힘 |
+| E0 효과시험 | v0.4 설계 검토 통과 | `PASS-FOR-CONTROL-INTEGRATION-ONLY`; CONTROL 통합·구현·실행·효과 판정은 아직 없음 |
+| 공개 조립 리허설 준비 | live 선행조건 대기 | 설계 v0.5, 오프라인 컨트롤러 v0.1, bounded adapter v0.1, Windows toolchain v0.1, runtime v0.7은 재사용; preloader v0.4 구현이 없음 |
 | F0-SEALED 작성·S0 실행·판정 게이트 | 미착수 | 기존 53개 보존 파일은 Git 추적되지만 AI 내용 접근과 실행 권한은 닫힘 |
 
-상세한 현재 상태는 [S0 작업 환경](./s0-lab/README.md)과 [F0-PUBLIC 동결 기록](./s0-lab/control/f0-public/f0-public-v0.1-freeze-record.md)에서 확인할 수 있습니다.
+현재 기술 상태는 [현재 작업 원장](./s0-lab/control/CURRENT-WORK-LEDGER.md)과
+[workstream 구조](./s0-lab/control/workstreams/README.md)에서 확인합니다.
+[S0 작업 환경](./s0-lab/README.md)과
+[F0-PUBLIC 동결 기록](./s0-lab/control/f0-public/f0-public-v0.1-freeze-record.md)은
+초기 기반과 동결 이력을 확인하는 문서입니다.
 
 ## 핵심 원칙
 
@@ -73,11 +87,13 @@
 - [`s0-lab/`](./s0-lab/README.md) — S0 프로토콜, 동결 schema, 공개 합성 연습자료와 검토 기록
 - [`AGENTS.md`](./AGENTS.md) — 현재 구현·실행 게이트와 역할 격리 규칙
 
-가장 먼저 읽을 문서는 다음 세 개입니다.
+루트 `AGENTS.md` 다음에 읽을 문서는 다음과 같습니다.
 
-1. [목적과 철학](./docs/tradition/purpose-and-philosophy.md)
-2. [프로젝트 전체 문서 지도](./docs/tradition/README.md)
-3. [현재 S0 상태](./s0-lab/README.md)
+1. [현재 작업 원장](./s0-lab/control/CURRENT-WORK-LEDGER.md)
+2. [workstream 구조](./s0-lab/control/workstreams/README.md)
+3. [목적과 철학](./docs/tradition/purpose-and-philosophy.md)
+4. [프로젝트 연구·설계 문서 지도](./docs/tradition/README.md)
+5. [초기 S0 준비 기록](./s0-lab/README.md)
 
 ## 문서 사이트로 보기
 
@@ -100,6 +116,15 @@ python -m mkdocs serve
 
 ## 검증 경계
 
-현재 공개 준비 경로에서는 **F0-PUBLIC v0.1과 I0 최소 harness가 제한된 범위에서 동결**됐습니다. 이후 질문 계약 URC v0.4는 독립 심사에서 거부됐으므로 v0.5를 별도 버전으로 다시 설계해야 합니다. 이는 S0 또는 중앙 시스템의 효과가 입증됐다는 뜻이 아닙니다.
+현재 공개 준비 경로에서는 **F0-PUBLIC v0.1과 I0 최소 harness가 제한된
+범위에서 동결**됐습니다. 질문 계약은 v0.4 실패 이후 별도 판본을 거쳐
+v0.14 공개 설계 기준선이 CONTROL에 채택됐지만 구현·fixture·실행 권한은
+열리지 않았습니다.
 
-병렬 경로의 E0 v0.1은 전통 효과시험의 설계 후보까지만 작성됐으며 독립 심사 전입니다. 다음 허용 작업은 정확한 새 세션 게이트 아래에서 S0 v0.5 설계 또는 E0 설계의 읽기 전용 독립 심사이며, 자료 작성·구현·실행으로 자동 진행하지 않습니다.
+병렬 E0 경로는 v0.4 설계가 독립 검토에서 CONTROL 통합 고려 가능 판정을
+받은 상태입니다. CONTROL 통합, 구현, 실행, 효과·안전·경제성·모델 전이
+판정은 없습니다. 공개 조립 경로의 일부 지원 구성요소도 구현됐지만 공식
+리허설이나 S0는 실행되지 않았습니다. 현재 허용 작업과 선행조건은 최신
+Git, 루트 `AGENTS.md`, 현재 사용자 명령, 그리고
+[현재 작업 원장](./s0-lab/control/CURRENT-WORK-LEDGER.md)을 순서대로
+인증해 결정합니다.
