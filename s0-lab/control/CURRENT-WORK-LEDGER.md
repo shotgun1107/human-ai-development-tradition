@@ -2,8 +2,8 @@
 
 - `ledger_kind`: derived CONTROL routing index
 - `snapshot_date`: 2026-09-04 Asia/Seoul
-- `evidence_baseline_main_commit`: `2d7bb4f6b84b1b04c2b054d64edad7feaaeb3664`
-- `evidence_baseline_main_tree`: `cc2a53b512e6b9581438e07bccde5212fdf5a02e`
+- `evidence_baseline_main_commit`: `00491ddb9b656a901e62b31dc4a87d910dda2888`
+- `evidence_baseline_main_tree`: `654285f032b30c389a97a6ee36c32dc98519376b`
 - `publication_identity`: resolve the Git commit containing this ledger; do not self-record a future commit
 - `authority_rule`: Git objects, root `AGENTS.md`, and the current user message override this ledger
 - `structural_map`: `s0-lab/control/workstreams/public-end-to-end-assembly-rehearsal.md`
@@ -42,16 +42,21 @@ audit reports are out-of-repository working material and are not authority.
 ## Current requested outcome
 
 The requested outcome is a real PUBLIC end-to-end assembly rehearsal path on
-the admitted Windows host. The currently opened downstream gate is:
+the admitted Windows host. The latest opened prerequisite gate was:
 
 ```text
-S0 V0.14 PUBLIC END-TO-END ASSEMBLY REHEARSAL LIVE IMPLEMENTATION DESIGN V0.5 PUBLIC ASSEMBLY CONTROLLER VERIFIER PARENT OBSERVER AND SAME-PROCESS LIVE CONSUMER IMPLEMENTATION V0.1 OPEN
+S0 V0.14 PUBLIC END-TO-END ASSEMBLY REHEARSAL LIVE IMPLEMENTATION PREREQUISITE PUBLIC ASSEMBLY RUNTIME PROFILE + NEUTRAL PRELOADER DESIGN V0.4 IMPLEMENTATION V0.4 OPEN
 ```
 
-Its current routing state is `OPEN-BUT-BLOCKED-PRE-CODE`. No candidate byte,
-test, live call, commit, or push has been produced under that gate. A clean
-local branch named `codex/public-end-to-end-live-v0.1` points at the pinned
-main commit only.
+That gate reached the terminal CONTROL decision
+`NOT-INTEGRATION-READY-DESIGN-V0.4-REVISION-REQUIRED`. Implementation and
+bounded TEST evidence exist, but fresh independent rereview returned
+`CORRECT/RETEST` with three MAJOR findings. No commit, push, main integration,
+stage-70 probe, live assembly, official rehearsal, or S0 run occurred.
+
+The previously opened downstream live-controller gate remains pending and
+blocked. Its parked branch is historical local state and grants no authority
+to bypass the prerequisite chain.
 
 ## Authenticated completion map
 
@@ -61,8 +66,8 @@ main commit only.
 | Controller, verifier-parent observer, and same-process live consumer | Implementation v0.1 exists; 47 offline tests passed; live launch failed closed before output mutation | `s0-lab/assembly-rehearsal/public-end-to-end-v0.1/verification/public-end-to-end-assembly-rehearsal-implementation-candidate-report-v0.1.md` | reuse; do not reimplement |
 | Bounded assembly/runtime-preloader adapter | Implementation v0.1 integrated; `candidate_only=true`, `native_api_reachable=false`, `rehearsal_pass=false` | `s0-lab/assembly-rehearsal/public-end-to-end-v0.2/verification/public-end-to-end-runtime-preloader-bounded-integration-implementation-candidate-report-v0.1.md`; `s0-lab/control/assembly-rehearsal/public-end-to-end-v0.2/bounded-integration-implementation-v0.1-control-integration-and-main-merge-decision-v0.1.md` | reuse as offline adapter only |
 | Windows build-toolchain environment | v0.1 post-reboot x64 smoke compile/run passed on the named host | `s0-lab/assembly-rehearsal/windows-build-toolchain-environment-v0.1/STATUS_REPORT.md` | reuse environment; no general compiler, provenance, security, or production claim |
-| Runtime-profile and neutral-preloader design | Design v0.4 received zero-finding independent rereview | `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-independent-rereview-result-preservation-record-v0.1.md` | implementation may be considered |
-| Runtime-profile and neutral-preloader implementation | Latest implementation is v0.3, offline-only, `native_api_reachable=False`; v0.4 implementation does not exist | `s0-lab/assembly-rehearsal/runtime-profile-neutral-preloader-v0.3/verification/public-assembly-runtime-profile-neutral-preloader-implementation-candidate-report-v0.3.md` | **next blocking prerequisite** |
+| Runtime-profile and neutral-preloader design | Design v0.4 received zero-finding design rereview, but implementation rereview exposed three contract gaps: the exact guard API list, evidence-schema binding/versioning, and physical ancestor/alias isolation | `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-independent-rereview-result-preservation-record-v0.1.md`; `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-implementation-independent-rereview-result-preservation-record-v0.1.md` | design revision required before another implementation acceptance attempt |
+| Runtime-profile and neutral-preloader implementation | v0.4 candidate implemented, compiled, materialized and bounded-tested; final TEST passed its stated scope, but fresh rereview returned `CORRECT/RETEST` with three MAJOR findings and CONTROL found it not integration-ready | `s0-lab/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/verification/public-assembly-runtime-profile-neutral-preloader-implementation-candidate-report-v0.4.md`; `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-implementation-control-integration-readiness-decision-v0.1.md` | rejected for integration; diagnostic evidence may inform the required design revision |
 | CPython and jsonschema runtime materialization | v0.7 accepted, independently reviewed with 0/0/0 findings, and present at the evidence baseline | `s0-lab/assembly-rehearsal/build-runtime-materialization-v0.7/STATUS_REPORT.md` plus containing Git commit `2d7bb4f6b84b1b04c2b054d64edad7feaaeb3664` | complete; reuse exact pins and implementation |
 | Real-Windows runtime/preloader platform probe | Not executed | `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/public-assembly-runtime-profile-neutral-preloader-acceptance-plan-v0.4.md` | blocked until v0.4 implementation and review complete |
 | Live assembly connection and execution | Not executed | assembly v0.1 report plus runtime/preloader v0.4 acceptance plan | downstream gate remains pending |
@@ -75,14 +80,20 @@ runtime materialization v0.7                         COMPLETE
 assembly controller/observer/consumer v0.1          OFFLINE IMPLEMENTED
 bounded assembly/runtime-preloader adapter v0.1      OFFLINE INTEGRATED
 Windows build-toolchain environment v0.1             BOUNDED PASS
-runtime-profile/neutral-preloader design v0.4        REVIEW PASS
+runtime-profile/neutral-preloader design v0.4        REVIEWED, CONTRACT GAPS FOUND IN IMPLEMENTATION REREVIEW
                   \          |          /
                    \         |         /
                     v        v        v
-runtime-profile/neutral-preloader implementation v0.4   MISSING
+runtime-profile/neutral-preloader implementation v0.4   BUILT + BOUNDED-TESTED, NOT INTEGRATION READY
                 |
                 v
-fresh implementation review                            REQUIRED
+fresh implementation rereview                           CORRECT/RETEST, 3 MAJOR
+                |
+                v
+runtime-profile/neutral-preloader design revision       REQUIRED
+                |
+                v
+corrected implementation + fresh review                 REQUIRED
                 |
                 v
 bounded real-Windows runtime/preloader platform probe  REQUIRED
@@ -101,17 +112,37 @@ before import and construct the exact Windows process and handle-list launch.
 
 ## Structurally eligible next work package
 
-Runtime-profile and neutral-preloader implementation v0.4 is the only
-structurally eligible next work package. It is **not yet a recommended or
-opened gate**. Before presenting a gate phrase, CONTROL must redo the
-value-first assessment in ordinary language: core purpose, concrete blocker,
-cheapest standard alternative, why that alternative is insufficient, useful
-output and reuse, realistic best/worst time, and stop/discard condition. It
-must then freeze role capacity, exact pins and allowlists, and the complete
-pre-CODE adversarial checklist.
+Revision of the runtime-profile and neutral-preloader design contract is the
+only structurally eligible next work package. The revision must close the
+exact guard semantic-call inventory, version and fully freeze every evidence
+serialization binding, and define physical ancestor/reparse/volume identity
+rules for materializer isolation. Its candidate/version is not yet frozen;
+this ledger does not invent one or open a gate.
+
+Before presenting a gate phrase, CONTROL must redo the value-first assessment
+in ordinary language: core purpose, concrete blocker, cheapest standard
+alternative, why that alternative is insufficient, useful output and reuse,
+realistic best/worst time, and stop/discard condition. It must then freeze role
+capacity, exact pins and allowlists, and the complete pre-CODE adversarial
+checklist for the revised design and any later implementation.
 
 The already opened downstream live-controller gate remains blocked and cannot
 absorb the preloader implementation or Windows platform probe.
+
+## Local preservation incident
+
+One task-owned temporary worktree developed 1,393 tracked unstaged deletions,
+including aggregate deletions of all 32/11/10 F0 preservation-path entries.
+The cause is unverified. No restore, reset, clean, prune, or deletion was
+performed on that worktree; it remains quarantined and is not evidence for the
+candidate decision. A new clone from live `origin/main` was authenticated at
+the exact baseline commit/tree and 32/11/10 F0 inventory before checkout. The
+25 approved task files were transferred byte-for-byte into that clean clone,
+and four final rereview/decision files were authored there by DOCUMENTATION.
+With this ledger and workstream update, the clean clone has 31 task-owned
+status entries. Its F0 paths are quiet with zero untracked, ignored,
+skip-worktree, or assume-unchanged anomalies, and it has zero outside-task
+status entries.
 
 ## Update triggers
 

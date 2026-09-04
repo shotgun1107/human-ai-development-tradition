@@ -1,0 +1,61 @@
+{
+  "architecture": "x64",
+  "build_outputs": [
+    "s0_neutral_preloader_v0_4.exe",
+    "s0_runtime_handle_guard_v0_4.pyd"
+  ],
+  "compiler_discovery": "forbidden-explicit-absolute-cl-and-link-paths-required",
+  "compiler_flags": [
+    "/nologo",
+    "/std:c++17",
+    "/EHsc",
+    "/O2",
+    "/W4",
+    "/WX",
+    "/GS",
+    "/guard:cf",
+    "/Qspectre",
+    "/sdl",
+    "/MT",
+    "/DUNICODE",
+    "/D_UNICODE",
+    "/DWIN32_LEAN_AND_MEAN",
+    "/DNOMINMAX"
+  ],
+  "guard_direct_import_families": [
+    "kernel32.dll",
+    "ntdll.dll",
+    "python312.dll",
+    "static-crt-support"
+  ],
+  "guard_initialization_symbol": "PyInit_s0_runtime_handle_guard_v0_4",
+  "linker_flags": [
+    "/DYNAMICBASE",
+    "/HIGHENTROPYVA",
+    "/NXCOMPAT",
+    "/CETCOMPAT",
+    "/GUARD:CF",
+    "/INCREMENTAL:NO",
+    "/OPT:REF",
+    "/OPT:ICF"
+  ],
+  "materialization": {
+    "base_payload": "exact-174-rows-24138847-bytes",
+    "final_manifest": "runtime-files.sha256",
+    "final_row_count": "derived-not-174",
+    "overlay_authority": "externally-pinned-overlay-contract-and-manifest",
+    "platform_inputs": "explicitly-pinned-and-unverified-until-stage70",
+    "script": "materialize-runtime.ps1"
+  },
+  "pdb_disposition": "not-published-not-runtime-input",
+  "preloader_direct_import_families": [
+    "bcrypt.dll",
+    "kernel32.dll",
+    "ntdll.dll",
+    "static-crt-support"
+  ],
+  "runtime_authority_contract": "runtime-authority-v0.4.json",
+  "schema_id": "S0-RUNTIME-PRELOADER-V0.4-BUILD-CONTRACT-1",
+  "source_to_binary_trace_required": true,
+  "toolchain_roots": "explicit-absolute-include-and-library-roots-with-ambient-INCLUDE-and-LIB-cleared"
+}
