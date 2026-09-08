@@ -5,7 +5,7 @@
 - `evidence_baseline_main_tree`: `654285f032b30c389a97a6ee36c32dc98519376b`
 - `publication_identity`: resolve the Git commit containing this map
 - `current_outcome`: real PUBLIC end-to-end assembly rehearsal path on the admitted Windows host
-- `routing_state`: `BLOCKED-BEFORE-RUNTIME-PRELOADER-DESIGN-REVISION`
+- `routing_state`: `DESIGN-V0.5-LOCAL-PASS-AWAITING-GIT-PRESERVATION`
 - `F0_content_access`: none
 
 ## Ordered stages
@@ -17,10 +17,10 @@
 | 25 | Bounded assembly/runtime-preloader adapter | v0.1 | offline integrated; reuse | `s0-lab/assembly-rehearsal/public-end-to-end-v0.2/verification/public-end-to-end-runtime-preloader-bounded-integration-implementation-candidate-report-v0.1.md`; `s0-lab/control/assembly-rehearsal/public-end-to-end-v0.2/bounded-integration-implementation-v0.1-control-integration-and-main-merge-decision-v0.1.md` | 20, runtime/preloader v0.3 |
 | 30 | CPython and jsonschema runtime materialization | v0.7 | complete, reviewed, present at evidence baseline | `s0-lab/assembly-rehearsal/build-runtime-materialization-v0.7/STATUS_REPORT.md`; current presence from Git commit `2d7bb4f6b84b1b04c2b054d64edad7feaaeb3664` | exact external pins |
 | 35 | Windows build-toolchain environment | v0.1 | bounded post-reboot compile/run PASS; reuse | `s0-lab/assembly-rehearsal/windows-build-toolchain-environment-v0.1/STATUS_REPORT.md` | none |
-| 40 | Runtime-profile and neutral-preloader design | v0.4 | design rereview passed; implementation rereview exposed exact API, evidence-schema and physical-path contract gaps; revision required | `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-independent-rereview-result-preservation-record-v0.1.md`; `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-implementation-independent-rereview-result-preservation-record-v0.1.md` | 10, 20 |
-| 50 | Runtime-profile and neutral-preloader implementation | candidate v0.4 | implemented, compiled and bounded-tested; **not integration-ready** | `s0-lab/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/verification/public-assembly-runtime-profile-neutral-preloader-implementation-candidate-report-v0.4.md`; `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-implementation-control-integration-readiness-decision-v0.1.md` | 25, 30, 35, 40 |
-| 60 | Runtime-profile/preloader implementation review | v0.4 | fresh rereview `CORRECT/RETEST`, three MAJOR findings open | `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-implementation-independent-rereview-result-preservation-record-v0.1.md` | 50 |
-| 70 | Bounded real-Windows runtime/preloader platform probe | future | blocked | `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/public-assembly-runtime-profile-neutral-preloader-acceptance-plan-v0.4.md` | 60 |
+| 40 | Runtime-profile and neutral-preloader design | v0.5 | local terminal `PASS`; CONTROL integration-ready; uncommitted, unpublished, and unintegrated | `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.5/design-package-files.sha256`; `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.5/v0.5-independent-rereview2-result-preservation-record-v0.1.md`; `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.5/v0.5-control-integration-readiness-decision-v0.1.md` | 10, 20 |
+| 50 | Runtime-profile and neutral-preloader implementation | candidate v0.4; future corrected candidate | v0.4 remains rejected diagnostic evidence; no implementation bytes changed; a corrected candidate is separately gated after v0.5 design integration | `s0-lab/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/verification/public-assembly-runtime-profile-neutral-preloader-implementation-candidate-report-v0.4.md`; `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-implementation-control-integration-readiness-decision-v0.1.md` | 25, 30, 35, integrated 40 |
+| 60 | Runtime-profile/preloader implementation review | v0.4 historical; future fresh review | v0.4 rereview was `CORRECT/RETEST` with three MAJOR findings; corrected implementation requires fresh TEST and independent review | `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-implementation-independent-rereview-result-preservation-record-v0.1.md` | corrected 50 |
+| 70 | Bounded real-Windows runtime/preloader platform probe | future | blocked | `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.5/public-assembly-runtime-profile-neutral-preloader-acceptance-plan-v0.5.md` | fresh accepted 60 |
 | 80 | Live assembly connection and same-process decision | implementation v0.1 downstream gate | pending | no live artifact | 20, 30, 70 |
 | 90 | Official public assembly rehearsal consideration | future | closed | no result artifact | 80 |
 
@@ -32,7 +32,8 @@
 10 -> 40
 20 -> 40
 25 + 30 + 35 + 40 -> 50 -> 60
-60 -- CORRECT/RETEST --> revised 40 -> corrected 50 -> fresh 60 -> 70
+60 -- CORRECT/RETEST --> revised 40 v0.5 -- LOCAL PASS --> Git preservation + main integration
+integrated 40 -> separately gated corrected 50 -> fresh TEST/review 60 -> 70
 20 + 30 + 70 -> 80 -> 90
 ```
 
@@ -44,20 +45,24 @@ Python and package bytes, and stage 35 supplies a bounded native build
 environment, but neither performs stage 50 process creation, handle-list
 construction, or pre-import admission. The v0.4 stage-50 candidate exercised
 those mechanisms, but stage-60 rereview found three MAJOR contract gaps. The
-frozen design must therefore be revised before another stage-50 acceptance
-attempt. Stage 80 cannot start from the completed components or the rejected
-candidate.
+successor v0.5 design closes those gaps at the design-contract level and has a
+local terminal CONTROL integration-ready decision. It does not validate or
+change the rejected implementation. Stage 80 cannot start from the completed
+components, the local unintegrated design, or the rejected candidate.
 
 ## Next eligible work package
 
-The only structurally eligible technical work package is a revision of the
-stage-40 runtime-profile and neutral-preloader design contract. It must freeze
-the complete guard semantic API list, version and enumerate the complete
-evidence serialization grammar, and define physical ancestor/reparse/volume
-identity checks for materializer isolation. No candidate/version or literal
-gate phrase in this static map is authoritative. CONTROL must first perform
-the current value-first assessment required by root `AGENTS.md`, including a
-realistic time range and stop/discard condition, before recommending a gate.
+No technical work package is structurally eligible yet. The single next
+action is an ordinary Git preservation request for accepted successor DESIGN
+v0.5. A later main integration requires separate approval. No new literal
+gate phrase should be presented until the design is integrated and this
+routing chain is reauthenticated.
+
+After integration, CONTROL may evaluate a separately opened corrected
+stage-50 implementation candidate based on v0.5. That future candidate must
+receive fresh TEST/verification and fresh independent review before stage 70.
+Stage 70, stage 80, and official rehearsal consideration remain downstream
+and separately gated.
 
 The already opened stage-80 gate remains pending. It does not authorize stage
 50 or stage 70 and must not absorb them.

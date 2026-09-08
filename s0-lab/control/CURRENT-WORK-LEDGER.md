@@ -1,7 +1,7 @@
 # Current project work ledger
 
 - `ledger_kind`: derived CONTROL routing index
-- `snapshot_date`: 2026-09-04 Asia/Seoul
+- `snapshot_date`: 2026-09-08 Asia/Seoul
 - `evidence_baseline_main_commit`: `00491ddb9b656a901e62b31dc4a87d910dda2888`
 - `evidence_baseline_main_tree`: `654285f032b30c389a97a6ee36c32dc98519376b`
 - `publication_identity`: resolve the Git commit containing this ledger; do not self-record a future commit
@@ -41,18 +41,20 @@ audit reports are out-of-repository working material and are not authority.
 
 ## Current requested outcome
 
-The requested outcome is a real PUBLIC end-to-end assembly rehearsal path on
-the admitted Windows host. The latest opened prerequisite gate was:
+The requested outcome remains a real PUBLIC end-to-end assembly rehearsal path
+on the admitted Windows host. The latest prerequisite gate produced successor
+runtime-profile and neutral-preloader DESIGN v0.5.
 
-```text
-S0 V0.14 PUBLIC END-TO-END ASSEMBLY REHEARSAL LIVE IMPLEMENTATION PREREQUISITE PUBLIC ASSEMBLY RUNTIME PROFILE + NEUTRAL PRELOADER DESIGN V0.4 IMPLEMENTATION V0.4 OPEN
-```
-
-That gate reached the terminal CONTROL decision
-`NOT-INTEGRATION-READY-DESIGN-V0.4-REVISION-REQUIRED`. Implementation and
-bounded TEST evidence exist, but fresh independent rereview returned
-`CORRECT/RETEST` with three MAJOR findings. No commit, push, main integration,
-stage-70 probe, live assembly, official rehearsal, or S0 run occurred.
+The successor design v0.5 gate reached the terminal CONTROL decision
+`PASS — DESIGN V0.5 INTEGRATION READY; IMPLEMENTATION REMAINS SEPARATELY
+GATED`. Its authenticated manifest is
+`058a8b8bcd8ed2068a6b5c0a8f3c9dc16425f51d8aaaa505b6d6d36f4fab6c98`;
+TEST4 reported `PASS 23 / FAIL 0 / UNVERIFIED 3` with all `595 / 595`
+mutations rejected; and fresh independent rereview2 returned `PASS` with
+`BLOCKING 0 / MAJOR 0 / MINOR 0`. This is local terminal design-contract
+success only. The v0.5 design remains uncommitted, unpublished, and
+unintegrated. No implementation bytes changed, and no stage-70 probe, live
+assembly, official rehearsal, or S0 run occurred.
 
 The previously opened downstream live-controller gate remains pending and
 blocked. Its parked branch is historical local state and grants no authority
@@ -66,11 +68,11 @@ to bypass the prerequisite chain.
 | Controller, verifier-parent observer, and same-process live consumer | Implementation v0.1 exists; 47 offline tests passed; live launch failed closed before output mutation | `s0-lab/assembly-rehearsal/public-end-to-end-v0.1/verification/public-end-to-end-assembly-rehearsal-implementation-candidate-report-v0.1.md` | reuse; do not reimplement |
 | Bounded assembly/runtime-preloader adapter | Implementation v0.1 integrated; `candidate_only=true`, `native_api_reachable=false`, `rehearsal_pass=false` | `s0-lab/assembly-rehearsal/public-end-to-end-v0.2/verification/public-end-to-end-runtime-preloader-bounded-integration-implementation-candidate-report-v0.1.md`; `s0-lab/control/assembly-rehearsal/public-end-to-end-v0.2/bounded-integration-implementation-v0.1-control-integration-and-main-merge-decision-v0.1.md` | reuse as offline adapter only |
 | Windows build-toolchain environment | v0.1 post-reboot x64 smoke compile/run passed on the named host | `s0-lab/assembly-rehearsal/windows-build-toolchain-environment-v0.1/STATUS_REPORT.md` | reuse environment; no general compiler, provenance, security, or production claim |
-| Runtime-profile and neutral-preloader design | Design v0.4 received zero-finding design rereview, but implementation rereview exposed three contract gaps: the exact guard API list, evidence-schema binding/versioning, and physical ancestor/alias isolation | `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-independent-rereview-result-preservation-record-v0.1.md`; `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-implementation-independent-rereview-result-preservation-record-v0.1.md` | design revision required before another implementation acceptance attempt |
-| Runtime-profile and neutral-preloader implementation | v0.4 candidate implemented, compiled, materialized and bounded-tested; final TEST passed its stated scope, but fresh rereview returned `CORRECT/RETEST` with three MAJOR findings and CONTROL found it not integration-ready | `s0-lab/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/verification/public-assembly-runtime-profile-neutral-preloader-implementation-candidate-report-v0.4.md`; `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-implementation-control-integration-readiness-decision-v0.1.md` | rejected for integration; diagnostic evidence may inform the required design revision |
+| Runtime-profile and neutral-preloader design | Successor DESIGN v0.5 is locally terminal `PASS` and CONTROL integration-ready; it is not committed, published, or integrated | `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.5/design-package-files.sha256`; `s0-lab/reviews/assembly-rehearsal/runtime-profile-neutral-preloader-v0.5/v0.5-independent-rereview2-result-preservation-record-v0.1.md`; `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.5/v0.5-control-integration-readiness-decision-v0.1.md` | ordinary Git preservation and separately approved main integration are the next prerequisite; no technical gate is next yet |
+| Runtime-profile and neutral-preloader implementation | v0.4 candidate implemented, compiled, materialized and bounded-tested; final TEST passed its stated scope, but fresh implementation rereview returned `CORRECT/RETEST` with three MAJOR findings and CONTROL rejected it for integration | `s0-lab/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/verification/public-assembly-runtime-profile-neutral-preloader-implementation-candidate-report-v0.4.md`; `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/v0.4-implementation-control-integration-readiness-decision-v0.1.md` | rejected diagnostic evidence only; after design v0.5 integration, a separately opened corrected implementation candidate and fresh TEST/review are required |
 | CPython and jsonschema runtime materialization | v0.7 accepted, independently reviewed with 0/0/0 findings, and present at the evidence baseline | `s0-lab/assembly-rehearsal/build-runtime-materialization-v0.7/STATUS_REPORT.md` plus containing Git commit `2d7bb4f6b84b1b04c2b054d64edad7feaaeb3664` | complete; reuse exact pins and implementation |
-| Real-Windows runtime/preloader platform probe | Not executed | `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.4/public-assembly-runtime-profile-neutral-preloader-acceptance-plan-v0.4.md` | blocked until v0.4 implementation and review complete |
-| Live assembly connection and execution | Not executed | assembly v0.1 report plus runtime/preloader v0.4 acceptance plan | downstream gate remains pending |
+| Real-Windows runtime/preloader platform probe | Not executed | `s0-lab/control/assembly-rehearsal/runtime-profile-neutral-preloader-v0.5/public-assembly-runtime-profile-neutral-preloader-acceptance-plan-v0.5.md` | blocked until corrected implementation and fresh implementation review complete |
+| Live assembly connection and execution | Not executed | assembly v0.1 report plus runtime/preloader v0.5 acceptance plan | downstream gate remains pending |
 | Official public assembly rehearsal decision | Not opened or executed | assembly v0.5 acceptance plan | closed |
 
 ## Required dependency order
@@ -80,20 +82,16 @@ runtime materialization v0.7                         COMPLETE
 assembly controller/observer/consumer v0.1          OFFLINE IMPLEMENTED
 bounded assembly/runtime-preloader adapter v0.1      OFFLINE INTEGRATED
 Windows build-toolchain environment v0.1             BOUNDED PASS
-runtime-profile/neutral-preloader design v0.4        REVIEWED, CONTRACT GAPS FOUND IN IMPLEMENTATION REREVIEW
-                  \          |          /
-                   \         |         /
-                    v        v        v
-runtime-profile/neutral-preloader implementation v0.4   BUILT + BOUNDED-TESTED, NOT INTEGRATION READY
+runtime-profile/neutral-preloader implementation v0.4   REJECTED DIAGNOSTIC EVIDENCE
                 |
                 v
-fresh implementation rereview                           CORRECT/RETEST, 3 MAJOR
+successor design v0.5                                   LOCAL TERMINAL PASS, INTEGRATION READY
                 |
                 v
-runtime-profile/neutral-preloader design revision       REQUIRED
+ordinary Git preservation + approved main integration  REQUIRED
                 |
                 v
-corrected implementation + fresh review                 REQUIRED
+corrected implementation candidate + TEST + review     SEPARATELY GATED
                 |
                 v
 bounded real-Windows runtime/preloader platform probe  REQUIRED
@@ -109,29 +107,31 @@ The existing controller must be reused. Runtime materialization does not
 replace the neutral preloader: v0.7 supplies authenticated Python and package
 bytes, while the preloader must authenticate the executable/runtime/profile
 before import and construct the exact Windows process and handle-list launch.
+The locally accepted successor design does not convert rejected v0.4
+implementation bytes into a passing implementation.
 
 ## Structurally eligible next work package
 
-Revision of the runtime-profile and neutral-preloader design contract is the
-only structurally eligible next work package. The revision must close the
-exact guard semantic-call inventory, version and fully freeze every evidence
-serialization binding, and define physical ancestor/reparse/volume identity
-rules for materializer isolation. Its candidate/version is not yet frozen;
-this ledger does not invent one or open a gate.
+There is no structurally eligible technical gate yet. The single next action
+is an ordinary Git preservation request for the accepted successor DESIGN
+v0.5, followed only under separate authority by main integration. Until that
+integration is complete and routing is reauthenticated, CONTROL must not
+invent or present a new literal gate phrase.
 
-Before presenting a gate phrase, CONTROL must redo the value-first assessment
-in ordinary language: core purpose, concrete blocker, cheapest standard
-alternative, why that alternative is insufficient, useful output and reuse,
-realistic best/worst time, and stop/discard condition. It must then freeze role
-capacity, exact pins and allowlists, and the complete pre-CODE adversarial
-checklist for the revised design and any later implementation.
+After authenticated design integration, the next technical work package may
+be a separately opened corrected implementation candidate based on v0.5. Its
+value-first assessment, exact candidate/version, role capacity, pins,
+allowlists, and complete pre-CODE adversarial checklist must be frozen then,
+not inferred from this ledger. That candidate requires fresh implementation
+TEST/verification and fresh independent review before stage 70 can be
+considered.
 
 The already opened downstream live-controller gate remains blocked and cannot
 absorb the preloader implementation or Windows platform probe.
 
 ## Local preservation incident
 
-One task-owned temporary worktree developed 1,393 tracked unstaged deletions,
+One prior task-owned temporary worktree developed 1,393 tracked unstaged deletions,
 including aggregate deletions of all 32/11/10 F0 preservation-path entries.
 The cause is unverified. No restore, reset, clean, prune, or deletion was
 performed on that worktree; it remains quarantined and is not evidence for the
@@ -139,10 +139,16 @@ candidate decision. A new clone from live `origin/main` was authenticated at
 the exact baseline commit/tree and 32/11/10 F0 inventory before checkout. The
 25 approved task files were transferred byte-for-byte into that clean clone,
 and four final rereview/decision files were authored there by DOCUMENTATION.
-With this ledger and workstream update, the clean clone has 31 task-owned
-status entries. Its F0 paths are quiet with zero untracked, ignored,
-skip-worktree, or assume-unchanged anomalies, and it has zero outside-task
-status entries.
+At that incident's closure, the clean clone had 31 task-owned status entries,
+quiet F0 paths with zero untracked, ignored, skip-worktree, or
+assume-unchanged anomalies, and zero outside-task status entries. That fact is
+historical incident evidence, not current successor-design status.
+
+For the successor DESIGN v0.5 closure, the authenticated local worktree keeps
+all 17 reviewed candidate/review1 entries byte-identical, adds four closure
+files, and modifies only this ledger and the matching workstream map: 23
+task-owned status entries total and zero outside the allowed scope. No
+implementation bytes changed. F0 content access remained denied.
 
 ## Update triggers
 
