@@ -1,5 +1,7 @@
 # 인간–AI 공동 개발 전통
 
+> **CONTROL/운영용 개요 — 독립 실험 입력으로 자동 사용 금지.** 새 세션이나 공개 파일이라는 이유만으로 읽기 권한이 생기지 않습니다. 독립 검토자·실행자는 root `AGENTS.md`와 해당 역할의 정확한 허용 입력 목록을 먼저 따르십시오. 이 개요와 연결 문서에는 과거 설계 선택·검증 상태가 포함됩니다.
+
 사람과 AI가 여러 프로젝트에서 얻은 검증된 경험을 다음 AI 세대가 이어받도록 만드는 **외부 기억·작업 규칙·검증 체계** 연구 프로젝트입니다.
 
 이 프로젝트의 목표는 사용자의 개인 성장 일지를 만드는 데 있지 않습니다. 모델과 세션이 바뀌어도 같은 실수를 줄이고, 잘 작동한 Skill·프롬프트·체크리스트·테스트·판단 근거를 검증 가능한 형태로 계승하는 것이 핵심입니다.
@@ -10,6 +12,20 @@
 [`AGENTS.md`](./AGENTS.md)의 현재 정책을 읽으십시오. 이후
 [집 Codex 시작점](./HOME-CODEX-START.md)은 역사적 인수인계 맥락으로만 읽고,
 현재 Git·해시·게이트를 다시 검증하십시오.
+
+## 회사 PC에서 작업 시작
+
+기준 폴더는 **`C:\Users\SSAFY\Documents\ai-development-tradition`** 하나입니다.
+현재 남아 있는 프로젝트 소스·문서·기존 검증 도구는 이 폴더 아래에서 사용합니다.
+
+- 용도별 위치와 외부 설치 환경: [프로젝트 문서 안내](./DOCUMENT-GUIDE.md)
+- 소스·시험·도구: `s0-lab/`의 각 구성요소 안에서 `implementation/`, `tests/`, `tools/`를 사용
+- 연구·설계 문서: `docs/tradition/`, `docs/proposals/`, `docs/reviews/`
+- 지원서용 요약: [지원서 프로젝트 맥락](./docs/application/PROJECT-CONTEXT-FOR-APPLICATION.md)
+
+동결 경로와 해시를 유지하기 위해 기존 소스·검증 폴더를 임의로 합치거나
+평탄화하지 않았습니다. 외부의 과거 worktree를 작업 시작점으로 사용하지 않습니다.
+이 경로 정리가 중앙 시스템·S0·실제 리허설의 실행 준비 완료를 뜻하지는 않습니다.
 
 ## 왜 만드는가
 
@@ -81,14 +97,22 @@
 
 ## 문서 사이트로 보기
 
-이 저장소는 Material for MkDocs 설정을 포함합니다.
+이 저장소는 Material for MkDocs 설정을 포함합니다. 회사 PC에서는 이미
+프로젝트 안에 있는 문서 전용 가상환경을 사용합니다. 활성화나 전역 `python`
+선택에 의존하지 않고 아래처럼 실행하십시오.
 
 ```powershell
-python -m pip install -r requirements-docs.txt
-python -m mkdocs serve
+Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
+& '.\.venv-docs\Scripts\python.exe' -m mkdocs serve --config-file '.\mkdocs.yml'
 ```
 
 실행 후 브라우저에서 `http://127.0.0.1:8000`을 열면 주요 기획·연구 문서를 탐색할 수 있습니다.
+
+정적 문서만 만들려면 같은 위치에서
+`& '.\.venv-docs\Scripts\python.exe' -m mkdocs build --config-file '.\mkdocs.yml'`을
+사용합니다. 출력은 프로젝트 내부의 `.mkdocs-site/`입니다. 기존
+`requirements-docs.txt`는 문서 환경 의존성 기록이며, 회사 PC의 현재 문서
+빌드는 2026-09-16에 확인했습니다. I0/I1 실행 환경과는 별개입니다.
 
 ## 현재 하지 않는 것
 

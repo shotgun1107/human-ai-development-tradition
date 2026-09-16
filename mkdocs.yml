@@ -63,6 +63,15 @@ nav:
       - S0 분리 운영안: s0-isolated-design-execution-and-judgment-plan.md
       - v2.1 제한 수정 후보: central-system-v2-integrated-candidate-v2-1-view.md
       - v2 통합 후보(동결): central-system-v2-integrated-candidate-view.md
+  - S0·E0 경계: s0-e0-boundary-and-parallel-work.md
+  - E0 효과시험 설계:
+      - 개요: e0-effect-test/README.md
+      - v0.4 패키지: e0-effect-test/e0-package-index-v0.4.md
+      - 시험 설계: e0-effect-test/e0-effect-test-design-v0.4.md
+      - 측정·분석 계획: e0-effect-test/e0-measurement-and-analysis-plan-v0.4.md
+      - 비용·단계 기준: e0-effect-test/e0-operating-cost-and-gates-v0.4.md
+      - 수정 응답: e0-effect-test/e0-revision-response-v0.4.md
+      - 독립 심사: e0-effect-test/e0-independent-review-v0.4.md
   - 문헌 조사:
       - 1차 분야 횡단 조사: research.md
       - 2차 인간–AI 공동 전통 조사: research-human-ai-joint-tradition.md
