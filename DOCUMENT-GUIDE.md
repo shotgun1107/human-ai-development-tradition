@@ -22,7 +22,8 @@ ai-development-tradition/
 │  ├─ tradition/             목적·연구·설계·E0 문서 / 문서 사이트 원문
 │  ├─ proposals/             설계안과 통합 후보
 │  ├─ reviews/               설계 심사 기록
-│  └─ application/           지원서용 프로젝트 요약
+│  ├─ application/           지원서용 프로젝트 요약
+│  └─ maintenance/           정리·세션 전환의 영향 및 검증 기록
 ├─ s0-lab/
 │  ├─ i0/ ... i3/            각 구성요소의 implementation·tests·tools·검증 기록
 │  ├─ assembly-rehearsal/    공개 조립·runtime 준비 관련 버전별 자료
@@ -94,6 +95,7 @@ Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
 | 공개 시험 준비·검증 자료의 시작점 | [S0 작업 환경](C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/README.md) | 버전별 과거 상태와 현재 운영 정책을 혼동하지 않기. 연결된 파일도 역할별 접근 제한을 따름 |
 | 독립 외부 조사·심사 기록 | [독립 외부 작업 구역](C:/Users/SSAFY/Documents/ai-development-tradition/independent-outsider/README.md) | 설계와 심사 근거를 보존한 역사 자료. 새 독립 역할의 허용 입력과는 별개 |
 | 지원서 작성용 프로젝트 설명 | [지원서용 프로젝트 맥락](C:/Users/SSAFY/Documents/ai-development-tradition/docs/application/PROJECT-CONTEXT-FOR-APPLICATION.md) | 다른 지원서 프로젝트에 전달할 자기완결적 요약. 본인 기여와 검증 한계를 포함 |
+| 정리·세션 교체의 연구 영향 | [세션 전환 영향 기록](C:/Users/SSAFY/Documents/ai-development-tradition/docs/maintenance/SESSION-TRANSITION-IMPACT-2026-09-16.md) | 유지보수 담당자용. 독립 실험 입력이 아니며 기존 결과의 재검증 조건을 구분 |
 | 과거 PC·세션 인계 맥락 | [집 Codex 시작점](C:/Users/SSAFY/Documents/ai-development-tradition/HOME-CODEX-START.md) | 2026-08-07의 역사 기록. 현재 상태·Git 동기화 규칙의 대체물이 아님 |
 | 문서 사이트 생성 설정 | [mkdocs.yml](C:/Users/SSAFY/Documents/ai-development-tradition/mkdocs.yml) | 원문은 `docs/tradition`, 생성물은 `.mkdocs-site` |
 
@@ -225,3 +227,19 @@ Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
 
 - `refs/remotes/origin/codex/home-to-company-handoff-20260824-authenticode-v01` → `0f9b1b2c06bb2257db63c218f20e29237be1f81e`.
 - `refs/heads/codex/s0-trust-root-role-isolation-review-v03` → `b98376d7935bc2ac1408dde296463d0cfadfae02`.
+
+## 8. 로컬 커밋 및 후속 정리 확인
+
+2026-09-16 사용자는 푸시 없이 기존 정리 변경을 커밋하고 일반 정리를 이어가도록 요청했다. 미분류 상태 항목 1개를 그대로 둔 채 확인된 7개 파일만 커밋하는 **이번 1회 예외**를 별도로 승인했다.
+
+- 커밋: `042429d8b07b4c1214c3403736da7febe7956888`.
+- 브랜치: `codex/windows-build-toolchain-environment-v0.1`. 부모: `f4be29ff470946741ed4b39bbb90c1eef14537ed`.
+- 범위: `AGENTS.md`, `README.md`, `mkdocs.yml`, 이 안내 파일, 지원서 요약, 세션 전환 영향 기록과 그 `.sha256`의 7개 파일. 정확한 경로와 예외 범위는 해당 커밋 메시지에도 보존했다.
+- 역할·목적: 현재 root/CONTROL의 일반 유지보수 결과 보존. 예외는 이 7개 경로의 staging·로컬 커밋·사후 확인으로 종료됐으며 이후 Git 변경으로 이어지지 않는다.
+- 미분류 항목은 이름·내용을 공개하거나 staging·수정·삭제하지 않았다. 커밋 전후 해당 상태가 동일했다. 보호 자료는 32/11/10개를 유지했고 부모 대비 변경이 없었다.
+- 푸시·브랜치 변경·병합·추가 worktree 관리는 하지 않았다. 산출물은 로컬 Git 기록이며 새 연구 역할에 대한 자료 전달 권한은 생기지 않는다.
+- 이 승인은 과거 폴더 제거 절차를 소급 승인하거나 연구 결과를 재검증한 것이 아니다. 영향 기록의 기존 결과별 재검증 조건은 유지한다.
+
+영향 기록의 미커밋 상태·파일 해시는 그 기록을 작성한 **커밋 전 시점**의 사실이다. 위 커밋으로 당시 7개 파일을 보존했으며, 커밋 후 일반 정리에서는 이 안내의 `maintenance/` 위치와 본 절만 보완했다. 이 후속 보완을 별도로 커밋하거나 기존 커밋을 amend하지 않았다.
+
+후속 확인에서 Documents의 기존 정리 대상 16곳(작업 폴더 14개·중복 백업 1개·빈 컨테이너 1개)과 루트의 옛 지원서 파일은 존재하지 않았다. 주요 프로젝트 폴더 9곳은 기준 루트 아래 실제 디렉터리이며 다른 위치를 가리키는 reparse point가 아니었다. 추가로 삭제·이동한 항목은 없다. 공유 설치 환경과 앱 관리 영역, 미분류 항목은 계속 보존한다.
