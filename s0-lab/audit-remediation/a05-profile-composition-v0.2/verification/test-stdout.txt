@@ -1,0 +1,60 @@
+PASS __main__.CurrentClosure.test_current_file_missing_extra_changed_nonbyte_reject
+PASS __main__.CurrentClosure.test_current_manifest_expected_digest_rejects_bad_types_values_and_mismatch
+PASS __main__.CurrentClosure.test_manifest_duplicate_reorder_case_alias_dot_and_traversal_reject
+PASS __main__.CurrentClosure.test_manifest_size_bounds_reject_without_large_allocation
+PASS __main__.CurrentClosure.test_mapping_insertion_order_is_not_manifest_row_order
+PASS __main__.CurrentClosure.test_mixed_current_manifest_files_package_historical_and_overlay_reject
+PASS __main__.CurrentClosure.test_package_missing_extra_reordered_duplicate_and_changed_rows_reject
+PASS __main__.CurrentClosure.test_real_current_byte_closure_accepts_exact_benign_parameter_material
+PASS __main__.CurrentClosure.test_runtime_resource_count_bound_and_labelled_small_byte_limit
+PASS __main__.CurrentClosure.test_snapshot_rejects_bad_paths_aliases_nonbytes_and_custom_mappings
+PASS __main__.PreloaderDataFlow.test_admission_uses_historical_p4_digest_and_current_package
+PASS __main__.PreloaderDataFlow.test_consumers_take_current_control_artifacts_package_and_historical_p4_identity
+PASS __main__.PreloaderDataFlow.test_missing_current_control_or_artifact_never_falls_back_to_history
+PASS __main__.PreloaderDataFlow.test_preloader_revalidates_each_call_and_rejects_current_file_tamper
+PASS __main__.PreservationAndGates.test_actual_design_gate_rejects_missing_frozen_material
+PASS __main__.PreservationAndGates.test_actual_historical_schema_pin_failure_prevents_successor_work
+PASS __main__.PreservationAndGates.test_actual_historical_semantic_rejection_prevents_successor_work
+PASS __main__.PreservationAndGates.test_actual_native_gate_rejects_implementation_pin_difference
+PASS __main__.PreservationAndGates.test_actual_overlay_schema_rejects_incomplete_unit_overlay
+PASS __main__.PreservationAndGates.test_actual_schema_map_pin_gates_reject_before_native_or_composition
+PASS __main__.PreservationAndGates.test_frozen_pins_and_historical_relation_scope_are_preserved
+PASS __main__.PreservationAndGates.test_historical_design_and_native_gate_bodies_are_unchanged
+PASS __main__.PreservationAndGates.test_historical_validator_is_first_even_with_invalid_successor
+PASS __main__.PreservationAndGates.test_ordered_gate_spies_and_native_failure_prevent_current_composition
+PASS __main__.PreservationAndGates.test_original_semantic_evidence_integration_canonical_and_schema_are_byte_identical
+PASS __main__.PreservationAndGates.test_real_predecessor_pin_gate_rejects_substitution_and_order
+PASS __main__.PreservationAndGates.test_semantic_validator_binding_rejects_swapped_artifact
+PASS __main__.RealSourceClosure.test_checker_functions_other_constants_and_native_inventory_unchanged
+PASS __main__.RealSourceClosure.test_copy_import_and_imported_deepcopy_use_rejected
+PASS __main__.RealSourceClosure.test_dataclasses_field_and_asdict_remain_rejected
+PASS __main__.RealSourceClosure.test_exact_four_set_delta_preserves_all_other_source_bytes
+PASS __main__.RealSourceClosure.test_missing_extra_and_wrong_mapping_inventory_rejected
+PASS __main__.RealSourceClosure.test_nonadmitted_local_profile_symbol_remains_rejected
+PASS __main__.RealSourceClosure.test_nonbyte_source_input_rejected
+PASS __main__.RealSourceClosure.test_original_36_cases_retained_with_explicit_preservation_adaptation
+PASS __main__.RealSourceClosure.test_previous_rejection_evidence_retains_original_byte_identity
+ERROR __main__.RealSourceClosure.test_real_exact_ten_candidate_files_pass
+PASS __main__.RealSourceClosure.test_wildcard_alias_and_nontoplevel_imports_remain_rejected
+PASS __main__.SnapshotsAndComposition.test_caller_mutation_before_snapshot_is_not_validated_as_old_bytes
+PASS __main__.SnapshotsAndComposition.test_constructor_snapshots_original_maps_and_nested_import_rows
+PASS __main__.SnapshotsAndComposition.test_effective_profile_binds_current_package_manifest_overlay_and_prior_closure
+PASS __main__.SnapshotsAndComposition.test_effective_raw_object_digest_and_historical_identity_are_distinct
+PASS __main__.SnapshotsAndComposition.test_missing_current_inputs_and_wrong_material_types_fail_closed
+PASS __main__.SnapshotsAndComposition.test_returned_snapshots_are_recursively_immutable_after_caller_mutation
+PASS __main__.SnapshotsAndComposition.test_successor_result_rejects_coherent_but_unbound_effective_profile
+PASS __main__.SnapshotsAndComposition.test_successor_result_rejects_mutated_digest_and_file_bindings
+PASS __main__.SnapshotsAndComposition.test_validated_data_rejects_object_raw_hash_inconsistency_and_relation_promotion
+Tests run: 47; failures: 0; errors: 1
+Scope: bounded data-flow units with explicitly mocked upstream prerequisites plus real exact-source closure checks; no complete historical/native/assembly/S0 pass.
+Real source closure: [{"case": "copy_import", "error": "candidate source import is outside positive closure at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "copy_import_with_deepcopy_use", "error": "candidate source import is outside positive closure at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "from_copy_import_deepcopy", "error": "candidate from-import is outside positive closure at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "dataclasses.field", "error": "candidate from-import is outside positive closure at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "dataclasses.asdict", "error": "candidate from-import is outside positive closure at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "missing_file", "error": "candidate source inventory is not exact at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "extra_file", "error": "candidate source inventory is not exact at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "extra.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "mapping_substitute", "error": "candidate source inventory is not exact at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "nonadmitted_local_profile_symbol", "error": "candidate from-import is outside positive closure at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "nonbyte_source", "error": "candidate source mapping is not exact bytes at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "prior_v01_diagnostic_evidence", "evidence_sha256": "0788ea1856080b729f8e6a6d3fa1c99cc95d216dadd9b825a9e0d25af98039c3", "not_a_current_candidate_failure": true, "status": "HISTORICAL_REJECTION_PRESERVED"}, {"case": "wildcard", "error": "candidate source uses a wildcard or alias import at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "alias", "error": "candidate source uses a wildcard or alias import at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "nontoplevel", "error": "candidate source contains a non-top-level import at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}, {"case": "other_absolute_module", "error": "candidate from-import is outside positive closure at #", "real_checker": true, "source_inventory": ["__init__.py", "canonical.py", "errors.py", "evidence.py", "integration.py", "preloader.py", "profile.py", "schema.py", "semantic.py", "source_audit.py"], "status": "REJECT"}]
+
+Traceback (most recent call last):
+  File "C:\Users\SSAFY\Documents\ai-development-tradition\s0-lab\audit-remediation\a05-profile-composition-v0.2\tests\test_profile_composition.py", line 703, in test_real_exact_ten_candidate_files_pass
+    observed = audit_mod.inspect_source_structure(dict(SOURCE_BYTES))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SSAFY\Documents\ai-development-tradition\s0-lab\audit-remediation\a05-profile-composition-v0.2\implementation\s0_public_runtime_preloader\source_audit.py", line 349, in inspect_source_structure
+    inspect_source_text(filename, raw)
+  File "C:\Users\SSAFY\Documents\ai-development-tradition\s0-lab\audit-remediation\a05-profile-composition-v0.2\implementation\s0_public_runtime_preloader\source_audit.py", line 297, in inspect_source_text
+    raise RuntimeProfileError("candidate source uses dynamic or ambient authority")
+s0_public_runtime_preloader.errors.RuntimeProfileError: candidate source uses dynamic or ambient authority at #

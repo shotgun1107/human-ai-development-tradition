@@ -1,0 +1,31 @@
+test_baseline_discriminates_none_mode_defect (__main__.RuntimeGuardTests.test_baseline_discriminates_none_mode_defect) ... ok
+test_delete_capability_all_representations_and_paths (__main__.RuntimeGuardTests.test_delete_capability_all_representations_and_paths) ... ok
+test_none_mode_each_write_flag (__main__.RuntimeGuardTests.test_none_mode_each_write_flag) ... ok
+test_none_mode_readonly_flag_combinations (__main__.RuntimeGuardTests.test_none_mode_readonly_flag_combinations) ... ok
+test_none_mode_rejects_missing_bool_noninteger_negative (__main__.RuntimeGuardTests.test_none_mode_rejects_missing_bool_noninteger_negative) ... ok
+test_ordinary_write_bits_remain_pending_only (__main__.RuntimeGuardTests.test_ordinary_write_bits_remain_pending_only) ... ok
+test_real_delete_on_close_denied_and_bytes_preserved (__main__.RuntimeGuardTests.test_real_delete_on_close_denied_and_bytes_preserved) ... ok
+test_real_denied_paths_and_latch (__main__.RuntimeGuardTests.test_real_denied_paths_and_latch) ... ok
+test_real_installed_sentinel_os_open_read (__main__.RuntimeGuardTests.test_real_installed_sentinel_os_open_read) ... ok
+test_real_installed_sentinel_pathlib_read (__main__.RuntimeGuardTests.test_real_installed_sentinel_pathlib_read) ... ok
+test_real_installed_sentinel_unchanged_storage_read (__main__.RuntimeGuardTests.test_real_installed_sentinel_unchanged_storage_read) ... ok
+test_real_pending_writes_only (__main__.RuntimeGuardTests.test_real_pending_writes_only) ... ok
+test_storage_reparse_marker_still_detected (__main__.RuntimeGuardTests.test_storage_reparse_marker_still_detected) ... ok
+test_storage_safe_relative_paths_still_reject_escape (__main__.RuntimeGuardTests.test_storage_safe_relative_paths_still_reject_escape) ... ok
+test_third_flags_are_used_only_for_none_mode (__main__.RuntimeGuardTests.test_third_flags_are_used_only_for_none_mode) ... ok
+test_valid_string_and_legacy_integer_modes (__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes) ... ok
+test_write_flags_do_not_bypass_public_allowlist (__main__.RuntimeGuardTests.test_write_flags_do_not_bypass_public_allowlist) ... ok
+test_alternate_and_multiple_entries_reject (a01_test_stream_inventory.StreamInventoryTests.test_alternate_and_multiple_entries_reject) ... ok
+test_baseline_discriminates_unchecked_next_and_close (a01_test_stream_inventory.StreamInventoryTests.test_baseline_discriminates_unchecked_next_and_close) ... ok
+test_close_failure_after_normal_eof_rejects (a01_test_stream_inventory.StreamInventoryTests.test_close_failure_after_normal_eof_rejects) ... ok
+test_enumeration_and_close_failure_preserve_rejection_and_context (a01_test_stream_inventory.StreamInventoryTests.test_enumeration_and_close_failure_preserve_rejection_and_context) ... ok
+test_first_eof_accepts_without_close (a01_test_stream_inventory.StreamInventoryTests.test_first_eof_accepts_without_close) ... ok
+test_first_non_eof_rejects_without_close (a01_test_stream_inventory.StreamInventoryTests.test_first_non_eof_rejects_without_close) ... ok
+test_last_error_captured_before_close_clobber (a01_test_stream_inventory.StreamInventoryTests.test_last_error_captured_before_close_clobber) ... ok
+test_next_non_eof_rejects_and_closes_exactly_once (a01_test_stream_inventory.StreamInventoryTests.test_next_non_eof_rejects_and_closes_exactly_once) ... ok
+test_normal_eof_accepts_and_closes_exactly_once (a01_test_stream_inventory.StreamInventoryTests.test_normal_eof_accepts_and_closes_exactly_once) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 2.473s
+
+OK

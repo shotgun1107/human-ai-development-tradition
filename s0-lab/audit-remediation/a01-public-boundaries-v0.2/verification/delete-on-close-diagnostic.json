@@ -1,0 +1,330 @@
+{
+  "after": {
+    "implementation/s0_public_assembly_candidate/__init__.py": "6a925a2543dfa56ecd5de40c2e90d7577d5bc7ac941817396bd91ba4ebae078c",
+    "implementation/s0_public_assembly_candidate/constants.py": "912a5e706751e43441da894edefca02f333b0c173fd1bf1c6647d75f2f353025",
+    "implementation/s0_public_assembly_candidate/errors.py": "be97286ca93c68dba0611efca3795b896da64513aae3e2b053ab30b97f5f3a06",
+    "implementation/s0_public_assembly_candidate/runtime_guard.py": "693b8f8283cdf476cdeaa263c3021f2a161cd52da08e7c5a877725dc6586eda4",
+    "implementation/s0_public_assembly_candidate/storage.py": "5564994d7ba4e10d18b0ef4ba5c3fca51fe35cce5609933cd04d10eebd1fcd2c",
+    "implementation/s0_public_assembly_verifier/__init__.py": "a606ff1972d8b676eec44194d06cf78a28eb4c2e9934517d072106ae99bbcda9",
+    "implementation/s0_public_assembly_verifier/errors.py": "70ca57f1704d41e74ca13a2e5174c657b4f9aa6fd41e435ab7f082a95016e4bb",
+    "implementation/s0_public_assembly_verifier/models.py": "cade60d1a260dd58e6d611a691f2d5907d1992cea5f0a4f702e9476558cc74a8",
+    "implementation/s0_public_assembly_verifier/win32.py": "dd250e352431390885adfb4a95244d96622bc9546bd003f585b1afb579143f68"
+  },
+  "before": {
+    "implementation/s0_public_assembly_candidate/__init__.py": "6a925a2543dfa56ecd5de40c2e90d7577d5bc7ac941817396bd91ba4ebae078c",
+    "implementation/s0_public_assembly_candidate/constants.py": "912a5e706751e43441da894edefca02f333b0c173fd1bf1c6647d75f2f353025",
+    "implementation/s0_public_assembly_candidate/errors.py": "be97286ca93c68dba0611efca3795b896da64513aae3e2b053ab30b97f5f3a06",
+    "implementation/s0_public_assembly_candidate/runtime_guard.py": "693b8f8283cdf476cdeaa263c3021f2a161cd52da08e7c5a877725dc6586eda4",
+    "implementation/s0_public_assembly_candidate/storage.py": "5564994d7ba4e10d18b0ef4ba5c3fca51fe35cce5609933cd04d10eebd1fcd2c",
+    "implementation/s0_public_assembly_verifier/__init__.py": "a606ff1972d8b676eec44194d06cf78a28eb4c2e9934517d072106ae99bbcda9",
+    "implementation/s0_public_assembly_verifier/errors.py": "70ca57f1704d41e74ca13a2e5174c657b4f9aa6fd41e435ab7f082a95016e4bb",
+    "implementation/s0_public_assembly_verifier/models.py": "cade60d1a260dd58e6d611a691f2d5907d1992cea5f0a4f702e9476558cc74a8",
+    "implementation/s0_public_assembly_verifier/win32.py": "dd250e352431390885adfb4a95244d96622bc9546bd003f585b1afb579143f68"
+  },
+  "candidate": "a01-public-boundaries-v0.2",
+  "cases": [
+    {
+      "after": {
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ai9rpy0o\\approved.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ai9rpy0o\\forbidden.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ai9rpy0o\\output\\run-record.pending": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        }
+      },
+      "before": {
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ai9rpy0o\\approved.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ai9rpy0o\\forbidden.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ai9rpy0o\\output\\run-record.pending": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        }
+      },
+      "child": {
+        "O_TEMPORARY": 64,
+        "action": "ordinary_approved",
+        "audit_open_events": [
+          [
+            "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ai9rpy0o\\approved.txt",
+            null,
+            128
+          ]
+        ],
+        "flags": 0,
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py"
+        },
+        "path": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ai9rpy0o\\approved.txt",
+        "read_sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633",
+        "status": "allowed",
+        "variant": "old"
+      },
+      "command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\tests\\test_delete_on_close.py",
+        "--child",
+        "old",
+        "ordinary_approved",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ai9rpy0o"
+      ]
+    },
+    {
+      "after": {
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-mf3lsi7o\\approved.txt": {
+          "exists": false,
+          "hex": null,
+          "sha256": null
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-mf3lsi7o\\forbidden.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-mf3lsi7o\\output\\run-record.pending": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        }
+      },
+      "before": {
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-mf3lsi7o\\approved.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-mf3lsi7o\\forbidden.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-mf3lsi7o\\output\\run-record.pending": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        }
+      },
+      "child": {
+        "O_TEMPORARY": 64,
+        "action": "temporary_approved",
+        "audit_open_events": [
+          [
+            "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-mf3lsi7o\\approved.txt",
+            null,
+            192
+          ]
+        ],
+        "flags": 64,
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py"
+        },
+        "path": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-mf3lsi7o\\approved.txt",
+        "read_sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633",
+        "status": "allowed",
+        "variant": "old"
+      },
+      "command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\tests\\test_delete_on_close.py",
+        "--child",
+        "old",
+        "temporary_approved",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-mf3lsi7o"
+      ]
+    },
+    {
+      "after": {
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ceav5lg3\\approved.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ceav5lg3\\forbidden.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ceav5lg3\\output\\run-record.pending": {
+          "exists": false,
+          "hex": null,
+          "sha256": null
+        }
+      },
+      "before": {
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ceav5lg3\\approved.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ceav5lg3\\forbidden.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ceav5lg3\\output\\run-record.pending": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        }
+      },
+      "child": {
+        "O_TEMPORARY": 64,
+        "action": "temporary_pending",
+        "audit_open_events": [
+          [
+            "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ceav5lg3\\output\\run-record.pending",
+            null,
+            192
+          ]
+        ],
+        "flags": 64,
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py"
+        },
+        "path": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ceav5lg3\\output\\run-record.pending",
+        "read_sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633",
+        "status": "allowed",
+        "variant": "old"
+      },
+      "command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\tests\\test_delete_on_close.py",
+        "--child",
+        "old",
+        "temporary_pending",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-ceav5lg3"
+      ]
+    },
+    {
+      "after": {
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-k1e_wj4p\\approved.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-k1e_wj4p\\forbidden.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-k1e_wj4p\\output\\run-record.pending": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        }
+      },
+      "before": {
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-k1e_wj4p\\approved.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-k1e_wj4p\\forbidden.txt": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        },
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-k1e_wj4p\\output\\run-record.pending": {
+          "exists": true,
+          "hex": "446973706f7361626c65204130312057696e646f77732064656c6574652d6f6e2d636c6f736520646961676e6f737469632e0a",
+          "sha256": "353aa72c99f25236ba551ef00773b32cffc9e2c3d44191f9b60676b3a5e1c633"
+        }
+      },
+      "child": {
+        "O_TEMPORARY": 64,
+        "action": "temporary_forbidden",
+        "audit_open_events": [
+          [
+            "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-k1e_wj4p\\forbidden.txt",
+            null,
+            192
+          ]
+        ],
+        "diagnostic": "child file-open sentinel denied a read path",
+        "flags": 64,
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py"
+        },
+        "latched": true,
+        "path": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-k1e_wj4p\\forbidden.txt",
+        "status": "denied",
+        "variant": "old"
+      },
+      "command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\tests\\test_delete_on_close.py",
+        "--child",
+        "old",
+        "temporary_forbidden",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\verification\\tmp\\delete-on-close-k1e_wj4p"
+      ]
+    }
+  ],
+  "command": [
+    "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+    "-I",
+    "-S",
+    "-B",
+    "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.2\\tests\\test_delete_on_close.py",
+    "--diagnostic"
+  ],
+  "elapsed_seconds": 0.266,
+  "interpreter": {
+    "O_TEMPORARY": 64,
+    "dont_write_bytecode": true,
+    "executable": "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+    "isolated": 1,
+    "no_site": 1,
+    "os_name": "nt",
+    "version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "limits": [
+    "Disposable newly created benign files only",
+    "Host runtime, stdlib, native closure and evidence producer trusted",
+    "No hostile concurrency, ACL/root/reparse replacement or TOCTOU security claim",
+    "No native publication, S0/E0, model or provider execution"
+  ],
+  "result": "DEFECT-REPRODUCED",
+  "role": "TEST/VERIFICATION",
+  "scratch_remaining_count": 0,
+  "stdout_sha256": "b3e58e201e98ccf30a091ab9ce4c58f0b5c19aae3d8150a4ac16ee9b78f51cf3",
+  "subject": "Frozen v0.1 discriminator before CODE",
+  "test_sha256": "8a4c3b5258fb522312ed5d1a7df472c9c48ed34bb6c9e2323930b5d03939d81e"
+}

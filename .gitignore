@@ -2,3 +2,4 @@
 .mkdocs-site/
 __pycache__/
 *.py[cod]
+.venv-public/

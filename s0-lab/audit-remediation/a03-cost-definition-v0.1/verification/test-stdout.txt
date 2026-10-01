@@ -1,0 +1,15 @@
+test_each_physical_row_has_unit_coefficient (__main__.CostDefinitionTests.test_each_physical_row_has_unit_coefficient) ... ok
+test_four_bucket_human_conservation_and_two_distinct_views (__main__.CostDefinitionTests.test_four_bucket_human_conservation_and_two_distinct_views) ... ok
+test_invalid_or_incomplete_allocation_stops (__main__.CostDefinitionTests.test_invalid_or_incomplete_allocation_stops) ... ok
+test_invalid_q_subset_and_nonfinite_values_stop (__main__.CostDefinitionTests.test_invalid_q_subset_and_nonfinite_values_stop) ... ok
+test_missing_unknown_and_negative_costs_stop (__main__.CostDefinitionTests.test_missing_unknown_and_negative_costs_stop) ... ok
+test_primary_q_zero_nonzero_and_entire_fixed_subset (__main__.CostDefinitionTests.test_primary_q_zero_nonzero_and_entire_fixed_subset) ... ok
+test_q_memo_is_informational_when_fixed_is_unchanged (__main__.CostDefinitionTests.test_q_memo_is_informational_when_fixed_is_unchanged) ... ok
+test_replacement_and_ai_restart_are_separate_once (__main__.CostDefinitionTests.test_replacement_and_ai_restart_are_separate_once) ... ok
+test_symbolic_map_has_each_physical_term_once_and_memo_zero (__main__.CostDefinitionTests.test_symbolic_map_has_each_physical_term_once_and_memo_zero) ... ok
+test_zero_and_single_bucket_allocations_conserve (__main__.CostDefinitionTests.test_zero_and_single_bucket_allocations_conserve) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.008s
+
+OK

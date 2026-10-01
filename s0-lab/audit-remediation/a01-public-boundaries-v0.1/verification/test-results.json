@@ -1,0 +1,1768 @@
+{
+  "after": {
+    "agents_sha256": "4aac0c255dea03b85f6fb98b0b89f5b3c3f348e42c4dcaaf423411b818e3a065",
+    "baseline_sha256": {
+      "s0_public_assembly_candidate/constants.py": "912a5e706751e43441da894edefca02f333b0c173fd1bf1c6647d75f2f353025",
+      "s0_public_assembly_candidate/errors.py": "be97286ca93c68dba0611efca3795b896da64513aae3e2b053ab30b97f5f3a06",
+      "s0_public_assembly_candidate/runtime_guard.py": "be88d4bb151f4fe01a541a6ca7227e940fab53c5eb2d4d9ac8ccfb833675542d",
+      "s0_public_assembly_candidate/storage.py": "5564994d7ba4e10d18b0ef4ba5c3fca51fe35cce5609933cd04d10eebd1fcd2c",
+      "s0_public_assembly_verifier/errors.py": "70ca57f1704d41e74ca13a2e5174c657b4f9aa6fd41e435ab7f082a95016e4bb",
+      "s0_public_assembly_verifier/models.py": "cade60d1a260dd58e6d611a691f2d5907d1992cea5f0a4f702e9476558cc74a8",
+      "s0_public_assembly_verifier/win32.py": "db25d1c4db74f684a54f400ea1dd5f1478d0075c15d1460ff5baf0bef28f4996"
+    },
+    "branch": "codex/windows-build-toolchain-environment-v0.1",
+    "candidate_inventory_count": 9,
+    "candidate_sha256": {
+      "s0_public_assembly_candidate/__init__.py": "6a925a2543dfa56ecd5de40c2e90d7577d5bc7ac941817396bd91ba4ebae078c",
+      "s0_public_assembly_candidate/constants.py": "912a5e706751e43441da894edefca02f333b0c173fd1bf1c6647d75f2f353025",
+      "s0_public_assembly_candidate/errors.py": "be97286ca93c68dba0611efca3795b896da64513aae3e2b053ab30b97f5f3a06",
+      "s0_public_assembly_candidate/runtime_guard.py": "693b8f8283cdf476cdeaa263c3021f2a161cd52da08e7c5a877725dc6586eda4",
+      "s0_public_assembly_candidate/storage.py": "5564994d7ba4e10d18b0ef4ba5c3fca51fe35cce5609933cd04d10eebd1fcd2c",
+      "s0_public_assembly_verifier/__init__.py": "a606ff1972d8b676eec44194d06cf78a28eb4c2e9934517d072106ae99bbcda9",
+      "s0_public_assembly_verifier/errors.py": "70ca57f1704d41e74ca13a2e5174c657b4f9aa6fd41e435ab7f082a95016e4bb",
+      "s0_public_assembly_verifier/models.py": "cade60d1a260dd58e6d611a691f2d5907d1992cea5f0a4f702e9476558cc74a8",
+      "s0_public_assembly_verifier/win32.py": "dd250e352431390885adfb4a95244d96622bc9546bd003f585b1afb579143f68"
+    },
+    "head": "cc76d7e82aeb51dfdc7baba3da0f7993ab2da61a",
+    "tree": "82c02f37fd13ecfc8c7b888bb66127989b6d4f34"
+  },
+  "before": {
+    "agents_sha256": "4aac0c255dea03b85f6fb98b0b89f5b3c3f348e42c4dcaaf423411b818e3a065",
+    "baseline_sha256": {
+      "s0_public_assembly_candidate/constants.py": "912a5e706751e43441da894edefca02f333b0c173fd1bf1c6647d75f2f353025",
+      "s0_public_assembly_candidate/errors.py": "be97286ca93c68dba0611efca3795b896da64513aae3e2b053ab30b97f5f3a06",
+      "s0_public_assembly_candidate/runtime_guard.py": "be88d4bb151f4fe01a541a6ca7227e940fab53c5eb2d4d9ac8ccfb833675542d",
+      "s0_public_assembly_candidate/storage.py": "5564994d7ba4e10d18b0ef4ba5c3fca51fe35cce5609933cd04d10eebd1fcd2c",
+      "s0_public_assembly_verifier/errors.py": "70ca57f1704d41e74ca13a2e5174c657b4f9aa6fd41e435ab7f082a95016e4bb",
+      "s0_public_assembly_verifier/models.py": "cade60d1a260dd58e6d611a691f2d5907d1992cea5f0a4f702e9476558cc74a8",
+      "s0_public_assembly_verifier/win32.py": "db25d1c4db74f684a54f400ea1dd5f1478d0075c15d1460ff5baf0bef28f4996"
+    },
+    "branch": "codex/windows-build-toolchain-environment-v0.1",
+    "candidate_inventory_count": 9,
+    "candidate_sha256": {
+      "s0_public_assembly_candidate/__init__.py": "6a925a2543dfa56ecd5de40c2e90d7577d5bc7ac941817396bd91ba4ebae078c",
+      "s0_public_assembly_candidate/constants.py": "912a5e706751e43441da894edefca02f333b0c173fd1bf1c6647d75f2f353025",
+      "s0_public_assembly_candidate/errors.py": "be97286ca93c68dba0611efca3795b896da64513aae3e2b053ab30b97f5f3a06",
+      "s0_public_assembly_candidate/runtime_guard.py": "693b8f8283cdf476cdeaa263c3021f2a161cd52da08e7c5a877725dc6586eda4",
+      "s0_public_assembly_candidate/storage.py": "5564994d7ba4e10d18b0ef4ba5c3fca51fe35cce5609933cd04d10eebd1fcd2c",
+      "s0_public_assembly_verifier/__init__.py": "a606ff1972d8b676eec44194d06cf78a28eb4c2e9934517d072106ae99bbcda9",
+      "s0_public_assembly_verifier/errors.py": "70ca57f1704d41e74ca13a2e5174c657b4f9aa6fd41e435ab7f082a95016e4bb",
+      "s0_public_assembly_verifier/models.py": "cade60d1a260dd58e6d611a691f2d5907d1992cea5f0a4f702e9476558cc74a8",
+      "s0_public_assembly_verifier/win32.py": "dd250e352431390885adfb4a95244d96622bc9546bd003f585b1afb579143f68"
+    },
+    "head": "cc76d7e82aeb51dfdc7baba3da0f7993ab2da61a",
+    "tree": "82c02f37fd13ecfc8c7b888bb66127989b6d4f34"
+  },
+  "candidate": "a01-public-boundaries-v0.1",
+  "cases": [
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_baseline_discriminates_none_mode_defect (action='pathlib')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_baseline_discriminates_none_mode_defect (action='os_open')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_baseline_discriminates_none_mode_defect (action='storage')"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_baseline_discriminates_none_mode_defect"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_each_write_flag (flag='O_WRONLY')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_each_write_flag (flag='O_RDWR')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_each_write_flag (flag='O_CREAT')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_each_write_flag (flag='O_TRUNC')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_each_write_flag (flag='O_APPEND')"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_each_write_flag"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_readonly_flag_combinations (flags=0, combination=0)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_readonly_flag_combinations (flags=32768, combination=1)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_readonly_flag_combinations (flags=0, combination=2)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_readonly_flag_combinations (flags=32768, combination=3)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_readonly_flag_combinations (flags=0, combination=4)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_readonly_flag_combinations (flags=32768, combination=5)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_readonly_flag_combinations (flags=0, combination=6)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_readonly_flag_combinations (flags=32768, combination=7)"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_readonly_flag_combinations"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_rejects_missing_bool_noninteger_negative (flags=())"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_rejects_missing_bool_noninteger_negative (flags=(False,))"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_rejects_missing_bool_noninteger_negative (flags=(True,))"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_rejects_missing_bool_noninteger_negative (flags=('0',))"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_rejects_missing_bool_noninteger_negative (flags=(None,))"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_rejects_missing_bool_noninteger_negative (flags=(0.0,))"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_rejects_missing_bool_noninteger_negative (flags=(-1,))"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_none_mode_rejects_missing_bool_noninteger_negative"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_denied_paths_and_latch (action='denied_read')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_denied_paths_and_latch (action='denied_write')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_denied_paths_and_latch (action='run-record.json')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_denied_paths_and_latch (action='publication-receipt.json')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_denied_paths_and_latch (action='other.pending')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_denied_paths_and_latch (action='nested/run-record.pending')"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_denied_paths_and_latch"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_installed_sentinel_os_open_read"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_installed_sentinel_pathlib_read"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_installed_sentinel_unchanged_storage_read"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_real_pending_writes_only"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_storage_reparse_marker_still_detected"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_storage_safe_relative_paths_still_reject_escape (path='../outside.txt')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_storage_safe_relative_paths_still_reject_escape (path='/absolute.txt')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_storage_safe_relative_paths_still_reject_escape (path='C:/outside.txt')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_storage_safe_relative_paths_still_reject_escape (path='a\\\\b')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_storage_safe_relative_paths_still_reject_escape (path='file:stream')"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_storage_safe_relative_paths_still_reject_escape"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_third_flags_are_used_only_for_none_mode"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode='r')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode='rb')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode='r+')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode='w')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode='wb')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode='a')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode='x')"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode=0)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode=1)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode=2)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode=256)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode=512)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes (mode=8)"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_valid_string_and_legacy_integer_modes"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_write_flags_do_not_bypass_public_allowlist (flag=1)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_write_flags_do_not_bypass_public_allowlist (flag=2)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_write_flags_do_not_bypass_public_allowlist (flag=256)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_write_flags_do_not_bypass_public_allowlist (flag=512)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_write_flags_do_not_bypass_public_allowlist (flag=8)"
+    },
+    {
+      "outcome": "pass",
+      "test": "__main__.RuntimeGuardTests.test_write_flags_do_not_bypass_public_allowlist"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_alternate_and_multiple_entries_reject (names=(':extra:$DATA',), preflight=False)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_alternate_and_multiple_entries_reject (names=(':extra:$DATA',), preflight=True)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_alternate_and_multiple_entries_reject (names=('::$DATA', ':extra:$DATA'), preflight=False)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_alternate_and_multiple_entries_reject (names=('::$DATA', ':extra:$DATA'), preflight=True)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_alternate_and_multiple_entries_reject (names=('::$DATA', '::$DATA'), preflight=False)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_alternate_and_multiple_entries_reject (names=('::$DATA', '::$DATA'), preflight=True)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_alternate_and_multiple_entries_reject (names=('::$DATA', ':one:$DATA', ':two:$DATA'), preflight=False)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_alternate_and_multiple_entries_reject (names=('::$DATA', ':one:$DATA', ':two:$DATA'), preflight=True)"
+    },
+    {
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_alternate_and_multiple_entries_reject"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_baseline_discriminates_unchecked_next_and_close (terminal=5, close_ok=True)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_baseline_discriminates_unchecked_next_and_close (terminal=38, close_ok=False)"
+    },
+    {
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_baseline_discriminates_unchecked_next_and_close"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_close_failure_after_normal_eof_rejects (preflight=False)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_close_failure_after_normal_eof_rejects (preflight=True)"
+    },
+    {
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_close_failure_after_normal_eof_rejects"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_enumeration_and_close_failure_preserve_rejection_and_context (preflight=False)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_enumeration_and_close_failure_preserve_rejection_and_context (preflight=True)"
+    },
+    {
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_enumeration_and_close_failure_preserve_rejection_and_context"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_eof_accepts_without_close (preflight=False)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_eof_accepts_without_close (preflight=True)"
+    },
+    {
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_eof_accepts_without_close"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_non_eof_rejects_without_close (preflight=False, error=0)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_non_eof_rejects_without_close (preflight=False, error=2)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_non_eof_rejects_without_close (preflight=False, error=5)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_non_eof_rejects_without_close (preflight=False, error=87)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_non_eof_rejects_without_close (preflight=True, error=0)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_non_eof_rejects_without_close (preflight=True, error=2)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_non_eof_rejects_without_close (preflight=True, error=5)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_non_eof_rejects_without_close (preflight=True, error=87)"
+    },
+    {
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_first_non_eof_rejects_without_close"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_last_error_captured_before_close_clobber (terminal=5, close_error=38, preflight=False)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_last_error_captured_before_close_clobber (terminal=5, close_error=38, preflight=True)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_last_error_captured_before_close_clobber (terminal=38, close_error=5, preflight=False)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_last_error_captured_before_close_clobber (terminal=38, close_error=5, preflight=True)"
+    },
+    {
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_last_error_captured_before_close_clobber"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_next_non_eof_rejects_and_closes_exactly_once (preflight=False, error=0)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_next_non_eof_rejects_and_closes_exactly_once (preflight=False, error=5)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_next_non_eof_rejects_and_closes_exactly_once (preflight=False, error=87)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_next_non_eof_rejects_and_closes_exactly_once (preflight=True, error=0)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_next_non_eof_rejects_and_closes_exactly_once (preflight=True, error=5)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_next_non_eof_rejects_and_closes_exactly_once (preflight=True, error=87)"
+    },
+    {
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_next_non_eof_rejects_and_closes_exactly_once"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_normal_eof_accepts_and_closes_exactly_once (preflight=False)"
+    },
+    {
+      "kind": "subtest",
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_normal_eof_accepts_and_closes_exactly_once (preflight=True)"
+    },
+    {
+      "outcome": "pass",
+      "test": "a01_test_stream_inventory.StreamInventoryTests.test_normal_eof_accepts_and_closes_exactly_once"
+    }
+  ],
+  "child_observations": [
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "baseline",
+        "pathlib",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-wl1p9vsr"
+      ],
+      "result": {
+        "action": "pathlib",
+        "byte_length": 41,
+        "data_sha256": "953161e266aeebae1bfd8ab4740cd854aa4970ede0f227d79617130ff41b3ccf",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate._baseline_runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\assembly-rehearsal\\public-end-to-end-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "status": "allowed",
+        "variant": "baseline"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "baseline",
+        "os_open",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-w56aoo7o"
+      ],
+      "result": {
+        "action": "os_open",
+        "diagnostic": "child file-open sentinel received an invalid mode",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate._baseline_runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\assembly-rehearsal\\public-end-to-end-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "latched_health": "child runtime boundary violation is latched",
+        "latched_read": "child runtime boundary violation is latched",
+        "status": "denied",
+        "variant": "baseline"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "baseline",
+        "storage",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-_8xmhihv"
+      ],
+      "result": {
+        "action": "storage",
+        "diagnostic": "child file-open sentinel received an invalid mode",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate._baseline_runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\assembly-rehearsal\\public-end-to-end-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "latched_health": "child runtime boundary violation is latched",
+        "latched_read": "child runtime boundary violation is latched",
+        "status": "denied",
+        "variant": "baseline"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "candidate",
+        "denied_read",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-mm9rs4iv"
+      ],
+      "result": {
+        "action": "denied_read",
+        "diagnostic": "child file-open sentinel denied a read path",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "latched_health": "child runtime boundary violation is latched",
+        "latched_read": "child runtime boundary violation is latched",
+        "status": "denied",
+        "variant": "candidate"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "candidate",
+        "denied_write",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-wppprjem"
+      ],
+      "result": {
+        "action": "denied_write",
+        "diagnostic": "child file-open sentinel denied a write path",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "latched_health": "child runtime boundary violation is latched",
+        "latched_read": "child runtime boundary violation is latched",
+        "status": "denied",
+        "variant": "candidate"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "candidate",
+        "run-record.json",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-hwyafn9n"
+      ],
+      "result": {
+        "action": "run-record.json",
+        "diagnostic": "child file-open sentinel denied a write path",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "latched_health": "child runtime boundary violation is latched",
+        "latched_read": "child runtime boundary violation is latched",
+        "status": "denied",
+        "variant": "candidate"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "candidate",
+        "publication-receipt.json",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-ow8ktwlj"
+      ],
+      "result": {
+        "action": "publication-receipt.json",
+        "diagnostic": "child file-open sentinel denied a write path",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "latched_health": "child runtime boundary violation is latched",
+        "latched_read": "child runtime boundary violation is latched",
+        "status": "denied",
+        "variant": "candidate"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "candidate",
+        "other.pending",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-49fmgu6s"
+      ],
+      "result": {
+        "action": "other.pending",
+        "diagnostic": "child file-open sentinel denied a write path",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "latched_health": "child runtime boundary violation is latched",
+        "latched_read": "child runtime boundary violation is latched",
+        "status": "denied",
+        "variant": "candidate"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "candidate",
+        "nested/run-record.pending",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-7jv_0ikb"
+      ],
+      "result": {
+        "action": "nested/run-record.pending",
+        "diagnostic": "child file-open sentinel denied a write path",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "latched_health": "child runtime boundary violation is latched",
+        "latched_read": "child runtime boundary violation is latched",
+        "status": "denied",
+        "variant": "candidate"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "candidate",
+        "os_open",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-yu5pc384"
+      ],
+      "result": {
+        "action": "os_open",
+        "byte_length": 41,
+        "data_sha256": "953161e266aeebae1bfd8ab4740cd854aa4970ede0f227d79617130ff41b3ccf",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "status": "allowed",
+        "variant": "candidate"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "candidate",
+        "pathlib",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-882avemh"
+      ],
+      "result": {
+        "action": "pathlib",
+        "byte_length": 41,
+        "data_sha256": "953161e266aeebae1bfd8ab4740cd854aa4970ede0f227d79617130ff41b3ccf",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "status": "allowed",
+        "variant": "candidate"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "candidate",
+        "storage",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-gyhi3ezo"
+      ],
+      "result": {
+        "action": "storage",
+        "byte_length": 41,
+        "data_sha256": "953161e266aeebae1bfd8ab4740cd854aa4970ede0f227d79617130ff41b3ccf",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "status": "allowed",
+        "variant": "candidate"
+      }
+    },
+    {
+      "child_command": [
+        "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py",
+        "--child",
+        "candidate",
+        "write_pending",
+        "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\verification\\tmp\\a01-test-t6hrxdsy"
+      ],
+      "result": {
+        "action": "write_pending",
+        "byte_length": 41,
+        "data_sha256": "953161e266aeebae1bfd8ab4740cd854aa4970ede0f227d79617130ff41b3ccf",
+        "imports": {
+          "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+          "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+          "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+          "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+          "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py"
+        },
+        "status": "allowed",
+        "variant": "candidate"
+      }
+    }
+  ],
+  "command": [
+    "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+    "-I",
+    "-S",
+    "-B",
+    "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py"
+  ],
+  "elapsed_seconds": 0.968,
+  "errors": 0,
+  "failures": 0,
+  "imported_candidate_modules": {
+    "s0_public_assembly_candidate": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\__init__.py",
+    "s0_public_assembly_candidate.constants": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\constants.py",
+    "s0_public_assembly_candidate.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\errors.py",
+    "s0_public_assembly_candidate.runtime_guard": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\runtime_guard.py",
+    "s0_public_assembly_candidate.storage": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_candidate\\storage.py",
+    "s0_public_assembly_verifier": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_verifier\\__init__.py",
+    "s0_public_assembly_verifier.errors": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_verifier\\errors.py",
+    "s0_public_assembly_verifier.models": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_verifier\\models.py",
+    "s0_public_assembly_verifier.win32": "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\implementation\\s0_public_assembly_verifier\\win32.py"
+  },
+  "interpreter": {
+    "dont_write_bytecode": true,
+    "executable": "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+    "isolated": 1,
+    "no_site": 1,
+    "version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "result": "BOUNDED-UNIT-REGRESSION-PASS",
+  "role": "TEST/VERIFICATION",
+  "scratch_remaining_count": 0,
+  "skips": [],
+  "stdout_sha256": "3f519ec90d3c65326190976611392dc972016c2cdb199776dc80e174738f0235",
+  "stream_observations": [
+    {
+      "calls": [
+        "first",
+        "next:error:38",
+        "close:True"
+      ],
+      "diagnostic": "publication object contains an alternate data stream",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          ":extra:$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:38",
+        "close:True"
+      ],
+      "diagnostic": "publication object contains an alternate data stream",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          ":extra:$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:entry",
+        "next:error:38",
+        "close:True"
+      ],
+      "diagnostic": "publication object contains an alternate data stream",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA",
+          ":extra:$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:entry",
+        "next:error:38",
+        "close:True"
+      ],
+      "diagnostic": "publication object contains an alternate data stream",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA",
+          ":extra:$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:entry",
+        "next:error:38",
+        "close:True"
+      ],
+      "diagnostic": "publication object contains an alternate data stream",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA",
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:entry",
+        "next:error:38",
+        "close:True"
+      ],
+      "diagnostic": "publication object contains an alternate data stream",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA",
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:entry",
+        "next:entry",
+        "next:error:38",
+        "close:True"
+      ],
+      "diagnostic": "publication object contains an alternate data stream",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA",
+          ":one:$DATA",
+          ":two:$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:entry",
+        "next:entry",
+        "next:error:38",
+        "close:True"
+      ],
+      "diagnostic": "publication object contains an alternate data stream",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA",
+          ":one:$DATA",
+          ":two:$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:5",
+        "close:True"
+      ],
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 5
+      },
+      "module": "s0_public_assembly_verifier._baseline_win32",
+      "preflight": false,
+      "status": "accepted"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:38",
+        "close:False"
+      ],
+      "input": {
+        "close_error": 6,
+        "close_ok": false,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier._baseline_win32",
+      "preflight": false,
+      "status": "accepted"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:38",
+        "close:False"
+      ],
+      "diagnostic": "alternate-stream inventory handle could not be closed",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 6,
+        "close_ok": false,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:38",
+        "close:False"
+      ],
+      "diagnostic": "alternate-stream inventory handle could not be closed",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 6,
+        "close_ok": false,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:5",
+        "close:False"
+      ],
+      "diagnostic": "alternate-stream inventory handle could not be closed",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 6,
+        "close_ok": false,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 5
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "primary_context": "AR-RECORD/1: alternate-stream inventory could not be authenticated",
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:5",
+        "close:False"
+      ],
+      "diagnostic": "alternate-stream inventory handle could not be closed",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 6,
+        "close_ok": false,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 5
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "primary_context": "AR-AUTH/0: alternate-stream inventory could not be authenticated",
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first"
+      ],
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": 38,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "preflight": false,
+      "status": "accepted"
+    },
+    {
+      "calls": [
+        "first"
+      ],
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": 38,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "preflight": true,
+      "status": "accepted"
+    },
+    {
+      "calls": [
+        "first"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": 0,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": 2,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": 5,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": 87,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": 0,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": 2,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": 5,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": 87,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:5",
+        "close:True"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 38,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 5
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:5",
+        "close:True"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 38,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 5
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:38",
+        "close:True"
+      ],
+      "input": {
+        "close_error": 5,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "preflight": false,
+      "status": "accepted"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:38",
+        "close:True"
+      ],
+      "input": {
+        "close_error": 5,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "preflight": true,
+      "status": "accepted"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:0",
+        "close:True"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 0
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:5",
+        "close:True"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 5
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:87",
+        "close:True"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-RECORD",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 87
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 1,
+      "preflight": false,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:0",
+        "close:True"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 0
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:5",
+        "close:True"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 5
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:87",
+        "close:True"
+      ],
+      "diagnostic": "alternate-stream inventory could not be authenticated",
+      "failure_class": "AR-AUTH",
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 87
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "observed_transport_calls": 0,
+      "preflight": true,
+      "status": "rejected"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:38",
+        "close:True"
+      ],
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "preflight": false,
+      "status": "accepted"
+    },
+    {
+      "calls": [
+        "first",
+        "next:error:38",
+        "close:True"
+      ],
+      "input": {
+        "close_error": 0,
+        "close_ok": true,
+        "first_error": null,
+        "names": [
+          "::$DATA"
+        ],
+        "terminal": 38
+      },
+      "module": "s0_public_assembly_verifier.win32",
+      "preflight": true,
+      "status": "accepted"
+    }
+  ],
+  "test_sha256": {
+    "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_runtime_guard.py": "9b6795262f8fa8fb6b1b0a2e98d17e78ee4d199041918acae37ccca20b326bfa",
+    "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a01-public-boundaries-v0.1\\tests\\test_stream_inventory.py": "4733df59dc05a30c2a8ec2c7e35b9a90d8e6f8f30f5d3be79632a735e64d3496"
+  },
+  "tests_run": 23,
+  "unverified": [
+    "Hostile interpreter, standard-library or import-closure security",
+    "Controller or native publication lifecycle; actual ADS exploitation",
+    "ACL/root identity/privileged replacement/TOCTOU and OS isolation",
+    "Arbitrary hostile same-process fields, introspection, races or concurrency",
+    "S0/E0 execution, models/providers, integration and operational safety"
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "architecture": "x64",
+  "build_outputs": [
+    "s0_neutral_preloader_v0_5.exe",
+    "s0_runtime_handle_guard_v0_4.pyd",
+    "s0_runtime_materializer_v0_5.exe"
+  ],
+  "compiler_discovery": "forbidden-explicit-absolute-cl-and-link-paths-required",
+  "compiler_flags": [
+    "/nologo",
+    "/std:c++17",
+    "/EHsc",
+    "/O2",
+    "/W4",
+    "/WX",
+    "/GS",
+    "/guard:cf",
+    "/Qspectre",
+    "/sdl",
+    "/MT",
+    "/DUNICODE",
+    "/D_UNICODE",
+    "/DWIN32_LEAN_AND_MEAN",
+    "/DNOMINMAX"
+  ],
+  "guard_direct_import_families": [
+    "kernel32.dll",
+    "ntdll.dll",
+    "python312.dll",
+    "static-crt-support"
+  ],
+  "guard_initialization_symbol": "PyInit_s0_runtime_handle_guard_v0_4",
+  "linker_flags": [
+    "/DYNAMICBASE",
+    "/HIGHENTROPYVA",
+    "/NXCOMPAT",
+    "/CETCOMPAT",
+    "/GUARD:CF",
+    "/INCREMENTAL:NO",
+    "/OPT:REF",
+    "/OPT:ICF"
+  ],
+  "materialization": {
+    "base_payload": "exact-174-rows-24138847-bytes",
+    "final_manifest": "evidence/runtime-files.sha256",
+    "final_row_count": "derived-not-174",
+    "overlay_authority": "externally-pinned-overlay-contract-and-manifest",
+    "platform_inputs": "explicitly-pinned-and-unverified-until-stage70",
+    "script": "materialize-runtime.ps1",
+    "native_source": "s0_runtime_materializer_v0_5.cpp",
+    "runtime_subdirectory": "runtime",
+    "evidence_subdirectory": "evidence",
+    "output_policy": "single-retained-transaction-root-runtime-and-evidence",
+    "required_explicit_supporting_cleanup_calls": [
+      "LocalFree"
+    ]
+  },
+  "pdb_disposition": "not-published-not-runtime-input",
+  "preloader_direct_import_families": [
+    "bcrypt.dll",
+    "kernel32.dll",
+    "ntdll.dll",
+    "static-crt-support"
+  ],
+  "runtime_authority_contract": "runtime-authority-v0.5.json",
+  "schema_id": "S0-RUNTIME-PRELOADER-V0.5-BUILD-CONTRACT-1",
+  "source_to_binary_trace_required": true,
+  "toolchain_roots": "explicit-absolute-include-and-library-roots-with-ambient-INCLUDE-and-LIB-cleared",
+  "materializer_direct_import_families": [
+    "advapi32.dll",
+    "bcrypt.dll",
+    "kernel32.dll",
+    "ntdll.dll",
+    "static-crt-support"
+  ],
+  "native_api_inventory": {
+    "guard": {
+      "decision_semantic_calls": [
+        "CompareStringOrdinal",
+        "GetCurrentProcessId",
+        "GetFileInformationByHandleEx",
+        "GetFileType",
+        "GetHandleInformation",
+        "GetNamedPipeInfo",
+        "GetProcessId",
+        "InterlockedCompareExchange",
+        "InterlockedExchange",
+        "IsProcessInJob",
+        "MultiByteToWideChar",
+        "NtQueryInformationProcess",
+        "NtQueryObject",
+        "PeekNamedPipe",
+        "QueryFullProcessImageNameW",
+        "ReadFile",
+        "WaitForSingleObject",
+        "WriteFile"
+      ],
+      "supporting_calls": [
+        "CloseHandle",
+        "GetCurrentProcess",
+        "GetLastError",
+        "SecureZeroMemory"
+      ],
+      "direct_import_families": [
+        "kernel32.dll",
+        "ntdll.dll",
+        "python312.dll",
+        "static-crt-support"
+      ]
+    },
+    "preloader": {
+      "decision_semantic_calls": [
+        "AssignProcessToJobObject",
+        "BCryptCloseAlgorithmProvider",
+        "BCryptCreateHash",
+        "BCryptDestroyHash",
+        "BCryptFinishHash",
+        "BCryptGetProperty",
+        "BCryptHashData",
+        "BCryptOpenAlgorithmProvider",
+        "CompareStringOrdinal",
+        "CreateFileW",
+        "CreateJobObjectW",
+        "CreatePipe",
+        "CreateProcessW",
+        "DuplicateHandle",
+        "FindFirstFileW",
+        "FindNextFileW",
+        "GetCurrentProcessId",
+        "GetDriveTypeW",
+        "GetExitCodeProcess",
+        "GetFileAttributesExW",
+        "GetFileAttributesW",
+        "GetFileInformationByHandleEx",
+        "GetFileSizeEx",
+        "GetFileType",
+        "GetFinalPathNameByHandleW",
+        "GetFullPathNameW",
+        "GetHandleInformation",
+        "GetVolumeInformationByHandleW",
+        "GetVolumePathNameW",
+        "InitializeProcThreadAttributeList",
+        "MultiByteToWideChar",
+        "NtCreateFile",
+        "NtQueryObject",
+        "OpenProcess",
+        "PeekNamedPipe",
+        "ReadFile",
+        "ResumeThread",
+        "SetFilePointerEx",
+        "SetHandleInformation",
+        "SetInformationJobObject",
+        "UpdateProcThreadAttribute",
+        "WaitForSingleObject",
+        "WideCharToMultiByte",
+        "WriteFile"
+      ],
+      "supporting_calls": [
+        "CloseHandle",
+        "DeleteProcThreadAttributeList",
+        "FindClose",
+        "GetCurrentProcess",
+        "GetLastError",
+        "GetTickCount",
+        "Sleep",
+        "TerminateProcess"
+      ],
+      "direct_import_families": [
+        "bcrypt.dll",
+        "kernel32.dll",
+        "ntdll.dll",
+        "static-crt-support"
+      ]
+    },
+    "materializer": {
+      "decision_semantic_calls": [
+        "AccessCheck",
+        "BCryptCloseAlgorithmProvider",
+        "BCryptCreateHash",
+        "BCryptDestroyHash",
+        "BCryptFinishHash",
+        "BCryptGetProperty",
+        "BCryptHashData",
+        "BCryptOpenAlgorithmProvider",
+        "DuplicateHandle",
+        "FindFirstFileW",
+        "FindFirstStreamW",
+        "FindNextFileW",
+        "FindNextStreamW",
+        "FlushFileBuffers",
+        "GetDriveTypeW",
+        "GetFileInformationByHandleEx",
+        "GetFinalPathNameByHandleW",
+        "GetSecurityInfo",
+        "GetTokenInformation",
+        "GetVolumeInformationByHandleW",
+        "NtCreateFile",
+        "NtQueryObject",
+        "ReadFile",
+        "SetFilePointerEx",
+        "WriteFile"
+      ],
+      "supporting_calls": [
+        "CloseHandle",
+        "FindClose",
+        "GetLastError",
+        "LocalFree"
+      ],
+      "direct_import_families": [
+        "advapi32.dll",
+        "bcrypt.dll",
+        "kernel32.dll",
+        "ntdll.dll",
+        "static-crt-support"
+      ]
+    }
+  },
+  "effective_interface_map_sha256": "f6aa0f38ad7eb7bf2715fbc6084c5ce9c05db23eccca1af65956735e1e933623",
+  "effective_schema_sha256": "04ae781b7d71e2954378cf7cdf2aa9070634ddc3a25c883ac52fb83ebe139d7e"
+}

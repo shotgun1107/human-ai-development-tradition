@@ -1,0 +1,4 @@
+ordinary_approved: allowed; target_exists_after=True
+temporary_approved: allowed; target_exists_after=False
+temporary_pending: allowed; target_exists_after=False
+temporary_forbidden: denied; target_exists_after=True

@@ -18,6 +18,11 @@
 기준 폴더는 **`C:\Users\SSAFY\Documents\ai-development-tradition`** 하나입니다.
 현재 남아 있는 프로젝트 소스·문서·기존 검증 도구는 이 폴더 아래에서 사용합니다.
 
+- **현재 상태와 최종 판정:** [현재 작업 기록](./s0-lab/control/CURRENT-WORK-LEDGER.md)을 먼저 확인합니다. 2026-09-29의 소스 통합 두 묶음과 공개 실행 환경은 각각 검사·독립 검토·제한된 승인을 마쳤고, **현재 작업 폴더의 한정된 감사 수정·유지보수를 공식 마감했습니다.** 전체 Windows 실행이나 S0 완료 판정은 아닙니다.
+- **짧은 결과 설명:** [감사 수정·유지보수 마감 요약](./docs/maintenance/MAINTENANCE-CLOSEOUT-2026-09-29.md). 과거 판정이나 동결 README의 `REVIEW PENDING`을 현재 지시로 사용하지 않습니다. 현재 개별 판정은 각 묶음의 나중에 작성된 `CONTROL-DISPOSITION.md`가 기록합니다.
+- 공개 CLI는 **A04의 I0 소스**를 사용합니다. [A07 실행 명령](./s0-lab/audit-remediation/a07-public-cli-readiness-v0.1/README.md)과 [최종 승인](./s0-lab/audit-remediation/a07-public-cli-readiness-v0.1/CONTROL-DISPOSITION.md)을 따라 프로젝트 안의 `.venv-public`에서 사용합니다. 확인된 명령은 `integrity`, `schema-check`, `verify`이며 S0 실행이 아닙니다.
+- 후속 개발용 소스는 [A06 runtime 소스 통합](./s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/CONTROL-DISPOSITION.md)과 [A08 공개 조립 소스 통합](./s0-lab/audit-remediation/a08-public-assembly-source-integration-v0.1/CONTROL-DISPOSITION.md)의 `implementation/`입니다. A08은 위 CLI의 실행 경로가 아니며, 이 소스들이 새 native 실행 묶음으로 인증됐다는 뜻도 아닙니다. [Windows 공개 조립의 남은 실행 조건](./s0-lab/control/workstreams/public-end-to-end-assembly-rehearsal.md)은 별도로 유지합니다.
+- E0 비용을 다룰 때는 [원래 v0.4 비용 문서](./docs/tradition/e0-effect-test/e0-operating-cost-and-gates-v0.4.md)와 [승인된 비용 정정본](./s0-lab/audit-remediation/a03-cost-definition-v0.1/COST-DEFINITION-ERRATUM.md)을 함께 적용합니다. 원본만으로 중복 비용식을 다시 사용하지 않습니다.
 - 용도별 위치와 외부 설치 환경: [프로젝트 문서 안내](./DOCUMENT-GUIDE.md)
 - 소스·시험·도구: `s0-lab/`의 각 구성요소 안에서 `implementation/`, `tests/`, `tools/`를 사용
 - 연구·설계 문서: `docs/tradition/`, `docs/proposals/`, `docs/reviews/`
@@ -52,7 +57,9 @@
 
 초기 방식은 모델 파인튜닝이 아닙니다. 검색 가능한 문서, 출처와 버전이 연결된 규칙, RAG, 프롬프트 주입, 재현 가능한 테스트처럼 사람이 검토하고 철회할 수 있는 외부 기억으로 시작합니다.
 
-## 현재 상태
+## 초기 연구·준비 경로 요약
+
+아래 표는 초기 준비 단계의 역사적 요약입니다. 후속 공개 조립·실행 환경 작업과 2026-09-16~17 감사 수정의 현재 진행 위치는 위의 **현재 작업 기록**을 따릅니다. 아래의 구버전 대기·거부 상태를 최신 재개 지시로 사용하지 않습니다.
 
 | 단계 | 상태 | 의미 |
 |---|---|---|
@@ -67,7 +74,7 @@
 | E0 효과시험 v0.1 | 독립 심사 전 | 분리 브랜치에 설계 후보만 존재, 자료·구현·실행은 닫힘 |
 | F0-SEALED 작성·S0 실행·판정 게이트 | 미착수 | 기존 53개 보존 파일은 Git 추적되지만 AI 내용 접근과 실행 권한은 닫힘 |
 
-상세한 현재 상태는 [S0 작업 환경](./s0-lab/README.md)과 [F0-PUBLIC 동결 기록](./s0-lab/control/f0-public/f0-public-v0.1-freeze-record.md)에서 확인할 수 있습니다.
+단계별 배경은 [S0 작업 환경](./s0-lab/README.md)과 [F0-PUBLIC 동결 기록](./s0-lab/control/f0-public/f0-public-v0.1-freeze-record.md)에 보존돼 있습니다. 각 문서의 기준일과 역할별 접근 제한을 확인합니다.
 
 ## 핵심 원칙
 
@@ -89,11 +96,11 @@
 - [`s0-lab/`](./s0-lab/README.md) — S0 프로토콜, 동결 schema, 공개 합성 연습자료와 검토 기록
 - [`AGENTS.md`](./AGENTS.md) — 현재 구현·실행 게이트와 역할 격리 규칙
 
-가장 먼저 읽을 문서는 다음 세 개입니다.
+현재 상태를 확인한 뒤 연구 배경을 더 읽을 문서는 다음과 같습니다.
 
 1. [목적과 철학](./docs/tradition/purpose-and-philosophy.md)
 2. [프로젝트 전체 문서 지도](./docs/tradition/README.md)
-3. [현재 S0 상태](./s0-lab/README.md)
+3. [S0 자료의 버전별 안내](./s0-lab/README.md) — 과거 안내이며 현재 운영 판정은 위 작업 기록을 우선합니다.
 
 ## 문서 사이트로 보기
 
@@ -126,4 +133,4 @@ Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
 
 현재 공개 준비 경로에서는 **F0-PUBLIC v0.1과 I0 최소 harness가 제한된 범위에서 동결**됐습니다. 이후 질문 계약 URC v0.4는 독립 심사에서 거부됐으므로 v0.5를 별도 버전으로 다시 설계해야 합니다. 이는 S0 또는 중앙 시스템의 효과가 입증됐다는 뜻이 아닙니다.
 
-병렬 경로의 E0 v0.1은 전통 효과시험의 설계 후보까지만 작성됐으며 독립 심사 전입니다. 다음 허용 작업은 정확한 새 세션 게이트 아래에서 S0 v0.5 설계 또는 E0 설계의 읽기 전용 독립 심사이며, 자료 작성·구현·실행으로 자동 진행하지 않습니다.
+병렬 경로의 E0 v0.1은 이 초기 요약 시점에 전통 효과시험의 설계 후보·독립 심사 전 상태였습니다. 이 과거 요약만으로 다음 작업을 선택하거나 자료 작성·구현·실행을 시작하지 않습니다. 현재 후속 작업은 root `AGENTS.md`, 현재 작업 기록과 해당 작업의 명시적 승인 범위를 다시 확인합니다.
