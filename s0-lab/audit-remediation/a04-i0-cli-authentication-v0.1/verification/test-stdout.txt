@@ -1,0 +1,34 @@
+test_answer_keeps_existing_entry_without_new_guard (__main__.CliAuthenticationTests.test_answer_keeps_existing_entry_without_new_guard) ... ok
+test_baseline_integrity (__main__.CliAuthenticationTests.test_baseline_integrity) ... ok
+test_baseline_schema_check (__main__.CliAuthenticationTests.test_baseline_schema_check) ... ok
+test_baseline_verify (__main__.CliAuthenticationTests.test_baseline_verify) ... ok
+test_integrity_content_matching_manifest (__main__.CliAuthenticationTests.test_integrity_content_matching_manifest) ... ok
+test_integrity_content_only (__main__.CliAuthenticationTests.test_integrity_content_only) ... ok
+test_integrity_malformed (__main__.CliAuthenticationTests.test_integrity_malformed) ... ok
+test_integrity_manifest_altered (__main__.CliAuthenticationTests.test_integrity_manifest_altered) ... ok
+test_integrity_missing (__main__.CliAuthenticationTests.test_integrity_missing) ... ok
+test_integrity_original (__main__.CliAuthenticationTests.test_integrity_original) ... ok
+test_integrity_unreadable (__main__.CliAuthenticationTests.test_integrity_unreadable) ... ok
+test_jsonschema_double_is_explicit_and_fail_if_used (__main__.CliAuthenticationTests.test_jsonschema_double_is_explicit_and_fail_if_used) ... ok
+test_loaded_candidate_and_baseline_paths (__main__.CliAuthenticationTests.test_loaded_candidate_and_baseline_paths) ... ok
+test_minimal_source_diff_and_content_check_wiring (__main__.CliAuthenticationTests.test_minimal_source_diff_and_content_check_wiring) ... ok
+test_schema_check_content_matching_manifest (__main__.CliAuthenticationTests.test_schema_check_content_matching_manifest) ... ok
+test_schema_check_content_only (__main__.CliAuthenticationTests.test_schema_check_content_only) ... ok
+test_schema_check_malformed (__main__.CliAuthenticationTests.test_schema_check_malformed) ... ok
+test_schema_check_manifest_altered (__main__.CliAuthenticationTests.test_schema_check_manifest_altered) ... ok
+test_schema_check_missing (__main__.CliAuthenticationTests.test_schema_check_missing) ... ok
+test_schema_check_original (__main__.CliAuthenticationTests.test_schema_check_original) ... ok
+test_schema_check_unreadable (__main__.CliAuthenticationTests.test_schema_check_unreadable) ... ok
+test_transform_keeps_existing_entry_without_new_guard (__main__.CliAuthenticationTests.test_transform_keeps_existing_entry_without_new_guard) ... ok
+test_verify_content_matching_manifest (__main__.CliAuthenticationTests.test_verify_content_matching_manifest) ... ok
+test_verify_content_only (__main__.CliAuthenticationTests.test_verify_content_only) ... ok
+test_verify_malformed (__main__.CliAuthenticationTests.test_verify_malformed) ... ok
+test_verify_manifest_altered (__main__.CliAuthenticationTests.test_verify_manifest_altered) ... ok
+test_verify_missing (__main__.CliAuthenticationTests.test_verify_missing) ... ok
+test_verify_original (__main__.CliAuthenticationTests.test_verify_original) ... ok
+test_verify_unreadable (__main__.CliAuthenticationTests.test_verify_unreadable) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.218s
+
+OK

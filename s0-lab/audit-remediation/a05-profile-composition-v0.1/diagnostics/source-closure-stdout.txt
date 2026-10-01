@@ -1,0 +1,13 @@
+a05 source-closure diagnostic
+all_originals: pass
+all_candidate: reject | candidate from-import is outside positive closure at #
+originals_except_candidate_profile: reject | candidate from-import is outside positive closure at #
+originals_except_candidate_preloader: reject | candidate from-import is outside positive closure at #
+profile.py added import: dataclasses.replace; admitted=False
+profile.py added import: .canonical.canonical_json_bytes; admitted=True
+profile.py added import: .canonical.safe_virtual_path; admitted=True
+preloader.py added import: .profile.ValidatedSuccessorProfileCandidate; admitted=False
+Frozen manifest: 17/17 unchanged; original sources: 10/10 unchanged.
+All 30 pinned inputs match before and after execution.
+Diagnostic script SHA256: 97cc7c13dcbce10a2d6785cd1e00f7f3c46255c07397be282ae0d6ce17d59279
+Result JSON SHA256: 0788ea1856080b729f8e6a6d3fa1c99cc95d216dadd9b825a9e0d25af98039c3

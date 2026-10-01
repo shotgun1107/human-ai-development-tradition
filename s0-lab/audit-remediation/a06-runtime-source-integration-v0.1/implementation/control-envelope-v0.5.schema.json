@@ -1,0 +1,227 @@
+{
+  "$id": "urn:s0:public-assembly:runtime-profile-neutral-preloader:control-envelope:5",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "application_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "application_virtual_path": {
+      "$ref": "#/$defs/virtual_path"
+    },
+    "base_runtime_files_manifest_path": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "base_runtime_root": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "bootstrap_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "bootstrap_virtual_path": {
+      "$ref": "#/$defs/virtual_path"
+    },
+    "effective_package_manifest_path": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "effective_runtime_package_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "external_pin_digest": {
+      "$ref": "#/$defs/sha256"
+    },
+    "final_runtime_file_count": {
+      "pattern": "^[1-9][0-9]{2,3}$",
+      "type": "string"
+    },
+    "final_runtime_total_bytes": {
+      "pattern": "^[1-9][0-9]{7,8}$",
+      "type": "string"
+    },
+    "guard_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "guard_virtual_path": {
+      "$ref": "#/$defs/virtual_path"
+    },
+    "loaded_pe_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "loaded_pe_manifest_virtual_path": {
+      "$ref": "#/$defs/virtual_path"
+    },
+    "materialization_manifest_sha256": {
+      "const": "43277a32068fef853b004d90938cf00fe1c77cccd49b6f0c6a65953bc1489f0b"
+    },
+    "materialization_status_sha256": {
+      "const": "e4e8f870f71f0af7ec5b394eb2f07ee5be41c9aac9f351b144ff234ac5e21c25"
+    },
+    "output_leaf": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,119}$",
+      "type": "string"
+    },
+    "output_parent": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "platform_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "platform_manifest_virtual_path": {
+      "$ref": "#/$defs/virtual_path"
+    },
+    "preloader_image_path": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "preloader_image_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "preloader_virtual_path": {
+      "$ref": "#/$defs/virtual_path"
+    },
+    "run_nonce": {
+      "$ref": "#/$defs/sha256"
+    },
+    "runtime_files_manifest_path": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "runtime_files_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "runtime_package_root": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "runtime_profile_v0_1_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "runtime_profile_v0_2_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "runtime_profile_v0_3_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "runtime_profile_v0_4_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "runtime_root": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "schema_id": {
+      "const": "S0-RUNTIME-PRELOADER-V0.5-CONTROL-1"
+    },
+    "system_root": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "verifier_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "verifier_virtual_path": {
+      "$ref": "#/$defs/virtual_path"
+    },
+    "workspace_root": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "runtime_profile_v0_5_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "repository_root": {
+      "$ref": "#/$defs/windows_path"
+    },
+    "effective_interface_map_sha256": {
+      "const": "f6aa0f38ad7eb7bf2715fbc6084c5ce9c05db23eccca1af65956735e1e933623"
+    },
+    "effective_schema_sha256": {
+      "const": "04ae781b7d71e2954378cf7cdf2aa9070634ddc3a25c883ac52fb83ebe139d7e"
+    }
+  },
+  "required": [
+    "application_sha256",
+    "application_virtual_path",
+    "base_runtime_files_manifest_path",
+    "base_runtime_root",
+    "bootstrap_sha256",
+    "bootstrap_virtual_path",
+    "effective_interface_map_sha256",
+    "effective_package_manifest_path",
+    "effective_runtime_package_sha256",
+    "effective_schema_sha256",
+    "external_pin_digest",
+    "final_runtime_file_count",
+    "final_runtime_total_bytes",
+    "guard_sha256",
+    "guard_virtual_path",
+    "loaded_pe_manifest_sha256",
+    "loaded_pe_manifest_virtual_path",
+    "materialization_manifest_sha256",
+    "materialization_status_sha256",
+    "output_leaf",
+    "output_parent",
+    "platform_manifest_sha256",
+    "platform_manifest_virtual_path",
+    "preloader_image_path",
+    "preloader_image_sha256",
+    "preloader_virtual_path",
+    "repository_root",
+    "run_nonce",
+    "runtime_files_manifest_path",
+    "runtime_files_manifest_sha256",
+    "runtime_package_root",
+    "runtime_profile_v0_1_sha256",
+    "runtime_profile_v0_2_sha256",
+    "runtime_profile_v0_3_sha256",
+    "runtime_profile_v0_4_sha256",
+    "runtime_profile_v0_5_sha256",
+    "runtime_root",
+    "schema_id",
+    "system_root",
+    "verifier_sha256",
+    "verifier_virtual_path",
+    "workspace_root"
+  ],
+  "title": "S0 runtime/preloader v0.5 authenticated CONTROL envelope",
+  "type": "object",
+  "$defs": {
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "virtual_path": {
+      "allOf": [
+        {
+          "pattern": "^[A-Za-z0-9._/-]+$",
+          "type": "string"
+        },
+        {
+          "not": {
+            "pattern": "(^|/)\\.\\.?($|/)"
+          }
+        },
+        {
+          "not": {
+            "pattern": "//|^/|/$"
+          }
+        }
+      ]
+    },
+    "windows_path": {
+      "allOf": [
+        {
+          "minLength": 3,
+          "type": "string"
+        },
+        {
+          "pattern": "^[A-Za-z]:\\\\"
+        },
+        {
+          "not": {
+            "pattern": "[\\u0000-\\u001f]|[\"<>|?*]"
+          }
+        },
+        {
+          "not": {
+            "pattern": "\\\\\\.\\\\|\\\\\\.\\.$"
+          }
+        }
+      ]
+    }
+  }
+}

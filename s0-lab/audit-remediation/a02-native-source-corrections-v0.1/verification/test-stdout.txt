@@ -1,0 +1,28 @@
+Command: & "C:/Users/SSAFY/AppData/Local/Python/pythoncore-3.12-64/python.exe" -I -S -B "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a02-native-source-corrections-v0.1/tests/test_source_corrections.py"
+
+test_api_baseline_movefilew_discriminated (__main__.SourceCorrections.test_api_baseline_movefilew_discriminated) ... ok
+test_api_comments_and_strings_are_not_calls (__main__.SourceCorrections.test_api_comments_and_strings_are_not_calls) ... ok
+test_api_gettemppathw_rejection_retained (__main__.SourceCorrections.test_api_gettemppathw_rejection_retained) ... ok
+test_api_movefile_family_rejected (__main__.SourceCorrections.test_api_movefile_family_rejected) ... ok
+test_api_role_sources_accepted (__main__.SourceCorrections.test_api_role_sources_accepted) ... ok
+test_api_unknown_role_and_inventory_mismatch_rejected (__main__.SourceCorrections.test_api_unknown_role_and_inventory_mismatch_rejected) ... ok
+test_environment_and_pinned_imports (__main__.SourceCorrections.test_environment_and_pinned_imports) ... ok
+test_f01_baseline_discriminates_missing_p5 (__main__.SourceCorrections.test_f01_baseline_discriminates_missing_p5) ... ok
+test_f01_both_physical_lists_exact_seven (__main__.SourceCorrections.test_f01_both_physical_lists_exact_seven) ... ok
+test_f01_cpp_diff_exactly_one_added_list_entry (__main__.SourceCorrections.test_f01_cpp_diff_exactly_one_added_list_entry) ... ok
+test_f01_in_memory_missing_duplicate_extra_mutants (__main__.SourceCorrections.test_f01_in_memory_missing_duplicate_extra_mutants) ... ok
+test_f01_lists_consumed_by_comparison_and_directory_check (__main__.SourceCorrections.test_f01_lists_consumed_by_comparison_and_directory_check) ... ok
+test_f08_baseline_dot_alias_acceptance_discriminated (__main__.SourceCorrections.test_f08_baseline_dot_alias_acceptance_discriminated) ... ok
+test_f08_exact_type_rejected (__main__.SourceCorrections.test_f08_exact_type_rejected) ... ok
+test_f08_invalid_paths_rejected (__main__.SourceCorrections.test_f08_invalid_paths_rejected) ... ok
+test_f08_manifest_aliases_rejected (__main__.SourceCorrections.test_f08_manifest_aliases_rejected) ... ok
+test_f08_manifest_material_key_aliases_rejected (__main__.SourceCorrections.test_f08_manifest_material_key_aliases_rejected) ... ok
+test_f08_normal_manifest_and_material (__main__.SourceCorrections.test_f08_normal_manifest_and_material) ... ok
+test_f08_normal_relative_paths (__main__.SourceCorrections.test_f08_normal_relative_paths) ... ok
+test_f08_traversal_remains_rejected (__main__.SourceCorrections.test_f08_traversal_remains_rejected) ... ok
+test_minimal_python_diffs (__main__.SourceCorrections.test_minimal_python_diffs) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.023s
+
+OK

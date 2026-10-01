@@ -1,0 +1,777 @@
+{
+  "added_integration_cases": 3,
+  "candidate": "a06-runtime-source-integration-v0.1",
+  "command": "& \"C:/Users/SSAFY/AppData/Local/Python/pythoncore-3.12-64/python.exe\" -I -S -B -X utf8 \"C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/tests/test_source_corrections.py\"",
+  "discrimination": {
+    "API": "baseline accepts MoveFileW text; candidate rejects; GetTempPathW rejection retained",
+    "F01": "baseline initial 7 / reverify 6; candidate both exact 7",
+    "F08": "baseline accepts four dot aliases; candidate rejects direct and manifest aliases"
+  },
+  "elapsed_seconds": 0.281,
+  "errors": 0,
+  "failures": 0,
+  "git_audit_events": [
+    {
+      "command": "git branch --show-current",
+      "command_type": "str",
+      "executable": null,
+      "matches_standard_list2cmdline": true
+    },
+    {
+      "command": "git rev-parse HEAD",
+      "command_type": "str",
+      "executable": null,
+      "matches_standard_list2cmdline": true
+    },
+    {
+      "command": "git rev-parse HEAD^{tree}",
+      "command_type": "str",
+      "executable": null,
+      "matches_standard_list2cmdline": true
+    }
+  ],
+  "imports": [
+    {
+      "module": "_a06_candidate.errors",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/errors.py",
+      "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+    },
+    {
+      "module": "_a06_candidate.canonical",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/canonical.py",
+      "sha256": "14b30ef5688f3340b78215632fba4f0f4360b2d394ca56730979ac5e6f5c1ff0"
+    },
+    {
+      "module": "_a06_candidate.schema",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/schema.py",
+      "sha256": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317"
+    },
+    {
+      "module": "_a06_candidate.source_audit",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/source_audit.py",
+      "sha256": "663c281460139f9a847bddfd29f27f7ccee553e649887912bd1c9d4faed8fa60"
+    },
+    {
+      "module": "_a06_candidate.semantic",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/semantic.py",
+      "sha256": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d"
+    },
+    {
+      "module": "_a06_candidate.profile",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/profile.py",
+      "sha256": "efae38b6a99763c0dca61efe2813c11672cf784a28ea1f0747937f80e260501a"
+    },
+    {
+      "module": "_a06_candidate.evidence",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/evidence.py",
+      "sha256": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964"
+    },
+    {
+      "module": "_a06_candidate.preloader",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/preloader.py",
+      "sha256": "718ba925b7f31bec04ac5d90efe6e6fb4dd7c098a9afdb61d58ffa572ebb38ee"
+    },
+    {
+      "module": "_a06_candidate.integration",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/integration.py",
+      "sha256": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd"
+    },
+    {
+      "module": "_a06_candidate",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/__init__.py",
+      "sha256": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3"
+    },
+    {
+      "module": "_a06_baseline",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/__init__.py",
+      "sha256": "57adf310b3589dadfc4c69369def09c3185d99983e7a42a5772c431c60bb250a"
+    },
+    {
+      "module": "_a06_baseline.errors",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/errors.py",
+      "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+    },
+    {
+      "module": "_a06_baseline.canonical",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/canonical.py",
+      "sha256": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4"
+    },
+    {
+      "module": "_a06_baseline.source_audit",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/source_audit.py",
+      "sha256": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99"
+    }
+  ],
+  "interpreter": {
+    "flags": [
+      "-I",
+      "-S",
+      "-B",
+      "-X",
+      "utf8"
+    ],
+    "path": "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+    "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+    "version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "limits": [
+    "Source/unit/static verification only; not a native runnable candidate, compilation, native call, object, or PE check.",
+    "In-memory benign unit strings only; no S0/E0 fixture, execution, scoring, hidden oracle, F0 content, provider call, or network.",
+    "Lexical paths only; OS containment, ACL, volume/root identity, symlink/junction/reparse, rename/replacement, retained handles, repository exclusion, and TOCTOU remain unverified.",
+    "API checks cover only the bounded name families; not all APIs or capability/sandbox acceptance authority.",
+    "CPython, standard library, OS, Git identity tool, and output root trusted; hostile import/native closure, introspection, fields, concurrency, and secure evidence production unverified.",
+    "Source snapshot originals are recovery inputs, not newly validated native execution material; no operational safety or economic/model-transfer claim."
+  ],
+  "minimal_diff": {
+    "canonical": "raw-segment rejection before PurePosixPath",
+    "cpp": "one P5 physical-list entry",
+    "source_audit": "A5 four-set closure and constructor policy plus exact A2 MoveFile family/comment delta"
+  },
+  "outcome": "pass",
+  "post": {
+    "extra_or_shadow": 0,
+    "identity": {
+      "branch": "codex/windows-build-toolchain-environment-v0.1",
+      "head": "cc76d7e82aeb51dfdc7baba3da0f7993ab2da61a",
+      "tree": "82c02f37fd13ecfc8c7b888bb66127989b6d4f34"
+    },
+    "implementation_file_count": 20,
+    "missing": 0,
+    "pins": {
+      "AGENTS.md": {
+        "bytes": 31722,
+        "sha256": "393984b6d83639d0c4365d0ca6066907d3d281384656b860a4853d3d6d46ac9e"
+      },
+      "C:/Users/SSAFY/AppData/Local/Python/pythoncore-3.12-64/python.exe": {
+        "bytes": 104952,
+        "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/control-envelope-v0.5.schema.json": {
+        "bytes": 5761,
+        "sha256": "b9e7d6131202f47522e4f3055199df71f5e5ff8737362b7c97337350646d1dc1"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/build-contract.json": {
+        "bytes": 6079,
+        "sha256": "d7e2ce9c3232304073b11d0ab1430c48bc1f3b833c9a6a3b62db281bde62141a"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/build.ps1": {
+        "bytes": 10361,
+        "sha256": "415dfc99d1a6dfec2bfb618dd2b8648cdc4d85d6051bdaa997e0209cde877a5e"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/materialize-runtime.ps1": {
+        "bytes": 3641,
+        "sha256": "aee6771a87d87f8ee3bfb332cb7fe1469f2722e1c11e8f7696f38820312c617d"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81162,
+        "sha256": "6230ef69d5b4b175968f7576b43aeb5ae15fa3646c59778f84b5c3877c0ef9ec"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/s0_runtime_handle_guard_v0_5.cpp": {
+        "bytes": 24406,
+        "sha256": "72a79d38fdf00b82c16cc416f67e8a881d97616c2b968ded5e01fc3a70a464d6"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/s0_runtime_materializer_v0_5.cpp": {
+        "bytes": 49712,
+        "sha256": "2ec252ed9d15d12e0447244f1bbd138f922edcc27a53d626c5c71ac60d64d691"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/s0_runtime_v0_5.h": {
+        "bytes": 8461,
+        "sha256": "d444e00e8ae3c45d674dd5429135c5bfe32c02c2a3713375277a8d82424151e1"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/runtime-authority-v0.5.json": {
+        "bytes": 10815,
+        "sha256": "664f0950e903ef508082fcd9465f895e16c08418bee94f3cd3e86e85dd248642"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/__init__.py": {
+        "bytes": 2193,
+        "sha256": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/canonical.py": {
+        "bytes": 5835,
+        "sha256": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/errors.py": {
+        "bytes": 643,
+        "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/evidence.py": {
+        "bytes": 20910,
+        "sha256": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/integration.py": {
+        "bytes": 5082,
+        "sha256": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/preloader.py": {
+        "bytes": 11140,
+        "sha256": "b6f343c7a0a0c3ebe075eed386ff53d08abda507116ca19d1e7b7985aabd1c59"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/profile.py": {
+        "bytes": 14641,
+        "sha256": "c5c1f6c6c937e45b9da246b24783134570a48923501757ab4683173a5367fe89"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/schema.py": {
+        "bytes": 15627,
+        "sha256": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/semantic.py": {
+        "bytes": 21529,
+        "sha256": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/source_audit.py": {
+        "bytes": 24041,
+        "sha256": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_runtime_bootstrap_v0_5.py": {
+        "bytes": 2244,
+        "sha256": "7afa12c8e4cfff2754b4e1496e002d7ba70a3a2c084987085fe04d392b91c5af"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/verification/implementation-source-files-v0.5.sha256": {
+        "bytes": 3632,
+        "sha256": "498a7190238f927817010b9506f53130af93f14271252ed19e785faa6a2f0467"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/canonical.py": {
+        "bytes": 5835,
+        "sha256": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81162,
+        "sha256": "6230ef69d5b4b175968f7576b43aeb5ae15fa3646c59778f84b5c3877c0ef9ec"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/source_audit.py": {
+        "bytes": 24041,
+        "sha256": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/README.md": {
+        "bytes": 12553,
+        "sha256": "e0b32c29474aa4d12f433443d683ca9b4f498b8355b3909c1e3f75be33f1c4b8"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/README.sha256": {
+        "bytes": 76,
+        "sha256": "1b99424c04631715caca51565222eb4787a0461b9d3e8b73bec0e0d37b2eb495"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/artifact-files.sha256": {
+        "bytes": 1052,
+        "sha256": "97a86c931b9662fb52492c34abe7120b94dab305f62e8dda115b56d4cb9fac25"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/native/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81191,
+        "sha256": "88e2a05bbb643c18247844b9aa38b0b327215730f8cf0fd44925e077df5c6e53"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/__init__.py": {
+        "bytes": 64,
+        "sha256": "57adf310b3589dadfc4c69369def09c3185d99983e7a42a5772c431c60bb250a"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/canonical.py": {
+        "bytes": 5980,
+        "sha256": "14b30ef5688f3340b78215632fba4f0f4360b2d394ca56730979ac5e6f5c1ff0"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/errors.py": {
+        "bytes": 643,
+        "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/source_audit.py": {
+        "bytes": 24115,
+        "sha256": "7b65cfec819544a258ecb0cb9f25346b0c9c6606c52f12448d0a8d6954f57e6c"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/tests/test_source_corrections.py": {
+        "bytes": 20298,
+        "sha256": "8b4987b3853a91076edee3b595ab8cf8171f0ec72e48b82b090b1f2af26f9a84"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/verification/test-results.json": {
+        "bytes": 9711,
+        "sha256": "f92bed1e82dc4b1ad7ad5b56cdbdffcef62a398aab05602366822fe881d01f18"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/verification/test-stdout.txt": {
+        "bytes": 2789,
+        "sha256": "adb717f8c63a92d4b8b24b461b89f5678e931a4cb7582424041f9093f80f85e7"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/README.md": {
+        "bytes": 8246,
+        "sha256": "3d2ac678de8b3150c393eaa2c72d279dc9343ac8654c3112c405f66b45a07155"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/README.sha256": {
+        "bytes": 76,
+        "sha256": "a3f934abf530f5f235fea91aed51729e7787717a7350b6d993b93887f43c2cb0"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/SCOPE-AND-CHECKLIST.md": {
+        "bytes": 14461,
+        "sha256": "7342cdf036c9264f357c79fe9eaaee78af0d2b5cabae683affefb52629ca61eb"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/SCOPE-AND-CHECKLIST.sha256": {
+        "bytes": 89,
+        "sha256": "d0a7ffd0b6ee1e39d54fece1b78cf35828efccfd6a8c6d70b7b99e769c1dd479"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/candidate-files.sha256": {
+        "bytes": 2762,
+        "sha256": "a0fb92b746d399b4fe0e079187828ff21c1312b875681be7f8e8aea1804cc287"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/__init__.py": {
+        "bytes": 2193,
+        "sha256": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/canonical.py": {
+        "bytes": 5835,
+        "sha256": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/errors.py": {
+        "bytes": 643,
+        "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/evidence.py": {
+        "bytes": 20910,
+        "sha256": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/integration.py": {
+        "bytes": 5082,
+        "sha256": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/preloader.py": {
+        "bytes": 11482,
+        "sha256": "718ba925b7f31bec04ac5d90efe6e6fb4dd7c098a9afdb61d58ffa572ebb38ee"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/profile.py": {
+        "bytes": 24573,
+        "sha256": "efae38b6a99763c0dca61efe2813c11672cf784a28ea1f0747937f80e260501a"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/schema.py": {
+        "bytes": 15627,
+        "sha256": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/semantic.py": {
+        "bytes": 21529,
+        "sha256": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/source_audit.py": {
+        "bytes": 24075,
+        "sha256": "50399a565232136736e041ea028b76ed8767d18327553ecf2ec6ec5b0bfe2d36"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/tests/test_profile_composition.py": {
+        "bytes": 71646,
+        "sha256": "b43f60b24999571d8654e3d1de337fc58ec47cf23b00b3483cbb77218f111631"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/verification/test-results.json": {
+        "bytes": 44478,
+        "sha256": "8bce9f03218f3070ab456704d183a8f9b2f7ce10591031735598825394ee414b"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/verification/test-stdout.txt": {
+        "bytes": 12577,
+        "sha256": "a1f0500882178e9750d5a9d174abdb391b315f1875ebae9eeb0722443a56166f"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/control-envelope-v0.5.schema.json": {
+        "bytes": 5761,
+        "sha256": "b9e7d6131202f47522e4f3055199df71f5e5ff8737362b7c97337350646d1dc1"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/build-contract.json": {
+        "bytes": 6079,
+        "sha256": "d7e2ce9c3232304073b11d0ab1430c48bc1f3b833c9a6a3b62db281bde62141a"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/build.ps1": {
+        "bytes": 10361,
+        "sha256": "415dfc99d1a6dfec2bfb618dd2b8648cdc4d85d6051bdaa997e0209cde877a5e"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/materialize-runtime.ps1": {
+        "bytes": 3641,
+        "sha256": "aee6771a87d87f8ee3bfb332cb7fe1469f2722e1c11e8f7696f38820312c617d"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81191,
+        "sha256": "88e2a05bbb643c18247844b9aa38b0b327215730f8cf0fd44925e077df5c6e53"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/s0_runtime_handle_guard_v0_5.cpp": {
+        "bytes": 24406,
+        "sha256": "72a79d38fdf00b82c16cc416f67e8a881d97616c2b968ded5e01fc3a70a464d6"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/s0_runtime_materializer_v0_5.cpp": {
+        "bytes": 49712,
+        "sha256": "2ec252ed9d15d12e0447244f1bbd138f922edcc27a53d626c5c71ac60d64d691"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/s0_runtime_v0_5.h": {
+        "bytes": 8461,
+        "sha256": "d444e00e8ae3c45d674dd5429135c5bfe32c02c2a3713375277a8d82424151e1"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/runtime-authority-v0.5.json": {
+        "bytes": 10815,
+        "sha256": "664f0950e903ef508082fcd9465f895e16c08418bee94f3cd3e86e85dd248642"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/__init__.py": {
+        "bytes": 2193,
+        "sha256": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/canonical.py": {
+        "bytes": 5980,
+        "sha256": "14b30ef5688f3340b78215632fba4f0f4360b2d394ca56730979ac5e6f5c1ff0"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/errors.py": {
+        "bytes": 643,
+        "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/evidence.py": {
+        "bytes": 20910,
+        "sha256": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/integration.py": {
+        "bytes": 5082,
+        "sha256": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/preloader.py": {
+        "bytes": 11482,
+        "sha256": "718ba925b7f31bec04ac5d90efe6e6fb4dd7c098a9afdb61d58ffa572ebb38ee"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/profile.py": {
+        "bytes": 24573,
+        "sha256": "efae38b6a99763c0dca61efe2813c11672cf784a28ea1f0747937f80e260501a"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/schema.py": {
+        "bytes": 15627,
+        "sha256": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/semantic.py": {
+        "bytes": 21529,
+        "sha256": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/source_audit.py": {
+        "bytes": 24149,
+        "sha256": "663c281460139f9a847bddfd29f27f7ccee553e649887912bd1c9d4faed8fa60"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_runtime_bootstrap_v0_5.py": {
+        "bytes": 2244,
+        "sha256": "7afa12c8e4cfff2754b4e1496e002d7ba70a3a2c084987085fe04d392b91c5af"
+      }
+    },
+    "scratch_absent": true,
+    "scratch_used": false
+  },
+  "pre": {
+    "extra_or_shadow": 0,
+    "identity": {
+      "branch": "codex/windows-build-toolchain-environment-v0.1",
+      "head": "cc76d7e82aeb51dfdc7baba3da0f7993ab2da61a",
+      "tree": "82c02f37fd13ecfc8c7b888bb66127989b6d4f34"
+    },
+    "implementation_file_count": 20,
+    "missing": 0,
+    "pins": {
+      "AGENTS.md": {
+        "bytes": 31722,
+        "sha256": "393984b6d83639d0c4365d0ca6066907d3d281384656b860a4853d3d6d46ac9e"
+      },
+      "C:/Users/SSAFY/AppData/Local/Python/pythoncore-3.12-64/python.exe": {
+        "bytes": 104952,
+        "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/control-envelope-v0.5.schema.json": {
+        "bytes": 5761,
+        "sha256": "b9e7d6131202f47522e4f3055199df71f5e5ff8737362b7c97337350646d1dc1"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/build-contract.json": {
+        "bytes": 6079,
+        "sha256": "d7e2ce9c3232304073b11d0ab1430c48bc1f3b833c9a6a3b62db281bde62141a"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/build.ps1": {
+        "bytes": 10361,
+        "sha256": "415dfc99d1a6dfec2bfb618dd2b8648cdc4d85d6051bdaa997e0209cde877a5e"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/materialize-runtime.ps1": {
+        "bytes": 3641,
+        "sha256": "aee6771a87d87f8ee3bfb332cb7fe1469f2722e1c11e8f7696f38820312c617d"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81162,
+        "sha256": "6230ef69d5b4b175968f7576b43aeb5ae15fa3646c59778f84b5c3877c0ef9ec"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/s0_runtime_handle_guard_v0_5.cpp": {
+        "bytes": 24406,
+        "sha256": "72a79d38fdf00b82c16cc416f67e8a881d97616c2b968ded5e01fc3a70a464d6"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/s0_runtime_materializer_v0_5.cpp": {
+        "bytes": 49712,
+        "sha256": "2ec252ed9d15d12e0447244f1bbd138f922edcc27a53d626c5c71ac60d64d691"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/native/s0_runtime_v0_5.h": {
+        "bytes": 8461,
+        "sha256": "d444e00e8ae3c45d674dd5429135c5bfe32c02c2a3713375277a8d82424151e1"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/runtime-authority-v0.5.json": {
+        "bytes": 10815,
+        "sha256": "664f0950e903ef508082fcd9465f895e16c08418bee94f3cd3e86e85dd248642"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/__init__.py": {
+        "bytes": 2193,
+        "sha256": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/canonical.py": {
+        "bytes": 5835,
+        "sha256": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/errors.py": {
+        "bytes": 643,
+        "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/evidence.py": {
+        "bytes": 20910,
+        "sha256": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/integration.py": {
+        "bytes": 5082,
+        "sha256": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/preloader.py": {
+        "bytes": 11140,
+        "sha256": "b6f343c7a0a0c3ebe075eed386ff53d08abda507116ca19d1e7b7985aabd1c59"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/profile.py": {
+        "bytes": 14641,
+        "sha256": "c5c1f6c6c937e45b9da246b24783134570a48923501757ab4683173a5367fe89"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/schema.py": {
+        "bytes": 15627,
+        "sha256": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/semantic.py": {
+        "bytes": 21529,
+        "sha256": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_public_runtime_preloader/source_audit.py": {
+        "bytes": 24041,
+        "sha256": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/implementation/s0_runtime_bootstrap_v0_5.py": {
+        "bytes": 2244,
+        "sha256": "7afa12c8e4cfff2754b4e1496e002d7ba70a3a2c084987085fe04d392b91c5af"
+      },
+      "docs/maintenance/audit-2026-09-09/f03-source-recovery-2026-09-16/verification/implementation-source-files-v0.5.sha256": {
+        "bytes": 3632,
+        "sha256": "498a7190238f927817010b9506f53130af93f14271252ed19e785faa6a2f0467"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/canonical.py": {
+        "bytes": 5835,
+        "sha256": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81162,
+        "sha256": "6230ef69d5b4b175968f7576b43aeb5ae15fa3646c59778f84b5c3877c0ef9ec"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/source_audit.py": {
+        "bytes": 24041,
+        "sha256": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/README.md": {
+        "bytes": 12553,
+        "sha256": "e0b32c29474aa4d12f433443d683ca9b4f498b8355b3909c1e3f75be33f1c4b8"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/README.sha256": {
+        "bytes": 76,
+        "sha256": "1b99424c04631715caca51565222eb4787a0461b9d3e8b73bec0e0d37b2eb495"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/artifact-files.sha256": {
+        "bytes": 1052,
+        "sha256": "97a86c931b9662fb52492c34abe7120b94dab305f62e8dda115b56d4cb9fac25"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/native/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81191,
+        "sha256": "88e2a05bbb643c18247844b9aa38b0b327215730f8cf0fd44925e077df5c6e53"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/__init__.py": {
+        "bytes": 64,
+        "sha256": "57adf310b3589dadfc4c69369def09c3185d99983e7a42a5772c431c60bb250a"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/canonical.py": {
+        "bytes": 5980,
+        "sha256": "14b30ef5688f3340b78215632fba4f0f4360b2d394ca56730979ac5e6f5c1ff0"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/errors.py": {
+        "bytes": 643,
+        "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/source_audit.py": {
+        "bytes": 24115,
+        "sha256": "7b65cfec819544a258ecb0cb9f25346b0c9c6606c52f12448d0a8d6954f57e6c"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/tests/test_source_corrections.py": {
+        "bytes": 20298,
+        "sha256": "8b4987b3853a91076edee3b595ab8cf8171f0ec72e48b82b090b1f2af26f9a84"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/verification/test-results.json": {
+        "bytes": 9711,
+        "sha256": "f92bed1e82dc4b1ad7ad5b56cdbdffcef62a398aab05602366822fe881d01f18"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/verification/test-stdout.txt": {
+        "bytes": 2789,
+        "sha256": "adb717f8c63a92d4b8b24b461b89f5678e931a4cb7582424041f9093f80f85e7"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/README.md": {
+        "bytes": 8246,
+        "sha256": "3d2ac678de8b3150c393eaa2c72d279dc9343ac8654c3112c405f66b45a07155"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/README.sha256": {
+        "bytes": 76,
+        "sha256": "a3f934abf530f5f235fea91aed51729e7787717a7350b6d993b93887f43c2cb0"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/SCOPE-AND-CHECKLIST.md": {
+        "bytes": 14461,
+        "sha256": "7342cdf036c9264f357c79fe9eaaee78af0d2b5cabae683affefb52629ca61eb"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/SCOPE-AND-CHECKLIST.sha256": {
+        "bytes": 89,
+        "sha256": "d0a7ffd0b6ee1e39d54fece1b78cf35828efccfd6a8c6d70b7b99e769c1dd479"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/candidate-files.sha256": {
+        "bytes": 2762,
+        "sha256": "a0fb92b746d399b4fe0e079187828ff21c1312b875681be7f8e8aea1804cc287"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/__init__.py": {
+        "bytes": 2193,
+        "sha256": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/canonical.py": {
+        "bytes": 5835,
+        "sha256": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/errors.py": {
+        "bytes": 643,
+        "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/evidence.py": {
+        "bytes": 20910,
+        "sha256": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/integration.py": {
+        "bytes": 5082,
+        "sha256": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/preloader.py": {
+        "bytes": 11482,
+        "sha256": "718ba925b7f31bec04ac5d90efe6e6fb4dd7c098a9afdb61d58ffa572ebb38ee"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/profile.py": {
+        "bytes": 24573,
+        "sha256": "efae38b6a99763c0dca61efe2813c11672cf784a28ea1f0747937f80e260501a"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/schema.py": {
+        "bytes": 15627,
+        "sha256": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/semantic.py": {
+        "bytes": 21529,
+        "sha256": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/implementation/s0_public_runtime_preloader/source_audit.py": {
+        "bytes": 24075,
+        "sha256": "50399a565232136736e041ea028b76ed8767d18327553ecf2ec6ec5b0bfe2d36"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/tests/test_profile_composition.py": {
+        "bytes": 71646,
+        "sha256": "b43f60b24999571d8654e3d1de337fc58ec47cf23b00b3483cbb77218f111631"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/verification/test-results.json": {
+        "bytes": 44478,
+        "sha256": "8bce9f03218f3070ab456704d183a8f9b2f7ce10591031735598825394ee414b"
+      },
+      "s0-lab/audit-remediation/a05-profile-composition-v0.3/verification/test-stdout.txt": {
+        "bytes": 12577,
+        "sha256": "a1f0500882178e9750d5a9d174abdb391b315f1875ebae9eeb0722443a56166f"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/control-envelope-v0.5.schema.json": {
+        "bytes": 5761,
+        "sha256": "b9e7d6131202f47522e4f3055199df71f5e5ff8737362b7c97337350646d1dc1"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/build-contract.json": {
+        "bytes": 6079,
+        "sha256": "d7e2ce9c3232304073b11d0ab1430c48bc1f3b833c9a6a3b62db281bde62141a"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/build.ps1": {
+        "bytes": 10361,
+        "sha256": "415dfc99d1a6dfec2bfb618dd2b8648cdc4d85d6051bdaa997e0209cde877a5e"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/materialize-runtime.ps1": {
+        "bytes": 3641,
+        "sha256": "aee6771a87d87f8ee3bfb332cb7fe1469f2722e1c11e8f7696f38820312c617d"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81191,
+        "sha256": "88e2a05bbb643c18247844b9aa38b0b327215730f8cf0fd44925e077df5c6e53"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/s0_runtime_handle_guard_v0_5.cpp": {
+        "bytes": 24406,
+        "sha256": "72a79d38fdf00b82c16cc416f67e8a881d97616c2b968ded5e01fc3a70a464d6"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/s0_runtime_materializer_v0_5.cpp": {
+        "bytes": 49712,
+        "sha256": "2ec252ed9d15d12e0447244f1bbd138f922edcc27a53d626c5c71ac60d64d691"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/native/s0_runtime_v0_5.h": {
+        "bytes": 8461,
+        "sha256": "d444e00e8ae3c45d674dd5429135c5bfe32c02c2a3713375277a8d82424151e1"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/runtime-authority-v0.5.json": {
+        "bytes": 10815,
+        "sha256": "664f0950e903ef508082fcd9465f895e16c08418bee94f3cd3e86e85dd248642"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/__init__.py": {
+        "bytes": 2193,
+        "sha256": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/canonical.py": {
+        "bytes": 5980,
+        "sha256": "14b30ef5688f3340b78215632fba4f0f4360b2d394ca56730979ac5e6f5c1ff0"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/errors.py": {
+        "bytes": 643,
+        "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/evidence.py": {
+        "bytes": 20910,
+        "sha256": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/integration.py": {
+        "bytes": 5082,
+        "sha256": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/preloader.py": {
+        "bytes": 11482,
+        "sha256": "718ba925b7f31bec04ac5d90efe6e6fb4dd7c098a9afdb61d58ffa572ebb38ee"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/profile.py": {
+        "bytes": 24573,
+        "sha256": "efae38b6a99763c0dca61efe2813c11672cf784a28ea1f0747937f80e260501a"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/schema.py": {
+        "bytes": 15627,
+        "sha256": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/semantic.py": {
+        "bytes": 21529,
+        "sha256": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_public_runtime_preloader/source_audit.py": {
+        "bytes": 24149,
+        "sha256": "663c281460139f9a847bddfd29f27f7ccee553e649887912bd1c9d4faed8fa60"
+      },
+      "s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/s0_runtime_bootstrap_v0_5.py": {
+        "bytes": 2244,
+        "sha256": "7afa12c8e4cfff2754b4e1496e002d7ba70a3a2c084987085fe04d392b91c5af"
+      }
+    },
+    "scratch_absent": true,
+    "scratch_used": false
+  },
+  "pre_post_equal": true,
+  "prior_test_harness_failure": {
+    "cause": "Windows subprocess audit event supplies a command string, not argv list",
+    "correction": "Only the exact diagnosed command strings are permitted; candidate source unchanged",
+    "diagnostic": "Each of the three exact Git queries had executable None, str command equal to subprocess.list2cmdline, and exit 0",
+    "exit": 1,
+    "original_traceback": "Preserved in TEST tool transcript; not a candidate failure or completed prior report",
+    "phase": "post-run Git identity before any result output",
+    "test_file_sha256": "8fe50fd178bea5d6cc1e62e1a6464305b072a3e19d75625edcb7725184ec3368"
+  },
+  "retained_a02_case_purposes": 21,
+  "role": "TEST/VERIFICATION",
+  "skips": 0,
+  "stdout_sha256": "1bc44112e0f0e91aab38d8ab18b2d0dc062d821a90fb7c370d08f8fec015b642",
+  "subtests": 205,
+  "test_file_sha256": "7b551aeb5a89a59857bab17fc705fa9af35d01644bdd216bf2bddc21dde915da",
+  "tests": 24,
+  "working_directory": "C:/Users/SSAFY/Documents/ai-development-tradition"
+}

@@ -1,0 +1,186 @@
+{
+  "candidate": "a02-native-source-corrections-v0.1",
+  "command": "& \"C:/Users/SSAFY/AppData/Local/Python/pythoncore-3.12-64/python.exe\" -I -S -B \"C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a02-native-source-corrections-v0.1/tests/test_source_corrections.py\"",
+  "discrimination": {
+    "API": "baseline accepts MoveFileW text; candidate rejects; GetTempPathW rejection retained",
+    "F01": "baseline initial 7 / reverify 6; candidate both exact 7",
+    "F08": "baseline accepts four dot aliases; candidate rejects direct and manifest aliases"
+  },
+  "elapsed_seconds": 0.25,
+  "errors": 0,
+  "failures": 0,
+  "imports": [
+    {
+      "module": "_a02_candidate",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/__init__.py",
+      "sha256": "57adf310b3589dadfc4c69369def09c3185d99983e7a42a5772c431c60bb250a"
+    },
+    {
+      "module": "_a02_candidate.errors",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/errors.py",
+      "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+    },
+    {
+      "module": "_a02_candidate.canonical",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/canonical.py",
+      "sha256": "14b30ef5688f3340b78215632fba4f0f4360b2d394ca56730979ac5e6f5c1ff0"
+    },
+    {
+      "module": "_a02_candidate.source_audit",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/source_audit.py",
+      "sha256": "7b65cfec819544a258ecb0cb9f25346b0c9c6606c52f12448d0a8d6954f57e6c"
+    },
+    {
+      "module": "_a02_baseline",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/__init__.py",
+      "sha256": "57adf310b3589dadfc4c69369def09c3185d99983e7a42a5772c431c60bb250a"
+    },
+    {
+      "module": "_a02_baseline.errors",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/errors.py",
+      "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+    },
+    {
+      "module": "_a02_baseline.canonical",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/canonical.py",
+      "sha256": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4"
+    },
+    {
+      "module": "_a02_baseline.source_audit",
+      "path": "C:/Users/SSAFY/Documents/ai-development-tradition/docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/source_audit.py",
+      "sha256": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99"
+    }
+  ],
+  "interpreter": {
+    "flags": [
+      "-I",
+      "-S",
+      "-B"
+    ],
+    "path": "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+    "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+    "version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "limits": [
+    "Source/unit/static verification only; not a native runnable candidate, compilation, native call, object, or PE check.",
+    "In-memory benign unit strings only; no S0/E0 fixture, execution, scoring, hidden oracle, F0 content, provider call, or network.",
+    "Lexical paths only; OS containment, ACL, volume/root identity, symlink/junction/reparse, rename/replacement, retained handles, repository exclusion, and TOCTOU remain unverified.",
+    "API checks cover only the bounded name families; not all APIs or capability/sandbox acceptance authority.",
+    "CPython, standard library, OS, Git identity tool, and output root trusted; hostile import/native closure, introspection, fields, concurrency, and secure evidence production unverified.",
+    "Source snapshot originals are recovery inputs, not newly validated native execution material; no operational safety or economic/model-transfer claim."
+  ],
+  "minimal_diff": {
+    "canonical": "raw-segment rejection before PurePosixPath",
+    "cpp": "one P5 physical-list entry",
+    "source_audit": "MoveFile family plus bounded-diagnostic comment"
+  },
+  "outcome": "pass",
+  "post": {
+    "extra_or_shadow": 0,
+    "identity": {
+      "branch": "codex/windows-build-toolchain-environment-v0.1",
+      "head": "cc76d7e82aeb51dfdc7baba3da0f7993ab2da61a",
+      "tree": "82c02f37fd13ecfc8c7b888bb66127989b6d4f34"
+    },
+    "implementation_file_count": 5,
+    "missing": 0,
+    "pins": {
+      "AGENTS.md": {
+        "bytes": 30777,
+        "sha256": "4aac0c255dea03b85f6fb98b0b89f5b3c3f348e42c4dcaaf423411b818e3a065"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/canonical.py": {
+        "bytes": 5835,
+        "sha256": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81162,
+        "sha256": "6230ef69d5b4b175968f7576b43aeb5ae15fa3646c59778f84b5c3877c0ef9ec"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/source_audit.py": {
+        "bytes": 24041,
+        "sha256": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/native/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81191,
+        "sha256": "88e2a05bbb643c18247844b9aa38b0b327215730f8cf0fd44925e077df5c6e53"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/__init__.py": {
+        "bytes": 64,
+        "sha256": "57adf310b3589dadfc4c69369def09c3185d99983e7a42a5772c431c60bb250a"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/canonical.py": {
+        "bytes": 5980,
+        "sha256": "14b30ef5688f3340b78215632fba4f0f4360b2d394ca56730979ac5e6f5c1ff0"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/errors.py": {
+        "bytes": 643,
+        "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/source_audit.py": {
+        "bytes": 24115,
+        "sha256": "7b65cfec819544a258ecb0cb9f25346b0c9c6606c52f12448d0a8d6954f57e6c"
+      }
+    },
+    "scratch_absent": true,
+    "scratch_used": false
+  },
+  "pre": {
+    "extra_or_shadow": 0,
+    "identity": {
+      "branch": "codex/windows-build-toolchain-environment-v0.1",
+      "head": "cc76d7e82aeb51dfdc7baba3da0f7993ab2da61a",
+      "tree": "82c02f37fd13ecfc8c7b888bb66127989b6d4f34"
+    },
+    "implementation_file_count": 5,
+    "missing": 0,
+    "pins": {
+      "AGENTS.md": {
+        "bytes": 30777,
+        "sha256": "4aac0c255dea03b85f6fb98b0b89f5b3c3f348e42c4dcaaf423411b818e3a065"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/canonical.py": {
+        "bytes": 5835,
+        "sha256": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81162,
+        "sha256": "6230ef69d5b4b175968f7576b43aeb5ae15fa3646c59778f84b5c3877c0ef9ec"
+      },
+      "docs/maintenance/audit-2026-09-09/source-snapshot-2026-09-16/source_audit.py": {
+        "bytes": 24041,
+        "sha256": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/native/s0_neutral_preloader_v0_5.cpp": {
+        "bytes": 81191,
+        "sha256": "88e2a05bbb643c18247844b9aa38b0b327215730f8cf0fd44925e077df5c6e53"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/__init__.py": {
+        "bytes": 64,
+        "sha256": "57adf310b3589dadfc4c69369def09c3185d99983e7a42a5772c431c60bb250a"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/canonical.py": {
+        "bytes": 5980,
+        "sha256": "14b30ef5688f3340b78215632fba4f0f4360b2d394ca56730979ac5e6f5c1ff0"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/errors.py": {
+        "bytes": 643,
+        "sha256": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86"
+      },
+      "s0-lab/audit-remediation/a02-native-source-corrections-v0.1/implementation/s0_public_runtime_preloader/source_audit.py": {
+        "bytes": 24115,
+        "sha256": "7b65cfec819544a258ecb0cb9f25346b0c9c6606c52f12448d0a8d6954f57e6c"
+      }
+    },
+    "scratch_absent": true,
+    "scratch_used": false
+  },
+  "pre_post_equal": true,
+  "role": "TEST/VERIFICATION",
+  "skips": 0,
+  "stdout_sha256": "adb717f8c63a92d4b8b24b461b89f5678e931a4cb7582424041f9093f80f85e7",
+  "subtests": 116,
+  "test_file_sha256": "8b4987b3853a91076edee3b595ab8cf8171f0ec72e48b82b090b1f2af26f9a84",
+  "tests": 21,
+  "working_directory": "C:/Users/SSAFY/Documents/ai-development-tradition"
+}

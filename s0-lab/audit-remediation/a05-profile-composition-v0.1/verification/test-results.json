@@ -1,0 +1,249 @@
+{
+  "artifact_location_check": "exact allowed output paths with observed non-reparse ancestry; not hostile-filesystem isolation",
+  "branch_authenticated_before_run": "codex/windows-build-toolchain-environment-v0.1",
+  "candidate": "a05-profile-composition-v0.1",
+  "command": "& 'C:/Users/SSAFY/AppData/Local/Python/pythoncore-3.12-64/python.exe' -I -S -B -X utf8 'C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a05-profile-composition-v0.1/tests/test_profile_composition.py'",
+  "errors": 0,
+  "failures": 0,
+  "head_authenticated_before_run": "cc76d7e82aeb51dfdc7baba3da0f7993ab2da61a",
+  "independent_review_verdict": "not produced by TEST role",
+  "mocked_prerequisites": [
+    "Positive composition: validate_runtime_profile_candidate returns a coherent data-only P4 wrapper; no historical success asserted.",
+    "Positive composition: P1-P3 pin constants are temporarily replaced with harmless unit-parameter hashes; P4 is actual pinned raw input.",
+    "Positive composition: _successor_design_bytes and _successor_native_bytes are no-op call spies.",
+    "Positive composition: FixedDraft202012Validator.validate is a no-op for the minimal overlay; real v0.5 schema/map byte pins remain checked.",
+    "Bound tests: _MAX_RUNTIME_BYTES temporarily set to 3; 512-file count bound tested without replacement.",
+    "Consumer tests: unavailable upstream gates use the same composition doubles; downstream launch parsing, identity, evidence, precreation and admission are real.",
+    "Negative diagnostic tests individually replace preceding gates to isolate their target; no mock result establishes real prerequisites."
+  ],
+  "passed": true,
+  "post_input_sha256": {
+    "AGENTS.md": "393984b6d83639d0c4365d0ca6066907d3d281384656b860a4853d3d6d46ac9e",
+    "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+    "docs\\maintenance\\audit-2026-09-09\\f03-input-recovery-2026-09-17\\design\\findclose-amendment-v0.1\\public-assembly-runtime-profile-neutral-preloader-interface-map-v0.5.json": "f6aa0f38ad7eb7bf2715fbc6084c5ce9c05db23eccca1af65956735e1e933623",
+    "docs\\maintenance\\audit-2026-09-09\\f03-input-recovery-2026-09-17\\design\\findclose-amendment-v0.1\\runtime-profile-v0.5.schema.json": "04ae781b7d71e2954378cf7cdf2aa9070634ddc3a25c883ac52fb83ebe139d7e",
+    "docs\\maintenance\\audit-2026-09-09\\f03-input-recovery-2026-09-17\\historical\\runtime-profile-v0.4.json": "266087f18cb16ced698fdfc8089a6ca305aac1d5d0278b1ee4c51f23044b3e9e",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\__init__.py": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\canonical.py": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\errors.py": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\evidence.py": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\integration.py": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\preloader.py": "b6f343c7a0a0c3ebe075eed386ff53d08abda507116ca19d1e7b7985aabd1c59",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\profile.py": "c5c1f6c6c937e45b9da246b24783134570a48923501757ab4683173a5367fe89",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\schema.py": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\semantic.py": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\source_audit.py": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\__init__.py": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\canonical.py": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\errors.py": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\evidence.py": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\integration.py": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\preloader.py": "718ba925b7f31bec04ac5d90efe6e6fb4dd7c098a9afdb61d58ffa572ebb38ee",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\profile.py": "0c0c451a0be41c5593fb3937192da61ae1728534d12e114e0fda9b7a4e297c14",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\schema.py": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\semantic.py": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\source_audit.py": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99",
+    "s0-lab\\control\\assembly-rehearsal\\runtime-profile-neutral-preloader-v0.4\\runtime-profile-v0.4.schema.json": "3cdcf7e39d39536213f5ab577970f39643b13aa542d854176c213590a16f92dd"
+  },
+  "pre_input_sha256": {
+    "AGENTS.md": "393984b6d83639d0c4365d0ca6066907d3d281384656b860a4853d3d6d46ac9e",
+    "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+    "docs\\maintenance\\audit-2026-09-09\\f03-input-recovery-2026-09-17\\design\\findclose-amendment-v0.1\\public-assembly-runtime-profile-neutral-preloader-interface-map-v0.5.json": "f6aa0f38ad7eb7bf2715fbc6084c5ce9c05db23eccca1af65956735e1e933623",
+    "docs\\maintenance\\audit-2026-09-09\\f03-input-recovery-2026-09-17\\design\\findclose-amendment-v0.1\\runtime-profile-v0.5.schema.json": "04ae781b7d71e2954378cf7cdf2aa9070634ddc3a25c883ac52fb83ebe139d7e",
+    "docs\\maintenance\\audit-2026-09-09\\f03-input-recovery-2026-09-17\\historical\\runtime-profile-v0.4.json": "266087f18cb16ced698fdfc8089a6ca305aac1d5d0278b1ee4c51f23044b3e9e",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\__init__.py": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\canonical.py": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\errors.py": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\evidence.py": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\integration.py": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\preloader.py": "b6f343c7a0a0c3ebe075eed386ff53d08abda507116ca19d1e7b7985aabd1c59",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\profile.py": "c5c1f6c6c937e45b9da246b24783134570a48923501757ab4683173a5367fe89",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\schema.py": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\semantic.py": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d",
+    "docs\\maintenance\\audit-2026-09-09\\f03-source-recovery-2026-09-16\\implementation\\s0_public_runtime_preloader\\source_audit.py": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\__init__.py": "a2e40d7a44f79f3c0f96b790c2249fcb6efe7dba2abf821ea3ee96302f1570c3",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\canonical.py": "f73112b1bf55708d68d1e3823d768f1e9083f44760945ca7d2eb3d4fdf75aad4",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\errors.py": "20940829a8c905028bee90d3188f019ac0b30720016a5aaf327ce71feca77c86",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\evidence.py": "e0f1d9de22eb8b7a727dbef146f808c59d44accbbb96fa3367ee2d0dfdbdd964",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\integration.py": "7d40c5091c43354287fade09f8e11d2ca6a830492d390385d8b13cee361a3dfd",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\preloader.py": "718ba925b7f31bec04ac5d90efe6e6fb4dd7c098a9afdb61d58ffa572ebb38ee",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\profile.py": "0c0c451a0be41c5593fb3937192da61ae1728534d12e114e0fda9b7a4e297c14",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\schema.py": "97b00ab0bb9417b63c5871332751e8c14dea80423414810e99aa2b443f9d6317",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\semantic.py": "1bea3a04282c7d5b6f930ed51b95dbcea87f14f417b04bdee4fb4fbe93c0037d",
+    "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\source_audit.py": "c5cc9edb2e290f9ec0be74e944bf515b0c398f9bd08e379a701a8582951aac99",
+    "s0-lab\\control\\assembly-rehearsal\\runtime-profile-neutral-preloader-v0.4\\runtime-profile-v0.4.schema.json": "3cdcf7e39d39536213f5ab577970f39643b13aa542d854176c213590a16f92dd"
+  },
+  "python_version": "3.12.10",
+  "records": [
+    {
+      "status": "PASS",
+      "test": "__main__.CurrentClosure.test_current_file_missing_extra_changed_nonbyte_reject"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.CurrentClosure.test_current_manifest_expected_digest_rejects_bad_types_values_and_mismatch"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.CurrentClosure.test_manifest_duplicate_reorder_case_alias_dot_and_traversal_reject"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.CurrentClosure.test_manifest_size_bounds_reject_without_large_allocation"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.CurrentClosure.test_mapping_insertion_order_is_not_manifest_row_order"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.CurrentClosure.test_mixed_current_manifest_files_package_historical_and_overlay_reject"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.CurrentClosure.test_package_missing_extra_reordered_duplicate_and_changed_rows_reject"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.CurrentClosure.test_real_current_byte_closure_accepts_exact_benign_parameter_material"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.CurrentClosure.test_runtime_resource_count_bound_and_labelled_small_byte_limit"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.CurrentClosure.test_snapshot_rejects_bad_paths_aliases_nonbytes_and_custom_mappings"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreloaderDataFlow.test_admission_uses_historical_p4_digest_and_current_package"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreloaderDataFlow.test_consumers_take_current_control_artifacts_package_and_historical_p4_identity"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreloaderDataFlow.test_missing_current_control_or_artifact_never_falls_back_to_history"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreloaderDataFlow.test_preloader_revalidates_each_call_and_rejects_current_file_tamper"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_actual_design_gate_rejects_missing_frozen_material"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_actual_historical_schema_pin_failure_prevents_successor_work"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_actual_historical_semantic_rejection_prevents_successor_work"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_actual_native_gate_rejects_implementation_pin_difference"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_actual_overlay_schema_rejects_incomplete_unit_overlay"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_actual_schema_map_pin_gates_reject_before_native_or_composition"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_frozen_pins_and_historical_relation_scope_are_preserved"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_historical_design_and_native_gate_bodies_are_unchanged"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_historical_validator_is_first_even_with_invalid_successor"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_ordered_gate_spies_and_native_failure_prevent_current_composition"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_original_semantic_evidence_integration_and_source_audit_are_byte_identical"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_real_predecessor_pin_gate_rejects_substitution_and_order"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.PreservationAndGates.test_semantic_validator_binding_rejects_swapped_artifact"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.SnapshotsAndComposition.test_caller_mutation_before_snapshot_is_not_validated_as_old_bytes"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.SnapshotsAndComposition.test_constructor_snapshots_original_maps_and_nested_import_rows"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.SnapshotsAndComposition.test_effective_profile_binds_current_package_manifest_overlay_and_prior_closure"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.SnapshotsAndComposition.test_effective_raw_object_digest_and_historical_identity_are_distinct"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.SnapshotsAndComposition.test_missing_current_inputs_and_wrong_material_types_fail_closed"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.SnapshotsAndComposition.test_returned_snapshots_are_recursively_immutable_after_caller_mutation"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.SnapshotsAndComposition.test_successor_result_rejects_coherent_but_unbound_effective_profile"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.SnapshotsAndComposition.test_successor_result_rejects_mutated_digest_and_file_bindings"
+    },
+    {
+      "status": "PASS",
+      "test": "__main__.SnapshotsAndComposition.test_validated_data_rejects_object_raw_hash_inconsistency_and_relation_promotion"
+    }
+  ],
+  "repository_modules_imported": {
+    "__main__": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\tests\\test_profile_composition.py",
+    "s0_public_runtime_preloader": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\__init__.py",
+    "s0_public_runtime_preloader.canonical": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\canonical.py",
+    "s0_public_runtime_preloader.errors": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\errors.py",
+    "s0_public_runtime_preloader.evidence": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\evidence.py",
+    "s0_public_runtime_preloader.integration": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\integration.py",
+    "s0_public_runtime_preloader.preloader": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\preloader.py",
+    "s0_public_runtime_preloader.profile": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\profile.py",
+    "s0_public_runtime_preloader.schema": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\schema.py",
+    "s0_public_runtime_preloader.semantic": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\semantic.py",
+    "s0_public_runtime_preloader.source_audit": "s0-lab\\audit-remediation\\a05-profile-composition-v0.1\\implementation\\s0_public_runtime_preloader\\source_audit.py"
+  },
+  "role": "TEST/VERIFICATION",
+  "test_source_sha256": "a1a20ede2c99ebb6e0fa8b8196d6e809f63d13f22418fd7ad193806830fc6812",
+  "test_stdout_sha256": "c15324516b0fc1685c0ee9884dc65da1f7788f4ed7236bdfc3198a0c406ba1ab",
+  "tests_run": 36,
+  "tree_authenticated_before_run": "82c02f37fd13ecfc8c7b888bb66127989b6d4f34",
+  "unverified_and_nonclaims": [
+    "Complete positive original historical P4 validator and original archive/native/assembly execution.",
+    "Native ArtifactMaterial.virtual_path to current runtime-manifest key mapping; no aliases or binding inferred.",
+    "Actual native binary/executed/imported byte closure, installed interpreter stdlib/native closure, and hostile interpreter/global compromise.",
+    "Windows ACL, volume/root identity, symlink/junction/reparse, rename/replacement, retained handles, repository exclusion, and TOCTOU through output/evidence writes.",
+    "External artifact URL, redirect, digest/size/provenance download verification; no external request occurs.",
+    "S0/E0 fixtures, hidden oracle, execution/scoring, provider calls, operational safety, economic value, and model transfer."
+  ]
+}

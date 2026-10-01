@@ -1,0 +1,58 @@
+{
+  "candidate": "a03-cost-definition-v0.1",
+  "role": "TEST/VERIFICATION",
+  "scope": "Frozen symbolic identities and invented Decimal arithmetic only",
+  "not_tested": [
+    "production implementation (none exists)",
+    "later erratum wording",
+    "real costs or financial rates",
+    "S0/E0 execution or scoring",
+    "economic or safety value",
+    "staffing feasibility",
+    "hostile host/import/TOCTOU/ACL isolation"
+  ],
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "executable": "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+  "flags": {
+    "isolated": 1,
+    "no_site": 1,
+    "dont_write_bytecode": true
+  },
+  "reproduce": [
+    "C:\\Users\\SSAFY\\AppData\\Local\\Python\\pythoncore-3.12-64\\python.exe",
+    "-I",
+    "-S",
+    "-B",
+    "C:\\Users\\SSAFY\\Documents\\ai-development-tradition\\s0-lab\\audit-remediation\\a03-cost-definition-v0.1\\tests\\test_cost_definition.py",
+    "--record"
+  ],
+  "before": {
+    "sha256": {
+      "AGENTS.md": "4aac0c255dea03b85f6fb98b0b89f5b3c3f348e42c4dcaaf423411b818e3a065",
+      "docs/tradition/e0-effect-test/e0-operating-cost-and-gates-v0.4.md": "9124990ebfd328a8628728317cbce62385a2a059e888e30c300eb55627409057"
+    },
+    "git": {
+      "branch": "codex/windows-build-toolchain-environment-v0.1",
+      "head": "cc76d7e82aeb51dfdc7baba3da0f7993ab2da61a",
+      "tree": "82c02f37fd13ecfc8c7b888bb66127989b6d4f34"
+    }
+  },
+  "after": {
+    "sha256": {
+      "AGENTS.md": "4aac0c255dea03b85f6fb98b0b89f5b3c3f348e42c4dcaaf423411b818e3a065",
+      "docs/tradition/e0-effect-test/e0-operating-cost-and-gates-v0.4.md": "9124990ebfd328a8628728317cbce62385a2a059e888e30c300eb55627409057"
+    },
+    "git": {
+      "branch": "codex/windows-build-toolchain-environment-v0.1",
+      "head": "cc76d7e82aeb51dfdc7baba3da0f7993ab2da61a",
+      "tree": "82c02f37fd13ecfc8c7b888bb66127989b6d4f34"
+    }
+  },
+  "test_file_sha256": "1a445ca0cb103ddb5934abbe7b95a5237ad8b70d91c38c11d8bf09b3c6e0da1f",
+  "stdout_sha256": "302e883cd20512e1b1b23325066ca5bfc4524ccbafaf71fa0a505ea916bb79e3",
+  "tests_run": 10,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "successful": true
+}

@@ -5,6 +5,8 @@
 > 정리일: 2026-09-16. 이 문서는 탐색용 색인과 파일 정리 기록이다.
 > 기술 후보의 판정·동결·실행 권한을 바꾸지 않는다. 현재 운영 정책은 [AGENTS.md](C:/Users/SSAFY/Documents/ai-development-tradition/AGENTS.md)가 우선한다.
 
+> **2026-09-29 재개 안내:** 아래 폴더 정리 내역은 9월 16일의 이력이다. 현재 판정은 [현재 작업 기록](C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/control/CURRENT-WORK-LEDGER.md), 쉬운 설명은 [마감 요약](C:/Users/SSAFY/Documents/ai-development-tradition/docs/maintenance/MAINTENANCE-CLOSEOUT-2026-09-29.md)을 따른다. A06·A07·A08의 개별 검사·검토·승인에 이어 전체 마감 검토와 CONTROL 종료 결정을 완료했다. 공개 CLI는 A04 소스를 `.venv-public`에서 사용하는 [A07 실행 안내](C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a07-public-cli-readiness-v0.1/README.md)를 따른다. A08은 별도의 조립 개발 소스이며 Windows 공식 리허설·S0 실행 승인이 아니다.
+
 **최종 처리:** 1차 정리에서 보류했던 Documents 하위 작업 폴더 14개는 추가 확인 후 제거했고, 중복 백업 1개는 휴지통으로 보냈다. 메인 프로젝트와 Git 브랜치·커밋 이력은 유지했다. 최종 근거와 복원용 커밋은 §7을 따른다. §4·§6의 보존 기록은 추가 확인 전의 1차 처리 이력이다.
 
 ## 0. 회사 PC의 단일 작업 기준
@@ -27,10 +29,12 @@ ai-development-tradition/
 ├─ s0-lab/
 │  ├─ i0/ ... i3/            각 구성요소의 implementation·tests·tools·검증 기록
 │  ├─ assembly-rehearsal/    공개 조립·runtime 준비 관련 버전별 자료
+│  ├─ audit-remediation/     감사 수정본·전체 소스 통합·공개 점검 / native 실행 별도
 │  └─ control/               명세·판정·기존 공통 검사 도구
 ├─ independent-outsider/    독립 조사·심사 기록
 ├─ .codex/agents/            프로젝트 역할 설정
 ├─ .venv-docs/               기존 문서용 Python 가상환경
+├─ .venv-public/             공개 CLI용 Python 가상환경 (2026-09-29 추가)
 ├─ .mkdocs-site/             재생성 가능한 문서 사이트 출력
 ├─ mkdocs.yml               문서 사이트 설정·목차
 ├─ requirements-docs.txt     문서 의존성 기록
@@ -56,7 +60,10 @@ Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
 
 | 용도 | 프로젝트 안의 위치 | 주의 |
 |---|---|---|
-| 공개 I0 CLI | `s0-lab/i0/implementation/s0_i0/cli.py` | 해당 README의 허용 입력과 Python 의존성 필요 |
+| 수정된 공개 I0 CLI | `s0-lab/audit-remediation/a04-i0-cli-authentication-v0.1/implementation/s0_i0/cli.py` | A07 README의 프로젝트 루트·`.venv-public`·명시적 import 경로 사용. `s0-lab/i0/`는 원래 동결본 |
+| runtime 개발 소스 | `s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/` | 겹친 F01/F03/F08 수정을 포함한 전체 20개 소스. native 실행 인증 아님 |
+| 공개 조립 개발 소스 | `s0-lab/audit-remediation/a08-public-assembly-source-integration-v0.1/implementation/` | F02/F04를 포함한 전체 27개 소스. A01의 부분 시험 묶음 대신 사용; live authority는 별도 |
+| E0 비용 정의 | [원본 v0.4](C:/Users/SSAFY/Documents/ai-development-tradition/docs/tradition/e0-effect-test/e0-operating-cost-and-gates-v0.4.md) + [A03 정정본](C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a03-cost-definition-v0.1/COST-DEFINITION-ERRATUM.md) | 두 문서를 함께 적용. 실제 비용·E0 실행 결과는 아님 |
 | I1 검증 | `s0-lab/i1/tools/verify-i1.ps1` | 승인된 `ExpectedManifestSha256` 필요 |
 | I2 검증 | `s0-lab/i2/tools/verify-i2.ps1` | 승인된 `ExpectedManifestSha256` 필요 |
 | I3 검증 | `s0-lab/i3/tools/verify-i3.ps1` | 승인된 `ExpectedManifestSha256` 필요 |
@@ -75,11 +82,11 @@ Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
 | 검사 중 임시 snapshot | 운영체제의 사용자 Temp 경로 | 기존 I1–I3 검사기가 인증한 입력을 분리 실행하고 정리하는 일회용 공간. 보존 원본이나 사람이 관리할 작업 폴더가 아니므로 저장소 내부로 강제 변경하지 않음 |
 | 앱 설치·작업 이력·계정 설정 | Codex의 사용자 데이터·설치 영역 | 여러 프로젝트가 공유하는 앱 자료. 소스 저장소로 수집하지 않음 |
 
-### 확인 범위와 남은 실행 제한
+### 9월 16일 정리 당시 확인 범위와 남은 실행 제한
 
 - 공개 구현·시험·도구·역할 설정 260개 파일에서 절대경로와 삭제된 작업 폴더 참조를 제한적으로 검색했다. 삭제된 작업 폴더를 실행 소스 경로로 고정한 참조는 발견하지 못했다. 시험용 가상 Windows 경로는 실제 이동 대상이 아니므로 수정하지 않았다.
 - 문서 가상환경의 현재 경로와 import, 기존 MkDocs 빌드 및 프로젝트 내부 HTML 생성을 확인했다. 새 launcher·runtime bridge·검증 harness는 만들지 않았다.
-- 기본 Python과 문서 가상환경에는 I0/I1에 필요한 `jsonschema[format]==4.26.0`이 현재 설치돼 있지 않다. 문서 환경을 구성요소 검증 환경으로 오인하지 않는다. 이 정리에서 패키지 설치나 새 실행 환경 복구를 수행하지 않았고, I0–I3의 회귀 시험이 새로 통과했다고 주장하지 않는다.
+- 당시 기본 Python과 문서 가상환경에는 I0/I1에 필요한 `jsonschema[format]==4.26.0`이 설치돼 있지 않았다. 9월 29일에는 별도 `.venv-public`을 구성해 A07의 공개 CLI 세 명령을 실제 확인했다. 문서 환경이나 I0–I3 전체 회귀 시험의 새 성공으로 확대하지 않는다.
 - 9월 9일 감사의 일부 Temp 작업본·생성물은 이번 정리 전에 이미 지정 경로에서 접근되지 않았다. 존재하지 않는 파일을 모았거나 최신 native 후보를 복구했다고 보고하지 않는다. 그 후보를 재개할 때는 별도로 원본 확보와 실행 선행조건 확인이 필요하다.
 - 제품 전체 실행·native lifecycle·S0·실제 효과 시험의 기존 제한은 변하지 않는다. 현재 폴더 정리와 문서 빌드 성공이 그 검증을 대신하지 않는다.
 
