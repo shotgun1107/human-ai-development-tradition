@@ -1,15 +1,16 @@
 # Current project work ledger
 
-Updated: 2026-09-29 (Asia/Seoul). This is a mutable CONTROL/maintenance routing index, not an experimental input, independent verdict, or execution record. Root `AGENTS.md`, current user authority, and authenticated Git/files control over this index. Links do not expand any role's input allowlist.
+Updated: 2026-10-02 (Asia/Seoul). This is a mutable CONTROL/maintenance routing index, not an experimental input, independent verdict, or execution record. Root `AGENTS.md`, current user authority, and authenticated Git/files control over this index. Links do not expand any role's input allowlist.
 
 ## Start here
 
 - Working root: `C:/Users/SSAFY/Documents/ai-development-tradition`.
 - Authenticated branch: `codex/windows-build-toolchain-environment-v0.1`.
-- Authenticated HEAD: `cc76d7e82aeb51dfdc7baba3da0f7993ab2da61a`; tree: `82c02f37fd13ecfc8c7b888bb66127989b6d4f34`.
-- Audit remediation candidates are working files under `s0-lab/audit-remediation/`, not asserted to be contained in HEAD. Read only a role's separately frozen exact paths.
+- Authenticated HEAD: `bc0ffca4cece08fa05ece07305d979591bdb19a2`; tree: `d7bd0f1665ff9e560f5132d7aec8ba9494f078c8`.
+- The 282-file public preservation commit above includes the bounded remediation packets, their public evidence and necessary recovery archives. It is local Git preservation, not a new execution or review result. Other working files remain outside that commit; presence in Git still does not widen a role's frozen input paths.
 - Current user authorization permits bounded F-01 through F-08 remediation with separate technical roles. F0 content, S0/E0 authoring/execution/scoring, model/provider calls, and weakening the research/security contract remain closed.
-- The previously recorded opaque unclassified-status blocker has not been resolved or waived. Full publication classification/preflight has not been performed; no path or content is disclosed and no new commit/push approval exists.
+- The underlying unclassified-status blocker remains. The one-time local-commit exceptions recorded in the preservation commit have expired; they do not authorize later Git changes. No push was performed with that commit. At the 2026-10-02 conventions-edit/preparation checkpoint, staging and commit/push approval are still pending; later authority and completion must be checked against the user request and actual Git state.
+- General development conventions are maintained in [CONTRIBUTING.md](../../CONTRIBUTING.md); the conventions-adoption task has one separate [AI task record](../../.ai/tasks/development-conventions.md). This ledger remains the research-status routing index, not a duplicate general-task journal. The dated evidence and decisions below keep their original scope and historical identities.
 
 ## 2026-09-29 재개 준비 상태
 
