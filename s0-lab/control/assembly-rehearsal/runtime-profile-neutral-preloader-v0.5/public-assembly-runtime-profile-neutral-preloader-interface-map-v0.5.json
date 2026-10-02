@@ -1,0 +1,280 @@
+{
+  "adversarial_contract": {
+    "attacker_capabilities": [
+      "same-user-concurrent-path-rename-replacement",
+      "same-user-concurrent-reparse-junction-volume-mount-substitution",
+      "same-user-concurrent-output-and-evidence-mutation",
+      "caller-supplied-profile-evidence-locator-and-path-bytes",
+      "untrusted-runtime-shadow-case-alias-and-alternate-data-stream-insertion"
+    ],
+    "fail_closed_mutations": [
+      "predecessor-pin-deletion-or-substitution",
+      "source-call-import-or-profile-inventory-difference",
+      "evidence-v1-v2-producer-consumer-schema-or-interface-mixing",
+      "evidence-field-deletion-insertion-reorder-rename-width-case-or-normalization-change",
+      "nonce-pid-version-object-or-digest-rebinding",
+      "output-ancestor-acl-volume-file-id-reparse-tag-or-retained-handle-change",
+      "output-ancestor-equals-retained-base-identity",
+      "output-or-evidence-physically-under-or-aliasing-retained-repository-identity",
+      "output-leaf-preexists-or-is-created-by-pathname-reopen",
+      "output-or-evidence-write-escapes-retained-output-identity",
+      "inventory-shadow-alternate-stream-or-case-alias",
+      "GetSecurityInfo-success-without-exact-once-LocalFree-on-every-terminal-path",
+      "unsupported-filesystem-api-or-stable-file-identity"
+    ],
+    "trusted_authorities": [
+      "control-supplied-exact-v0.4-and-v0.5-bytes-and-sha256-pins",
+      "authenticated-preloader-and-guard-source-build-import-binary-loaded-image-chain",
+      "retained-kernel-handles-and-stable-volume-file-identities",
+      "exact-admitted-windows-build-and-later-stage70-platform-evidence"
+    ],
+    "untrusted_inputs": [
+      "caller-path-text",
+      "caller-profile-or-evidence-objects-without-byte-revalidation",
+      "ambient-environment-path-search-and-import-state",
+      "filesystem-names-before-retained-handle-binding",
+      "unlisted-files-streams-reparse-points-and-case-aliases"
+    ]
+  },
+  "authority": {
+    "candidate_kind": "closed-successor-overlay-preserving-v0.4-by-reference",
+    "control_decision_sha256": "4342c64a012f6bc9fe9d2550d3879fbef89b592ef08ade1940a3344d9d1c2920",
+    "design_revision": "public-assembly-runtime-profile-neutral-preloader-v0.5",
+    "implementation_manifest_sha256": "670803a185e6968f97acb8bdc4acd99932e4dc7722157816a28d684b9e9989f5",
+    "independent_rereview_record_sha256": "1edea02f498a47839ae9575df41d4f75d4e949b98d6ca87521af2c02dca7c8ab",
+    "predecessor_design_manifest_sha256": "abecc3951f29201f24e7fd069865d5a10cf76587b2c1e7c8013ff9226479e589",
+    "predecessor_interface_map_sha256": "63b36e5b7a6f1aad8027b5794cf21221a05d8eb057f4c0c1d0350b67a12ec2a7",
+    "predecessor_schema_sha256": "3cdcf7e39d39536213f5ab577970f39643b13aa542d854176c213590a16f92dd",
+    "selective_predecessor_use": "reject",
+    "stale_decision_embedded_rereview_hash_authority": false,
+    "status": "design-candidate-not-implemented-not-tested-not-reviewed"
+  },
+  "composition_policy": {
+    "effective_order": [
+      "runtime-profile-v0.1.json",
+      "runtime-profile-v0.2.json",
+      "runtime-profile-v0.3.json",
+      "runtime-profile-v0.4.json",
+      "runtime-profile-v0.5.json"
+    ],
+    "predecessor_profile_hash_group": [
+      "runtime_profile_v0_1_sha256",
+      "runtime_profile_v0_2_sha256",
+      "runtime_profile_v0_3_sha256",
+      "runtime_profile_v0_4_sha256"
+    ],
+    "required_validator_behavior": "authenticate-and-validate-complete-v0.4-before-applying-complete-v0.5-overlay",
+    "v0_4_replacement_scope": "none-unaffected-v0.1-through-v0.4-obligations-remain-authoritative"
+  },
+  "end_to_end_binding": {
+    "flow": [
+      "external-url-redirect-digest-size-provenance-pins-from-existing-authority",
+      "retained-handle-runtime-materialization",
+      "exact-v0.1-v0.2-v0.3-v0.4-plus-v0.5-profile-composition",
+      "authenticated-neutral-preloader",
+      "S0-LAUNCH-HANDLE-SET-EVIDENCE-2-production",
+      "exact-CreateProcessW-handle-list-launch",
+      "postcreation-admission-nonce-pid-version-object-and-evidence-binding",
+      "one-use-native-guard-before-import",
+      "verified-bytes-equal-executed-and-imported-bytes",
+      "interpreter-stdlib-native-library-and-import-closure",
+      "retained-output-identity-rooted-writes-and-evidence"
+    ],
+    "full_inventory_policy": "exact-manifest-set-no-unlisted-shadow-case-alias-or-alternate-data-stream",
+    "producer_consumer_binding": "preloader-guard-schema-interface-map-all-exactly-v2",
+    "resource_bounds": {
+      "admission_maximum_bytes": 8192,
+      "evidence_maximum_bytes": 65536,
+      "handle_count": 5,
+      "runtime_maximum_bytes": 536870912,
+      "runtime_maximum_files": 512
+    },
+    "terminal_cleanup_policy": "every-success-failure-timeout-and-close-path-retains-identity-until-final-measurement-then-closes-once"
+  },
+  "launch_handle_set_evidence_v2": {
+    "encoding": "US-ASCII-no-BOM-no-CR-exact-final-LF",
+    "evidence_schema_id": "S0-LAUNCH-HANDLE-SET-EVIDENCE-2",
+    "field_line_grammar": "field-name=field-value\\n",
+    "group_count": 8,
+    "groups": [
+      {
+        "fields": [
+          {"name": "run_nonce", "normalization": "lowercase-hex", "width": 64},
+          {"name": "external_pin_digest", "normalization": "lowercase-hex", "width": 64},
+          {"name": "workspace_root", "normalization": "uppercase-drive-absolute-backslash-no-dot-segment-no-trailing-separator-except-drive-root-no-delimiter", "width": "3..32766"}
+        ],
+        "name": "run-authority"
+      },
+      {
+        "fields": [
+          {"name": "preloader_image_sha256", "normalization": "lowercase-hex", "width": 64},
+          {"name": "runtime_package_sha256", "normalization": "lowercase-hex", "width": 64},
+          {"name": "launch_control_sha256", "normalization": "lowercase-hex", "width": 64},
+          {"name": "runtime_profile_v0_1_sha256", "normalization": "lowercase-hex", "width": 64},
+          {"name": "runtime_profile_v0_2_sha256", "normalization": "lowercase-hex", "width": 64},
+          {"name": "runtime_profile_v0_3_sha256", "normalization": "lowercase-hex", "width": 64},
+          {"name": "runtime_profile_v0_4_sha256", "normalization": "lowercase-hex", "width": 64}
+        ],
+        "name": "runtime-profile-and-package-hashes"
+      },
+      {
+        "fields": [
+          {"name": "application_virtual_path", "normalization": "canonical-posix-virtual-path-no-dot-segment-delimiter-or-case-alias", "width": "1..1024"},
+          {"name": "application_sha256", "normalization": "lowercase-hex", "width": 64},
+          {"name": "bootstrap_virtual_path", "normalization": "canonical-posix-virtual-path-no-dot-segment-delimiter-or-case-alias", "width": "1..1024"},
+          {"name": "bootstrap_sha256", "normalization": "lowercase-hex", "width": 64},
+          {"name": "verifier_virtual_path", "normalization": "canonical-posix-virtual-path-no-dot-segment-delimiter-or-case-alias", "width": "1..1024"},
+          {"name": "verifier_sha256", "normalization": "lowercase-hex", "width": 64}
+        ],
+        "name": "application-bootstrap-verifier-identities"
+      },
+      {
+        "fields": [
+          {"constant": "0x08080404", "name": "creation_flags_numeric", "normalization": "lowercase-0x-plus-eight-hex", "width": 10},
+          {"constant": "0", "name": "startupinfoex_dwflags", "normalization": "canonical-unsigned-decimal", "width": 1}
+        ],
+        "name": "creation-flags"
+      },
+      {
+        "fields": [
+          {"constant": "true", "name": "b_inherit_handles", "normalization": "lowercase-ascii-boolean", "width": 4}
+        ],
+        "name": "inheritance-switch"
+      },
+      {
+        "fields": [
+          {"constant": "1", "name": "attribute_count", "normalization": "canonical-unsigned-decimal", "width": 1},
+          {"constant": "0x00020002", "name": "attribute_id_numeric", "normalization": "lowercase-0x-plus-eight-hex", "width": 10},
+          {"constant": "40", "name": "handle_array_bytes_x64", "normalization": "canonical-unsigned-decimal", "width": 2},
+          {"constant": "5", "name": "handle_count", "normalization": "canonical-unsigned-decimal", "width": 1}
+        ],
+        "name": "attribute-list-shape"
+      },
+      {
+        "fields": [
+          {"constant": "admission-read", "name": "handle_0_role", "normalization": "exact-ascii", "width": 14},
+          {"constant": "byte-stream-pipe-endpoint", "name": "handle_0_kind", "normalization": "exact-ascii", "width": 25},
+          {"constant": "read-not-write-data", "name": "handle_0_access", "normalization": "exact-ascii", "width": 19},
+          {"name": "handle_0_locator", "normalization": "lowercase-0x-plus-sixteen-hex-nonzero-nonsentinel", "width": 18},
+          {"constant": "commit-request-write", "name": "handle_1_role", "normalization": "exact-ascii", "width": 20},
+          {"constant": "byte-stream-pipe-endpoint", "name": "handle_1_kind", "normalization": "exact-ascii", "width": 25},
+          {"constant": "write-not-read-data", "name": "handle_1_access", "normalization": "exact-ascii", "width": 19},
+          {"name": "handle_1_locator", "normalization": "lowercase-0x-plus-sixteen-hex-nonzero-nonsentinel", "width": 18},
+          {"constant": "commit-reply-read", "name": "handle_2_role", "normalization": "exact-ascii", "width": 17},
+          {"constant": "byte-stream-pipe-endpoint", "name": "handle_2_kind", "normalization": "exact-ascii", "width": 25},
+          {"constant": "read-not-write-data", "name": "handle_2_access", "normalization": "exact-ascii", "width": 19},
+          {"name": "handle_2_locator", "normalization": "lowercase-0x-plus-sixteen-hex-nonzero-nonsentinel", "width": 18},
+          {"constant": "output-root", "name": "handle_3_role", "normalization": "exact-ascii", "width": 11},
+          {"constant": "directory", "name": "handle_3_kind", "normalization": "exact-ascii", "width": 9},
+          {"constant": "file-list-directory-read-attributes-synchronize-only", "name": "handle_3_access", "normalization": "exact-ascii", "width": 52},
+          {"name": "handle_3_locator", "normalization": "lowercase-0x-plus-sixteen-hex-nonzero-nonsentinel", "width": 18},
+          {"constant": "preloader-process", "name": "handle_4_role", "normalization": "exact-ascii", "width": 17},
+          {"constant": "process", "name": "handle_4_kind", "normalization": "exact-ascii", "width": 7},
+          {"constant": "process-query-limited-information-synchronize-only", "name": "handle_4_access", "normalization": "exact-ascii", "width": 50},
+          {"name": "handle_4_locator", "normalization": "lowercase-0x-plus-sixteen-hex-nonzero-nonsentinel", "width": 18}
+        ],
+        "name": "five-ordered-handle-records"
+      },
+      {
+        "fields": [
+          {"constant": "0", "name": "precreation_verifier_pid", "normalization": "canonical-unsigned-decimal", "width": 1}
+        ],
+        "name": "precreation-verifier"
+      }
+    ],
+    "hash_algorithm": "sha256",
+    "header": {"constant": "S0-LAUNCH-HANDLE-SET-EVIDENCE-2", "name": "schema_id", "normalization": "exact-ascii", "width": 31},
+    "mixing_policy": "reject-v1-anywhere-in-v2-transaction-and-reject-v2-with-any-v1-producer-consumer-schema-or-interface",
+    "raw_handle_values_in_admission_frame": false
+  },
+  "native_api_contract": {
+    "inventory_equality": {
+      "alternate_call_route": "forbidden",
+      "binary_import_rule": "every-non-inlined-relied-call-resolves-only-through-the-declared-direct-import-family-and-exact-symbol-or-documented-forwarder",
+      "source_rule": "token-and-ast-audit-of-authenticated-source-must-equal-declared-decision-plus-supporting-call-sets",
+      "unknown_or_omitted_call": "reject"
+    },
+    "source_derived_v0_4": {
+      "guard": {
+        "decision_semantic_calls": ["CompareStringOrdinal", "GetCurrentProcessId", "GetFileInformationByHandleEx", "GetFileType", "GetHandleInformation", "GetNamedPipeInfo", "GetProcessId", "InterlockedCompareExchange", "InterlockedExchange", "IsProcessInJob", "MultiByteToWideChar", "NtQueryInformationProcess", "NtQueryObject", "PeekNamedPipe", "QueryFullProcessImageNameW", "ReadFile", "WaitForSingleObject", "WriteFile"],
+        "direct_import_families": ["kernel32.dll", "ntdll.dll", "python312.dll", "static-crt-support"],
+        "source_sha256": "ed22d812d873a03e5d0f21a46a8c3a5e8eba47eb29744cf4e7e2341d814e599f",
+        "supporting_calls": ["CloseHandle", "GetCurrentProcess", "GetLastError", "SecureZeroMemory"],
+        "virtual_path": "implementation/native/s0_runtime_handle_guard_v0_4.cpp"
+      },
+      "materializer": {
+        "decision_semantic_calls": [],
+        "direct_import_families": [],
+        "source_language": "PowerShell-and-managed-System.IO-no-direct-Win32-or-NT-call",
+        "source_sha256": "26d5bcda6117742317ea6a7fc8a21d7bb8bf8e338b89e8a7cd93a87957028bd8",
+        "supporting_calls": [],
+        "virtual_path": "implementation/native/materialize-runtime.ps1"
+      },
+      "preloader": {
+        "decision_semantic_calls": ["AssignProcessToJobObject", "BCryptCloseAlgorithmProvider", "BCryptCreateHash", "BCryptDestroyHash", "BCryptFinishHash", "BCryptGetProperty", "BCryptHashData", "BCryptOpenAlgorithmProvider", "CompareStringOrdinal", "CreateFileW", "CreateJobObjectW", "CreatePipe", "CreateProcessW", "DuplicateHandle", "FindFirstFileW", "FindNextFileW", "GetCurrentProcessId", "GetDriveTypeW", "GetExitCodeProcess", "GetFileAttributesExW", "GetFileAttributesW", "GetFileInformationByHandleEx", "GetFileSizeEx", "GetFileType", "GetFinalPathNameByHandleW", "GetFullPathNameW", "GetHandleInformation", "GetVolumeInformationByHandleW", "GetVolumePathNameW", "InitializeProcThreadAttributeList", "MultiByteToWideChar", "NtCreateFile", "NtQueryObject", "OpenProcess", "PeekNamedPipe", "ReadFile", "ResumeThread", "SetFilePointerEx", "SetHandleInformation", "SetInformationJobObject", "UpdateProcThreadAttribute", "WaitForSingleObject", "WideCharToMultiByte", "WriteFile"],
+        "direct_import_families": ["bcrypt.dll", "kernel32.dll", "ntdll.dll", "static-crt-support"],
+        "source_sha256": "a32fb997638607e3577ac44382b29c015685920655ee1c2499aa975131250cae",
+        "supporting_calls": ["CloseHandle", "DeleteProcThreadAttributeList", "GetCurrentProcess", "GetLastError", "GetTickCount", "Sleep", "TerminateProcess"],
+        "virtual_path": "implementation/native/s0_neutral_preloader_v0_4.cpp"
+      }
+    }
+  },
+  "nonclaims": [
+    "no-runtime-source-or-binary-implementation",
+    "no-executed-test-build-platform-probe-or-live-assembly",
+    "no-post-handle-close-same-user-or-administrator-resistance",
+    "no-all-windows-or-all-filesystem-correctness",
+    "no-full-os-loader-stdlib-native-library-or-dynamic-import-closure-until-verified",
+    "no-new-downloader-supplier-tls-or-redirect-provenance-assurance",
+    "no-official-rehearsal-s0-central-system-project-brain-safety-value-or-transfer-result"
+  ],
+  "physical_output_isolation": {
+    "acl_binding": "capture-and-hash-security-descriptor-plus-effective-token-before-and-after; any mutation-rejects; ACL-is-not-post-close-same-user-resistance",
+    "ancestor_open": "component-by-component-direct-NtCreateFile-relative-to-retained-parent-with-OBJ_DONT_REPARSE-FILE_OPEN_REPARSE_POINT-directory-synchronous-and-share-read-only",
+    "base_comparison": "compare-every-output-ancestor-volume-serial-plus-128-bit-file-id-against-retained-base-identity-and-reject-any-equality",
+    "identity_measurements": ["FileIdInfo-twice-stable", "FileAttributeTagInfo-nonreparse-directory", "FileStandardInfo-one-link-not-delete-pending", "volume-serial-and-local-fixed-NTFS", "security-descriptor-sha256"],
+    "leaf_creation": "single-direct-NtCreateFile-relative-to-retained-output-parent-FILE_CREATE-OBJ_DONT_REPARSE-FILE_OPEN_REPARSE_POINT-fail-if-exists-no-pathname-reopen",
+    "lexical_checks_authoritative": false,
+    "output_and_evidence_rule": "all-directory-and-file-creation-write-flush-hash-inventory-sidecar-pre-post-and-terminal-operations-use-retained-root-relative-handles; retain-exclusive-created-file-handles-through-final-evidence",
+    "repository_exclusion": {
+      "comparison_scope": ["complete-retained-output-ancestor-chain", "retained-output-root", "retained-evidence-root"],
+      "failure_policy": "output-or-evidence-under-repository-fails-closed-before-authority-or-write",
+      "lexical_exclusion_authoritative": false,
+      "rejected_relations": ["identity-equality", "physical-containment", "physical-alias", "reparse-rebinding"],
+      "repository_identity": "retained-volume-serial-plus-128-bit-file-id-bound-before-output-ancestry-walk",
+      "retention": "repository-root-identity-handle-retained-through-all-output-and-evidence-writes-and-final-measurements"
+    },
+    "rejected_ancestry": ["symbolic-link", "junction", "any-reparse-point", "volume-mount-point", "unstable-volume-or-file-identity", "unsupported-filesystem-or-api"],
+    "rename_replacement_defense": "retain-base-volume-root-every-output-ancestor-output-root-and-created-file-handles-without-FILE_SHARE_WRITE-or-FILE_SHARE_DELETE-through-terminal-evidence",
+    "required_future_materializer_call_count": 29,
+    "required_future_materializer_call_order": "ascii-sort-unique",
+    "required_future_materializer_calls": ["AccessCheck", "BCryptCloseAlgorithmProvider", "BCryptCreateHash", "BCryptDestroyHash", "BCryptFinishHash", "BCryptGetProperty", "BCryptHashData", "BCryptOpenAlgorithmProvider", "CloseHandle", "DuplicateHandle", "FindClose", "FindFirstFileW", "FindFirstStreamW", "FindNextFileW", "FindNextStreamW", "FlushFileBuffers", "GetDriveTypeW", "GetFileInformationByHandleEx", "GetFinalPathNameByHandleW", "GetLastError", "GetSecurityInfo", "GetTokenInformation", "GetVolumeInformationByHandleW", "LocalFree", "NtCreateFile", "NtQueryObject", "ReadFile", "SetFilePointerEx", "WriteFile"],
+    "required_future_materializer_import_families": ["advapi32.dll", "bcrypt.dll", "kernel32.dll", "ntdll.dll", "static-crt-support"],
+    "required_future_materializer_inventory_equality": "source-call-set-equals-profile-call-set-and-binary-import-resolution",
+    "required_future_materializer_supporting_cleanup_calls": ["LocalFree"],
+    "required_future_materializer_unknown_or_alternate_call": "reject",
+    "security_descriptor_cleanup_owner": "materializer-owns-GetSecurityInfo-buffer-and-calls-LocalFree-exactly-once-on-every-success-failure-timeout-and-close-path",
+    "retention_end": "only-after-final-manifest-sidecar-readback-pre-post-identity-equality-terminal-state-and-cleanup-record",
+    "unsupported_behavior": "reject-before-output-or-evidence-authority"
+  },
+  "revision": "0.5.0",
+  "schema_id": "urn:s0:public-assembly:runtime-profile-neutral-preloader:interface-map:5",
+  "semantic_relations": [
+    "complete-v0.4-predecessor-bytes-schema-map-manifest-implementation-rereview-and-decision-hashes-equal-pins",
+    "v0.5-overlay-is-applied-only-after-complete-v0.4-validation-with-no-selective-use",
+    "guard-preloader-materializer-source-call-inventories-equal-decision-plus-supporting-sets",
+    "source-call-inventory-import-manifest-binary-imports-loaded-images-and-profile-inventory-are-equal",
+    "launch-evidence-producer-consumer-schema-interface-map-and-admission-all-equal-version-2",
+    "launch-evidence-bytes-equal-exact-header-eight-group-field-order-width-normalization-and-final-lf-grammar",
+    "launch-evidence-run-authority-group-binds-nonce-external-pin-digest-and-workspace-root",
+    "launch-evidence-runtime-hash-group-preserves-exact-v0.1-v0.2-v0.3-v0.4-profile-hashes",
+    "external-pin-url-redirect-digest-size-and-provenance-bindings-flow-unchanged-with-no-new-downloader",
+    "verified-manifest-source-binary-interpreter-stdlib-native-and-import-bytes-equal-executed-or-imported-bytes",
+    "output-ancestry-retained-handles-reject-reparse-junction-volume-mount-rename-replacement-and-base-identity-alias",
+    "output-leaf-and-all-output-evidence-operations-remain-relative-to-retained-output-identity",
+    "retained-repository-identity-excludes-complete-output-ancestry-output-root-and-evidence-root-by-identity-containment-alias-and-reparse-rebinding",
+    "full-inventory-rejects-unlisted-shadow-case-alias-and-alternate-data-stream",
+    "nonce-pid-version-object-pre-post-sidecar-cleanup-terminal-and-resource-bindings-are-exact",
+    "GetSecurityInfo-returned-security-descriptor-buffer-is-owned-and-LocalFree-released-exactly-once-on-every-terminal-path"
+  ]
+}

@@ -1,0 +1,339 @@
+{
+  "$id": "urn:s0:public-assembly:runtime-profile-neutral-preloader:runtime-profile-v0.5.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "adversarial_contract": {
+      "additionalProperties": false,
+      "properties": {
+        "attacker_capabilities": {
+          "const": [
+            "same-user-concurrent-path-rename-replacement",
+            "same-user-concurrent-reparse-junction-volume-mount-substitution",
+            "same-user-concurrent-output-and-evidence-mutation",
+            "caller-supplied-profile-evidence-locator-and-path-bytes",
+            "untrusted-runtime-shadow-case-alias-and-alternate-data-stream-insertion"
+          ]
+        },
+        "fail_closed_policy_id": {"const": "rpnp-v0.5-three-finding-adversarial-matrix"},
+        "required_fail_closed_mutations": {
+          "const": [
+            "predecessor-pin-deletion-or-substitution",
+            "source-call-import-or-profile-inventory-difference",
+            "evidence-v1-v2-producer-consumer-schema-or-interface-mixing",
+            "evidence-field-deletion-insertion-reorder-rename-width-case-or-normalization-change",
+            "nonce-pid-version-object-or-digest-rebinding",
+            "output-ancestor-acl-volume-file-id-reparse-tag-or-retained-handle-change",
+            "output-ancestor-equals-retained-base-identity",
+            "output-or-evidence-physically-under-or-aliasing-retained-repository-identity",
+            "output-leaf-preexists-or-is-created-by-pathname-reopen",
+            "output-or-evidence-write-escapes-retained-output-identity",
+            "inventory-shadow-alternate-stream-or-case-alias",
+            "GetSecurityInfo-success-without-exact-once-LocalFree-on-every-terminal-path",
+            "unsupported-filesystem-api-or-stable-file-identity"
+          ]
+        },
+        "unknowns": {"const": "unverified-and-block-broader-claims"}
+      },
+      "required": ["attacker_capabilities", "fail_closed_policy_id", "required_fail_closed_mutations", "unknowns"],
+      "type": "object"
+    },
+    "composition_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "effective_order": {
+          "const": [
+            "runtime-profile-v0.1.json",
+            "runtime-profile-v0.2.json",
+            "runtime-profile-v0.3.json",
+            "runtime-profile-v0.4.json",
+            "runtime-profile-v0.5.json"
+          ]
+        },
+        "predecessor_validation": {"const": "complete-v0.4-before-v0.5-overlay"},
+        "selective_or_mixed_predecessor_use": {"const": "reject"},
+        "unaffected_predecessor_obligations": {"const": "all-remain-authoritative"}
+      },
+      "required": ["effective_order", "predecessor_validation", "selective_or_mixed_predecessor_use", "unaffected_predecessor_obligations"],
+      "type": "object"
+    },
+    "end_to_end_binding": {
+      "additionalProperties": false,
+      "properties": {
+        "flow": {
+          "const": [
+            "external-pin",
+            "materialization",
+            "profile-composition",
+            "neutral-preloader",
+            "evidence-v2",
+            "CreateProcessW",
+            "postcreation-admission",
+            "one-use-guard",
+            "pre-import-byte-equality",
+            "interpreter-stdlib-native-import-closure",
+            "retained-output-and-evidence"
+          ]
+        },
+        "full_inventory_policy_id": {"const": "exact-set-no-shadow-ads-or-case-alias-v0.5"},
+        "nonce_pid_version_object_binding": {"const": "required-at-producer-admission-guard-and-terminal-evidence"},
+        "resource_bounds": {
+          "additionalProperties": false,
+          "properties": {
+            "admission_maximum_bytes": {"const": 8192},
+            "evidence_maximum_bytes": {"const": 65536},
+            "handle_count": {"const": 5},
+            "runtime_maximum_bytes": {"const": 536870912},
+            "runtime_maximum_files": {"const": 512}
+          },
+          "required": ["admission_maximum_bytes", "evidence_maximum_bytes", "handle_count", "runtime_maximum_bytes", "runtime_maximum_files"],
+          "type": "object"
+        },
+        "verified_executed_imported_bytes": {"const": "exact-identity-required"}
+      },
+      "required": ["flow", "full_inventory_policy_id", "nonce_pid_version_object_binding", "resource_bounds", "verified_executed_imported_bytes"],
+      "type": "object"
+    },
+    "external_pin_inheritance": {
+      "additionalProperties": false,
+      "properties": {
+        "digest_size_final_url_redirect_and_provenance_bindings": {"const": "inherit-exact-v0.4-runtime-authority"},
+        "new_downloader": {"const": false},
+        "supplier_tls_redirect_assurance": {"const": "unverified"}
+      },
+      "required": ["digest_size_final_url_redirect_and_provenance_bindings", "new_downloader", "supplier_tls_redirect_assurance"],
+      "type": "object"
+    },
+    "interface_map_sha256": {"const": "83d10d27ce3f6aae21417be435691000f7583a58c86297f46b09752cc633a336"},
+    "launch_handle_set_evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "encoding": {"const": "US-ASCII-no-BOM-no-CR-exact-final-LF"},
+        "evidence_schema_id": {"const": "S0-LAUNCH-HANDLE-SET-EVIDENCE-2"},
+        "field_line_grammar": {"const": "field-name=field-value\\n"},
+        "field_order": {
+          "const": [
+            "schema_id",
+            "run_nonce",
+            "external_pin_digest",
+            "workspace_root",
+            "preloader_image_sha256",
+            "runtime_package_sha256",
+            "launch_control_sha256",
+            "runtime_profile_v0_1_sha256",
+            "runtime_profile_v0_2_sha256",
+            "runtime_profile_v0_3_sha256",
+            "runtime_profile_v0_4_sha256",
+            "application_virtual_path",
+            "application_sha256",
+            "bootstrap_virtual_path",
+            "bootstrap_sha256",
+            "verifier_virtual_path",
+            "verifier_sha256",
+            "creation_flags_numeric",
+            "startupinfoex_dwflags",
+            "b_inherit_handles",
+            "attribute_count",
+            "attribute_id_numeric",
+            "handle_array_bytes_x64",
+            "handle_count",
+            "handle_0_role",
+            "handle_0_kind",
+            "handle_0_access",
+            "handle_0_locator",
+            "handle_1_role",
+            "handle_1_kind",
+            "handle_1_access",
+            "handle_1_locator",
+            "handle_2_role",
+            "handle_2_kind",
+            "handle_2_access",
+            "handle_2_locator",
+            "handle_3_role",
+            "handle_3_kind",
+            "handle_3_access",
+            "handle_3_locator",
+            "handle_4_role",
+            "handle_4_kind",
+            "handle_4_access",
+            "handle_4_locator",
+            "precreation_verifier_pid"
+          ]
+        },
+        "group_count": {"const": 8},
+        "group_order": {
+          "const": [
+            "run-authority",
+            "runtime-profile-and-package-hashes",
+            "application-bootstrap-verifier-identities",
+            "creation-flags",
+            "inheritance-switch",
+            "attribute-list-shape",
+            "five-ordered-handle-records",
+            "precreation-verifier"
+          ]
+        },
+        "hash_algorithm": {"const": "sha256"},
+        "mixing_policy": {"const": "producer-consumer-schema-interface-map-and-admission-all-v2-or-reject"},
+        "normalization_and_width_authority": {"const": "exact-v0.5-interface-map"},
+        "raw_handle_values_in_admission_frame": {"const": false}
+      },
+      "required": ["evidence_schema_id", "encoding", "field_line_grammar", "group_count", "group_order", "field_order", "normalization_and_width_authority", "hash_algorithm", "mixing_policy", "raw_handle_values_in_admission_frame"],
+      "type": "object"
+    },
+    "native_api_contract": {
+      "additionalProperties": false,
+      "properties": {
+        "alternate_call_route": {"const": "forbidden"},
+        "guard_source_sha256": {"const": "ed22d812d873a03e5d0f21a46a8c3a5e8eba47eb29744cf4e7e2341d814e599f"},
+        "implementation_manifest_sha256": {"const": "670803a185e6968f97acb8bdc4acd99932e4dc7722157816a28d684b9e9989f5"},
+        "inventory_authority": {"const": "exact-decision-and-supporting-call-sets-in-v0.5-interface-map"},
+        "materializer_source_sha256": {"const": "26d5bcda6117742317ea6a7fc8a21d7bb8bf8e338b89e8a7cd93a87957028bd8"},
+        "preloader_source_sha256": {"const": "a32fb997638607e3577ac44382b29c015685920655ee1c2499aa975131250cae"},
+        "source_import_profile_equality": {"const": true},
+        "unknown_or_omitted_call": {"const": "reject"}
+      },
+      "required": ["implementation_manifest_sha256", "preloader_source_sha256", "guard_source_sha256", "materializer_source_sha256", "inventory_authority", "source_import_profile_equality", "alternate_call_route", "unknown_or_omitted_call"],
+      "type": "object"
+    },
+    "nonclaims": {
+      "const": [
+        "no-runtime-source-or-binary-implementation",
+        "no-executed-test-build-platform-probe-or-live-assembly",
+        "no-post-handle-close-same-user-or-administrator-resistance",
+        "no-all-windows-or-all-filesystem-correctness",
+        "no-full-os-loader-stdlib-native-library-or-dynamic-import-closure-until-verified",
+        "no-new-downloader-supplier-tls-or-redirect-provenance-assurance",
+        "no-official-rehearsal-s0-central-system-project-brain-safety-value-or-transfer-result"
+      ]
+    },
+    "physical_output_isolation": {
+      "additionalProperties": false,
+      "properties": {
+        "acl_pre_post_binding": {"const": "security-descriptor-sha256-plus-effective-token"},
+        "ancestor_identity": {"const": "stable-volume-serial-plus-128-bit-file-id"},
+        "ancestor_open_policy_id": {"const": "component-relative-retained-NtCreateFile-no-reparse-v0.5"},
+        "base_alias_rule": {"const": "compare-every-output-ancestor-to-retained-base-and-reject-equality"},
+        "leaf_create_policy_id": {"const": "retained-parent-relative-FILE_CREATE-fail-if-exists-no-reparse-v0.5"},
+        "lexical_checks_authoritative": {"const": false},
+        "output_and_evidence_rooting": {"const": "retained-output-handle-relative-only-through-terminal-evidence"},
+        "repository_exclusion": {
+          "additionalProperties": false,
+          "properties": {
+            "comparison_scope": {"const": ["complete-retained-output-ancestor-chain", "retained-output-root", "retained-evidence-root"]},
+            "failure_policy": {"const": "output-or-evidence-under-repository-fails-closed-before-authority-or-write"},
+            "lexical_exclusion_authoritative": {"const": false},
+            "rejected_relations": {"const": ["identity-equality", "physical-containment", "physical-alias", "reparse-rebinding"]},
+            "repository_identity": {"const": "retained-volume-serial-plus-128-bit-file-id-bound-before-output-ancestry-walk"},
+            "retention": {"const": "repository-root-identity-handle-retained-through-all-output-and-evidence-writes-and-final-measurements"}
+          },
+          "required": ["repository_identity", "comparison_scope", "rejected_relations", "retention", "lexical_exclusion_authoritative", "failure_policy"],
+          "type": "object"
+        },
+        "rejected_ancestry": {"const": ["symbolic-link", "junction", "any-reparse-point", "volume-mount-point", "unstable-volume-or-file-identity", "unsupported-filesystem-or-api"]},
+        "rename_replacement_share_policy": {"const": "retain-all-authority-handles-without-share-write-or-share-delete"},
+        "required_future_materializer_call_count": {"const": 29},
+        "required_future_materializer_call_order": {"const": "ascii-sort-unique"},
+        "required_future_materializer_calls": {
+          "const": ["AccessCheck", "BCryptCloseAlgorithmProvider", "BCryptCreateHash", "BCryptDestroyHash", "BCryptFinishHash", "BCryptGetProperty", "BCryptHashData", "BCryptOpenAlgorithmProvider", "CloseHandle", "DuplicateHandle", "FindClose", "FindFirstFileW", "FindFirstStreamW", "FindNextFileW", "FindNextStreamW", "FlushFileBuffers", "GetDriveTypeW", "GetFileInformationByHandleEx", "GetFinalPathNameByHandleW", "GetLastError", "GetSecurityInfo", "GetTokenInformation", "GetVolumeInformationByHandleW", "LocalFree", "NtCreateFile", "NtQueryObject", "ReadFile", "SetFilePointerEx", "WriteFile"]
+        },
+        "required_future_materializer_import_families": {"const": ["advapi32.dll", "bcrypt.dll", "kernel32.dll", "ntdll.dll", "static-crt-support"]},
+        "required_future_materializer_inventory_equality": {"const": "source-call-set-equals-profile-call-set-and-binary-import-resolution"},
+        "required_future_materializer_supporting_cleanup_calls": {"const": ["LocalFree"]},
+        "required_future_materializer_unknown_or_alternate_call": {"const": "reject"},
+        "security_descriptor_cleanup_owner": {"const": "materializer-owns-GetSecurityInfo-buffer-and-calls-LocalFree-exactly-once-on-every-success-failure-timeout-and-close-path"},
+        "retained_handles": {"const": ["base-root", "volume-root", "every-output-ancestor", "output-root", "every-created-output-and-evidence-file"]},
+        "unsupported_behavior": {"const": "reject-before-output-or-evidence-authority"}
+      },
+      "required": ["ancestor_open_policy_id", "retained_handles", "rejected_ancestry", "ancestor_identity", "base_alias_rule", "rename_replacement_share_policy", "leaf_create_policy_id", "output_and_evidence_rooting", "repository_exclusion", "acl_pre_post_binding", "required_future_materializer_call_count", "required_future_materializer_call_order", "required_future_materializer_calls", "required_future_materializer_import_families", "required_future_materializer_inventory_equality", "required_future_materializer_supporting_cleanup_calls", "required_future_materializer_unknown_or_alternate_call", "security_descriptor_cleanup_owner", "lexical_checks_authoritative", "unsupported_behavior"],
+      "type": "object"
+    },
+    "predecessor_binding": {
+      "additionalProperties": false,
+      "properties": {
+        "control_decision_sha256": {"const": "4342c64a012f6bc9fe9d2550d3879fbef89b592ef08ade1940a3344d9d1c2920"},
+        "design_manifest_sha256": {"const": "abecc3951f29201f24e7fd069865d5a10cf76587b2c1e7c8013ff9226479e589"},
+        "implementation_manifest_sha256": {"const": "670803a185e6968f97acb8bdc4acd99932e4dc7722157816a28d684b9e9989f5"},
+        "independent_rereview_record_sha256": {"const": "1edea02f498a47839ae9575df41d4f75d4e949b98d6ca87521af2c02dca7c8ab"},
+        "interface_map_sha256": {"const": "63b36e5b7a6f1aad8027b5794cf21221a05d8eb057f4c0c1d0350b67a12ec2a7"},
+        "runtime_profile_v0_1_sha256": {"const": "e0f7559d16068cc4cb6589a87fdb2129915ab018a76e41cfc09b4259d543008e"},
+        "runtime_profile_v0_2_sha256": {"const": "3a0f2fd92629e4a3eb419ab2ae2dbc586bf83ae7152a8b08cfdcabc966028125"},
+        "runtime_profile_v0_3_sha256": {"const": "9741561972db10c39b824b60364219a07e1e1a440f154b562bae91f864aeb8c5"},
+        "runtime_profile_v0_4_sha256": {"const": "266087f18cb16ced698fdfc8089a6ca305aac1d5d0278b1ee4c51f23044b3e9e"},
+        "schema_sha256": {"const": "3cdcf7e39d39536213f5ab577970f39643b13aa542d854176c213590a16f92dd"}
+      },
+      "required": ["design_manifest_sha256", "implementation_manifest_sha256", "independent_rereview_record_sha256", "control_decision_sha256", "interface_map_sha256", "schema_sha256", "runtime_profile_v0_1_sha256", "runtime_profile_v0_2_sha256", "runtime_profile_v0_3_sha256", "runtime_profile_v0_4_sha256"],
+      "type": "object"
+    },
+    "profile_id": {"pattern": "^[a-z0-9][a-z0-9._-]{0,127}$", "type": "string"},
+    "revision": {"const": "0.5.0"},
+    "schema_id": {"const": "urn:s0:public-assembly:runtime-profile-neutral-preloader:runtime-profile:5"},
+    "semantic_relations": {
+      "const": [
+        "complete-v0.4-predecessor-bytes-schema-map-manifest-implementation-rereview-and-decision-hashes-equal-pins",
+        "v0.5-overlay-is-applied-only-after-complete-v0.4-validation-with-no-selective-use",
+        "guard-preloader-materializer-source-call-inventories-equal-decision-plus-supporting-sets",
+        "source-call-inventory-import-manifest-binary-imports-loaded-images-and-profile-inventory-are-equal",
+        "launch-evidence-producer-consumer-schema-interface-map-and-admission-all-equal-version-2",
+        "launch-evidence-bytes-equal-exact-header-eight-group-field-order-width-normalization-and-final-lf-grammar",
+        "launch-evidence-run-authority-group-binds-nonce-external-pin-digest-and-workspace-root",
+        "launch-evidence-runtime-hash-group-preserves-exact-v0.1-v0.2-v0.3-v0.4-profile-hashes",
+        "external-pin-url-redirect-digest-size-and-provenance-bindings-flow-unchanged-with-no-new-downloader",
+        "verified-manifest-source-binary-interpreter-stdlib-native-and-import-bytes-equal-executed-or-imported-bytes",
+        "output-ancestry-retained-handles-reject-reparse-junction-volume-mount-rename-replacement-and-base-identity-alias",
+        "output-leaf-and-all-output-evidence-operations-remain-relative-to-retained-output-identity",
+        "retained-repository-identity-excludes-complete-output-ancestry-output-root-and-evidence-root-by-identity-containment-alias-and-reparse-rebinding",
+        "full-inventory-rejects-unlisted-shadow-case-alias-and-alternate-data-stream",
+        "nonce-pid-version-object-pre-post-sidecar-cleanup-terminal-and-resource-bindings-are-exact",
+        "GetSecurityInfo-returned-security-descriptor-buffer-is-owned-and-LocalFree-released-exactly-once-on-every-terminal-path"
+      ]
+    },
+    "semantic_validator": {
+      "additionalProperties": false,
+      "properties": {
+        "implementation": {"$ref": "#/$defs/artifact_identity"},
+        "policy_id": {"const": "runtime-profile-v0.5-overlay-semantic-relations-validator"}
+      },
+      "required": ["policy_id", "implementation"],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_id",
+    "revision",
+    "profile_id",
+    "interface_map_sha256",
+    "predecessor_binding",
+    "composition_policy",
+    "native_api_contract",
+    "launch_handle_set_evidence",
+    "physical_output_isolation",
+    "external_pin_inheritance",
+    "end_to_end_binding",
+    "adversarial_contract",
+    "semantic_relations",
+    "semantic_validator",
+    "nonclaims"
+  ],
+  "title": "S0 public assembly runtime profile v0.5 closed successor overlay",
+  "type": "object",
+  "$defs": {
+    "artifact_identity": {
+      "additionalProperties": false,
+      "properties": {
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "virtual_path": {"$ref": "#/$defs/virtual_path"}
+      },
+      "required": ["virtual_path", "sha256"],
+      "type": "object"
+    },
+    "sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "virtual_path": {
+      "allOf": [
+        {"pattern": "^[A-Za-z0-9._/-]+$", "type": "string"},
+        {"not": {"pattern": "(^|/)\\.\\.?($|/)"}},
+        {"not": {"pattern": "//|^/|/$"}}
+      ]
+    }
+  }
+}

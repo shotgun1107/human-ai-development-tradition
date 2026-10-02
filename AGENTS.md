@@ -77,6 +77,72 @@
 
 ## Session continuity, capacity, and fail-fast operation
 
+### Canonical current-work ledger and gate routing
+
+- The repository-wide derived execution index is
+  `s0-lab/control/CURRENT-WORK-LEDGER.md`. Git objects, the latest root
+  `AGENTS.md`, and the current user message remain authoritative; the ledger
+  is an authenticated routing aid and must never override them.
+- The stage-oriented structural index is
+  `s0-lab/control/workstreams/README.md`. Existing role-oriented design,
+  implementation, review, and evidence paths are immutable historical
+  identities and MUST NOT be moved merely to improve navigation. The
+  workstream index maps those paths into one dependency order without
+  rewriting authenticated manifests, sidecars, reports, or source constants.
+- Current-state maintenance edits mutable entry points and routing indexes,
+  not versioned or hash-bound evidence. Historical documents may retain their
+  locally correct `current`, `next`, branch, and approval text; CONTROL must
+  route around them and MUST NOT bulk-rewrite, move, rename, or rehash them to
+  look current.
+- Before CONTROL proposes a technical gate, accepts an opened technical gate,
+  creates or switches a candidate branch, or assigns CODE, it MUST read the
+  current-work ledger and the applicable workstream map, then authenticate
+  their evidence-baseline `main` commit/tree, their containing Git commit, and
+  every status artifact needed for the proposed dependency chain. A missing,
+  stale, or contradictory routing artifact blocks gate routing until CONTROL
+  corrects it. A ledger must not claim its own not-yet-created commit as a
+  pinned current `main`; its containing Git object supplies publication
+  identity without a self-referential follow-up commit.
+- CONTROL MUST reconstruct the complete ordered chain for the requested
+  outcome: accepted design -> existing implementation -> TEST/verification ->
+  independent review -> Git integration -> runtime materialization -> required
+  platform probe -> live execution. It must inspect both predecessor blockers
+  and later implementation evidence. It must not infer that a component is
+  absent from design wording when a later implementation exists, or infer that
+  a component is live merely because its source exists.
+- The gate-routing result MUST state, in plain language: the requested outcome,
+  reusable completed components, every unmet direct and transitive
+  prerequisite, the single next eligible work package, whether the requested
+  gate is ready or blocked, and the exact Git artifacts supporting that result.
+  CONTROL may present an exact gate command only after this routing result
+  shows that it omits no prerequisite.
+- Version numbers are local to their work package. CONTROL MUST NOT compare a
+  design `v0.5`, controller `v0.1`, preloader `v0.3`, and runtime `v0.7` as if
+  the largest number were the latest global project stage. Stage order comes
+  only from authenticated dependency edges in the applicable workstream map.
+- If the user opens a gate whose prerequisite is missing, CONTROL MUST stop
+  before branch creation, file edits, role assignment, or tests; report the
+  exact missing prerequisite; and request only the prerequisite gate. The
+  opened downstream gate remains pending and gains no broader scope.
+- After a main integration, accepted or rejected candidate, discard decision,
+  prerequisite completion, or project-wide policy correction, CONTROL MUST
+  update and validate the current-work ledger before recommending the next
+  technical gate. This update is part of closing the current task, not an
+  optional documentation follow-up. When the integrated change is the ledger
+  correction itself, that integration completes the update; it MUST NOT cause
+  an infinite second commit merely to write its own new commit hash.
+- A gate phrase generated without this preflight is invalid CONTROL advice. A
+  later user entry may open the literal scope they typed, but CONTROL must
+  still fail closed on omitted prerequisites rather than improvising them into
+  that scope.
+
+### Open-gate authority duration and correction continuity
+
+- Once the user explicitly opens an exact technical gate and candidate/version, that gate remains open until CONTROL reaches and reports a terminal gate decision, the user pauses or closes it, or an action would leave the opened scope. The opening authorizes the required in-scope sequence of implementation, testing, bounded diagnostic instrumentation, defect isolation, correction cycles, documentation, independent review, and CONTROL decision without asking the user to approve each intermediate retry or correction.
+- CONTROL must not invent intermediate authorization phrases or repeatedly stop for permission merely because a test found another in-scope defect, a tool labels a correction cycle, or an earlier estimate or time box was exceeded. Report the delay and continue through the fastest safe in-scope path. A tool-side policy refusal is a blocker to reroute within the same open gate, not a reason to manufacture another user gate or approval phrase.
+- Ask for new user authority only when the proposed action materially expands the technical scope, opens a different gate or candidate/version, crosses F0 or another access boundary, performs a destructive or externally consequential action not already authorized, or requires Git commit, push, PR creation, or `main` integration. The auxiliary-work time-box rule still requires a user decision when it actually applies to auxiliary work; it must not be misapplied to authenticated core project work.
+- `ㄱㄱ` and `rr` remain Git-only approvals and never open a technical gate. They are unnecessary for ordinary implementation, testing, or correction progress inside an already-open gate.
+
 - Chat promises and compressed conversation summaries are not authoritative. At every new, resumed, or compacted session, read the latest root `AGENTS.md` completely and reconstruct operational state from authenticated Git artifacts before acting. A user correction that must survive compaction must be written into root `AGENTS.md` before any role relies on it: CONTROL writes project-wide non-candidate operating policy directly, while the DOCUMENTATION role writes candidate-owned technical documentation and evidence within its opened gate.
 - When F0 is not explicitly allowed, never run broad recursive path discovery under `s0-lab/reviews/`, including `rg --files`, recursive Git tree listing, or operating-system glob exclusion schemes. Use only exact supplied public paths and allowlists or authenticated manifests. Never rely on slash- or backslash-sensitive exclusions to protect F0. An exclusion mismatch or any protected filename exposure is a boundary failure: stop immediately, report it, and assign a fresh uncontaminated role agent.
 - Before opening a multi-role gate, CONTROL must check available agent and thread capacity and plan the sequential role handoffs. Reuse an existing agent only when it remains in the same role for the candidate and every prior input is within the current allowlist; otherwise assign a fresh agent. Do not start a role sequence unless every required role can be allocated, and never let CONTROL absorb a blocked role.

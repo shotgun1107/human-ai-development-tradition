@@ -12,6 +12,14 @@ Updated: 2026-10-02 (Asia/Seoul). This is a mutable CONTROL/maintenance routing 
 - The underlying unclassified-status blocker remains. The one-time local-commit exceptions recorded in the preservation commit have expired; they do not authorize later Git changes. No push was performed with that commit. At the 2026-10-02 conventions-edit/preparation checkpoint, staging and commit/push approval are still pending; later authority and completion must be checked against the user request and actual Git state.
 - General development conventions are maintained in [CONTRIBUTING.md](../../CONTRIBUTING.md); the conventions-adoption task has one separate [AI task record](../../.ai/tasks/development-conventions.md). This ledger remains the research-status routing index, not a duplicate general-task journal. The dated evidence and decisions below keep their original scope and historical identities.
 
+## 2026-10-02 원격·로컬 이력 통합
+
+- 이 안내는 원격 main `5ad4632e9ceec64fff53ee26bb3557e95f817d4c`와 로컬 `13c522ce6228d2f14d198daf84057d0f7fb4024e`의 공개 근거를 함께 보존하는 포트폴리오 정리에서 갱신했다. 이 파일이 들어 있는 Git commit이 게시 위치를 정하며 자기 자신의 미래 커밋 해시를 기록하지 않는다.
+- 원격에서 이미 반영된 질문 계약 v0.14 설계 채택, E0 v0.4 설계 검토, runtime materialization v0.7 및 preloader v0.5 설계 기록을 보존한다. 로컬의 이후 감사 수정 A01–A08과 개발 규약도 보존한다. 아래 과거 시점의 Git identity나 “미커밋” 표현을 현재 게시 상태로 해석하지 않는다.
+- 질문 계약 근거: [v0.14 통합 판정](f0-public/question-contract-v0.14/control-integration-decision-v0.1.md). E0 근거: [v0.4 독립 검토](../../docs/tradition/e0-effect-test/e0-independent-review-v0.4.md). 둘 다 실제 실행·효과 검증은 아니다.
+- 전체 실행의 dependency 순서는 [공개 조립 workstream](workstreams/public-end-to-end-assembly-rehearsal.md)을 따른다. A06/A08의 제한된 소스 통합 수용이 live/native 실행 선행조건을 자동 해제하지 않는다.
+- 이번 작업은 Git·안내 문서 정리다. 기존 미분류 항목 4개 보존을 전제로 한 이번 1회 Git 예외는 별도 사용자 승인으로 진행하며, 기술 실행·F0 내용 접근·과거 근거 변경으로 확대하지 않는다. 작업 상태는 [.ai/tasks/github-portfolio-cleanup.md](../../.ai/tasks/github-portfolio-cleanup.md) 한 곳에 둔다.
+
 ## 2026-09-29 재개 준비 상태
 
 사용자는 중단 지시 전까지 공식 프로젝트 재개 전 준비를 자율 진행하도록 요청했다. 현재 작업은 기존 승인·역할·보호 경계 안의 준비이며, 이 요청을 F0 내용 접근, S0/E0 실행, 과거 실패의 재판정, Git 게시 또는 기존 보장 축소의 자동 승인으로 취급하지 않는다. 이 절은 일반 운영 점검 기록이며 새 기술 후보·실험 결과가 아니다.

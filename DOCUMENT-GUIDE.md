@@ -1,11 +1,13 @@
 # 프로젝트 문서 안내 및 정리 기록
 
-> **CONTROL/유지보수용 자료 — 새 독립 검토·실험 역할의 기본 입력이 아님.** 이 문서와 연결된 파일·생성 사이트·검색 색인은 과거 판단과 상태를 전달할 수 있다. 새 세션이라는 이유만으로 전체를 읽히지 않는다. 운영 인계 담당자는 [세션 전환 영향 기록](C:/Users/SSAFY/Documents/ai-development-tradition/docs/maintenance/SESSION-TRANSITION-IMPACT-2026-09-16.md)을 확인하고, 연구 역할에는 별도 동결된 허용 입력만 제공한다.
+> **CONTROL/유지보수용 자료 — 새 독립 검토·실험 역할의 기본 입력이 아님.** 이 문서와 연결된 파일·생성 사이트·검색 색인은 과거 판단과 상태를 전달할 수 있다. 새 세션이라는 이유만으로 전체를 읽히지 않는다. 운영 인계 담당자는 [세션 전환 영향 기록](docs/maintenance/SESSION-TRANSITION-IMPACT-2026-09-16.md)을 확인하고, 연구 역할에는 별도 동결된 허용 입력만 제공한다.
 
+> 현재 GitHub 안내: 2026-10-02. 공통 개발 규약은 [CONTRIBUTING.md](CONTRIBUTING.md), 기능·검증 개요는 [README.md](README.md)를 따른다. 아래 PC 정리 기록과 절대 실행 경로는 해당 시점의 환경 설명이며 새 PC에 자동 적용되지 않는다.
+>
 > 정리일: 2026-09-16. 이 문서는 탐색용 색인과 파일 정리 기록이다.
-> 기술 후보의 판정·동결·실행 권한을 바꾸지 않는다. 현재 운영 정책은 [AGENTS.md](C:/Users/SSAFY/Documents/ai-development-tradition/AGENTS.md)가 우선한다.
+> 기술 후보의 판정·동결·실행 권한을 바꾸지 않는다. 현재 운영 정책은 [AGENTS.md](AGENTS.md)가 우선한다.
 
-> **2026-09-29 재개 안내:** 아래 폴더 정리 내역은 9월 16일의 이력이다. 현재 판정은 [현재 작업 기록](C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/control/CURRENT-WORK-LEDGER.md), 쉬운 설명은 [마감 요약](C:/Users/SSAFY/Documents/ai-development-tradition/docs/maintenance/MAINTENANCE-CLOSEOUT-2026-09-29.md)을 따른다. A06·A07·A08의 개별 검사·검토·승인에 이어 전체 마감 검토와 CONTROL 종료 결정을 완료했다. 공개 CLI는 A04 소스를 `.venv-public`에서 사용하는 [A07 실행 안내](C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a07-public-cli-readiness-v0.1/README.md)를 따른다. A08은 별도의 조립 개발 소스이며 Windows 공식 리허설·S0 실행 승인이 아니다.
+> **2026-09-29 재개 안내:** 아래 폴더 정리 내역은 9월 16일의 이력이다. 현재 판정은 [현재 작업 기록](s0-lab/control/CURRENT-WORK-LEDGER.md), 쉬운 설명은 [마감 요약](docs/maintenance/MAINTENANCE-CLOSEOUT-2026-09-29.md)을 따른다. A06·A07·A08의 개별 검사·검토·승인에 이어 전체 마감 검토와 CONTROL 종료 결정을 완료했다. 공개 CLI는 A04 소스를 `.venv-public`에서 사용하는 [A07 실행 안내](s0-lab/audit-remediation/a07-public-cli-readiness-v0.1/README.md)를 따른다. A08은 별도의 조립 개발 소스이며 Windows 공식 리허설·S0 실행 승인이 아니다.
 
 **최종 처리:** 1차 정리에서 보류했던 Documents 하위 작업 폴더 14개는 추가 확인 후 제거했고, 중복 백업 1개는 휴지통으로 보냈다. 메인 프로젝트와 Git 브랜치·커밋 이력은 유지했다. 최종 근거와 복원용 커밋은 §7을 따른다. §4·§6의 보존 기록은 추가 확인 전의 1차 처리 이력이다.
 
@@ -63,7 +65,7 @@ Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
 | 수정된 공개 I0 CLI | `s0-lab/audit-remediation/a04-i0-cli-authentication-v0.1/implementation/s0_i0/cli.py` | A07 README의 프로젝트 루트·`.venv-public`·명시적 import 경로 사용. `s0-lab/i0/`는 원래 동결본 |
 | runtime 개발 소스 | `s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/` | 겹친 F01/F03/F08 수정을 포함한 전체 20개 소스. native 실행 인증 아님 |
 | 공개 조립 개발 소스 | `s0-lab/audit-remediation/a08-public-assembly-source-integration-v0.1/implementation/` | F02/F04를 포함한 전체 27개 소스. A01의 부분 시험 묶음 대신 사용; live authority는 별도 |
-| E0 비용 정의 | [원본 v0.4](C:/Users/SSAFY/Documents/ai-development-tradition/docs/tradition/e0-effect-test/e0-operating-cost-and-gates-v0.4.md) + [A03 정정본](C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/audit-remediation/a03-cost-definition-v0.1/COST-DEFINITION-ERRATUM.md) | 두 문서를 함께 적용. 실제 비용·E0 실행 결과는 아님 |
+| E0 비용 정의 | [원본 v0.4](docs/tradition/e0-effect-test/e0-operating-cost-and-gates-v0.4.md) + [A03 정정본](s0-lab/audit-remediation/a03-cost-definition-v0.1/COST-DEFINITION-ERRATUM.md) | 두 문서를 함께 적용. 실제 비용·E0 실행 결과는 아님 |
 | I1 검증 | `s0-lab/i1/tools/verify-i1.ps1` | 승인된 `ExpectedManifestSha256` 필요 |
 | I2 검증 | `s0-lab/i2/tools/verify-i2.ps1` | 승인된 `ExpectedManifestSha256` 필요 |
 | I3 검증 | `s0-lab/i3/tools/verify-i3.ps1` | 승인된 `ExpectedManifestSha256` 필요 |
@@ -94,17 +96,17 @@ Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
 
 | 필요한 내용 | 위치 | 읽을 때의 기준 |
 |---|---|---|
-| 현재 운영·접근·변경 규칙 | [AGENTS.md](C:/Users/SSAFY/Documents/ai-development-tradition/AGENTS.md) | 현재 정책. 문서 정리가 구현·실험·Git 게시 승인은 아님 |
-| 프로젝트의 목적과 철학 | [목적 헌장](C:/Users/SSAFY/Documents/ai-development-tradition/docs/tradition/purpose-and-philosophy.md) | 왜 만들고 무엇을 지키려는지 설명 |
-| 연구·설계 문서 지도 | [문서 개요](C:/Users/SSAFY/Documents/ai-development-tradition/docs/tradition/README.md) | 문헌 조사, 초기 설계, 경쟁 설계, 현행 기준선을 구분해서 읽기 |
-| 목표 중앙 시스템의 설계 | [v2.1 통합 후보](C:/Users/SSAFY/Documents/ai-development-tradition/docs/proposals/v2/central-tradition-system-v2-integrated-candidate-v2.1.md) | 목표 구조와 검증 전 가설. 제품 완성 기록이 아님 |
-| S0 준비의 설계 기준선 | [S0 준비 기준선](C:/Users/SSAFY/Documents/ai-development-tradition/docs/tradition/central-system-v2-1-s0-preparation-baseline.md) | 설계 채택의 범위와 남은 검증 경계 |
-| 공개 시험 준비·검증 자료의 시작점 | [S0 작업 환경](C:/Users/SSAFY/Documents/ai-development-tradition/s0-lab/README.md) | 버전별 과거 상태와 현재 운영 정책을 혼동하지 않기. 연결된 파일도 역할별 접근 제한을 따름 |
-| 독립 외부 조사·심사 기록 | [독립 외부 작업 구역](C:/Users/SSAFY/Documents/ai-development-tradition/independent-outsider/README.md) | 설계와 심사 근거를 보존한 역사 자료. 새 독립 역할의 허용 입력과는 별개 |
-| 지원서 작성용 프로젝트 설명 | [지원서용 프로젝트 맥락](C:/Users/SSAFY/Documents/ai-development-tradition/docs/application/PROJECT-CONTEXT-FOR-APPLICATION.md) | 다른 지원서 프로젝트에 전달할 자기완결적 요약. 본인 기여와 검증 한계를 포함 |
-| 정리·세션 교체의 연구 영향 | [세션 전환 영향 기록](C:/Users/SSAFY/Documents/ai-development-tradition/docs/maintenance/SESSION-TRANSITION-IMPACT-2026-09-16.md) | 유지보수 담당자용. 독립 실험 입력이 아니며 기존 결과의 재검증 조건을 구분 |
-| 과거 PC·세션 인계 맥락 | [집 Codex 시작점](C:/Users/SSAFY/Documents/ai-development-tradition/HOME-CODEX-START.md) | 2026-08-07의 역사 기록. 현재 상태·Git 동기화 규칙의 대체물이 아님 |
-| 문서 사이트 생성 설정 | [mkdocs.yml](C:/Users/SSAFY/Documents/ai-development-tradition/mkdocs.yml) | 원문은 `docs/tradition`, 생성물은 `.mkdocs-site` |
+| 현재 운영·접근·변경 규칙 | [AGENTS.md](AGENTS.md) | 현재 정책. 문서 정리가 구현·실험·Git 게시 승인은 아님 |
+| 프로젝트의 목적과 철학 | [목적 헌장](docs/tradition/purpose-and-philosophy.md) | 왜 만들고 무엇을 지키려는지 설명 |
+| 연구·설계 문서 지도 | [문서 개요](docs/tradition/README.md) | 문헌 조사, 초기 설계, 경쟁 설계, 현행 기준선을 구분해서 읽기 |
+| 목표 중앙 시스템의 설계 | [v2.1 통합 후보](docs/proposals/v2/central-tradition-system-v2-integrated-candidate-v2.1.md) | 목표 구조와 검증 전 가설. 제품 완성 기록이 아님 |
+| S0 준비의 설계 기준선 | [S0 준비 기준선](docs/tradition/central-system-v2-1-s0-preparation-baseline.md) | 설계 채택의 범위와 남은 검증 경계 |
+| 공개 시험 준비·검증 자료의 시작점 | [S0 작업 환경](s0-lab/README.md) | 버전별 과거 상태와 현재 운영 정책을 혼동하지 않기. 연결된 파일도 역할별 접근 제한을 따름 |
+| 독립 외부 조사·심사 기록 | [독립 외부 작업 구역](independent-outsider/README.md) | 설계와 심사 근거를 보존한 역사 자료. 새 독립 역할의 허용 입력과는 별개 |
+| 지원서 작성용 프로젝트 설명 | [지원서용 프로젝트 맥락](docs/application/PROJECT-CONTEXT-FOR-APPLICATION.md) | 다른 지원서 프로젝트에 전달할 자기완결적 요약. 본인 기여와 검증 한계를 포함 |
+| 정리·세션 교체의 연구 영향 | [세션 전환 영향 기록](docs/maintenance/SESSION-TRANSITION-IMPACT-2026-09-16.md) | 유지보수 담당자용. 독립 실험 입력이 아니며 기존 결과의 재검증 조건을 구분 |
+| 과거 PC·세션 인계 맥락 | [집 Codex 시작점](HOME-CODEX-START.md) | 2026-08-07의 역사 기록. 현재 상태·Git 동기화 규칙의 대체물이 아님 |
+| 문서 사이트 생성 설정 | [mkdocs.yml](mkdocs.yml) | 원문은 `docs/tradition`, 생성물은 `.mkdocs-site` |
 
 ### 기존 폴더를 유지한 이유
 
@@ -115,6 +117,9 @@ Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
 - `docs/application`: 이번에 분리한 지원서·대외 설명용 요약 위치다. 원본 실험 자료를 복제하는 폴더가 아니다.
 
 동결 문서·manifest·sidecar는 본문과 위치를 그대로 보존했다. 이번 정리는 미완료 기술 작업의 상태나 감사 결과를 새로 판정하지 않는다.
+
+<details>
+<summary>2026-09-16 이후 PC 정리·보존 이력</summary>
 
 ## 2. 이동한 파일
 
@@ -250,3 +255,5 @@ Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
 영향 기록의 미커밋 상태·파일 해시는 그 기록을 작성한 **커밋 전 시점**의 사실이다. 위 커밋으로 당시 7개 파일을 보존했으며, 커밋 후 일반 정리에서는 이 안내의 `maintenance/` 위치와 본 절만 보완했다. 이 후속 보완을 별도로 커밋하거나 기존 커밋을 amend하지 않았다.
 
 후속 확인에서 Documents의 기존 정리 대상 16곳(작업 폴더 14개·중복 백업 1개·빈 컨테이너 1개)과 루트의 옛 지원서 파일은 존재하지 않았다. 주요 프로젝트 폴더 9곳은 기준 루트 아래 실제 디렉터리이며 다른 위치를 가리키는 reparse point가 아니었다. 추가로 삭제·이동한 항목은 없다. 공유 설치 환경과 앱 관리 영역, 미분류 항목은 계속 보존한다.
+
+</details>

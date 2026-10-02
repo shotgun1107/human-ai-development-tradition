@@ -1,136 +1,97 @@
 # 인간–AI 공동 개발 전통
 
-> **CONTROL/운영용 개요 — 독립 실험 입력으로 자동 사용 금지.** 새 세션이나 공개 파일이라는 이유만으로 읽기 권한이 생기지 않습니다. 독립 검토자·실행자는 root `AGENTS.md`와 해당 역할의 정확한 허용 입력 목록을 먼저 따르십시오. 이 개요와 연결 문서에는 과거 설계 선택·검증 상태가 포함됩니다.
+**AI 개발 경험을 재사용 가능한 규칙과 테스트로 남기고, 다음 작업에서 다시 검증하기 위한 연구·개발 프로젝트입니다.**
 
-사람과 AI가 여러 프로젝트에서 얻은 검증된 경험을 다음 AI 세대가 이어받도록 만드는 **외부 기억·작업 규칙·검증 체계** 연구 프로젝트입니다.
+세션이나 모델이 바뀔 때 실패 원인과 의사결정 근거가 사라지는 문제를 다룹니다. 대화 로그를 쌓는 대신 **출처 → 적용 조건 → 작업 자산 → 적용 결과 → 수정·철회**를 연결하는 외부 기억 체계를 설계하고, 이를 확인할 공개 입력용 하네스를 개발했습니다.
 
-이 프로젝트의 목표는 사용자의 개인 성장 일지를 만드는 데 있지 않습니다. 모델과 세션이 바뀌어도 같은 실수를 줄이고, 잘 작동한 Skill·프롬프트·체크리스트·테스트·판단 근거를 검증 가능한 형태로 계승하는 것이 핵심입니다.
+> 현재 범위는 **설계 및 S0 준비 구성요소**입니다. 중앙 시스템 전체, 실제 S0/E0 실험, 서비스 운영, 생산성·비용 개선, 모델 간 경험 전이를 구현·검증한 결과는 아닙니다.
 
-> 현재는 연구·기획·S0 준비 단계입니다. 중앙 시스템, Project Brain 연동, 운영 안전성, 경제성, 모델 간 전이는 아직 구현되거나 검증되지 않았습니다.
+## 프로젝트 한눈에 보기
 
-다른 PC나 새 Codex 세션에서 작업을 재개하려면 먼저 루트
-[`AGENTS.md`](./AGENTS.md)의 현재 정책을 읽으십시오. 이후
-[집 Codex 시작점](./HOME-CODEX-START.md)은 역사적 인수인계 맥락으로만 읽고,
-현재 Git·해시·게이트를 다시 검증하십시오.
+| 항목 | 내용 |
+| --- | --- |
+| 문제 | AI가 이전 작업의 판단·실패·검증 조건을 이어받지 못하는 문제 |
+| 접근 | 조건과 근거가 연결된 외부 기억, 단계별 검증, 사람의 승인과 철회 |
+| 실제 산출물 | 설계 기준선, 공개 입력 검증 CLI, runtime·assembly 개발 소스, 시험·감사 기록 |
+| 주요 기술 | Python 3.12, JSON Schema, PowerShell, C++/Win32, Git, MkDocs |
+| 개발 방식 | 사람의 목적·제약·승인 아래 AI 보조 구현·시험·문서화와 분리된 검토 |
+| 현재 단계 | `central-system-v2.1-s0-preparation` |
 
-## 회사 PC에서 작업 시작
+## 무엇을 만들었나
 
-기준 폴더는 **`C:\Users\SSAFY\Documents\ai-development-tradition`** 하나입니다.
-현재 남아 있는 프로젝트 소스·문서·기존 검증 도구는 이 폴더 아래에서 사용합니다.
+### 1. 공개 입력 검증 CLI
 
-- **현재 상태와 최종 판정:** [현재 작업 기록](./s0-lab/control/CURRENT-WORK-LEDGER.md)을 먼저 확인합니다. 2026-09-29의 소스 통합 두 묶음과 공개 실행 환경은 각각 검사·독립 검토·제한된 승인을 마쳤고, **현재 작업 폴더의 한정된 감사 수정·유지보수를 공식 마감했습니다.** 전체 Windows 실행이나 S0 완료 판정은 아닙니다.
-- **짧은 결과 설명:** [감사 수정·유지보수 마감 요약](./docs/maintenance/MAINTENANCE-CLOSEOUT-2026-09-29.md). 과거 판정이나 동결 README의 `REVIEW PENDING`을 현재 지시로 사용하지 않습니다. 현재 개별 판정은 각 묶음의 나중에 작성된 `CONTROL-DISPOSITION.md`가 기록합니다.
-- 공개 CLI는 **A04의 I0 소스**를 사용합니다. [A07 실행 명령](./s0-lab/audit-remediation/a07-public-cli-readiness-v0.1/README.md)과 [최종 승인](./s0-lab/audit-remediation/a07-public-cli-readiness-v0.1/CONTROL-DISPOSITION.md)을 따라 프로젝트 안의 `.venv-public`에서 사용합니다. 확인된 명령은 `integrity`, `schema-check`, `verify`이며 S0 실행이 아닙니다.
-- 후속 개발용 소스는 [A06 runtime 소스 통합](./s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/CONTROL-DISPOSITION.md)과 [A08 공개 조립 소스 통합](./s0-lab/audit-remediation/a08-public-assembly-source-integration-v0.1/CONTROL-DISPOSITION.md)의 `implementation/`입니다. A08은 위 CLI의 실행 경로가 아니며, 이 소스들이 새 native 실행 묶음으로 인증됐다는 뜻도 아닙니다. [Windows 공개 조립의 남은 실행 조건](./s0-lab/control/workstreams/public-end-to-end-assembly-rehearsal.md)은 별도로 유지합니다.
-- E0 비용을 다룰 때는 [원래 v0.4 비용 문서](./docs/tradition/e0-effect-test/e0-operating-cost-and-gates-v0.4.md)와 [승인된 비용 정정본](./s0-lab/audit-remediation/a03-cost-definition-v0.1/COST-DEFINITION-ERRATUM.md)을 함께 적용합니다. 원본만으로 중복 비용식을 다시 사용하지 않습니다.
-- 용도별 위치와 외부 설치 환경: [프로젝트 문서 안내](./DOCUMENT-GUIDE.md)
-- 소스·시험·도구: `s0-lab/`의 각 구성요소 안에서 `implementation/`, `tests/`, `tools/`를 사용
-- 연구·설계 문서: `docs/tradition/`, `docs/proposals/`, `docs/reviews/`
-- 지원서용 요약: [지원서 프로젝트 맥락](./docs/application/PROJECT-CONTEXT-FOR-APPLICATION.md)
+공개 연습자료의 무결성, JSON 형식과 결정적 변환 결과를 확인합니다. 변경된 manifest를 handler 실행 전에 거부하도록 보정했습니다.
 
-동결 경로와 해시를 유지하기 위해 기존 소스·검증 폴더를 임의로 합치거나
-평탄화하지 않았습니다. 외부의 과거 worktree를 작업 시작점으로 사용하지 않습니다.
-이 경로 정리가 중앙 시스템·S0·실제 리허설의 실행 준비 완료를 뜻하지는 않습니다.
+- [현재 CLI 소스](s0-lab/audit-remediation/a04-i0-cli-authentication-v0.1/implementation/s0_i0/)
+- [실행 환경·명령과 검증 기록](s0-lab/audit-remediation/a07-public-cli-readiness-v0.1/README.md)
+- [검증 범위에 대한 최종 판정](s0-lab/audit-remediation/a07-public-cli-readiness-v0.1/CONTROL-DISPOSITION.md)
 
-## 왜 만드는가
+### 2. runtime·assembly 개발 소스
 
-좋은 모델을 사용하거나 새 모델의 기본 성능이 높아져도 다음 문제가 반복됩니다.
+runtime 구성과 공개 조립 경계의 감사 지적을 보정하고, 서로 겹치는 수정이 빠지지 않도록 전체 소스 묶음으로 통합했습니다.
 
-- 새 세션이 과거 판단과 실패 이유를 모른다.
-- 같은 실수와 비효율적인 AI 사용법을 프로젝트마다 다시 겪는다.
-- 성공 사례는 남아도 어떤 조건에서 성공했는지 검증되지 않는다.
-- 체크리스트와 Skill이 늘어나지만 실제 효과와 폐기 기준이 없다.
-- 모델이 바뀌면 경험의 맥락과 근거가 함께 전달되지 않는다.
+- [runtime 개발 소스 20개](s0-lab/audit-remediation/a06-runtime-source-integration-v0.1/implementation/) — 프로필 구성, 경로 검사, native 파일 목록 보정
+- [assembly 개발 소스 27개](s0-lab/audit-remediation/a08-public-assembly-source-integration-v0.1/implementation/) — 파일 접근 경계와 Windows 스트림 검사 보정
 
-따라서 경험을 단순히 보관하는 대신 다음 순환을 만들려고 합니다.
+두 소스 묶음의 수용은 **개발 입력과 제한된 검증에 대한 판단**입니다. 하나의 native/live 실행 묶음으로 인증됐다는 뜻은 아닙니다.
 
-```text
-사실·사건
-  → 검증된 경험
-  → 교훈 후보
-  → 사람 승인
-  → Skill·프롬프트·체크리스트·테스트
-  → 다음 프로젝트 적용
-  → 효과·반례 측정
-  → 유지·수정·축소·폐기
-```
+### 3. 재사용 가능한 경험을 위한 설계
 
-초기 방식은 모델 파인튜닝이 아닙니다. 검색 가능한 문서, 출처와 버전이 연결된 규칙, RAG, 프롬프트 주입, 재현 가능한 테스트처럼 사람이 검토하고 철회할 수 있는 외부 기억으로 시작합니다.
+외부 기억에 무엇을 남길지뿐 아니라 언제 적용하지 말아야 하는지, 잘못된 규칙을 어떻게 철회할지까지 설계했습니다.
 
-## 초기 연구·준비 경로 요약
+- [목적과 설계 원칙](docs/tradition/purpose-and-philosophy.md)
+- [중앙 시스템 v2.1 준비 기준선](docs/tradition/central-system-v2-1-s0-preparation-baseline.md)
+- [연구·설계 문서 지도](docs/tradition/README.md)
 
-아래 표는 초기 준비 단계의 역사적 요약입니다. 후속 공개 조립·실행 환경 작업과 2026-09-16~17 감사 수정의 현재 진행 위치는 위의 **현재 작업 기록**을 따릅니다. 아래의 구버전 대기·거부 상태를 최신 재개 지시로 사용하지 않습니다.
+질문 계약 v0.14는 공개 설계 기준선으로 채택됐고, E0 v0.4는 설계 검토를 통과했습니다. 두 결과 모두 실제 실험이나 효과 검증은 아닙니다.
 
-| 단계 | 상태 | 의미 |
-|---|---|---|
-| 분야 횡단 문헌 조사 | 완료 | AAR, SRE, 조직 기억, 안전사고 학습, 품질관리, 인간–AI 협업 등을 조사 |
-| 중앙 시스템 v2 기획·설계 | 후보 동결 | 독립 설계·외부 심사·제한 수정 완료, 운영 효과는 미검증 |
-| S0 프로토콜 v0.3 | 동결 | 합성 논리 시험의 역할·격리·중단·판정 규칙 고정 |
-| SM0·SM1 데이터 형식 | 동결 | 답안과 10개 manifest/schema 형식 고정 |
-| F0-PUBLIC v0.1 | 동결 | 비밀 없는 공개 합성 연습자료 작성·독립 검토 완료 |
-| I0 최소 구현 | 제한 동결 | 공개 harness와 F0-PUBLIC refreeze 완료, S0·전체 시스템 검증은 아님 |
-| F0-PUBLIC 질문 계약 v0.4 | 거부 | 독립 심사에서 Critical 4·Major 3, 실패 후보로 보존 |
-| 질문 계약 v0.5 | 설계 대기 | 별도 경로에서 재설계해야 하며 후보 문서는 아직 없음 |
-| E0 효과시험 v0.1 | 독립 심사 전 | 분리 브랜치에 설계 후보만 존재, 자료·구현·실행은 닫힘 |
-| F0-SEALED 작성·S0 실행·판정 게이트 | 미착수 | 기존 53개 보존 파일은 Git 추적되지만 AI 내용 접근과 실행 권한은 닫힘 |
+## 확인한 결과와 남은 한계
 
-단계별 배경은 [S0 작업 환경](./s0-lab/README.md)과 [F0-PUBLIC 동결 기록](./s0-lab/control/f0-public/f0-public-v0.1-freeze-record.md)에 보존돼 있습니다. 각 문서의 기준일과 역할별 접근 제한을 확인합니다.
+아래는 **2026-09-29에 기록된 검사**입니다. 이번 저장소 정리는 해당 시험을 다시 실행하거나 결과 범위를 넓히지 않았습니다.
 
-## 핵심 원칙
+| 대상 | 기록된 결과 | 해석 범위 |
+| --- | --- | --- |
+| 공개 CLI | `integrity`, `schema-check`, `verify` 및 `pip check` 각각 exit 0 | 해당 Windows 호스트와 준비된 의존성의 공개 입력 점검 |
+| 공개 입력 | 90개 파일, 11개 schema, 8개 package 바이트 비교 확인 | S0 실행·점수·AI 성능 측정 아님 |
+| runtime 소스 통합 | 소스 검사 24개/하위 사례 205개, 프로필 검사 59개 통과 | 실제 native lifecycle·전체 환경 인증 아님 |
+| assembly 소스 통합 | 검사 77개/하위 사례 485개 통과 | 실제 Windows 전체 리허설·보안 완전성 증명 아님 |
 
-- 사실, 추론, 제안, 시험 결과를 구분합니다.
-- 성공·실패·결정·실험·반례를 함께 다룹니다.
-- 출처, 적용 조건, 금지 조건, 버전, 소유자, 재검토일을 남깁니다.
-- 한 프로젝트의 경험을 곧바로 범용 규칙으로 승격하지 않습니다.
-- AI가 만든 요약이나 점수는 사람 승인 전까지 효력이 없습니다.
-- 개인정보·비밀·실제 고객 자료를 중앙 저장소에 복제하지 않습니다.
-- 잘못된 교훈은 덮어쓰지 않고 수정·강등·폐기 이력을 남깁니다.
-- worktree와 세션 분리는 편집 충돌을 줄일 뿐, 비밀정보 격리를 자동 보장하지 않습니다.
+[감사 수정·유지보수 마감 근거](docs/maintenance/MAINTENANCE-CLOSEOUT-2026-09-29.md)와 각 묶음의 `CONTROL-DISPOSITION.md`에 수용 범위가 기록돼 있습니다. 날짜가 있는 README의 `REVIEW PENDING`은 그 문서가 동결된 당시 상태이며, 뒤에 작성된 판정과 구분합니다.
 
-## 저장소 지도
+현재 미검증 범위는 중앙 시스템·Project Brain 통합, 전체 Windows 리허설, S0/E0 실행, 운영 안전성, 경제적 효과와 모델 간 전이입니다. 기록된 테스트 수를 생산성 향상률이나 사업 성과로 바꾸지 않습니다.
 
-- [`docs/tradition/`](./docs/tradition/README.md) — 목적·철학, 문헌 조사, 중앙 시스템 기획·설계, 월간 회고와 평가
-- [`docs/proposals/`](./docs/proposals/) — 서로 다른 모델이 독립적으로 작성한 설계안과 통합 후보
-- [`docs/reviews/`](./docs/reviews/) — 독립 비평, 재심사, 최종 판단 기록
-- [`independent-outsider/`](./independent-outsider/README.md) — 기존 설계와 분리된 외부 관점의 조사·심사
-- [`s0-lab/`](./s0-lab/README.md) — S0 프로토콜, 동결 schema, 공개 합성 연습자료와 검토 기록
-- [`AGENTS.md`](./AGENTS.md) — 현재 구현·실행 게이트와 역할 격리 규칙
+## 공개 CLI 시작하기
 
-현재 상태를 확인한 뒤 연구 배경을 더 읽을 문서는 다음과 같습니다.
+아래 안내는 **Windows x64 / Python 3.12**용입니다. 가상환경은 Git에 포함되지 않습니다. 저장소 루트에서 실행하며, 새 PC의 동작은 별도 확인이 필요합니다.
 
-1. [목적과 철학](./docs/tradition/purpose-and-philosophy.md)
-2. [프로젝트 전체 문서 지도](./docs/tradition/README.md)
-3. [S0 자료의 버전별 안내](./s0-lab/README.md) — 과거 안내이며 현재 운영 판정은 위 작업 기록을 우선합니다.
-
-## 문서 사이트로 보기
-
-이 저장소는 Material for MkDocs 설정을 포함합니다. 회사 PC에서는 이미
-프로젝트 안에 있는 문서 전용 가상환경을 사용합니다. 활성화나 전역 `python`
-선택에 의존하지 않고 아래처럼 실행하십시오.
+### 환경 준비
 
 ```powershell
-Set-Location -LiteralPath 'C:\Users\SSAFY\Documents\ai-development-tradition'
-& '.\.venv-docs\Scripts\python.exe' -m mkdocs serve --config-file '.\mkdocs.yml'
+py -3.12 -m venv .venv-public
+& '.\.venv-public\Scripts\python.exe' -I -B -X utf8 -m pip --isolated install --require-hashes --only-binary=:all: --index-url https://pypi.org/simple -r '.\s0-lab\audit-remediation\a07-public-cli-readiness-v0.1\requirements.lock.txt'
 ```
 
-실행 후 브라우저에서 `http://127.0.0.1:8000`을 열면 주요 기획·연구 문서를 탐색할 수 있습니다.
+이미 준비된 환경을 사용한다면 설치를 반복할 필요는 없습니다. lock 파일은 검증 당시 Windows 의존성의 버전과 wheel 해시를 고정합니다.
 
-정적 문서만 만들려면 같은 위치에서
-`& '.\.venv-docs\Scripts\python.exe' -m mkdocs build --config-file '.\mkdocs.yml'`을
-사용합니다. 출력은 프로젝트 내부의 `.mkdocs-site/`입니다. 기존
-`requirements-docs.txt`는 문서 환경 의존성 기록이며, 회사 PC의 현재 문서
-빌드는 2026-09-16에 확인했습니다. I0/I1 실행 환경과는 별개입니다.
+### 공개 입력 확인
 
-## 현재 하지 않는 것
+```powershell
+& '.\.venv-public\Scripts\python.exe' -I -B -X utf8 -c "import sys; from pathlib import Path; sys.path.insert(0, str(Path.cwd() / 's0-lab/audit-remediation/a04-i0-cli-authentication-v0.1/implementation')); from s0_i0.cli import main; raise SystemExit(main(['verify']))"
+```
 
-- 모델 파인튜닝이나 자동 자기수정
-- 실제 고객·개인·비밀 자료를 사용한 시험
-- 무승인 교리 배포 또는 AI 단독 최종 결정
-- 중앙 시스템·Project Brain·경제적 가치가 이미 검증됐다는 주장
-- 공개 연습자료를 실제 S0 결과로 사용하는 일
+같은 진입점에서 `verify`를 `integrity` 또는 `schema-check`로 바꾸면 각 검사를 따로 확인할 수 있습니다. 이 세 명령은 공개 준비 자료를 읽는 CLI이며, 새 fixture·oracle·S0 실행을 만들지 않습니다. 위 상대경로 표기는 기존 진입점에 맞춘 안내이고 이번 문서 정리에서 새로 실행 검증한 명령은 아닙니다. 당시 실제 명령과 전체 출력은 [A07 기록](s0-lab/audit-remediation/a07-public-cli-readiness-v0.1/README.md)에 있습니다.
 
-## 검증 경계
+## 읽는 순서
 
-현재 공개 준비 경로에서는 **F0-PUBLIC v0.1과 I0 최소 harness가 제한된 범위에서 동결**됐습니다. 이후 질문 계약 URC v0.4는 독립 심사에서 거부됐으므로 v0.5를 별도 버전으로 다시 설계해야 합니다. 이는 S0 또는 중앙 시스템의 효과가 입증됐다는 뜻이 아닙니다.
+1. 이 README — 목적, 실제 구현, 검증과 한계
+2. [개발 참여 규약](CONTRIBUTING.md) — 작업·브랜치·커밋·문서 규칙
+3. [프로젝트 문서 안내](DOCUMENT-GUIDE.md) — 현재 소스와 과거 근거의 위치
+4. [현재 연구 작업 원장](s0-lab/control/CURRENT-WORK-LEDGER.md) — 개별 판정과 남은 선행조건
+5. [공개 조립 workstream](s0-lab/control/workstreams/public-end-to-end-assembly-rehearsal.md) — 전체 실행 경로의 의존 관계
 
-병렬 경로의 E0 v0.1은 이 초기 요약 시점에 전통 효과시험의 설계 후보·독립 심사 전 상태였습니다. 이 과거 요약만으로 다음 작업을 선택하거나 자료 작성·구현·실행을 시작하지 않습니다. 현재 후속 작업은 root `AGENTS.md`, 현재 작업 기록과 해당 작업의 명시적 승인 범위를 다시 확인합니다.
+AI 작업 지침은 [AGENTS.md](AGENTS.md), 작업별 상태 기록은 `.ai/tasks/`에 있습니다. 문서 링크와 Git 존재 자체가 연구 자료의 접근·실행 권한을 부여하지는 않습니다.
+
+## 이력과 보존
+
+현재 안내와 원래 실험·검토 근거를 구분합니다. 과거 판정, 실패 기록, 동결 파일과 해시는 원문으로 보존하며 최신 상태처럼 다시 쓰지 않습니다. 커밋 제목 정리는 파일 내용·작성자·개발 날짜를 바꾸지 않는 Git 이력 정리입니다. 원래 커밋과 별도 작업의 복구 지점은 `archive/` 태그에 보관합니다.
